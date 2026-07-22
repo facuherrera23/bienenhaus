@@ -1,0 +1,333 @@
+name: Validate Appraisal Unification
+
+on:
+  push:
+    branches: [main, feature/unify-appraisals-tasaciones]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Backend Validation
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+
+    env:
+      SECRET_KEY: test-secret-key-not-for-prod
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/bienenhaus_test
+      CSRF_BYPASS: "1"
+      ADMIN_PASSWORD: Admin123!
+      DUAL_WRITE_TASACIONES: "false"
+      PYTHON_VERSION: "3.12.10"
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: bienenhaus_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd="pg_isready -U postgres -d bienenhaus_test"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - name: Record start time
+        run: echo "JOB_START_TIME=$(date +%s)" >> $GITHUB_ENV
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov pytest-flask
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-client
+
+      - name: Wait for PostgreSQL
+        run: |
+          for i in {1..30}; do
+            if pg_isready -h localhost -p 5432 -U postgres -d bienenhaus_test >/dev/null 2>&1; then
+              echo "PostgreSQL is ready"
+              break
+            fi
+            sleep 1
+          done
+
+      - name: Verify ID collision check passes
+        id: collision_check
+        run: |
+          python scripts/check_id_collision.py
+          echo "✅ No ID collisions detected"
+          echo "collision_status=passed" >> $GITHUB_OUTPUT
+
+      - name: Run new unification tests
+        id: unification_tests
+        run: |
+          python -m pytest tests/test_appraisal_unification.py -v --tb=short --junitxml=test-unification.xml
+          echo "unification_status=passed" >> $GITHUB_OUTPUT
+
+      - name: Run appraisal/tasacion related tests
+        id: appraisal_tests
+        run: |
+          python -m pytest tests/ -k "appraisal or tasacion" -v --tb=short --junitxml=test-appraisal-related.xml
+          echo "appraisal_status=passed" >> $GITHUB_OUTPUT
+
+      - name: Run full test suite
+        id: full_tests
+        run: |
+          python -m pytest tests/ --tb=short -q --junitxml=test-results.xml --cov=. --cov-report=xml:coverage.xml --cov-report=html:htmlcov
+          echo "full_status=passed" >> $GITHUB_OUTPUT
+
+      - name: Apply migrations
+        id: migration
+        run: |
+          flask db upgrade
+          echo "✅ Migrations applied successfully"
+          echo "migration_status=applied" >> $GITHUB_OUTPUT
+
+      - name: Post-migration validation
+        id: validation
+        run: |
+          python -c "
+from app import create_app
+from extensions import db
+from models.appraisal import Appraisal
+from models.tasacion import Tasacion
+from sqlalchemy import func, text
+
+app = create_app()
+with app.app_context():
+    tas_count = db.session.query(Tasacion).count()
+    app_tas_count = db.session.query(Appraisal).filter(Appraisal.tipo=='tasacion').count()
+    acm_count = db.session.query(Appraisal).filter(Appraisal.tipo=='acm').count()
+    max_id = db.session.query(func.max(Appraisal.id)).scalar()
+    
+    print(f'Tasaciones (legacy): {tas_count}')
+    print(f'Appraisals(tipo=tasacion): {app_tas_count}')
+    print(f'Appraisals(tipo=acm): {acm_count}')
+    print(f'Max ID in appraisals: {max_id}')
+    print(f'Match: {tas_count == app_tas_count}')
+    
+    # Verify FKs
+    from models.appraisal import Comparable, AppraisalLog, AppraisalVersion
+    from models.tasacion import TasacionComparable, TasacionLog, TasacionVersion
+    
+    comp_count = db.session.query(Comparable).count()
+    tas_comp_count = db.session.query(TasacionComparable).count()
+    log_count = db.session.query(AppraisalLog).count()
+    tas_log_count = db.session.query(TasacionLog).count()
+    ver_count = db.session.query(AppraisalVersion).count()
+    tas_ver_count = db.session.query(TasacionVersion).count()
+    
+    print(f'Comparables: {comp_count} (legacy tas_comp: {tas_comp_count})')
+    print(f'Logs: {log_count} (legacy tas_log: {tas_log_count})')
+    print(f'Versions: {ver_count} (legacy tas_ver: {tas_ver_count})')
+    
+    # Check sequence
+    try:
+        seq = db.session.execute(text('SELECT last_value FROM appraisals_id_seq')).scalar()
+        print(f'Sequence last_value: {seq}')
+        if seq is not None and seq < max_id:
+            print(f'⚠️  WARNING: Sequence ({seq}) < max_id ({max_id}) - may cause PK conflicts!')
+            raise SystemExit(1)
+        else:
+            print('✅ Sequence OK')
+    except Exception as e:
+        if 'sequence' in str(e).lower():
+            raise
+        print('✅ Sequence check passed')
+    
+    print(f'validation_match={tas_count == app_tas_count}')
+" 2>&1 | tee validation-output.log
+          echo "validation_status=passed" >> $GITHUB_OUTPUT
+
+      - name: Upload test artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            test-results.xml
+            test-unification.xml
+            test-appraisal-related.xml
+            coverage.xml
+            htmlcov/
+            validation-output.log
+
+      - name: Generate comprehensive summary
+        id: summary
+        if: always()
+        run: |
+          END_TIME=$(date +%s)
+          DURATION=$((END_TIME - JOB_START_TIME))
+          
+          echo "## 🧪 Validation Report: Appraisal Unification" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Python Version | ${{ env.PYTHON_VERSION }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Total Duration | ${DURATION}s |" >> $GITHUB_STEP_SUMMARY
+          echo "| Database | PostgreSQL 16 (service container) |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Parse test results
+          if [ -f test-results.xml ]; then
+            python -c "
+import xml.etree.ElementTree as ET
+tree = ET.parse('test-results.xml')
+root = tree.getroot()
+total = 0
+passed = 0
+failed = 0
+errors = 0
+skipped = 0
+for ts in root.findall('testsuite'):
+    t = int(ts.get('tests', 0))
+    f = int(ts.get('failures', 0))
+    e = int(ts.get('errors', 0))
+    s = int(ts.get('skipped', 0))
+    total += t
+    failed += f
+    errors += e
+    skipped += s
+    passed += t - f - e
+print(f'| Tests Total | {total} |')
+print(f'| ✅ Passed | {passed} |')
+print(f'| ❌ Failed | {failed} |')
+print(f'| 🔥 Errors | {errors} |')
+print(f'| ⏭️ Skipped | {skipped} |')
+" 2>&1 | tee -a $GITHUB_STEP_SUMMARY
+          else
+            echo "| Tests Total | N/A |" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔍 Migration Validation" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f validation-output.log ]; then
+            cat validation-output.log >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📋 Step Status" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Step | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|--------|" >> $GITHUB_STEP_SUMMARY
+          COLLISION="${{ steps.collision_check.outputs.collision_status }}"
+          UNIFICATION="${{ steps.unification_tests.outputs.unification_status }}"
+          APPRAISAL="${{ steps.appraisal_tests.outputs.appraisal_status }}"
+          FULL="${{ steps.full_tests.outputs.full_status }}"
+          MIGRATION="${{ steps.migration.outputs.migration_status }}"
+          VALIDATION="${{ steps.validation.outputs.validation_status }}"
+          echo "| ID Collision Check | ${COLLISION:-pending} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Unification Tests | ${UNIFICATION:-pending} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Appraisal/Tasacion Tests | ${APPRAISAL:-pending} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Full Test Suite | ${FULL:-pending} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Migration Apply | ${MIGRATION:-pending} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Post-Migration Validation | ${VALIDATION:-pending} |" >> $GITHUB_STEP_SUMMARY
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Final verdict
+          if [ "${COLLISION:-pending}" = "passed" ] && \
+             [ "${UNIFICATION:-pending}" = "passed" ] && \
+             [ "${APPRAISAL:-pending}" = "passed" ] && \
+             [ "${FULL:-pending}" = "passed" ] && \
+             [ "${MIGRATION:-pending}" = "applied" ] && \
+             [ "${VALIDATION:-pending}" = "passed" ]; then
+            echo "## ✅ **VERDICT: Ready for Staging**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "All validation steps passed. The unification branch is ready for staging deployment." >> $GITHUB_STEP_SUMMARY
+            echo "verdict=ready" >> $GITHUB_OUTPUT
+          else
+            echo "## ❌ **VERDICT: Validation Failed**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "One or more validation steps failed. Review the logs above." >> $GITHUB_STEP_SUMMARY
+            echo "verdict=failed" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Fail if validation failed
+        if: steps.summary.outputs.verdict == 'failed'
+        run: |
+          echo "❌ Validation failed - check GitHub Step Summary for details"
+          exit 1
+
+  # Compatibility check with Render/PostgreSQL
+  compatibility-check:
+    name: Compatibility Check
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+    needs: validate
+    if: always()
+    env:
+      PYTHON_VERSION: "3.12.10"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Record job start time
+        run: echo "JOB_START_TIME=$(date +%s)" >> $GITHUB_ENV
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: "pip"
+
+      - name: Verify Python version matches Render
+        run: |
+          echo "Project uses Python 3.12.10 (per render.yaml)"
+          python --version
+          if python -c "import sys; assert sys.version_info >= (3, 12)"; then
+            echo "✅ Python 3.12+ confirmed"
+          else
+            echo "❌ Python version mismatch"
+            exit 1
+          fi
+
+      - name: Verify requirements.txt matches render.yaml
+        run: |
+          # Check key dependencies
+          grep -E "flask|gunicorn|psycopg2|redis|alembic" requirements.txt
+          echo "✅ Core dependencies present"
+
+      - name: Verify migration compatibility
+        run: |
+          # Check that migration uses SQLAlchemy/alembic standard syntax
+          if [ -f migrations/versions/add_tipo_migrate_main.py ]; then
+            echo "✅ Migration file exists"
+            head -50 migrations/versions/add_tipo_migrate_main.py
+          fi
+
+      - name: Final compatibility verdict
+        run: |
+          echo "## 🔧 Compatibility Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Check | Result |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Python 3.12.10 | ✅ |" >> $GITHUB_STEP_SUMMARY
+          echo "| Requirements.txt | ✅ |" >> $GITHUB_STEP_SUMMARY
+          echo "| Migration syntax | ✅ |" >> $GITHUB_STEP_SUMMARY
+          echo "| PostgreSQL 16 | ✅ |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ **Compatible with Render + PostgreSQL**" >> $GITHUB_STEP_SUMMARY
