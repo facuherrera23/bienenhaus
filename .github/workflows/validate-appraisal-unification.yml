@@ -189,7 +189,7 @@ jobs:
           
           # Parse test results
           if [ -f test-results.xml ]; then
-            python -c "
+            python << 'PYEOF' 2>&1 | tee -a $GITHUB_STEP_SUMMARY
 import xml.etree.ElementTree as ET
 tree = ET.parse('test-results.xml')
 root = tree.getroot()
@@ -213,7 +213,7 @@ print(f'| ✅ Passed | {passed} |')
 print(f'| ❌ Failed | {failed} |')
 print(f'| 🔥 Errors | {errors} |')
 print(f'| ⏭️ Skipped | {skipped} |')
-" 2>&1 | tee -a $GITHUB_STEP_SUMMARY
+PYEOF
           else
             echo "| Tests Total | N/A |" >> $GITHUB_STEP_SUMMARY
           fi
