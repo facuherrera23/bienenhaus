@@ -106,56 +106,56 @@ jobs:
         id: validation
         run: |
           python -c "
-from app import create_app
-from extensions import db
-from models.appraisal import Appraisal
-from models.tasacion import Tasacion
-from sqlalchemy import func, text
+            from app import create_app
+            from extensions import db
+            from models.appraisal import Appraisal
+            from models.tasacion import Tasacion
+            from sqlalchemy import func, text
 
-app = create_app()
-with app.app_context():
-    tas_count = db.session.query(Tasacion).count()
-    app_tas_count = db.session.query(Appraisal).filter(Appraisal.tipo=='tasacion').count()
-    acm_count = db.session.query(Appraisal).filter(Appraisal.tipo=='acm').count()
-    max_id = db.session.query(func.max(Appraisal.id)).scalar()
-    
-    print(f'Tasaciones (legacy): {tas_count}')
-    print(f'Appraisals(tipo=tasacion): {app_tas_count}')
-    print(f'Appraisals(tipo=acm): {acm_count}')
-    print(f'Max ID in appraisals: {max_id}')
-    print(f'Match: {tas_count == app_tas_count}')
-    
-    # Verify FKs
-    from models.appraisal import Comparable, AppraisalLog, AppraisalVersion
-    from models.tasacion import TasacionComparable, TasacionLog, TasacionVersion
-    
-    comp_count = db.session.query(Comparable).count()
-    tas_comp_count = db.session.query(TasacionComparable).count()
-    log_count = db.session.query(AppraisalLog).count()
-    tas_log_count = db.session.query(TasacionLog).count()
-    ver_count = db.session.query(AppraisalVersion).count()
-    tas_ver_count = db.session.query(TasacionVersion).count()
-    
-    print(f'Comparables: {comp_count} (legacy tas_comp: {tas_comp_count})')
-    print(f'Logs: {log_count} (legacy tas_log: {tas_log_count})')
-    print(f'Versions: {ver_count} (legacy tas_ver: {tas_ver_count})')
-    
-    # Check sequence
-    try:
-        seq = db.session.execute(text('SELECT last_value FROM appraisals_id_seq')).scalar()
-        print(f'Sequence last_value: {seq}')
-        if seq is not None and seq < max_id:
-            print(f'⚠️  WARNING: Sequence ({seq}) < max_id ({max_id}) - may cause PK conflicts!')
-            raise SystemExit(1)
-        else:
-            print('✅ Sequence OK')
-    except Exception as e:
-        if 'sequence' in str(e).lower():
-            raise
-        print('✅ Sequence check passed')
-    
-    print(f'validation_match={tas_count == app_tas_count}')
-" 2>&1 | tee validation-output.log
+            app = create_app()
+            with app.app_context():
+                tas_count = db.session.query(Tasacion).count()
+                app_tas_count = db.session.query(Appraisal).filter(Appraisal.tipo=='tasacion').count()
+                acm_count = db.session.query(Appraisal).filter(Appraisal.tipo=='acm').count()
+                max_id = db.session.query(func.max(Appraisal.id)).scalar()
+
+                print(f'Tasaciones (legacy): {tas_count}')
+                print(f'Appraisals(tipo=tasacion): {app_tas_count}')
+                print(f'Appraisals(tipo=acm): {acm_count}')
+                print(f'Max ID in appraisals: {max_id}')
+                print(f'Match: {tas_count == app_tas_count}')
+
+                # Verify FKs
+                from models.appraisal import Comparable, AppraisalLog, AppraisalVersion
+                from models.tasacion import TasacionComparable, TasacionLog, TasacionVersion
+
+                comp_count = db.session.query(Comparable).count()
+                tas_comp_count = db.session.query(TasacionComparable).count()
+                log_count = db.session.query(AppraisalLog).count()
+                tas_log_count = db.session.query(TasacionLog).count()
+                ver_count = db.session.query(AppraisalVersion).count()
+                tas_ver_count = db.session.query(TasacionVersion).count()
+
+                print(f'Comparables: {comp_count} (legacy tas_comp: {tas_comp_count})')
+                print(f'Logs: {log_count} (legacy tas_log: {tas_log_count})')
+                print(f'Versions: {ver_count} (legacy tas_ver: {tas_ver_count})')
+
+                # Check sequence
+                try:
+                    seq = db.session.execute(text('SELECT last_value FROM appraisals_id_seq')).scalar()
+                    print(f'Sequence last_value: {seq}')
+                    if seq is not None and seq < max_id:
+                        print(f'⚠️  WARNING: Sequence ({seq}) < max_id ({max_id}) - may cause PK conflicts!')
+                        raise SystemExit(1)
+                    else:
+                        print('✅ Sequence OK')
+                except Exception as e:
+                    if 'sequence' in str(e).lower():
+                        raise
+                    print('✅ Sequence check passed')
+
+                print(f'validation_match={tas_count == app_tas_count}')
+          " 2>&1 | tee validation-output.log
           echo "validation_status=passed" >> $GITHUB_OUTPUT
 
       - name: Upload test artifacts
