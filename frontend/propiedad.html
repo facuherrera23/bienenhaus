@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="site-url" content="__SITE_URL__"/>
+  <link rel="canonical" id="canonicalLink" href="__SITE_URL__/propiedad"/>
+  <title id="pageTitle">Propiedad · Bienenhaus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preconnect" href="https://res.cloudinary.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZ%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%91%C3%9Cabcdefghijklmnopqrstuvwxyz%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%B1%C3%BC0123456789.%2C%3A%3B%21%3F%C2%A1%C2%BF%28%29-%E2%80%94%5B%5D%7B%7D%22%27%40%23%24%E2%82%AC%25%26%2A%2F%2B%C2%B0%C2%B2%C2%B3%3C%3E%3D%C3%97%E2%80%93%E2%80%A6%C2%B7%C2%A9" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/styles.min.css?v=__VERSION__"/>
+  <link rel="stylesheet" href="/css/detalle.min.css?v=__VERSION__"/>
+  <link rel="manifest" href="/manifest.json?v=__VERSION__"/>
+  <meta name="theme-color" content="#20b8ab"/>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png"/>
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png"/>
+</head>
+<body class="detalle-body">
+
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+<header>
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="brand">
+      <a href="/" class="logo-3d-wrap">
+        <img src="/images/BienenhausBHBlanco512x512.png" alt="Bienenhaus Propiedades" class="nav-logo logo-3d" fetchpriority="high" width="400" height="400"/>
+      </a>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="/" class="nav-link">Inicio</a>
+      <a href="/#quienes" class="nav-link">Nosotros</a>
+      <a href="/venta" class="nav-link" id="navVenta">Comprar</a>
+      <a href="/alquiler" class="nav-link" id="navAlquiler">Alquilar</a>
+      <a href="/#agents" class="nav-link">Equipo</a>
+      <a href="/#contact" class="nav-link">Contacto</a>
+      <a href="/#contact" class="btn btn-outline nav-cta hide-mobile" id="backBtn">← Volver</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/" class="nav-link">Inicio</a>
+    <a href="/venta" class="nav-link" id="mNavVenta">Comprar</a>
+    <a href="/alquiler" class="nav-link" id="mNavAlquiler">Alquilar</a>
+    <a href="/#agents" class="nav-link">Equipo</a>
+    <a href="/#contact" class="nav-link">Contacto</a>
+    <a href="/#contact" class="btn btn-outline" id="backBtnMobile" style="margin-top:8px">← Volver</a>
+  </div>
+</nav>
+</header>
+
+
+<!-- ESTADO DE CARGA -->
+<div id="loadingState" class="detalle-loading">
+  <div class="loading-spinner"></div>
+      <div class="skeleton-detail-hero"></div>
+      <div class="skeleton-detail-content">
+        <div class="skeleton-detail-main">
+          <div class="skeleton-line skeleton-line--lg skeleton-line--w40"></div>
+          <div class="skeleton-line skeleton-line--sm skeleton-line--w60"></div>
+          <div class="skeleton-line skeleton-line--w30" style="margin-top:4px"></div>
+          <div class="skeleton-specs" style="margin-top:16px">
+            <div class="skeleton-line skeleton-line--spec"></div>
+            <div class="skeleton-line skeleton-line--spec"></div>
+            <div class="skeleton-line skeleton-line--spec"></div>
+            <div class="skeleton-line skeleton-line--spec"></div>
+          </div>
+          <div style="margin-top:20px">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line skeleton-line--w90"></div>
+            <div class="skeleton-line skeleton-line--w80"></div>
+            <div class="skeleton-line skeleton-line--w70"></div>
+          </div>
+        </div>
+        <div class="skeleton-detail-aside">
+          <div class="skeleton-line skeleton-line--lg skeleton-line--w50"></div>
+          <div class="skeleton-line skeleton-line--sm skeleton-line--w40" style="margin-top:6px"></div>
+          <div class="skeleton-line" style="margin-top:16px;height:40px;border-radius:8px"></div>
+          <div class="skeleton-line" style="margin-top:8px;height:40px;border-radius:8px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ERROR -->
+<div id="errorState" class="detalle-error hidden">
+  <p class="error-title" id="errorTitle">No encontrado</p>
+  <a href="/" class="btn btn-outline" id="errorBackBtn">Volver al inicio</a>
+</div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+<main id="detalleMain" class="hidden">
+
+  <div id="main-content">
+
+  <!-- GALERÍA HERO -->
+  <div id="galeriaHero" class="galeria-hero">
+    <!-- Inyectado por JS -->
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox hidden">
+    <button class="lb-close" id="lbClose">×</button>
+    <button class="lb-arrow lb-prev" id="lbPrev">&#8249;</button>
+    <button class="lb-arrow lb-next" id="lbNext">&#8250;</button>
+    <div class="lb-img-wrap" id="lbImgWrap">
+      <img id="lbImg" src="" alt="" class="lb-img"/>
+      <img id="lbImgNext" src="" alt="" class="lb-img lb-img--next hidden"/>
+    </div>
+    <div class="lb-counter" id="lbCounter"></div>
+    <button class="lb-play" id="lbPlay" title="Presentación automática">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    </button>
+    <button class="lb-fullscreen" id="lbFullscreen" title="Pantalla completa">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+    </button>
+  </div>
+
+  <!-- DETALLE -->
+  <div class="detalle-container">
+    <div class="detalle-grid">
+
+      <!-- Columna principal -->
+      <div class="detalle-main">
+
+        <!-- Breadcrumb -->
+        <div class="detalle-breadcrumb">
+          <a href="/">Inicio</a>
+          <span>›</span>
+          <a href="/venta" id="dBreadParent">Venta</a>
+          <span>›</span>
+          <span id="dBreadTitle">—</span>
+        </div>
+
+        <!-- Badges -->
+        <div class="detalle-badges" id="dBadges"></div>
+
+        <!-- Título -->
+        <h1 class="detalle-titulo" id="dTitle">—</h1>
+        <p class="detalle-location" id="dLocation">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span id="dLocationText">—</span>
+        </p>
+
+        <!-- Specs -->
+        <div class="detalle-specs" id="dSpecs"></div>
+
+        <!-- Descripción -->
+        <div class="detalle-section">
+          <h2 class="detalle-section-title">Descripción</h2>
+          <p class="detalle-desc" id="dDesc"></p>
+        </div>
+
+        <!-- Video -->
+        <div class="detalle-section" id="dVideoSection">
+          <h2 class="detalle-section-title">Video</h2>
+          <div id="dVideoEmbed"></div>
+        </div>
+
+        <!-- Mapa -->
+        <div class="detalle-section">
+          <h2 class="detalle-section-title">Ubicación</h2>
+          <div class="detalle-map" id="dMap"></div>
+        </div>
+
+      </div>
+
+      <!-- Columna lateral -->
+      <aside class="detalle-aside">
+
+        <!-- Precio + CTA -->
+        <div class="detalle-price-card" id="dPriceCard">
+          <div class="detalle-precio" id="dPrice">—</div>
+          <div class="detalle-precio-label" id="dPriceLabel"></div>
+          <div class="detalle-expenses" id="dExpenses"></div>
+          <div id="dFeatures" class="detalle-features"></div>
+          <a id="dWhatsapp" href="#" target="_blank" class="btn btn-wapp btn-wapp-full detalle-wa-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Consultar por WhatsApp
+          </a>
+          <button id="dInquiry" class="btn btn-primary">
+            Enviar consulta
+          </button>
+        </div>
+
+        <!-- Mini galería thumbnails -->
+        <div class="detalle-card">
+          <div class="share-title">Todas las fotos</div>
+          <div class="detalle-thumbs" id="dThumbs"></div>
+        </div>
+
+        <!-- Compartir -->
+        <div class="detalle-share-card">
+          <div class="share-title">Compartir propiedad</div>
+          <div class="share-btns">
+            <button class="share-btn" id="shareWABtn">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </button>
+            <button class="share-btn" id="copyLinkBtn">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+              Copiar enlace
+            </button>
+          </div>
+          <div id="copyMsg" class="copy-msg hidden">¡Enlace copiado!</div>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+
+  <!-- Propiedades similares — Carrusel -->
+  <section class="similares-section">
+    <h2 class="similares-title">Propiedades similares en la zona</h2>
+    <div class="similares-carousel" id="similaresCarousel">
+      <div id="similaresGrid" class="carousel-track"></div>
+      <button class="carousel-btn carousel-prev" id="simPrev" aria-label="Anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="carousel-btn carousel-next" id="simNext" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+      </button>
+    </div>
+    <div class="carousel-dots" id="simDots"></div>
+  </section>
+
+  </div><!-- /main-content -->
+
+</main>
+
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/5493510000000?text=Hola%20Bienenhaus%2C%20quisiera%20recibir%20informaci%C3%B3n."
+   target="_blank" class="wa-float" id="waFloat" title="Escribinos por WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- Botón volver arriba -->
+<button class="back-to-top" id="backToTop" title="Volver arriba">↑</button>
+
+<!-- Consulta modal -->
+<div id="inquiryModal" class="modal-backdrop hidden">
+  <div class="modal-box modal-form-box" style="max-width:460px;padding:28px;border-radius:12px">
+    <button class="modal-close" onclick="closeInquiry()" style="position:absolute;top:12px;right:16px">×</button>
+    <h3 style="margin:0 0 6px 0;font-size:18px">Consultar por esta propiedad</h3>
+    <p id="inquiryRef" style="font-size:12px;color:var(--g3);margin:0 0 18px 0"></p>
+    <form id="inquiryForm">
+      <input type="hidden" id="iq_ts"/>
+      <input type="hidden" id="iq_motivo" value="Consulta sobre esta propiedad"/>
+      <input type="hidden" id="iq_property_id"/>
+      <input type="text" id="iq_website" style="display:none" tabindex="-1" autocomplete="off"/>
+      <div class="form-group">
+        <label class="form-label">Nombre *</label>
+        <input type="text" id="iq_name" class="form-input" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" id="iq_email" class="form-input"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Teléfono</label>
+        <input type="tel" id="iq_phone" class="form-input"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Mensaje *</label>
+        <textarea id="iq_message" class="form-input" rows="3" required></textarea>
+      </div>
+      <div id="iqMsg" class="cf-msg hidden"></div>
+      <button type="submit" id="iqSubmit" class="btn btn-primary btn-full">Enviar consulta</button>
+    </form>
+  </div>
+</div>
+
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-brand-col">
+      <img src="/images/logo-bienenhaus.webp" alt="Bienenhaus Propiedades" class="footer-logo" loading="lazy" width="400" height="400"/>
+      <p class="footer-desc">Inmobiliaria en Córdoba. Casas, departamentos, fincas y terrenos seleccionados por expertos.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/bienenhaus.prop" target="_blank" class="footer-social-link" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://www.facebook.com/Bienenhaus.prop" target="_blank" class="footer-social-link" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@BienenhausPropiedades" target="_blank" class="footer-social-link" aria-label="YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@bienenhaus.prop" target="_blank" class="footer-social-link" aria-label="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 12a4 4 0 100 8 4 4 0 000-8z"/><path d="M15 8a4 4 0 01-4-4"/><path d="M13 12V4h4v4"/></svg>
+        </a>
+        <a href="https://wa.me/5493510000000" target="_blank" class="footer-social-link" aria-label="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-nav-col">
+      <div class="footer-col-title">Navegación</div>
+      <a href="/" class="footer-link">Inicio</a>
+      <a href="/venta" class="footer-link">Comprar</a>
+      <a href="/alquiler" class="footer-link">Alquilar</a>
+      <a href="/#agents" class="footer-link">Equipo</a>
+      <a href="/#contact" class="footer-link">Contacto</a>
+    </div>
+    <div class="footer-nav-col">
+      <div class="footer-col-title">Contacto</div>
+      <div class="footer-contact-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        <span id="sitePhoneFooter">+54 351 411-0000</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span id="siteEmailFooter">info@bienenhaus.com.ar</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span id="siteAddressFooter">Córdoba Capital</span>
+      </div>
+    </div>
+    <div class="footer-wa-col">
+      <div class="footer-col-title">¿Buscás tu próximo hogar?</div>
+      <p class="footer-cta-text">Agendá una visita sin compromiso.</p>
+      <a href="https://wa.me/5493510000000?text=Hola%20Bienenhaus%2C%20quisiera%20recibir%20informaci%C3%B3n." target="_blank" class="footer-wa-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+        Escribinos
+      </a>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <span>© <span id="footerYear"></span> Bienenhaus Propiedades · <span class="cpi-badge">Matrícula CPI N° 1.834</span></span>
+    <a href="/admin" class="btn-admin-access">Admin</a>
+  </div>
+</footer>
+
+
+<script defer src="/js/utils.min.js?v=__VERSION__"></script>
+<script defer src="/js/api.min.js?v=__VERSION__"></script>
+<script defer src="/js/detalle.min.js?v=__VERSION__"></script>
+<script defer src="/js/sw-register.min.js?v=__VERSION__"></script>
+</body>
+</html>

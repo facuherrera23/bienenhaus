@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="canonical" href="__SITE_URL__/tasacion2"/>
+  <title>ACM Tool · Bienenhaus</title>
+  <meta name="description" content="Herramienta de tasación profesional con homogeneización de antecedentes y precio por metro cuadrado."/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Bienenhaus Propiedades",
+    "url": "__SITE_URL__",
+    "telephone": "+54 351 411-0000",
+    "email": "info@bienenhaus.com.ar",
+    "image": "__SITE_URL__/images/logo-bienenhaus.png",
+    "logo": "__SITE_URL__/images/logo-bienenhaus.png",
+    "priceRange": "$$",
+    "currenciesAccepted": "USD",
+    "areaServed": [{ "@type": "City", "name": "Córdoba" }],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Córdoba",
+      "addressRegion": "Córdoba",
+      "addressCountry": "AR"
+    },
+    "sameAs": [
+      "https://www.instagram.com/bienenhaus.prop",
+      "https://www.facebook.com/Bienenhaus.prop",
+      "https://www.youtube.com/@BienenhausPropiedades",
+      "https://www.tiktok.com/@bienenhaus.prop",
+      "https://wa.me/5493514110000"
+    ]
+  }
+  </script>
+  <meta name="robots" content="index, follow"/>
+  <meta property="og:type"        content="website"/>
+  <meta property="og:url"         content="__SITE_URL__/tasacion2"/>
+  <meta property="og:title"       content="ACM · Análisis Comparativo de Mercado · Bienenhaus"/>
+  <meta property="og:description" content="Herramienta de tasación profesional con homogeneización de antecedentes y precio por metro cuadrado."/>
+  <meta property="og:image"       content="__SITE_URL__/images/logo-bienenhaus.png"/>
+  <meta property="og:locale"      content="es_AR"/>
+  <meta property="og:site_name"   content="Bienenhaus Propiedades"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:title"       content="ACM · Análisis Comparativo de Mercado · Bienenhaus"/>
+  <meta name="twitter:description" content="Herramienta de tasación profesional con homogeneización de antecedentes y precio por metro cuadrado."/>
+  <meta name="twitter:image"       content="__SITE_URL__/images/logo-bienenhaus.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preconnect" href="https://res.cloudinary.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZ%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%91%C3%9Cabcdefghijklmnopqrstuvwxyz%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%B1%C3%BC0123456789.%2C%3A%3B%21%3F%C2%A1%C2%BF%28%29-%E2%80%94%5B%5D%7B%7D%22%27%40%23%24%E2%82%AC%25%26%2A%2F%2B%C2%B0%C2%B2%C2%B3%3C%3E%3D%C3%97%E2%80%93%E2%80%A6%C2%B7%C2%A9" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/styles.min.css?v=__VERSION__"/>
+  <link rel="stylesheet" href="/css/tasacion2.css?v=__VERSION__"/>
+  <link rel="manifest" href="/manifest.json?v=__VERSION__"/>
+  <meta name="theme-color" content="#20b8ab"/>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png"/>
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png"/>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+<header>
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="brand">
+      <a href="/">
+        <img src="/images/logo-bienenhaus.webp"
+             alt="Bienenhaus Propiedades"
+             class="nav-logo" fetchpriority="high" width="400" height="400"/>
+      </a>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="/" class="nav-link">Inicio</a>
+      <a href="/venta" class="nav-link">Comprar</a>
+      <a href="/alquiler" class="nav-link">Alquilar</a>
+      <a href="/tasacion2" class="nav-link active">ACM Tool</a>
+      <a href="/#agents" class="nav-link">Equipo</a>
+      <a href="/#contact" class="nav-link">Contacto</a>
+    </div>
+    <a href="https://wa.me/5493510000000?text=Hola%20Bienenhaus!" target="_blank" class="btn btn-outline nav-cta hide-mobile">WhatsApp</a>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/" class="nav-link">Inicio</a>
+    <a href="/venta" class="nav-link">Comprar</a>
+    <a href="/alquiler" class="nav-link">Alquilar</a>
+      <a href="/tasacion2" class="nav-link">ACM Tool</a>
+    <a href="/#agents" class="nav-link">Equipo</a>
+    <a href="/#contact" class="nav-link">Contacto</a>
+    <a href="https://wa.me/5493510000000" target="_blank" class="btn btn-outline" style="margin-top:8px">WhatsApp</a>
+  </div>
+</nav>
+</header>
+
+<main id="main-content">
+
+<div class="tasacion2-hero">
+  <p class="cma-eyebrow">Herramienta profesional</p>
+  <h1>Análisis Comparativo de Mercado</h1>
+  <p>Homogeneización de antecedentes por condiciones y coeficiente de mercado, con precio por metro cuadrado.</p>
+</div>
+
+<div id="cma-tool" class="cma-root">
+
+  <header class="cma-header">
+    <div class="cma-header-text">
+      <p class="cma-eyebrow">Herramienta de tasación</p>
+      <h1>Análisis Comparativo de Mercado</h1>
+      <p class="cma-sub">Homogeneización de antecedentes por condiciones y coeficiente de mercado</p>
+    </div>
+    <div class="cma-seal" id="cma-seal">
+      <div class="cma-seal-ring">
+        <span class="cma-seal-label">Valor sugerido</span>
+        <span class="cma-seal-value" id="seal-value">USD —</span>
+        <span class="cma-seal-sub" id="seal-count">0 antecedentes</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="cma-tabs" id="cma-tabs" role="tablist" aria-label="Tipo de inmueble"></nav>
+
+  <section class="cma-panel cma-config">
+    <div class="cma-config-col">
+      <h2>Ponderación de variables <span class="cma-hint">(deben sumar 100%)</span></h2>
+      <div id="cma-weights" class="cma-weights"></div>
+      <p class="cma-sum-line">Suma: <strong id="cma-sum">100%</strong></p>
+    </div>
+    <div class="cma-config-col cma-config-narrow">
+      <h2>Sujeto a tasar</h2>
+      <label class="cma-field">
+        <span>Dirección / referencia</span>
+        <input type="text" id="subject-address" placeholder="Ej: San Jerónimo 2100, San Vicente">
+      </label>
+      <h2 class="cma-mt">Coeficiente de mercado</h2>
+      <label class="cma-field">
+        <span>Publicado → vendido</span>
+        <input type="number" id="market-coef" step="0.01" min="0" max="1.5" value="0.95">
+      </label>
+      <p class="cma-note">Castigo fijo aplicado por igual a todos los antecedentes.</p>
+    </div>
+  </section>
+
+  <section class="cma-panel">
+    <div class="cma-table-head">
+      <h2>Antecedentes</h2>
+      <button id="cma-add-row" class="cma-btn-ghost" type="button">+ Agregar antecedente</button>
+    </div>
+
+    <div class="cma-table-wrap">
+      <table class="cma-table" id="cma-table">
+        <thead>
+          <tr id="cma-table-header"></tr>
+        </thead>
+        <tbody id="cma-table-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="cma-panel cma-results">
+    <div class="cma-result-card">
+      <span class="cma-result-label">Promedio</span>
+      <span class="cma-result-value" id="res-avg">USD —</span>
+    </div>
+    <div class="cma-result-card">
+      <span class="cma-result-label">Mediana</span>
+      <span class="cma-result-value" id="res-median">USD —</span>
+    </div>
+    <div class="cma-result-card">
+      <span class="cma-result-label">Promedio m²</span>
+      <span class="cma-result-value" id="res-avg-m2">USD —</span>
+    </div>
+    <div class="cma-result-card cma-result-main">
+      <span class="cma-result-label">Valor sugerido de tasación</span>
+      <span class="cma-result-value" id="res-suggested">USD —</span>
+    </div>
+  </section>
+
+  <p class="cma-footnote">
+    Valor homogeneizado = Precio publicado × Coeficiente de condiciones × Coeficiente de mercado.
+    Precio/m² = Valor homogeneizado / Superficie. El coeficiente de condiciones surge de comparar cada
+    antecedente contra el sujeto: en igualdad de condiciones el coeficiente es 1.00; si el antecedente
+    está mejor, se corrige hacia abajo; si está peor, se corrige hacia arriba. Esta herramienta es
+    orientativa — siempre debe complementarse con el criterio del profesional matriculado interviniente.
+  </p>
+</div>
+
+</main>
+
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/images/logo-bienenhaus.webp" alt="Bienenhaus" class="footer-logo" width="120" height="120"/>
+      <p class="footer-tag">Inmobiliaria boutique · Córdoba</p>
+    </div>
+    <div class="footer-contact-col">
+      <div class="footer-col-title">Contacto</div>
+      <div class="footer-contact-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span id="siteEmailFooter">info@bienenhaus.com.ar</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        <span id="sitePhoneFooter">+54 351 411-0000</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span id="siteAddressFooter">Córdoba Capital</span>
+      </div>
+    </div>
+    <div class="footer-wa-col">
+      <div class="footer-col-title">¿Buscás tu próximo hogar?</div>
+      <p class="footer-cta-text">Agendá una visita sin compromiso.</p>
+      <a href="https://wa.me/5493510000000?text=Hola%20Bienenhaus%2C%20quisiera%20recibir%20informaci%C3%B3n."
+         target="_blank" class="footer-wa-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Escribinos
+      </a>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <span>© <span id="footerYear"></span> Bienenhaus Propiedades · <span class="cpi-badge">Matrícula CPI N° 1.834</span></span>
+    <a href="/admin" class="btn-admin-access">Admin</a>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" title="Volver arriba">↑</button>
+
+<a href="https://wa.me/5493510000000?text=Hola%20Bienenhaus%2C%20quisiera%20recibir%20informaci%C3%B3n."
+    target="_blank" class="wa-float" title="Escribinos por WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script defer src="/js/utils.min.js?v=__VERSION__"></script>
+<script defer src="/js/api.min.js?v=__VERSION__"></script>
+<script defer src="/js/sw-register.min.js?v=__VERSION__"></script>
+
+<script>
+(function () {
+  var NIVELES = ["Mucho Mejor", "Mejor", "Igual", "Peor", "Mucho Peor"];
+  var FRACCIONES = { "Mucho Mejor": -1, "Mejor": -0.5, "Igual": 0, "Peor": 0.5, "Mucho Peor": 1 };
+
+  var TIPOS = {
+    "Casas": [
+      ["Calidad de ubicación", 30], ["Cantidad de habitaciones", 20], ["Estado de mantenimiento", 20],
+      ["Antigüedad", 15], ["Comodidades", 10], ["Estacionamiento", 5]
+    ],
+    "Deptos": [
+      ["Calidad de ubicación (barrio)", 30], ["Cantidad de habitaciones", 20], ["Ubicación piso", 15],
+      ["Antigüedad", 15], ["Comodidades (edificio)", 12], ["Ubicación planta", 8]
+    ],
+    "Lotes": [
+      ["Calidad de ubicación", 35], ["Superficie", 25], ["Servicios", 20],
+      ["Acceso", 10], ["Forma", 6], ["Orientación", 4]
+    ],
+    "Galpones": [
+      ["Calidad de ubicación", 25], ["Superficie y altura libre", 25], ["Acceso", 20],
+      ["Instalaciones", 15], ["Estado / antigüedad", 10], ["Oficinas y servicios anexos", 5]
+    ],
+    "Oficinas": [
+      ["Calidad de ubicación", 30], ["Superficie y layout", 20], ["Ubicación piso / vista", 15],
+      ["Comodidades del edificio", 15], ["Antigüedad / estado", 12], ["Estacionamiento", 8]
+    ],
+    "Locales": [
+      ["Calidad de ubicación", 35], ["Frente / vidriera", 20], ["Superficie y forma", 15],
+      ["Instalaciones", 12], ["Estado de mantenimiento", 10], ["Estacionamiento / carga y descarga", 8]
+    ]
+  };
+
+  var state = {
+    tipo: "Casas",
+    weights: {},
+    marketCoef: 0.95,
+    rows: {}
+  };
+
+  Object.keys(TIPOS).forEach(function (t) {
+    state.weights[t] = TIPOS[t].map(function (v) { return { name: v[0], weight: v[1] }; });
+    state.rows[t] = [];
+    for (var i = 0; i < 6; i++) {
+      state.rows[t].push({ address: "", price: "", superficie: "", levels: ["Igual", "Igual", "Igual", "Igual", "Igual", "Igual"] });
+    }
+  });
+
+  var tabsEl = document.getElementById("cma-tabs");
+  var weightsEl = document.getElementById("cma-weights");
+  var sumEl = document.getElementById("cma-sum");
+  var sumLine = document.querySelector(".cma-sum-line");
+  var theadEl = document.getElementById("cma-table-header");
+  var tbodyEl = document.getElementById("cma-table-body");
+  var marketInput = document.getElementById("market-coef");
+  var addRowBtn = document.getElementById("cma-add-row");
+
+  function fmtUSD(n) {
+    if (n === null || n === undefined || isNaN(n)) return "USD —";
+    return "USD " + Math.round(n).toLocaleString("es-AR");
+  }
+
+  function renderTabs() {
+    tabsEl.innerHTML = "";
+    Object.keys(TIPOS).forEach(function (t) {
+      var btn = document.createElement("button");
+      btn.className = "cma-tab" + (t === state.tipo ? " active" : "");
+      btn.type = "button";
+      btn.textContent = t;
+      btn.addEventListener("click", function () {
+        state.tipo = t;
+        renderAll();
+      });
+      tabsEl.appendChild(btn);
+    });
+  }
+
+  function renderWeights() {
+    weightsEl.innerHTML = "";
+    var w = state.weights[state.tipo];
+    w.forEach(function (item, idx) {
+      var row = document.createElement("div");
+      row.className = "cma-weight-row";
+
+      var nameInput = document.createElement("input");
+      nameInput.type = "text";
+      nameInput.value = item.name;
+      nameInput.addEventListener("input", function () {
+        item.name = nameInput.value;
+        renderTableHeader();
+      });
+
+      var weightInput = document.createElement("input");
+      weightInput.type = "number";
+      weightInput.min = "0";
+      weightInput.max = "100";
+      weightInput.value = item.weight;
+      weightInput.addEventListener("input", function () {
+        item.weight = parseFloat(weightInput.value) || 0;
+        updateSum();
+        renderTableHeader();
+        recalcAll();
+      });
+
+      var pct = document.createElement("span");
+      pct.className = "cma-pct";
+      pct.textContent = "%";
+
+      row.appendChild(nameInput);
+      row.appendChild(weightInput);
+      row.appendChild(pct);
+      weightsEl.appendChild(row);
+    });
+    updateSum();
+  }
+
+  function updateSum() {
+    var total = state.weights[state.tipo].reduce(function (s, i) { return s + (parseFloat(i.weight) || 0); }, 0);
+    sumEl.textContent = total + "%";
+    sumLine.classList.toggle("bad", Math.round(total) !== 100);
+  }
+
+  function renderTableHeader() {
+    theadEl.innerHTML = "";
+    var fixed = ["Antecedente", "Precio publicado (USD)", "Superficie (m²)"];
+    fixed.forEach(function (h) {
+      var th = document.createElement("th");
+      th.textContent = h;
+      theadEl.appendChild(th);
+    });
+    state.weights[state.tipo].forEach(function (item) {
+      var th = document.createElement("th");
+      th.textContent = item.name + " (" + item.weight + "%)";
+      theadEl.appendChild(th);
+    });
+    ["Coef. Condiciones", "Coef. Mercado", "Valor Homogeneizado", "Precio/m²", ""].forEach(function (h) {
+      var th = document.createElement("th");
+      th.textContent = h;
+      theadEl.appendChild(th);
+    });
+  }
+
+  function renderTableBody() {
+    tbodyEl.innerHTML = "";
+    var rows = state.rows[state.tipo];
+    rows.forEach(function (row, rIdx) {
+      var tr = document.createElement("tr");
+
+      var tdAddr = document.createElement("td");
+      var inAddr = document.createElement("input");
+      inAddr.type = "text";
+      inAddr.value = row.address;
+      inAddr.placeholder = "Dirección / referencia";
+      inAddr.addEventListener("input", function () { row.address = inAddr.value; });
+      tdAddr.appendChild(inAddr);
+      tr.appendChild(tdAddr);
+
+      var tdPrice = document.createElement("td");
+      var inPrice = document.createElement("input");
+      inPrice.type = "number";
+      inPrice.min = "0";
+      inPrice.value = row.price;
+      inPrice.placeholder = "0";
+      inPrice.addEventListener("input", function () { row.price = inPrice.value; recalcRow(rIdx); });
+      tdPrice.appendChild(inPrice);
+      tr.appendChild(tdPrice);
+
+      var tdSup = document.createElement("td");
+      var inSup = document.createElement("input");
+      inSup.type = "number";
+      inSup.min = "0";
+      inSup.step = "0.1";
+      inSup.value = row.superficie;
+      inSup.placeholder = "m²";
+      inSup.addEventListener("input", function () { row.superficie = inSup.value; recalcRow(rIdx); });
+      tdSup.appendChild(inSup);
+      tr.appendChild(tdSup);
+
+      for (var i = 0; i < 6; i++) {
+        (function (i) {
+          var td = document.createElement("td");
+          var sel = document.createElement("select");
+          NIVELES.forEach(function (n) {
+            var opt = document.createElement("option");
+            opt.value = n;
+            opt.textContent = n;
+            if (row.levels[i] === n) opt.selected = true;
+            sel.appendChild(opt);
+          });
+          sel.addEventListener("change", function () {
+            row.levels[i] = sel.value;
+            recalcRow(rIdx);
+          });
+          td.appendChild(sel);
+          tr.appendChild(td);
+        })(i);
+      }
+
+      var tdCoef = document.createElement("td");
+      tdCoef.className = "calc";
+      tr.appendChild(tdCoef);
+
+      var tdMercado = document.createElement("td");
+      tdMercado.className = "calc";
+      tr.appendChild(tdMercado);
+
+      var tdValor = document.createElement("td");
+      tdValor.className = "calc value";
+      tr.appendChild(tdValor);
+
+      var tdM2 = document.createElement("td");
+      tdM2.className = "calc";
+      tr.appendChild(tdM2);
+
+      var tdRemove = document.createElement("td");
+      var btnRemove = document.createElement("button");
+      btnRemove.className = "cma-row-remove";
+      btnRemove.type = "button";
+      btnRemove.innerHTML = "&times;";
+      btnRemove.title = "Quitar antecedente";
+      btnRemove.addEventListener("click", function () {
+        rows.splice(rIdx, 1);
+        renderTableBody();
+        recalcAll();
+      });
+      tdRemove.appendChild(btnRemove);
+      tr.appendChild(tdRemove);
+
+      tbodyEl.appendChild(tr);
+    });
+    recalcAll();
+  }
+
+  function computeRow(row) {
+    var w = state.weights[state.tipo];
+    var coef = 1;
+    for (var i = 0; i < 6; i++) {
+      var frac = FRACCIONES[row.levels[i]] || 0;
+      var peso = (parseFloat(w[i].weight) || 0) / 100;
+      coef *= (1 + peso * frac);
+    }
+    var price = parseFloat(row.price);
+    var sup = parseFloat(row.superficie);
+    var mercado = state.marketCoef;
+    var valor = (isNaN(price) || row.price === "") ? null : price * coef * mercado;
+    var precioM2 = (valor !== null && sup > 0) ? valor / sup : null;
+    return { coef: coef, mercado: mercado, valor: valor, precioM2: precioM2 };
+  }
+
+  function recalcRow(rIdx) {
+    var row = state.rows[state.tipo][rIdx];
+    var tr = tbodyEl.children[rIdx];
+    if (!tr) return;
+    var res = computeRow(row);
+    var tds = tr.querySelectorAll("td.calc");
+    if (tds.length >= 3) {
+      tds[0].textContent = res.coef.toFixed(3);
+      tds[1].textContent = res.mercado.toFixed(2);
+      tds[2].textContent = res.valor === null ? "—" : fmtUSD(res.valor);
+      if (tds[3]) {
+        tds[3].textContent = res.precioM2 === null ? "—" : fmtUSD(res.precioM2);
+      }
+    }
+    recalcSummary();
+  }
+
+  function recalcAll() {
+    state.rows[state.tipo].forEach(function (_, idx) { recalcRow(idx); });
+    recalcSummary();
+  }
+
+  function recalcSummary() {
+    var rows = state.rows[state.tipo];
+    var results = rows.map(computeRow);
+    var values = results.map(function (r) { return r.valor; }).filter(function (v) { return v !== null; });
+    var m2Values = results.map(function (r) { return r.precioM2; }).filter(function (v) { return v !== null; });
+
+    var avg = values.length ? values.reduce(function (a, b) { return a + b; }, 0) / values.length : null;
+    var sorted = values.slice().sort(function (a, b) { return a - b; });
+    var median = null;
+    if (sorted.length) {
+      var mid = Math.floor(sorted.length / 2);
+      median = sorted.length % 2 !== 0 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+    }
+    var suggested = (avg !== null && median !== null) ? (avg + median) / 2 : null;
+    var avgM2 = m2Values.length ? m2Values.reduce(function (a, b) { return a + b; }, 0) / m2Values.length : null;
+
+    document.getElementById("res-avg").textContent = fmtUSD(avg);
+    document.getElementById("res-median").textContent = fmtUSD(median);
+    document.getElementById("res-avg-m2").textContent = fmtUSD(avgM2);
+    document.getElementById("res-suggested").textContent = fmtUSD(suggested);
+    document.getElementById("seal-value").textContent = fmtUSD(suggested);
+    document.getElementById("seal-count").textContent = values.length + (values.length === 1 ? " antecedente" : " antecedentes");
+  }
+
+  addRowBtn.addEventListener("click", function () {
+    state.rows[state.tipo].push({ address: "", price: "", superficie: "", levels: ["Igual", "Igual", "Igual", "Igual", "Igual", "Igual"] });
+    renderTableBody();
+  });
+
+  marketInput.addEventListener("input", function () {
+    var v = parseFloat(marketInput.value);
+    state.marketCoef = isNaN(v) ? 0.95 : v;
+    recalcAll();
+  });
+
+  function renderAll() {
+    renderTabs();
+    renderWeights();
+    renderTableHeader();
+    renderTableBody();
+  }
+
+  renderAll();
+})();
+</script>
+</body>
+</html>

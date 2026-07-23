@@ -1,0 +1,292 @@
+/* ═══════════════════════════════════════════════════════════════
+   BIENENHAUS ADMIN — Responsive Overrides (mobile-first)
+   Se cargan al final para sobreescribir módulos previos.
+   Depends on: 0-tokens.css
+╔═══════════════════════════════════════════════════════════════════*/
+
+/* ── Tablet / small desktop (≤ 768px) ──────────────────────── */
+@media (max-width: 768px) {
+  .prop-grid {
+    grid-template-columns: 1fr;
+  }
+  .prop-card-thumb,
+  .prop-card-thumb--empty {
+    height: 140px;
+  }
+  .prop-card-actions .btn span {
+    display: none;
+  }
+  .prop-card-actions .btn {
+    gap: 0;
+    padding: 7px 4px;
+  }
+  .admin-filter-bar {
+    gap: 6px;
+  }
+  .admin-filter-bar select {
+    min-width: 100px;
+    font-size: 10px;
+  }
+  .filter-price-input {
+    width: 80px;
+    font-size: 10px;
+  }
+  .dash-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .admin-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .admin-subtabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+  }
+  .admin-subtab {
+    padding: 8px 16px;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+}
+
+/* ── Large phone (≤ 600px) ─────────────────────────────────── */
+@media (max-width: 600px) {
+  .prop-card-thumb,
+  .prop-card-thumb--empty {
+    height: 120px;
+  }
+  .admin-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .admin-filter-bar select,
+  .filter-price-input {
+    width: 100%;
+    min-width: 0;
+  }
+  .dash-grid {
+    grid-template-columns: 1fr;
+  }
+  .sidebar-inner {
+    padding: 12px;
+  }
+  .admin-panels {
+    grid-template-columns: 1fr;
+  }
+  .admin-tab-content {
+    padding: 16px;
+  }
+  .batch-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+  .batch-bar .btn {
+    flex: 1;
+  }
+  .batch-count {
+    text-align: center;
+  }
+  .admin-subtab {
+    padding: 6px 10px;
+    font-size: 9px;
+  }
+  .prop-search-bar {
+    padding: 6px 10px;
+  }
+}
+
+/* ── Small phone (≤ 480px) ─────────────────────────────────── */
+@media (max-width: 480px) {
+  .prop-card-thumb,
+  .prop-card-thumb--empty {
+    height: 110px;
+  }
+  .prop-card-body {
+    padding: 10px 10px 10px;
+  }
+  .prop-card-title {
+    font-size: 13px;
+  }
+  .prop-card-price {
+    font-size: 18px;
+  }
+  .prop-card-spec {
+    font-size: 8px;
+    padding: 4px 2px;
+  }
+  .admin-page-title {
+    font-size: 20px;
+  }
+  .admin-flex-center {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .admin-subtab {
+    padding: 4px 8px;
+    font-size: 8px;
+  }
+}
+
+/* ── Tiny phone (≤ 414px) ──────────────────────────────────── */
+@media (max-width: 414px) {
+  .prop-grid {
+    gap: 8px;
+  }
+  .prop-card-thumb,
+  .prop-card-thumb--empty {
+    height: 100px;
+  }
+  .prop-card-body {
+    padding: 8px 8px 10px;
+  }
+  .prop-card-title {
+    font-size: 12px;
+  }
+  .prop-card-price {
+    font-size: 16px;
+  }
+  .prop-card-loc {
+    font-size: 9px;
+  }
+  .prop-card-specs {
+    margin-bottom: 8px;
+  }
+  .prop-card-actions .btn {
+    font-size: 8px;
+    padding: 5px 2px;
+  }
+}
+
+/* ── Smallest (≤ 360px) ────────────────────────────────────── */
+@media (max-width: 360px) {
+  .prop-card-thumb,
+  .prop-card-thumb--empty {
+    height: 90px;
+  }
+  .prop-card-body {
+    padding: 6px 6px 8px;
+  }
+  .prop-card-title {
+    font-size: 11px;
+  }
+  .prop-card-price {
+    font-size: 15px;
+  }
+  .prop-card-loc {
+    font-size: 9px;
+  }
+  .prop-card-specs {
+    margin-bottom: 8px;
+  }
+  .prop-card-actions .btn {
+    font-size: 8px;
+    padding: 5px 2px;
+  }
+}
+
+/* ── Agent-specific responsive ────────────────────────────── */
+@media (max-width: 768px) {
+  .agent-kpi-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .agent-profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    padding: 20px;
+  }
+  .agent-profile-body {
+    grid-template-columns: 1fr;
+  }
+  .agent-profile-section {
+    border-right: none;
+  }
+}
+@media (max-width: 600px) {
+  .agent-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .agent-admin-card {
+    padding: 20px 14px 16px;
+  }
+  .agent-admin-avatar-wrap {
+    width: 64px; height: 64px;
+  }
+  .agent-admin-name {
+    font-size: 14px;
+  }
+  .admin-agent-row {
+    flex-wrap: wrap; gap: 8px;
+  }
+  .admin-agent-actions {
+    margin-left: 0; width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .agent-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+  .agent-admin-card {
+    padding: 18px 12px 14px;
+  }
+  .agent-admin-avatar-wrap {
+    width: 60px; height: 60px;
+  }
+  .agent-admin-metrics {
+    gap: 4px;
+  }
+  .agent-admin-metric-value {
+    font-size: 11px;
+  }
+  .agent-view-toggle {
+    width: 100%;
+  }
+  .agent-view-btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 9px;
+    padding: 6px 8px;
+  }
+  .admin-agent-row {
+    padding: 10px 10px; gap: 6px;
+  }
+  .admin-agent-av {
+    width: 36px; height: 36px; font-size: 15px;
+  }
+  .admin-agent-name {
+    font-size: 12px;
+  }
+}
+@media (max-width: 360px) {
+  .admin-agent-row {
+    padding: 6px 6px;
+  }
+  .admin-agent-av {
+    width: 28px; height: 28px; font-size: 12px;
+  }
+}
+
+/* ── Touch / mobile accessibility ──────────────────────────── */
+@media (hover: none) and (pointer: coarse) {
+  .prop-card-check,
+  .prop-card:hover .prop-card-check {
+    opacity: 1;
+  }
+  .prop-card-check {
+    transform: scale(1.15);
+  }
+  .prop-card-actions .btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .prop-card-actions .btn span {
+    display: none;
+  }
+  .prop-card-actions .btn {
+    gap: 0;
+  }
+}

@@ -1,0 +1,60 @@
+/* ═══════════════════════════════════════════════════════════════
+   BIENENHAUS ADMIN — Toast Notifications
+   .admin-toast, .admin-toast--visible, .admin-toast--info/success/error/warn
+   Depends on: 0-tokens.css
+╔═══════════════════════════════════════════════════════════════════*/
+
+.admin-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 12px 20px;
+  border-radius: var(--admin-radius-md);
+  font-size: var(--admin-text-base);
+  font-family: var(--admin-font-body);
+  font-weight: 500;
+  z-index: var(--admin-z-toast);
+  color: var(--admin-text);
+  transform: translateY(16px);
+  opacity: 0;
+  transition: transform 250ms ease, opacity 250ms ease;
+  pointer-events: none;
+  max-width: 360px;
+  box-shadow: var(--admin-shadow-md);
+  line-height: 1.5;
+}
+.admin-toast--visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.admin-toast--info {
+  background: #1a1a2e;
+  border: 1px solid var(--admin-primary-border);
+}
+.admin-toast--success {
+  background: #0d2818;
+  border: 1px solid var(--admin-success-border);
+}
+.admin-toast--error {
+  background: #2e0d0d;
+  border: 1px solid var(--admin-danger-border);
+}
+.admin-toast--warn {
+  background: #2e2a0d;
+  border: 1px solid var(--admin-warning-border);
+}
+
+/* ── Legacy .toast class ───────────────────────────────────── */
+.toast {
+  font-family: var(--admin-font-body);
+  border-radius: var(--admin-radius-md);
+  padding: 14px 20px;
+  font-size: var(--admin-text-sm);
+  box-shadow: var(--admin-shadow-md), 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+.toast-icon,
+.toast-msg {
+  vertical-align: middle;
+}

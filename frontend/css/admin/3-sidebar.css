@@ -1,0 +1,311 @@
+/* ═══════════════════════════════════════════════════════════════
+   BIENENHAUS ADMIN — Sidebar Navigation
+   Depends on: 0-tokens.css, 1-base.css
+╔═══════════════════════════════════════════════════════════════════*/
+
+.admin-sidebar {
+  width: 230px;
+  flex-shrink: 0;
+  background: var(--admin-bg-secondary);
+  border-right: 1px solid var(--admin-border);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  z-index: var(--admin-z-sidebar);
+  transition: width 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.admin-sidebar.collapsed {
+  width: 64px;
+}
+
+.admin-sidebar.collapsed + .admin-main {
+  margin-left: 64px;
+}
+
+/* ── Sidebar logo / brand ─────────────────────────────────── */
+.sidebar-brand {
+  padding: 14px 20px 10px;
+  border-bottom: 1px solid var(--admin-border);
+  position: relative;
+  overflow: hidden;
+  transition: opacity 300ms, transform 300ms;
+}
+.admin-sidebar.collapsed .sidebar-brand {
+  opacity: 0;
+  transform: translateX(-20px);
+  pointer-events: none;
+}
+
+.sidebar-logo {
+  width: 100%;
+  max-width: 130px;
+  height: auto;
+  display: block;
+  opacity: 0.9;
+}
+
+.sidebar-brand-name {
+  font-family: var(--admin-font-display);
+  font-size: 20px;
+  color: var(--admin-text);
+  letter-spacing: var(--admin-ls-wide);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.sidebar-brand-sub {
+  font-size: 7px;
+  color: var(--admin-text-muted);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* ── Collapse button ──────────────────────────────────────── */
+.sidebar-collapse-btn {
+  position: absolute;
+  top: 8px; right: -14px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  color: var(--admin-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: calc(var(--admin-z-sidebar) + 1);
+  transition: var(--admin-transition);
+  box-shadow: var(--admin-shadow-sm);
+}
+.sidebar-collapse-btn:hover {
+  background: var(--admin-surface-hover);
+  color: var(--admin-text);
+}
+.admin-sidebar.collapsed .sidebar-collapse-btn {
+  transform: rotate(180deg);
+}
+
+/* ── Navigation ───────────────────────────────────────────── */
+.sidebar-nav {
+  flex: 1;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.06) transparent;
+}
+.sidebar-nav::-webkit-scrollbar {
+  width: 3px;
+}
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.06);
+  border-radius: 10px;
+}
+.sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+.admin-sidebar.collapsed .sidebar-nav {
+  padding: 12px 8px;
+}
+
+/* ── Navigation links ─────────────────────────────────────── */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: none;
+  border: none;
+  color: var(--admin-text-secondary);
+  font-size: 11px;
+  font-family: var(--admin-font-body);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 150ms, color 150ms, box-shadow 150ms;
+  text-decoration: none;
+  position: relative;
+  line-height: 1.3;
+}
+.sidebar-link:hover {
+  background: var(--admin-surface);
+  color: var(--admin-text);
+}
+.sidebar-link:hover svg {
+  color: var(--admin-primary);
+}
+.sidebar-link.active {
+  background: var(--admin-surface);
+  color: var(--admin-text);
+  box-shadow: inset 3px 0 0 0 var(--admin-primary);
+}
+.sidebar-link.active svg {
+  color: var(--admin-primary);
+}
+.sidebar-link svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  transition: color 150ms;
+  color: var(--admin-text-muted);
+}
+
+/* Collapsed: only icons visible */
+.admin-sidebar.collapsed .sidebar-link {
+  justify-content: center;
+  padding: 10px 0;
+  min-height: 44px;
+  gap: 0;
+  font-size: 0;
+  letter-spacing: 0;
+}
+.admin-sidebar.collapsed .sidebar-link svg {
+  width: 18px;
+  height: 18px;
+  color: var(--admin-text-muted);
+}
+.admin-sidebar.collapsed .sidebar-link:hover {
+  background: var(--admin-surface-hover);
+}
+.admin-sidebar.collapsed .sidebar-link:hover svg {
+  color: var(--admin-primary);
+}
+.admin-sidebar.collapsed .sidebar-link.active {
+  background: var(--admin-surface);
+  box-shadow: inset 3px 0 0 0 var(--admin-primary);
+}
+.admin-sidebar.collapsed .sidebar-link.active svg {
+  color: var(--admin-primary);
+}
+
+/* ── Footer links (ghost style) ────────────────────────────── */
+.sidebar-link-ghost {
+  color: var(--admin-text-muted);
+  font-size: 11px;
+  min-height: 40px;
+  padding: 8px 14px;
+}
+.sidebar-link-ghost:hover {
+  color: var(--admin-text);
+}
+.sidebar-link-ghost svg {
+  opacity: 0.5;
+  color: var(--admin-text-muted);
+}
+.sidebar-link-ghost:hover svg {
+  opacity: 1;
+  color: var(--admin-primary);
+}
+
+/* ── Badge on sidebar links ───────────────────────────────── */
+.sidebar-badge {
+  margin-left: auto;
+  background: rgba(255,255,255,0.04);
+  color: var(--admin-text-muted);
+  font-size: 9px;
+  font-weight: 500;
+  padding: 0 6px;
+  border-radius: 8px;
+  min-width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.sidebar-link.active .sidebar-badge {
+  background: rgba(32, 184, 171, 0.12);
+  color: var(--admin-primary);
+}
+.admin-sidebar.collapsed .sidebar-badge {
+  display: none;
+}
+
+/* ── Sidebar footer ────────────────────────────────────────── */
+.sidebar-footer {
+  padding: 10px 10px;
+  border-top: 1px solid var(--admin-border);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.admin-sidebar.collapsed .sidebar-footer .sidebar-link-ghost {
+  justify-content: center;
+  padding: 8px 0;
+}
+
+/* ── Compact mode toggle ──────────────────────────────────── */
+.compact-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+.compact-toggle input {
+  display: none;
+}
+.compact-toggle-track {
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  position: relative;
+  transition: var(--admin-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.compact-toggle input:checked + .compact-toggle-track {
+  background: var(--admin-primary-glow);
+  border-color: var(--admin-primary-border);
+}
+.compact-toggle-icon {
+  font-size: 11px;
+  color: var(--admin-text-muted);
+  transition: var(--admin-transition);
+}
+.compact-toggle input:checked + .compact-toggle-track .compact-toggle-icon {
+  color: var(--admin-primary);
+}
+.compact-toggle-label {
+  font-family: var(--admin-font-body);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: var(--admin-ls-label);
+  text-transform: uppercase;
+  color: var(--admin-text-muted);
+}
+
+/* ── Compact mode — reduced spacing (body class) ──────────── */
+body.compact .admin-tab-content { padding: 24px 32px; }
+body.compact .dash-card { padding: 16px 18px; }
+body.compact .dash-card-number { font-size: 30px; }
+body.compact .prop-card-body { padding: 12px 14px 10px; }
+body.compact .prop-card-title { font-size: 13px; }
+body.compact .prop-card-price { font-size: 17px; }
+body.compact .prop-card-thumb { height: 140px; }
+body.compact .prop-card-actions .btn { font-size: 9px; padding: 5px 0; }
+body.compact .agent-admin-card { padding: 20px 16px 14px; }
+body.compact .agent-admin-avatar-wrap { width: 64px; height: 64px; }
+body.compact .agent-admin-name { font-size: 14px; }
+body.compact .cfg-card { padding: 20px 22px 24px; }
+body.compact .admin-page-title { font-size: 26px; }
+body.compact .msg-card { padding: 14px 18px; }
+body.compact .admin-topbar { margin-bottom: 20px; }
+body.compact .admin-message-item { padding: 10px 14px; }
+body.compact .acm-section { padding: 14px 16px; }
+body.compact .dash-panel { padding: 14px 16px; }
+body.compact .dash-chart-card { padding: 14px 16px; }
+body.compact .admin-subtabs { margin-bottom: 16px; }

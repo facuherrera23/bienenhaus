@@ -1,0 +1,136 @@
+/* ═══════════════════════════════════════════════════════════════
+   BIENENHAUS ADMIN — Button System
+   .btn, .btn-primary, .btn-ghost, .btn-danger, .btn-warn,
+   .btn-success, .btn-outline, .btn-wapp, .btn-icon,
+   .btn-sm, .btn-xs, .btn-full
+   Depends on: 0-tokens.css
+╔═══════════════════════════════════════════════════════════════════*/
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 20px;
+  font-size: var(--admin-text-xs);
+  font-family: var(--admin-font-body);
+  font-weight: 600;
+  letter-spacing: var(--admin-ls-label);
+  text-transform: uppercase;
+  border-radius: var(--admin-radius-sm);
+  border: 1px solid transparent;
+  transition: var(--admin-transition);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  line-height: 1.2;
+  color: var(--admin-text-secondary);
+  background: transparent;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primary {
+  background: var(--admin-primary);
+  color: #000;
+  font-weight: 700;
+  border-color: var(--admin-primary);
+  box-shadow: 0 2px 12px rgba(32, 184, 171, 0.15);
+}
+.btn-primary:hover {
+  background: var(--admin-primary-hover);
+  border-color: var(--admin-primary-hover);
+  box-shadow: 0 4px 20px rgba(32, 184, 171, 0.25);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--admin-text-secondary);
+  border: 1px solid var(--admin-border);
+}
+.btn-ghost:hover {
+  background: var(--admin-surface);
+  color: var(--admin-text);
+  border-color: var(--admin-border-medium);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--admin-primary);
+  border: 1px solid var(--admin-primary-border);
+}
+.btn-outline:hover {
+  background: var(--admin-primary-glow);
+  border-color: var(--admin-primary);
+}
+
+.btn-danger {
+  color: var(--admin-danger);
+  border-color: var(--admin-danger-border);
+  background: var(--admin-danger-bg);
+}
+.btn-danger:hover {
+  background: rgba(204, 53, 53, 0.15);
+  border-color: rgba(204, 53, 53, 0.4);
+  color: #ff6b6b;
+}
+
+.btn-warn {
+  color: var(--admin-warning);
+  border-color: var(--admin-warning-border);
+  background: var(--admin-warning-bg);
+}
+.btn-warn:hover {
+  background: rgba(255, 180, 50, 0.15);
+  border-color: rgba(255, 180, 50, 0.4);
+}
+
+.btn-success {
+  color: var(--admin-success);
+  border-color: var(--admin-success-border);
+  background: var(--admin-success-bg);
+}
+.btn-success:hover {
+  background: rgba(57, 217, 138, 0.15);
+  border-color: rgba(57, 217, 138, 0.4);
+}
+
+.btn-wapp {
+  color: var(--admin-text-secondary);
+  border-color: var(--admin-border);
+}
+.btn-wapp:hover {
+  background: rgba(37, 211, 102, 0.12);
+  color: #25d366;
+  border-color: rgba(37, 211, 102, 0.4);
+}
+
+.btn-icon {
+  padding: 7px;
+  min-width: 36px;
+  min-height: 36px;
+}
+
+.btn-sm {
+  padding: 6px 14px;
+  font-size: 10px;
+}
+
+.btn-xs {
+  font-size: 9px;
+  padding: 3px 8px;
+}
+
+.btn-full {
+  width: 100%;
+}

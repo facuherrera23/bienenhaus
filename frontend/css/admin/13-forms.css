@@ -1,0 +1,372 @@
+/* ═══════════════════════════════════════════════════════════════
+   BIENENHAUS ADMIN — Forms & Inputs
+   .field, .field-input, .field-label, .field--float,
+   .filter-input, .filter-select, .mk-input, .mk-select,
+   .mk-textarea, .mk-label, .mk-checkbox
+   Depends on: 0-tokens.css
+╔═══════════════════════════════════════════════════════════════════*/
+
+/* ── Base field container ──────────────────────────────────── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 13px;
+}
+
+.field-label {
+  display: block;
+  font-family: var(--admin-font-body);
+  color: var(--admin-text-secondary);
+  font-size: 10px;
+  letter-spacing: var(--admin-ls-label);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.field:focus-within .field-label {
+  color: var(--admin-primary);
+}
+
+.field-input {
+  width: 100%;
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-sm);
+  color: var(--admin-text);
+  padding: 10px 13px;
+  font-size: var(--admin-text-base);
+  font-family: var(--admin-font-body);
+  transition: var(--admin-transition);
+  outline: none;
+}
+.field-input:focus {
+  border-color: var(--admin-primary-border);
+  box-shadow: 0 0 0 2px var(--admin-primary-glow);
+}
+.field-input:hover {
+  border-color: var(--admin-border-medium);
+  background: var(--admin-surface-hover);
+}
+.field-input::placeholder {
+  color: var(--admin-text-disabled);
+}
+
+textarea.field-input {
+  resize: vertical;
+  line-height: 1.65;
+  min-height: 80px;
+}
+
+/* ── Select with custom arrow ──────────────────────────────── */
+.field-input--select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='%23666'%3E%3Cpath d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+.field-input--select option {
+  background: var(--admin-bg);
+  color: var(--admin-text);
+}
+
+/* ── Float label pattern ───────────────────────────────────── */
+.field--float {
+  position: relative;
+}
+.field--float .field-input {
+  padding: 18px 13px 6px;
+}
+.field--float .field-input::placeholder {
+  color: transparent;
+}
+.field-focus-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--admin-radius-sm);
+  pointer-events: none;
+  border: 2px solid transparent;
+  transition: var(--admin-transition);
+}
+.field--float .field-input:focus ~ .field-focus-ring {
+  border-color: var(--admin-primary-border);
+}
+.field--float .field-label-float {
+  position: absolute;
+  top: 14px;
+  left: 13px;
+  font-size: 12px;
+  color: var(--admin-text-muted);
+  font-family: var(--admin-font-body);
+  font-weight: 500;
+  transition: var(--admin-transition);
+  pointer-events: none;
+  transform-origin: left center;
+}
+.field--float .field-input:focus ~ .field-label-float,
+.field--float .field-input:not(:placeholder-shown) ~ .field-label-float {
+  top: 5px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: var(--admin-ls-label);
+  text-transform: uppercase;
+  color: var(--admin-primary);
+}
+
+/* ── Filter inputs (rounded, used in search bars) ──────────── */
+.filter-input,
+.filter-select {
+  width: 100%;
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-md);
+  color: var(--admin-text);
+  padding: 10px 14px;
+  font-size: var(--admin-text-sm);
+  font-family: var(--admin-font-body);
+  transition: var(--admin-transition);
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.filter-select {
+  padding-right: 30px;
+}
+.filter-input:hover,
+.filter-select:hover {
+  border-color: var(--admin-border-medium);
+  background: var(--admin-surface-hover);
+}
+.filter-input:focus,
+.filter-select:focus {
+  outline: none;
+  border-color: var(--admin-primary-border);
+  box-shadow: 0 0 0 2px var(--admin-primary-glow);
+  background: var(--admin-surface-hover);
+}
+.filter-select option {
+  background: var(--admin-bg);
+  color: var(--admin-text);
+}
+
+/* ── Search bar (specific to admin property search) ────────── */
+.prop-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding: 8px 14px;
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-md);
+  transition: var(--admin-transition);
+}
+.prop-search-bar:focus-within {
+  border-color: var(--admin-primary-border);
+  box-shadow: 0 0 0 2px var(--admin-primary-glow);
+}
+.prop-search-bar svg {
+  flex-shrink: 0;
+  color: var(--admin-text-muted);
+}
+.prop-search-input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--admin-text);
+  font-family: var(--admin-font-body);
+  font-size: var(--admin-text-base);
+  outline: none;
+}
+.prop-search-input::placeholder {
+  color: var(--admin-text-disabled);
+}
+.prop-search-clear {
+  cursor: pointer;
+  color: var(--admin-text-muted);
+  font-size: 14px;
+  line-height: 1;
+  transition: var(--admin-transition);
+}
+.prop-search-clear:hover {
+  color: var(--admin-text);
+}
+
+/* ── Checkbox (custom) ─────────────────────────────────────── */
+.pf-feat-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+  cursor: pointer;
+  font-family: var(--admin-font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: var(--admin-ls-label);
+  text-transform: uppercase;
+  color: var(--admin-text-secondary);
+  user-select: none;
+}
+.pf-feat-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--admin-primary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.pf-feat-star {
+  color: var(--admin-warning);
+  font-size: 14px;
+}
+
+/* ── Select-all checkbox ───────────────────────────────────── */
+.select-all-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  color: var(--admin-text-muted);
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--admin-font-body);
+  font-weight: 600;
+  letter-spacing: var(--admin-ls-wide);
+  text-transform: uppercase;
+}
+.select-all-wrap input[type="checkbox"] {
+  appearance: none;
+  width: 16px; height: 16px;
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-sm);
+  background: var(--admin-surface);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--admin-transition);
+  flex-shrink: 0;
+  position: relative;
+}
+.select-all-wrap input[type="checkbox"]:checked {
+  background: var(--admin-primary);
+  border-color: var(--admin-primary);
+}
+.select-all-wrap input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  width: 8px; height: 4px;
+  border-left: 2px solid #000;
+  border-bottom: 2px solid #000;
+  transform: rotate(-45deg) translateY(-2px);
+  top: 4px;
+}
+
+/* ── Filter check (inline filter item) ─────────────────────── */
+.admin-filter-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--admin-text-muted);
+  cursor: pointer;
+}
+.admin-filter-check input {
+  accent-color: var(--admin-primary);
+}
+
+/* ── MK form elements (marketing section) ──────────────────── */
+.mk-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--admin-text-secondary);
+  margin-bottom: 5px;
+  display: block;
+}
+.mk-select,
+.mk-input,
+.mk-textarea {
+  width: 100%;
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-sm);
+  color: var(--admin-text);
+  padding: 10px 13px;
+  font-size: var(--admin-text-sm);
+  font-family: var(--admin-font-body);
+  transition: var(--admin-transition);
+  outline: none;
+}
+.mk-select:focus,
+.mk-input:focus,
+.mk-textarea:focus {
+  border-color: var(--admin-primary-border);
+  box-shadow: 0 0 0 2px var(--admin-primary-glow);
+}
+.mk-textarea {
+  height: auto;
+  min-height: 80px;
+  resize: vertical;
+}
+.mk-checkbox {
+  accent-color: var(--admin-primary);
+}
+
+/* ── Price input in filter ─────────────────────────────────── */
+.filter-price-input {
+  width: 100px;
+  font-size: 11px;
+  padding: 5px 8px;
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-sm);
+  color: var(--admin-text);
+  font-family: var(--admin-font-body);
+  transition: var(--admin-transition);
+  outline: none;
+}
+.filter-price-input:focus {
+  border-color: var(--admin-primary-border);
+  box-shadow: 0 0 0 2px var(--admin-primary-glow);
+}
+
+/* ── Toggle switch ─────────────────────────────────────────── */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  cursor: pointer;
+}
+.toggle-switch input {
+  display: none;
+}
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: 10px;
+  transition: var(--admin-transition);
+}
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  left: 2px;
+  top: 2px;
+  background: var(--admin-text-muted);
+  border-radius: 50%;
+  transition: var(--admin-transition);
+}
+.toggle-switch input:checked + .toggle-slider {
+  background: var(--admin-primary-glow);
+  border-color: var(--admin-primary-border);
+}
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(16px);
+  background: var(--admin-primary);
+}

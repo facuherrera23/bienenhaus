@@ -1,0 +1,40 @@
+/* ═══════════════════════════════════════════════════════════════
+   TABLE — Design System table styles
+   Depends on: tokens.css
+╔═══════════════════════════════════════════════════════════════════*/
+
+.ds-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--ds-font-body, var(--font-body));
+  font-size: 13px;
+  color: var(--ds-color-text-secondary, var(--g2));
+}
+.ds-table thead {
+  border-bottom: 1px solid var(--ds-color-border, var(--b));
+}
+.ds-table th {
+  text-align: left;
+  padding: 10px 12px;
+  font-family: var(--ds-font-body, var(--font-sub));
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: var(--ls-label, 0.1em);
+  text-transform: uppercase;
+  color: var(--ds-color-text-muted, var(--g3));
+}
+.ds-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--ds-color-border, var(--b));
+}
+.ds-table tbody tr {
+  transition: background .15s;
+}
+.ds-table tbody tr:hover {
+  background: rgba(255,255,255,0.02);
+}
+.ds-table--compact td,
+.ds-table--compact th {
+  padding: 6px 10px;
+  font-size: 12px;
+}

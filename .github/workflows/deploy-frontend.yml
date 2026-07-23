@@ -1,0 +1,105 @@
+name: Deploy Frontend to GitHub Pages (manual only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "yes" to deploy to GitHub Pages'
+        required: true
+        default: 'no'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    if: github.event.inputs.confirm == 'yes'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Build frontend (minify JS + CSS)
+        working-directory: frontend
+        run: npm run build
+
+      - name: Prepare deploy directory
+        run: |
+          mkdir -p _site
+          rsync -a --exclude='node_modules' --exclude='tests' --exclude='test-results' \
+            --exclude='package*.json' --exclude='postcss.config.js' \
+            frontend/ _site/
+          echo "Files staged for deploy:"
+          ls -la _site/
+
+      - name: Transform paths for GH Pages subpath (/bienenhaus/)
+        run: |
+          find _site -name '*.html' -exec sed -i \
+            -e 's|href="/css/|href="/bienenhaus/css/|g' \
+            -e 's|href="/js/|href="/bienenhaus/js/|g' \
+            -e 's|href="/images/|href="/bienenhaus/images/|g' \
+            -e 's|href="/fonts/|href="/bienenhaus/fonts/|g' \
+            -e 's|href="/manifest.json|href="/bienenhaus/manifest.json|g' \
+            -e 's|href="/favicon|href="/bienenhaus/favicon|g' \
+            -e 's|src="/js/|src="/bienenhaus/js/|g' \
+            -e 's|src="/images/|src="/bienenhaus/images/|g' \
+            {} +
+          find _site -name '*.html' -exec sed -i \
+            -e 's|href="/venta"|href="/bienenhaus/venta"|g' \
+            -e 's|href="/alquiler"|href="/bienenhaus/alquiler"|g' \
+            -e 's|href="/admin"|href="/bienenhaus/admin"|g' \
+            -e 's|href="/tasacion"|href="/bienenhaus/tasacion"|g' \
+            -e 's|href="/propiedad"|href="/bienenhaus/propiedad"|g' \
+            -e "s|'/propiedad.html'|'/bienenhaus/propiedad.html'|g" \
+            -e "s|'/venta.html'|'/bienenhaus/venta.html'|g" \
+            -e "s|'/alquiler.html'|'/bienenhaus/alquiler.html'|g" \
+            {} +
+          find _site -name '*.css' -exec sed -i \
+            -e "s|url('/images/|url('/bienenhaus/images/|g" \
+            -e 's|url("/images/|url("/bienenhaus/images/|g' \
+            -e "s|url('/fonts/|url('/bienenhaus/fonts/|g" \
+            -e 's|url("/fonts/|url("/bienenhaus/fonts/|g' \
+            -e "s|url('/css/|url('/bienenhaus/css/|g" \
+            -e 's|url("/css/|url("/bienenhaus/css/|g' \
+            {} +
+          find _site -name '*.js' -exec sed -i \
+            -e 's|href="/venta/|href="/bienenhaus/venta/|g' \
+            -e 's|href="/alquiler/|href="/bienenhaus/alquiler/|g' \
+            {} +
+
+      - name: Inject API_BASE for production
+        run: |
+          API_BASE='https://bienenhaus.onrender.com'
+          find _site -name '*.html' -exec grep -l '</head>' {} + | while read -r f; do
+            if grep -q "window\.__API_BASE__" "$f"; then
+              sed -i "s|window\.__API_BASE__\s*=\s*'[^']*'|window.__API_BASE__='${API_BASE}'|" "$f"
+            else
+              sed -i "s|</head>|  <script>window.__API_BASE__='${API_BASE}'</script>\n</head>|" "$f"
+            fi
+          done
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

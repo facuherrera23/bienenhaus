@@ -1,0 +1,22 @@
+name: Daily DB Backup
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger backup via API
+        run: |
+          response=$(curl -s -w "\n%{http_code}" -X POST \
+            -H "X-Backup-Key: ${{ secrets.BACKUP_API_KEY }}" \
+            https://bienenhaus.onrender.com/api/admin/db-backup)
+          http_code=$(echo "$response" | tail -1)
+          body=$(echo "$response" | sed '$d')
+          echo "HTTP $http_code: $body"
+          if [ "$http_code" -ne 200 ]; then
+            exit 1
+          fi

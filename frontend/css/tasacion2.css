@@ -1,0 +1,333 @@
+/* ═══════════════════════════════════════════════════════════════
+   TASACIÓN 2 — ACM (Análisis Comparativo de Mercado)
+   Tool: Homogeneización de antecedentes con precio/m²
+   Dark theme — usa design tokens del proyecto
+   Breakpoints: 640
+════════════════════════════════════════════════════════════════════ */
+
+/* ── Page header ──────────────────────────────────────── */
+.tasacion2-hero {
+  max-width: 1080px; margin: 0 auto; padding: 40px 28px 0;
+}
+.tasacion2-hero h1 {
+  font-family: var(--font-title);
+  font-size: clamp(28px, 4vw, 42px); font-weight: 400;
+  color: var(--white); line-height: 1.05; margin: 0 0 6px;
+  letter-spacing: var(--ls-narrow); text-transform: uppercase;
+}
+.tasacion2-hero .cma-eyebrow {
+  font-family: var(--font-sub);
+  font-size: 9px; font-weight: 600; letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase; color: var(--accent); margin: 0 0 8px;
+}
+.tasacion2-hero p {
+  font-family: var(--font-body);
+  color: var(--g3); font-size: 13px; font-weight: 300;
+  max-width: 600px; line-height: 1.7;
+}
+
+/* ── CMA Tool ─────────────────────────────────────────── */
+#cma-tool, #cma-tool * { box-sizing: border-box; }
+#cma-tool {
+  font-family: var(--font-body);
+  color: var(--white);
+  background: var(--s2);
+  padding: 28px;
+  border-radius: 14px;
+  border: 1px solid var(--b);
+  max-width: 1080px;
+  margin: 0 auto 60px;
+  line-height: 1.4;
+}
+
+#cma-tool h1, #cma-tool h2 {
+  font-family: var(--font-title);
+  margin: 0;
+  color: var(--white);
+  letter-spacing: var(--ls-narrow);
+  text-transform: uppercase;
+}
+
+.cma-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+.cma-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+.cma-header h1 { font-size: 26px; }
+.cma-sub { margin: 4px 0 0; color: var(--g3); font-size: 13.5px; font-weight: 300; }
+
+.cma-seal { flex-shrink: 0; }
+.cma-seal-ring {
+  width: 168px;
+  height: 168px;
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: rotate(-4deg);
+  background: repeating-radial-gradient(circle, var(--accent-glow) 0 2px, transparent 2px 4px);
+  padding: 10px;
+}
+.cma-seal-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-badge);
+  color: var(--g2);
+  font-weight: 700;
+}
+.cma-seal-value {
+  font-family: var(--font-title);
+  font-size: 19px;
+  font-weight: 700;
+  margin: 4px 0;
+  color: var(--accent);
+}
+.cma-seal-sub { font-size: 10px; color: var(--g3); }
+
+.cma-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  border-bottom: 2px solid var(--b);
+}
+.cma-tab {
+  font-family: var(--font-sub);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 9px 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--g3);
+  cursor: pointer;
+  margin-bottom: -2px;
+  transition: color .2s, border-color .2s;
+}
+.cma-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.cma-tab:hover:not(.active) { color: var(--white); }
+
+.cma-panel {
+  background: var(--s3);
+  border: 1px solid var(--b);
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin-bottom: 18px;
+}
+.cma-panel h2 { font-size: 15px; margin-bottom: 12px; }
+.cma-hint { font-family: var(--font-body); font-size: 11.5px; font-weight: 400; color: var(--g3); }
+
+.cma-config { display: flex; gap: 32px; flex-wrap: wrap; }
+.cma-config-col { flex: 1 1 340px; }
+.cma-config-narrow { flex: 0 1 260px; }
+
+.cma-weights { display: flex; flex-direction: column; gap: 8px; }
+.cma-weight-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cma-weight-row input[type="text"] {
+  flex: 1;
+  border: 1px solid var(--b);
+  border-radius: 6px;
+  padding: 7px 9px;
+  font-size: 13px;
+  color: var(--white);
+  background: var(--s4);
+  font-family: var(--font-body);
+}
+.cma-weight-row input[type="number"] {
+  width: 70px;
+  border: 1px solid var(--b);
+  border-radius: 6px;
+  padding: 7px 9px;
+  font-size: 13px;
+  color: var(--white);
+  background: var(--s4);
+  text-align: right;
+  font-family: var(--font-body);
+}
+.cma-weight-row .cma-pct {
+  color: var(--g3);
+  font-size: 12px;
+}
+.cma-sum-line { margin: 12px 0 0; font-size: 13px; color: var(--g3); }
+.cma-sum-line strong { color: var(--accent); }
+.cma-sum-line.bad strong { color: var(--danger); }
+
+.cma-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 4px;
+  font-size: 12.5px;
+  color: var(--g3);
+}
+.cma-field input {
+  border: 1px solid var(--b);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 13.5px;
+  color: var(--white);
+  background: var(--s4);
+  font-family: var(--font-body);
+}
+.cma-field input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.cma-mt { margin-top: 16px; }
+.cma-note { font-size: 11.5px; color: var(--g3); margin: 6px 0 0; font-weight: 300; }
+
+.cma-table-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.cma-btn-ghost {
+  font-family: var(--font-sub);
+  background: none;
+  border: 1px solid var(--bm);
+  color: var(--accent);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s;
+  letter-spacing: var(--ls-badge);
+  text-transform: uppercase;
+}
+.cma-btn-ghost:hover { background: var(--s4); border-color: var(--accent); }
+
+.cma-table-wrap { overflow-x: auto; }
+.cma-table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 1000px; }
+.cma-table th {
+  text-align: left;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-badge);
+  color: var(--g3);
+  border-bottom: 2px solid var(--bm);
+  padding: 6px 8px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.cma-table td {
+  padding: 5px 6px;
+  border-bottom: 1px solid var(--b);
+  vertical-align: middle;
+}
+.cma-table input[type="text"], .cma-table input[type="number"] {
+  width: 100%;
+  border: 1px solid var(--b);
+  border-radius: 5px;
+  padding: 6px 7px;
+  font-size: 12.5px;
+  color: var(--white);
+  background: var(--s4);
+  font-family: var(--font-body);
+}
+.cma-table input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.cma-table select {
+  width: 100%;
+  border: 1px solid var(--b);
+  border-radius: 5px;
+  padding: 6px 4px;
+  font-size: 12px;
+  background: var(--s4);
+  color: var(--white);
+  font-family: var(--font-body);
+}
+.cma-table select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.cma-table td.calc {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--white);
+  font-family: var(--font-num);
+}
+.cma-table td.calc.value { font-weight: 700; color: var(--accent); }
+.cma-row-remove {
+  background: none;
+  border: none;
+  color: var(--danger);
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  padding: 2px 6px;
+  transition: opacity .15s;
+}
+.cma-row-remove:hover { opacity: .7; }
+
+.cma-results { display: flex; gap: 16px; flex-wrap: wrap; }
+.cma-result-card {
+  flex: 1 1 200px;
+  background: var(--s4);
+  border: 1px solid var(--b);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cma-result-main {
+  background: linear-gradient(135deg, var(--s3), var(--s4));
+  border-color: var(--accent);
+}
+.cma-result-label {
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-badge);
+  color: var(--g3);
+  font-weight: 700;
+}
+.cma-result-value {
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: var(--ls-narrow);
+}
+.cma-result-main .cma-result-value { color: var(--accent); }
+
+.cma-footnote {
+  font-size: 11.5px;
+  color: var(--g3);
+  line-height: 1.6;
+  margin: 6px 4px 0;
+  font-weight: 300;
+}
+
+@media (max-width: 640px) {
+  #cma-tool { padding: 18px 14px; }
+  .cma-header { flex-direction: column; align-items: flex-start; }
+  .cma-seal { align-self: center; }
+  #cma-tool .cma-table { min-width: 700px; }
+}

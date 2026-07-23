@@ -1,0 +1,33 @@
+/* ═══════════════════════════════════════════════════════════════
+   BIENENHAUS ADMIN — Entry Point
+   Importa los módulos del Design System del panel administrativo.
+   Se compila con: postcss css/admin.css -o css/admin.min.css
+╔═══════════════════════════════════════════════════════════════════*/
+
+@import url('admin/0-tokens.css');
+@import url('admin/1-base.css');
+@import url('admin/2-login.css');
+@import url('admin/3-sidebar.css');
+@import url('admin/4-topbar.css');
+@import url('admin/5-dashboard.css');
+@import url('admin/6-property-cards.css');
+@import url('admin/7-crud-forms.css');
+@import url('admin/8-messages.css');
+@import url('admin/9-crm.css');
+@import url('admin/11-requests.css');
+@import url('admin/12-buttons.css');
+@import url('admin/12-appraisals.css');
+@import url('admin/13-tasaciones.css');
+@import url('admin/13-forms.css');
+@import url('admin/13-marketing.css');
+@import url('admin/14-modals.css');
+@import url('admin/14-portals.css');
+@import url('admin/15-tables.css');
+@import url('admin/15-calendar.css');
+@import url('admin/16-badges.css');
+@import url('admin/16-settings.css');
+@import url('admin/17-toasts.css');
+@import url('admin/17-users.css');
+@import url('admin/18-states.css');
+@import url('admin/18-security.css');
+@import url('admin/20-responsive.css');

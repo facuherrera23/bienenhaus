@@ -1,0 +1,56 @@
+/* ── Alquileres specific styles ──────────────────────────────────── */
+/* Breakpoints: 480 · 600 (inherits most from styles.css) */
+
+.alquiler-filter-bar .filter-select {
+  min-width: 140px;
+}
+
+.card-price-ars {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: var(--font-sub);
+}
+
+.card-price-ars small {
+  font-weight: 400;
+  font-size: 9px;
+  color: var(--g3);
+  letter-spacing: var(--ls-wide);
+}
+
+.card-expenses {
+  font-size: 10px;
+  color: var(--g3);
+  font-family: var(--font-sub);
+  letter-spacing: var(--ls-narrow);
+  margin-top: 2px;
+}
+
+.card-features {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+/* .card-feature-chip and .card-feature-chip.furnished in detalle.css */
+
+.rental-badge-alquilada {
+  background: var(--danger);
+  color: #fff;
+}
+
+/* ── Responsive ────────────────────────────────────── */
+@media (max-width: 768px) {
+  .alquiler-filter-bar .filter-select { min-width: 0; }
+}
+@media (max-width: 600px) {
+  .alquiler-filter-bar .filter-select { min-width: 0; }
+}
+@media (max-width: 480px) {
+  .alquiler-filter-bar .filter-select { min-width: 0; }
+}
+@media (max-width: 360px) {
+  .alquiler-filter-bar .filter-select { min-width: 0; }
+}

@@ -1,0 +1,80 @@
+/* ═══════════════════════════════════════════════════════════════
+   INPUT — .field, .field-input, .filter-input, .filter-select
+   Depends on: tokens.css
+╔═══════════════════════════════════════════════════════════════════*/
+
+.field { display:flex; flex-direction:column; gap:6px; margin-bottom:13px; }
+.field-label {
+  display:block; font-family:var(--ds-font-body, var(--font-sub)); color:var(--ds-color-text-secondary, var(--g2));
+  font-size:10px; letter-spacing:var(--ls-field, 0.12em); text-transform:uppercase; margin-bottom:5px; font-weight:700;
+}
+.field:focus-within .field-label { color:var(--ds-color-accent, var(--accent)); }
+
+.field-input {
+  width:100%; background:var(--ds-color-surface-3, var(--s3)); border:1px solid var(--ds-color-border, var(--b));
+  border-radius:3px; color:var(--ds-color-text, var(--white));
+  padding:10px 13px; font-size:13px; font-family:var(--ds-font-body, var(--font-body));
+  transition:border-color .2s;
+}
+.field-input:focus { border-color:var(--accent-b, rgba(32,184,171,0.28)); box-shadow: 0 0 0 2px var(--accent-glow, rgba(32,184,171,0.18)); outline:none; }
+textarea.field-input { resize:vertical; line-height:1.65; min-height:80px; }
+.field-input:hover { border-color:var(--ds-color-border-medium, var(--bm)); background:var(--ds-color-surface-4, var(--s3)); }
+.field-input::placeholder { color:var(--ds-color-surface-4, var(--g4)); }
+
+/* ── Filter inputs ─────────────────────────────────────────── */
+.filter-input, .filter-select {
+  width: 100%;
+  background: var(--ds-color-surface-2, var(--s2));
+  border: 1px solid var(--ds-color-border, var(--b));
+  border-radius: 10px;
+  color: var(--ds-color-text, var(--white));
+  padding: 11px 14px;
+  font-size: 12px;
+  font-family: var(--ds-font-body, var(--font-body));
+  transition: border-color .2s, box-shadow .2s, background .2s;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.filter-select {
+  padding-right: 30px;
+}
+.filter-input:hover, .filter-select:hover {
+  border-color: var(--ds-color-border-medium, var(--bm));
+  background: var(--ds-color-surface-3, var(--s3));
+}
+.filter-input:focus, .filter-select:focus {
+  outline: none;
+  border-color: var(--accent-b, rgba(32,184,171,0.28));
+  box-shadow: 0 0 0 2px var(--accent-glow, rgba(32,184,171,0.18));
+  background: var(--ds-color-surface-3, var(--s3));
+}
+.filter-select option {
+  background: var(--ds-color-surface-1, var(--s1));
+  color: var(--ds-color-text, var(--white));
+  padding: 10px;
+}
+
+/* ── Responsive ────────────────────────────────────── */
+@media (max-width: 768px) {
+  .field-input { padding: 9px 11px; font-size: 12px; }
+  .filter-input, .filter-select { padding: 10px 12px; font-size: 11px; }
+}
+@media (max-width: 600px) {
+  .field-input { padding: 8px 10px; }
+  .filter-input, .filter-select { padding: 9px 10px; }
+}
+@media (max-width: 480px) {
+  .field-input { padding: 7px 9px; }
+  .filter-input, .filter-select { padding: 8px 9px; font-size: 10px; border-radius: 8px; }
+}
+@media (max-width: 414px) {
+  .field-input { padding: 6px 8px; font-size: 11px; }
+  .filter-input, .filter-select { padding: 7px 8px; }
+}
+@media (max-width: 360px) {
+  .field { gap: 4px; margin-bottom: 10px; }
+  .field-input { padding: 6px 7px; font-size: 10px; }
+  .field-label { font-size: 9px; }
+  .filter-input, .filter-select { padding: 6px 7px; font-size: 9px; }
+}

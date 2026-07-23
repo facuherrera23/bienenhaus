@@ -1,0 +1,199 @@
+/* ═══════════════════════════════════════════════════════════════
+   BIENENHAUS ADMIN — Base Layout
+   Layout foundation, reset, and utility classes.
+   Depends on: 0-tokens.css
+╔═══════════════════════════════════════════════════════════════════*/
+
+::selection {
+  background: var(--admin-primary-glow);
+  color: var(--admin-text);
+}
+
+.admin-body {
+  background: var(--admin-bg);
+  min-height: 100vh;
+  font-family: var(--admin-font-body);
+  color: var(--admin-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+.admin-screen {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-main {
+  flex: 1;
+  margin-left: 220px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.admin-tab-content {
+  flex: 1;
+  padding: 32px 28px;
+  overflow-y: auto;
+}
+
+/* ── Accessibility skip link ──────────────────────────────── */
+.admin-skip-link {
+  position: absolute;
+  top: -100%;
+  left: 8px;
+  background: var(--admin-primary);
+  color: #000;
+  padding: 8px 16px;
+  border-radius: 0 0 6px 6px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 9999;
+  text-decoration: none;
+  transition: var(--admin-transition);
+}
+.admin-skip-link:focus {
+  top: 0;
+}
+
+/* ── Scrollbar styling ────────────────────────────────────── */
+.admin-main::-webkit-scrollbar,
+.admin-tab-content::-webkit-scrollbar,
+.modal-form-content::-webkit-scrollbar,
+.modal-body::-webkit-scrollbar {
+  width: 4px;
+}
+.admin-main::-webkit-scrollbar-track,
+.admin-tab-content::-webkit-scrollbar-track,
+.modal-form-content::-webkit-scrollbar-track,
+.modal-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.admin-main::-webkit-scrollbar-thumb,
+.admin-tab-content::-webkit-scrollbar-thumb,
+.modal-form-content::-webkit-scrollbar-thumb,
+.modal-body::-webkit-scrollbar-thumb {
+  background: var(--admin-text-disabled);
+  border-radius: 4px;
+}
+.admin-main::-webkit-scrollbar-thumb:hover,
+.admin-tab-content::-webkit-scrollbar-thumb:hover,
+.modal-form-content::-webkit-scrollbar-thumb:hover,
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: var(--admin-text-muted);
+}
+
+/* ── Foco visible global ──────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--admin-primary);
+  outline-offset: 2px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ── Utility classes ──────────────────────────────────────── */
+.hidden {
+  display: none !important;
+}
+
+.admin-flex        { display: flex; }
+.admin-flex-center { display: flex; align-items: center; }
+.admin-flex-wrap   { flex-wrap: wrap; }
+
+.admin-gap-8  { gap: 8px; }
+.admin-gap-12 { gap: 12px; }
+
+.admin-ml-auto { margin-left: auto; }
+.admin-mt-6    { margin-top: 6px; }
+.admin-mt-10   { margin-top: 10px; }
+.admin-mt-14   { margin-top: 14px; }
+.admin-mt-24   { margin-top: 24px; }
+.admin-mb-8    { margin-bottom: 8px; }
+.admin-mb-10   { margin-bottom: 10px; }
+.admin-mb-12   { margin-bottom: 12px; }
+.admin-mb-14   { margin-bottom: 14px; }
+
+.admin-page-title {
+  font-family: var(--admin-font-display);
+  font-size: var(--admin-text-xl);
+  text-transform: uppercase;
+  letter-spacing: var(--admin-ls-wide);
+  color: var(--admin-text);
+  margin: 0;
+}
+.admin-page-sub {
+  font-family: var(--admin-font-body);
+  font-size: var(--admin-text-sm);
+  color: var(--admin-text-muted);
+  margin: 0;
+}
+
+.admin-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-modal-max-w-580 { max-width: 580px; }
+.admin-modal-max-w-650 { max-width: 650px; }
+.admin-modal-max-w-700 { max-width: 700px; }
+.admin-modal-max-w-800 { max-width: 800px; }
+
+/* ── Property Preview (admin-core) ─────────────────────────── */
+.pp-thumb-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--s3);
+}
+.pp-thumb-placeholder {
+  width: 100%;
+  height: 220px;
+  background: var(--s3);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--g4);
+  font-size: 32px;
+}
+.pp-thumb-wrap {
+  margin-bottom: 16px;
+}
+.pp-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.pp-price-value {
+  color: var(--accent);
+  font-family: var(--font-title);
+  font-size: 18px;
+}
+.pp-desc-section {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--b);
+}
+.pp-desc-label {
+  margin-bottom: 6px;
+}
+.pp-desc-text {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--g2);
+}
+.pp-modal-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--b);
+}
+.pp-modal-btn {
+  flex: 1;
+}

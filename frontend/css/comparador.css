@@ -1,0 +1,433 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+/* ═══════════════════════════════════════════════════
+    COMPARADOR — Editorial spec-sheet face-off
+    Skills: ui-designer, animation-expert, frontend-architect
+    Breakpoints: 480 · 700
+════════════════════════════════════════════════════ */
+
+/* ── Botón en tarjetas ──────────────────────────── */
+.btn-compare {
+  position: absolute;
+  top: 12px; left: 12px; z-index: 3;
+  background: rgba(0,0,0,0.75);
+  color: var(--g2);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+  font-size: 9px; font-weight: 700; letter-spacing: var(--ls-badge);
+  text-transform: uppercase;
+  padding: 6px 14px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity .25s, background .2s, color .2s, border-color .2s, transform .2s;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.btn-compare::before {
+  content: '';
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  transition: background .2s, border-color .2s;
+  flex-shrink: 0;
+}
+.prop-card:hover .btn-compare { opacity: 1; }
+.btn-compare:hover { background: rgba(255,255,255,0.12); color: var(--white); transform: scale(1.05); }
+.btn-compare.selected {
+  opacity: 1 !important;
+  background: rgba(32,184,171,0.15);
+  color: var(--accent);
+  border-color: rgba(32,184,171,0.3);
+}
+.btn-compare.selected::before { background: var(--accent); border-color: var(--accent); }
+
+/* ── Tray ────────────────────────────────────────── */
+.compare-tray {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 400;
+  background: rgba(8,8,8,0.97);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(24px);
+  transform: translateY(100%);
+  transition: transform .4s cubic-bezier(.22,1,.36,1);
+  padding: 14px 28px;
+  display: flex; align-items: center; gap: 20px;
+}
+.compare-tray.visible { transform: translateY(0); }
+
+.compare-tray-slots { display: flex; gap: 10px; flex: 1; }
+
+.compare-slot {
+  flex: 1; max-width: 240px; height: 56px;
+  background: rgba(255,255,255,0.02);
+  border: 1px dashed rgba(255,255,255,0.06);
+  border-radius: 8px;
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 12px;
+  transition: border-color .3s, background .3s;
+}
+.compare-slot.filled {
+  border-style: solid;
+  border-color: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+}
+.compare-slot-number {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; color: var(--g4);
+  flex-shrink: 0;
+  transition: background .3s, border-color .3s, color .3s;
+}
+.compare-slot.filled .compare-slot-number {
+  background: rgba(32,184,171,0.1);
+  border-color: rgba(32,184,171,0.2);
+  color: var(--accent);
+}
+.compare-slot-thumb { width: 40px; height: 40px; border-radius: 6px; object-fit: cover; flex-shrink: 0; }
+.compare-slot-info { flex: 1; min-width: 0; }
+.compare-slot-title { color: var(--white); font-size: 12px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
+.compare-slot-price { color: var(--accent); font-size: 11px; font-weight: 600; }
+.compare-slot-remove {
+  width: 22px; height: 22px; background: rgba(255,255,255,0.04);
+  border: none; border-radius: 50%; color: var(--g3);
+  font-size: 14px; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, color .15s; flex-shrink: 0;
+}
+.compare-slot-remove:hover { background: rgba(220,80,80,0.15); color: #e06060; }
+.compare-slot-empty-label { color: var(--g4); font-size: 10px; letter-spacing: var(--ls-label); text-transform: uppercase; margin-left: 4px; }
+
+.compare-tray-actions { display: flex; gap: 12px; align-items: center; flex-shrink: 0; }
+.compare-tray-count { color: var(--g3); font-size: 9px; letter-spacing: var(--ls-label); text-transform: uppercase; font-weight: 600; }
+.compare-tray-count .count-num { color: var(--accent); font-weight: 700; }
+.compare-tray-close {
+  width: 32px; height: 32px; background: none; border: none;
+  color: var(--g4); font-size: 18px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: color .15s, background .15s; border-radius: 50%;
+}
+.compare-tray-close:hover { color: var(--white); background: rgba(255,255,255,0.04); }
+
+/* ── Modal ───────────────────────────────────────── */
+.compare-modal {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(24px);
+  display: flex; align-items: center; justify-content: center;
+  overflow-y: auto; padding: 20px;
+}
+.compare-modal.hidden { display: none; }
+
+.compare-box {
+  background: rgba(10,10,10,0.98);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px;
+  width: 100%; max-width: 820px;
+  animation: cmpReveal .45s cubic-bezier(.22,1,.36,1) both;
+  box-shadow: 0 40px 160px rgba(0,0,0,0.8);
+  overflow: hidden;
+  position: relative;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .compare-box { animation: none; }
+  .compare-prop-card,
+  .compare-score-banner,
+  .compare-winner-banner,
+  .compare-cta-section { animation: none; }
+  .compare-card-winner-badge { animation: none; }
+}
+
+@keyframes cmpReveal {
+  from { opacity: 0; transform: translateY(30px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes cmpFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Header ─────────────────────────────────────── */
+.compare-box-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 20px 10px;
+  position: relative;
+}
+.compare-box-header::after {
+  content: ''; position: absolute; bottom: 0; left: 20px; right: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+}
+.compare-box-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px; font-weight: 500; color: var(--white);
+  display: flex; align-items: center; gap: 8px;
+}
+.compare-box-title svg { width: 16px; height: 16px; opacity: .35; }
+.compare-box-close {
+  width: 28px; height: 28px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 50%; color: var(--g3);
+  font-size: 14px; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.compare-box-close:hover { background: rgba(255,255,255,0.08); color: var(--white); border-color: rgba(255,255,255,0.12); }
+
+/* ── Face-off area ───────────────────────────────── */
+.compare-faceoff {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  position: relative;
+  padding: 8px 14px 0;
+}
+.compare-faceoff::before {
+  content: 'VS';
+  position: absolute; top: 22px; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 12px; font-weight: 700; letter-spacing: var(--ls-section);
+  color: rgba(255,255,255,0.06);
+  z-index: 2;
+}
+
+.compare-prop-card {
+  background: rgba(255,255,255,0.015);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color .3s, box-shadow .3s;
+  animation: cmpFadeIn .4s both;
+}
+.compare-prop-card:hover { border-color: rgba(255,255,255,0.08); }
+.compare-prop-card:first-child { margin-right: 8px; }
+.compare-prop-card:last-child  { margin-left: 8px; }
+
+.compare-prop-card.is-winner {
+  border-color: rgba(32,184,171,0.25);
+  box-shadow: 0 0 40px rgba(32,184,171,0.04);
+}
+
+.compare-card-img {
+  width: 100%; aspect-ratio: 3/1; object-fit: cover;
+  display: block;
+  transition: transform .5s;
+}
+.compare-prop-card:hover .compare-card-img { transform: scale(1.04); }
+.compare-card-img-wrap { overflow: hidden; position: relative; }
+
+.compare-card-tag {
+  position: absolute; top: 8px; left: 8px;
+  font-size: 7px; font-weight: 700; letter-spacing: var(--ls-badge);
+  text-transform: uppercase; padding: 3px 8px;
+  border-radius: 3px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--g2);
+}
+.compare-prop-card.is-winner .compare-card-tag {
+  background: rgba(32,184,171,0.2);
+  border-color: rgba(32,184,171,0.3);
+  color: var(--accent);
+}
+.compare-card-winner-badge {
+  position: absolute; bottom: 6px; right: 6px;
+  font-size: 7px; font-weight: 700; letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 100px;
+  background: rgba(32,184,171,0.9);
+  color: #000;
+  backdrop-filter: blur(4px);
+  animation: cmpFadeIn .4s .2s both;
+  display: flex; align-items: center; gap: 3px;
+}
+
+.compare-card-body {
+  padding: 6px 10px 6px;
+}
+
+.compare-card-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 12px; font-weight: 500; color: var(--white);
+  line-height: 1.15;
+}
+.compare-card-location {
+  color: var(--g3); font-size: 7px; letter-spacing: var(--ls-label);
+  text-transform: uppercase; margin-top: 1px;
+}
+
+/* ── Specs within each card ─────────────────────── */
+.compare-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.compare-spec {
+  background: rgba(255,255,255,0.015);
+  border-radius: 3px;
+  padding: 2px 6px;
+  transition: background .2s;
+}
+.compare-spec-label {
+  font-size: 6px; font-weight: 700; letter-spacing: var(--ls-nav);
+  text-transform: uppercase; color: var(--g4);
+  margin-bottom: 1px;
+}
+.compare-spec-value {
+  display: flex; align-items: center; gap: 3px;
+  font-size: 11px; font-weight: 600; color: var(--white);
+  font-family: var(--font-num);
+}
+.compare-spec-value.is-winner { color: var(--accent); }
+.compare-spec-value.is-loser { color: var(--g3); }
+.compare-spec-value svg { width: 9px; height: 9px; flex-shrink: 0; }
+
+/* ── Score banner ────────────────────────────────── */
+.compare-score-banner {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px;
+  padding: 5px 16px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.01);
+  animation: cmpFadeIn .4s .1s both;
+}
+.compare-score-item {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 9px; color: var(--g2);
+  text-transform: uppercase; letter-spacing: var(--ls-label);
+}
+.compare-score-item svg { width: 10px; height: 10px; flex-shrink: 0; }
+.compare-score-item.is-winner { color: var(--accent); }
+.compare-score-item .score-num { font-weight: 700; font-size: 11px; }
+.compare-score-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.06); }
+
+/* ── Overall winner banner ──────────────────────── */
+.compare-winner-banner {
+  display: flex; align-items: center; justify-content: center;
+  gap: 6px;
+  padding: 6px 16px;
+  background: linear-gradient(135deg, rgba(32,184,171,0.04), transparent);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  animation: cmpFadeIn .4s .15s both;
+}
+.compare-winner-banner svg { width: 12px; height: 12px; flex-shrink: 0; }
+.compare-winner-banner .crown { color: var(--accent); }
+.compare-winner-text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 12px; font-weight: 500; color: var(--accent);
+}
+.compare-winner-text.draw { color: var(--g3); }
+
+/* ── CTA row ─────────────────────────────────────── */
+.compare-cta-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 8px 16px 12px;
+  animation: cmpFadeIn .4s .25s both;
+}
+.compare-cta-col {
+  display: flex; flex-direction: column; gap: 3px;
+}
+.compare-cta-col:first-child { padding-right: 4px; }
+.compare-cta-col:last-child  { padding-left: 4px; }
+.compare-cta-col .btn {
+  width: 100%; padding: 5px; font-size: 8px;
+  display: flex; align-items: center; justify-content: center; gap: 3px;
+}
+
+/* ── Mobile ──────────────────────────────────────── */
+@media (max-width: 700px) {
+  .compare-tray { padding: 12px 14px; gap: 14px; flex-wrap: wrap; }
+  .compare-tray-slots { flex-direction: column; gap: 8px; }
+  .compare-slot { max-width: 100%; height: 52px; }
+
+  .compare-box { border-radius: 12px; }
+  .compare-box-header { padding: 14px 16px 12px; }
+  .compare-box-header::after { left: 16px; right: 16px; }
+  .compare-box-title { font-size: 16px; }
+
+  .compare-faceoff {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 14px 16px 0;
+  }
+  .compare-faceoff::before { display: none; }
+  .compare-prop-card:first-child { margin-right: 0; }
+  .compare-prop-card:last-child  { margin-left: 0; }
+  .compare-card-body { padding: 8px 12px 10px; }
+  .compare-card-title { font-size: 14px; }
+
+  .compare-score-banner { gap: 10px; padding: 8px 16px; flex-wrap: wrap; justify-content: center; }
+  .compare-score-item { font-size: 9px; }
+
+  .compare-winner-banner { padding: 10px 16px; }
+  .compare-winner-text { font-size: 14px; }
+
+  .compare-cta-section {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 12px 16px 16px;
+  }
+  .compare-cta-col:first-child { padding-right: 0; }
+  .compare-cta-col:last-child  { padding-left: 0; }
+}
+@media (max-width: 480px) {
+  .compare-tray { padding: 10px 12px; }
+  .compare-slot { height: 46px; padding: 0 8px; }
+  .compare-slot-title { font-size: 10px; }
+  .compare-slot-price { font-size: 10px; }
+  .compare-tray-actions .btn { padding: 6px 12px; font-size: 8px; }
+}
+@media (max-width: 414px) {
+  .compare-tray { padding: 8px 5px; gap: 8px; }
+  .compare-tray-slots { gap: 5px; }
+  .compare-slot { height: 40px; padding: 0 6px; gap: 6px; }
+  .compare-slot-number { width: 20px; height: 20px; font-size: 8px; }
+  .compare-slot-thumb { width: 32px; height: 32px; }
+  .compare-slot-title { font-size: 9px; }
+  .compare-slot-price { font-size: 9px; }
+  .compare-tray-actions .btn { padding: 4px 8px; font-size: 7px; }
+  .compare-modal { padding: 10px; }
+  .compare-box-header { padding: 10px 12px 10px; }
+  .compare-box-title { font-size: 13px; }
+  .compare-faceoff { padding: 8px 8px 0; gap: 8px; }
+  .compare-card-body { padding: 4px 6px 6px; }
+  .compare-card-title { font-size: 11px; }
+  .compare-spec-label { font-size: 5px; }
+  .compare-spec-value { font-size: 9px; }
+  .compare-score-banner { gap: 6px; padding: 5px 8px; }
+  .compare-score-item { font-size: 7px; }
+  .compare-winner-banner { padding: 6px 8px; }
+  .compare-winner-text { font-size: 11px; }
+  .compare-cta-section { padding: 8px 8px 10px; }
+  .compare-cta-col .btn { font-size: 7px; padding: 4px 2px; }
+}
+@media (max-width: 360px) {
+  .compare-tray { padding: 6px 4px; gap: 6px; }
+  .compare-slot { height: 36px; padding: 0 4px; }
+  .compare-slot-title { font-size: 8px; }
+  .compare-slot-price { font-size: 8px; }
+  .compare-slot-number { width: 18px; height: 18px; font-size: 7px; }
+  .compare-slot-thumb { width: 28px; height: 28px; }
+  .compare-box-title { font-size: 12px; }
+  .compare-card-title { font-size: 10px; }
+  .compare-card-location { font-size: 6px; }
+  .compare-spec-value { font-size: 8px; }
+}
+@media (max-width: 320px) {
+  .compare-tray { padding: 5px 3px; }
+  .compare-tray-actions { gap: 6px; }
+  .compare-tray-close { width: 26px; height: 26px; font-size: 14px; }
+}

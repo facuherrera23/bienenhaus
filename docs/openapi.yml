@@ -1,0 +1,366 @@
+openapi: "3.0.3"
+info:
+  title: Bienenhaus Propiedades API
+  description: |
+    API RESTful del panel de administración de Bienenhaus Propiedades.
+    Inmobiliaria boutique con CRM, tasaciones ACM, portales y redes sociales.
+  version: "1.0.0"
+  contact:
+    name: Bienenhaus Propiedades
+    url: https://bienenhaus.com.ar
+
+servers:
+  - url: https://bienenhaus.com.ar/api
+    description: Producción
+  - url: http://localhost:5000/api
+    description: Desarrollo
+
+components:
+  securitySchemes:
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: session
+  schemas:
+    Error:
+      type: object
+      properties:
+        ok: { type: boolean, enum: [false] }
+        error: { type: string }
+    Property:
+      type: object
+      properties:
+        id: { type: integer }
+        title: { type: string }
+        type: { type: string, enum: [casa, departamento, terreno, local, galpon] }
+        location: { type: string }
+        price: { type: number }
+        beds: { type: integer }
+        baths: { type: integer }
+        sqm: { type: number }
+        sqm_total: { type: number }
+        parkings: { type: integer }
+        status: { type: string, enum: [disponible, reservado, vendido] }
+        featured: { type: boolean }
+        desc: { type: string }
+        images: { type: array, items: { type: string } }
+        latitude: { type: number, nullable: true }
+        longitude: { type: number, nullable: true }
+        created_at: { type: string, format: date-time }
+        video_url: { type: string, nullable: true }
+    Lead:
+      type: object
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        email: { type: string }
+        phone: { type: string }
+        status: { type: string, enum: [nuevo, contactado, calificado, visita_agendada, visita_realizada, negociacion, cerrado_ganado, cerrado_perdido] }
+        agent_name: { type: string, nullable: true }
+        created_at: { type: string, format: date-time }
+    Appraisal:
+      type: object
+      properties:
+        id: { type: integer }
+        titulo: { type: string }
+        estado: { type: string, enum: [borrador, completado, cancelado] }
+        solicitante: { type: string }
+        valor_estimado_usd: { type: number, nullable: true }
+        created_at: { type: string, format: date-time }
+
+paths:
+  /properties:
+    get:
+      summary: Lista propiedades
+      security: [{ SessionAuth: [] }]
+      parameters:
+        - in: query
+          name: page
+          schema: { type: integer, default: 1 }
+        - in: query
+          name: per_page
+          schema: { type: integer, default: 20 }
+        - in: query
+          name: status
+          schema: { type: string }
+        - in: query
+          name: type
+          schema: { type: string }
+      responses:
+        "200":
+          description: Lista paginada de propiedades
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean }
+                  data:
+                    type: object
+                    properties:
+                      items: { type: array, items: { $ref: "#/components/schemas/Property" } }
+                      total: { type: integer }
+                      pages: { type: integer }
+                      page: { type: integer }
+        "401":
+          description: No autenticado
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+    post:
+      summary: Crea una propiedad
+      security: [{ SessionAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/Property" }
+      responses:
+        "201":
+          description: Propiedad creada
+        "400":
+          description: Datos inválidos
+
+  "/properties/{id}":
+    get:
+      summary: Obtiene una propiedad
+      security: [{ SessionAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        "200":
+          description: Propiedad
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean }
+                  data: { $ref: "#/components/schemas/Property" }
+        "404":
+          description: No encontrada
+    put:
+      summary: Actualiza una propiedad
+      security: [{ SessionAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        "200":
+          description: Actualizada
+    delete:
+      summary: Elimina una propiedad
+      security: [{ SessionAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        "200":
+          description: Eliminada
+
+  /rentals:
+    $ref: "#/paths/~1properties"
+
+  /crm/leads:
+    get:
+      summary: Lista leads del CRM
+      security: [{ SessionAuth: [] }]
+      parameters:
+        - in: query
+          name: page
+          schema: { type: integer, default: 1 }
+        - in: query
+          name: status
+          schema: { type: string }
+        - in: query
+          name: agent_id
+          schema: { type: integer }
+      responses:
+        "200":
+          description: Lista paginada de leads
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean }
+                  data:
+                    type: object
+                    properties:
+                      items: { type: array, items: { $ref: "#/components/schemas/Lead" } }
+                      total: { type: integer }
+    post:
+      summary: Crea un lead
+      security: [{ SessionAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name: { type: string }
+                email: { type: string }
+                phone: { type: string }
+      responses:
+        "201":
+          description: Lead creado
+
+  "/crm/leads/{id}":
+    get:
+      summary: Obtiene un lead
+      security: [{ SessionAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        "200":
+          description: Lead
+    delete:
+      summary: Elimina un lead
+      security: [{ SessionAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        "200":
+          description: Eliminado
+
+  /crm/pipeline:
+    get:
+      summary: Pipeline del CRM (leads agrupados por estado)
+      security: [{ SessionAuth: [] }]
+      responses:
+        "200":
+          description: Pipeline
+
+  /appraisals:
+    get:
+      summary: Lista tasaciones ACM
+      security: [{ SessionAuth: [] }]
+      responses:
+        "200":
+          description: Lista de tasaciones
+    post:
+      summary: Crea una tasación
+      security: [{ SessionAuth: [] }]
+      responses:
+        "201":
+          description: Tasación creada
+
+  /agents:
+    get:
+      summary: Lista agentes
+      security: [{ SessionAuth: [] }]
+      responses:
+        "200":
+          description: Lista de agentes
+    post:
+      summary: Crea un agente
+      security: [{ SessionAuth: [] }]
+      responses:
+        "201":
+          description: Agente creado
+
+  /settings:
+    get:
+      summary: Obtiene configuración del sitio
+      security: [{ SessionAuth: [] }]
+      responses:
+        "200":
+          description: Configuración
+    put:
+      summary: Actualiza configuración
+      security: [{ SessionAuth: [] }]
+      responses:
+        "200":
+          description: Actualizada
+
+  /contact:
+    post:
+      summary: Envía mensaje de contacto (público)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, message]
+              properties:
+                name: { type: string }
+                email: { type: string }
+                phone: { type: string }
+                message: { type: string }
+      responses:
+        "200":
+          description: Mensaje enviado
+
+  /auth/login:
+    post:
+      summary: Inicia sesión
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [username, password]
+              properties:
+                username: { type: string }
+                password: { type: string }
+      responses:
+        "200":
+          description: Sesión iniciada
+        "401":
+          description: Credenciales inválidas
+
+  /auth/logout:
+    post:
+      summary: Cierra sesión
+      responses:
+        "200":
+          description: Sesión cerrada
+
+  /portals:
+    get:
+      summary: Lista portales configurados
+      security: [{ SessionAuth: [] }]
+      responses:
+        "200":
+          description: Lista de portales
+
+  /social/accounts:
+    get:
+      summary: Lista cuentas de redes sociales
+      security: [{ SessionAuth: [] }]
+      responses:
+        "200":
+          description: Cuentas sociales
+
+  /stats:
+    get:
+      summary: Estadísticas del dashboard
+      security: [{ SessionAuth: [] }]
+      responses:
+        "200":
+          description: Estadísticas
+
+  /activity:
+    get:
+      summary: Actividad reciente del panel
+      security: [{ SessionAuth: [] }]
+      responses:
+        "200":
+          description: Actividad

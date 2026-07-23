@@ -1,0 +1,477 @@
+/* ═══════════════════════════════════════════════════════════════
+   Módulo 17 — Usuarios, Roles y Permisos (RBAC)
+   Reutiliza: .stg-card, .stg-card-header, .stg-grid-2, .stg-grid-3,
+              .stg-subtabs, .stg-subtab, .field, .field-input, .btn,
+              .admin-status-badge, .admin-filter-check
+╔═══════════════════════════════════════════════════════════════════*/
+
+/* ── RBAC Subtabs (reuse pattern from settings) ── */
+.rbac-subtabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--admin-border);
+  padding-bottom: 0;
+}
+.rbac-subtab {
+  background: none;
+  border: none;
+  padding: 8px 14px;
+  color: var(--admin-text-muted);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+.rbac-subtab:hover { color: var(--admin-text); }
+.rbac-subtab.active {
+  color: var(--admin-accent);
+  border-bottom-color: var(--admin-accent);
+}
+
+/* ── Dashboard KPIs ── */
+.rbac-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.rbac-kpi-card {
+  background: var(--admin-surface-2);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.rbac-kpi-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--admin-text);
+  line-height: 1.1;
+}
+.rbac-kpi-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--admin-text-muted);
+  font-weight: 500;
+}
+
+/* ── User rows ── */
+.rbac-user-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--admin-surface-2);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  padding: 12px 16px;
+  margin-bottom: 6px;
+  transition: border-color 0.15s;
+}
+.rbac-user-row:hover { border-color: var(--admin-surface-3); }
+.rbac-user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--admin-surface-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--admin-accent);
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+.rbac-user-info { flex: 1; min-width: 0; }
+.rbac-user-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--admin-text);
+}
+.rbac-user-email {
+  font-size: 10px;
+  color: var(--admin-text-muted);
+  margin-top: 1px;
+}
+.rbac-user-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.rbac-user-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* ── Role cards ── */
+.rbac-role-card {
+  background: var(--admin-surface-2);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.15s;
+}
+.rbac-role-card:hover { border-color: var(--admin-surface-3); }
+.rbac-role-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.rbac-role-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.rbac-role-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--admin-text);
+}
+.rbac-role-count {
+  font-size: 10px;
+  color: var(--admin-text-muted);
+}
+.rbac-role-desc {
+  font-size: 11px;
+  color: var(--admin-text-secondary);
+  line-height: 1.5;
+}
+.rbac-role-perms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.rbac-role-perm-tag {
+  font-size: 9px;
+  background: var(--admin-surface-3);
+  color: var(--admin-text-muted);
+  padding: 3px 7px;
+  border-radius: 4px;
+}
+
+/* ── Permissions matrix ── */
+.rbac-perm-module {
+  margin-bottom: 14px;
+}
+.rbac-perm-module-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--admin-text-secondary);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--admin-border);
+}
+.rbac-perm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 6px;
+}
+.rbac-perm-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: var(--admin-surface-2);
+  border: 1px solid var(--admin-border);
+  border-radius: 5px;
+  font-size: 11px;
+  color: var(--admin-text-secondary);
+  cursor: default;
+}
+.rbac-perm-item input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  accent-color: var(--admin-primary);
+}
+
+/* ── Invitation rows ── */
+.rbac-invite-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--admin-surface-2);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  padding: 12px 16px;
+  margin-bottom: 6px;
+}
+.rbac-invite-info { flex: 1; min-width: 0; }
+.rbac-invite-email {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--admin-text);
+}
+.rbac-invite-meta {
+  font-size: 10px;
+  color: var(--admin-text-muted);
+  margin-top: 1px;
+}
+
+/* ── Session rows ── */
+.rbac-session-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--admin-surface-2);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius);
+  padding: 12px 16px;
+  margin-bottom: 6px;
+}
+.rbac-session-info { flex: 1; min-width: 0; }
+.rbac-session-device {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--admin-text);
+}
+.rbac-session-detail {
+  font-size: 10px;
+  color: var(--admin-text-muted);
+  margin-top: 1px;
+}
+
+/* ── Audit timeline ── */
+/* .rbac-audit-list — base container (empty, remove if unused) */
+.rbac-audit-item {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--admin-border);
+}
+.rbac-audit-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--admin-surface-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.rbac-audit-info { flex: 1; min-width: 0; }
+.rbac-audit-action {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--admin-text);
+}
+.rbac-audit-detail {
+  font-size: 10px;
+  color: var(--admin-text-muted);
+  margin-top: 1px;
+}
+.rbac-audit-time {
+  font-size: 10px;
+  color: var(--admin-text-muted);
+  flex-shrink: 0;
+  text-align: right;
+}
+
+/* ── Side panel (reuse pattern) ── */
+.rbac-side-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 440px;
+  max-width: 100vw;
+  height: 100vh;
+  background: var(--admin-surface-1);
+  border-left: 1px solid var(--admin-border);
+  z-index: 500;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.rbac-side-panel.open { transform: translateX(0); }
+.rbac-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--admin-border);
+  flex-shrink: 0;
+}
+.rbac-panel-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--admin-text);
+}
+.rbac-panel-close {
+  background: none;
+  border: none;
+  color: var(--admin-text-muted);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+.rbac-panel-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px 20px;
+}
+.rbac-panel-section {
+  margin-bottom: 18px;
+}
+.rbac-panel-section-title {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--admin-text-muted);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.rbac-panel-label {
+  font-size: 10px;
+  color: var(--admin-text-muted);
+  margin-bottom: 2px;
+}
+.rbac-panel-value {
+  font-size: 13px;
+  color: var(--admin-text);
+  font-weight: 500;
+}
+
+/* ── Detail grid ── */
+.rbac-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .rbac-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .rbac-perm-grid { grid-template-columns: 1fr; }
+  .rbac-detail-grid { grid-template-columns: 1fr; }
+  .rbac-side-panel { width: 100vw; }
+  .rbac-user-meta { display: none; }
+  .rbac-user-actions { gap: 4px; }
+}
+
+/* ── RBAC overlay (hidden-toggle pattern) ── */
+.rbac-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: calc(var(--admin-z-modal) - 1);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+.rbac-overlay:not(.hidden) {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Inline-style migrations ──────────────────────────────────── */
+.usr-col-gap6 {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.usr-log-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--admin-border);
+}
+.usr-log-text {
+  color: var(--admin-text);
+}
+.usr-text-muted {
+  color: var(--admin-text-muted);
+}
+.usr-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.usr-section-title {
+  color: var(--admin-text);
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0;
+}
+.usr-login-time {
+  font-size: 10px;
+  color: var(--admin-text-muted);
+}
+.usr-session-badge {
+  font-size: 9px;
+}
+.usr-danger-btn {
+  color: var(--admin-danger);
+}
+.usr-event-row {
+  font-size: 11px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--admin-border);
+  display: flex;
+  justify-content: space-between;
+}
+.usr-field-full {
+  grid-column: 1 / -1;
+}
+.usr-field-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.usr-btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+.usr-role-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+.usr-perm-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.usr-perm-label {
+  font-size: 11px;
+  color: var(--admin-text-muted);
+}
+.usr-perm-select {
+  width: auto;
+  max-width: 200px;
+}
+.usr-msg-inline {
+  font-size: 11px;
+}
+.usr-badge-danger {
+  background: var(--admin-danger);
+  color: #fff;
+}
+.usr-subsection-title {
+  color: var(--admin-text);
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 0 12px 0;
+}

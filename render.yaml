@@ -1,0 +1,128 @@
+databases:
+  - name: bienenhaus-db
+    plan: free
+    databaseName: bienenhaus
+    user: bienenhaus
+
+redis:
+  - name: bienenhaus-redis
+    plan: free
+    maxmemoryPolicy: noeviction
+
+services:
+  - type: web
+    name: bienenhaus-propiedades
+    plan: free
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    releaseCommand: flask db upgrade
+    startCommand: gunicorn -c gunicorn.conf.py app:application
+    healthCheckPath: /api/health
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: bienenhaus-db
+          property: connectionString
+      - key: REDIS_URL
+        fromDatabase:
+          name: bienenhaus-redis
+          property: connectionString
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: CLOUDINARY_URL
+        sync: false
+      - key: SITE_URL
+        value: https://bienenhaus.onrender.com
+      - key: VAPID_PUBLIC_KEY
+        sync: false
+      - key: VAPID_PRIVATE_KEY
+        sync: false
+      - key: VAPID_CLAIM_EMAIL
+        value: admin@bienenhaus.com.ar
+      - key: SENTRY_DSN
+        sync: false
+      - key: BACKUP_API_KEY
+        sync: false
+      - key: RATELIMIT_ENABLED
+        value: true
+
+  - type: worker
+    name: bienenhaus-social-worker
+    plan: free
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: python start_social_worker.py
+    healthCheckPath: /api/social/stats
+    envVars:
+      - key: SECRET_KEY
+        fromService:
+          type: web
+          name: bienenhaus-propiedades
+          envVarKey: SECRET_KEY
+      - key: DATABASE_URL
+        fromDatabase:
+          name: bienenhaus-db
+          property: connectionString
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: SENTRY_DSN
+        sync: false
+      - key: CLOUDINARY_URL
+        sync: false
+      - key: SITE_URL
+        value: https://bienenhaus.onrender.com
+      - key: SOCIAL_WORKER_INTERVAL
+        value: 60
+
+  - type: cron
+    name: bienenhaus-db-backup
+    runtime: python
+    rootDir: backend
+    schedule: "0 3 * * *"
+    buildCommand: ""
+    startCommand: python scripts/cron_backup.py
+    envVars:
+      - key: BACKUP_API_KEY
+        sync: false
+      - key: BACKUP_API_URL
+        value: https://bienenhaus.onrender.com
+
+  - type: cron
+    name: bienenhaus-portal-worker
+    runtime: python
+    rootDir: backend
+    schedule: "*/5 * * * *"
+    buildCommand: ""
+    startCommand: python portal_worker.py
+    envVars:
+      - key: SECRET_KEY
+        fromService:
+          type: web
+          name: bienenhaus-propiedades
+          envVarKey: SECRET_KEY
+      - key: DATABASE_URL
+        fromDatabase:
+          name: bienenhaus-db
+          property: connectionString
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: SENTRY_DSN
+        sync: false
+
+  - type: cron
+    name: bienenhaus-warmup
+    runtime: python
+    rootDir: backend
+    schedule: "*/4 * * * *"
+    buildCommand: ""
+    startCommand: python scripts/warmup.py
+    envVars:
+      - key: SITE_URL
+        value: https://bienenhaus.onrender.com
+

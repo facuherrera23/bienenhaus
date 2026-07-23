@@ -1,0 +1,86 @@
+/* ═══════════════════════════════════════════════════════════════
+   BIENENHAUS ADMIN — Badge System
+   .admin-status-badge, .status-disponible/vendida/oculta,
+   .admin-prop-featured, .portal-status-badge,
+   .mk-badge, .mk-badge-active/inactive
+   Depends on: 0-tokens.css
+╔═══════════════════════════════════════════════════════════════════*/
+
+.admin-status-badge {
+  font-size: 8px;
+  letter-spacing: var(--admin-ls-badge);
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: var(--admin-radius-sm);
+  border: 1px solid;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.4;
+  transition: var(--admin-transition);
+}
+
+.status-disponible {
+  color: var(--admin-success);
+  border-color: var(--admin-success-border);
+  background: var(--admin-success-bg);
+}
+.status-disponible:hover {
+  border-color: rgba(57, 217, 138, 0.5);
+  background: rgba(57, 217, 138, 0.12);
+}
+
+.status-vendida {
+  color: var(--admin-text-muted);
+  border-color: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.status-oculta {
+  color: var(--admin-text-disabled);
+  border-color: rgba(255, 255, 255, 0.03);
+  background: transparent;
+}
+.status-oculta:hover {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.admin-prop-featured {
+  color: var(--admin-warning);
+  border-color: var(--admin-warning-border);
+  background: var(--admin-warning-bg);
+}
+
+/* ── Marketing badges ──────────────────────────────────────── */
+.mk-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--admin-radius-sm);
+  padding: 3px 10px;
+  white-space: nowrap;
+  font-family: var(--admin-font-body);
+}
+.mk-badge-active {
+  background: var(--admin-success-bg);
+  color: var(--admin-success);
+  border: 1px solid var(--admin-success-border);
+}
+.mk-badge-inactive {
+  background: var(--admin-surface);
+  color: var(--admin-text-muted);
+  border: 1px solid var(--admin-border);
+}
+
+/* ── Status badge (legacy, inline style) ───────────────────── */
+.status-badge {
+  font-family: var(--admin-font-body);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: var(--admin-ls-badge);
+  text-transform: uppercase;
+  border-radius: var(--admin-radius-sm);
+  padding: 1px 6px;
+}

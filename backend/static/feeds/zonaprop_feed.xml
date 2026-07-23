@@ -1,0 +1,1311 @@
+<?xml version="1.0" ?>
+<lista>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa Centro</titulo>
+    <descripcion/>
+    <precio>80000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>3</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Centro</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Depto Norte</titulo>
+    <descripcion/>
+    <precio>55000</precio>
+    <moneda>USD</moneda>
+    <tipo>Departamento</tipo>
+    <dormitorios>2</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Norte</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa Grande</titulo>
+    <descripcion/>
+    <precio>150000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>4</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Centro</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa Centro</titulo>
+    <descripcion/>
+    <precio>80000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>3</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Centro</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Depto Norte</titulo>
+    <descripcion/>
+    <precio>55000</precio>
+    <moneda>USD</moneda>
+    <tipo>Departamento</tipo>
+    <dormitorios>2</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Norte</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa Grande</titulo>
+    <descripcion/>
+    <precio>150000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>4</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Centro</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa Centro</titulo>
+    <descripcion/>
+    <precio>80000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>3</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Centro</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Depto Norte</titulo>
+    <descripcion/>
+    <precio>55000</precio>
+    <moneda>USD</moneda>
+    <tipo>Departamento</tipo>
+    <dormitorios>2</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Norte</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa Grande</titulo>
+    <descripcion/>
+    <precio>150000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>4</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Centro</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa Centro</titulo>
+    <descripcion/>
+    <precio>80000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>3</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Centro</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Depto Norte</titulo>
+    <descripcion/>
+    <precio>55000</precio>
+    <moneda>USD</moneda>
+    <tipo>Departamento</tipo>
+    <dormitorios>2</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Norte</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa Grande</titulo>
+    <descripcion/>
+    <precio>150000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>4</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Centro</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa Centro</titulo>
+    <descripcion/>
+    <precio>80000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>3</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Centro</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Depto Norte</titulo>
+    <descripcion/>
+    <precio>55000</precio>
+    <moneda>USD</moneda>
+    <tipo>Departamento</tipo>
+    <dormitorios>2</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Norte</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa Grande</titulo>
+    <descripcion/>
+    <precio>150000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>4</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Centro</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa Centro</titulo>
+    <descripcion/>
+    <precio>80000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>3</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Centro</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Depto Norte</titulo>
+    <descripcion/>
+    <precio>55000</precio>
+    <moneda>USD</moneda>
+    <tipo>Departamento</tipo>
+    <dormitorios>2</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Norte</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa Grande</titulo>
+    <descripcion/>
+    <precio>150000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>4</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Centro</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa Test</titulo>
+    <descripcion/>
+    <precio>80000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Editado</titulo>
+    <descripcion/>
+    <precio>60000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa test</titulo>
+    <descripcion/>
+    <precio>100000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Test img</titulo>
+    <descripcion/>
+    <precio>50000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes>
+      <imagen>img1.jpg</imagen>
+      <imagen>img2.jpg</imagen>
+    </imagenes>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Test views</titulo>
+    <descripcion/>
+    <precio>50000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Test pv</titulo>
+    <descripcion/>
+    <precio>50000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Test unique</titulo>
+    <descripcion/>
+    <precio>50000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Test rel</titulo>
+    <descripcion/>
+    <precio>50000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Test portal</titulo>
+    <descripcion/>
+    <precio>80000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa export</titulo>
+    <descripcion/>
+    <precio>100000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>3</dormitorios>
+    <banos>2</banos>
+    <superficie>120</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes>
+      <imagen>img1.jpg</imagen>
+    </imagenes>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa xml</titulo>
+    <descripcion/>
+    <precio>90000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>P1</titulo>
+    <descripcion/>
+    <precio>1</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>A</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>P2</titulo>
+    <descripcion/>
+    <precio>2</precio>
+    <moneda>USD</moneda>
+    <tipo>Depto</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>B</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa Test</titulo>
+    <descripcion>Casa en Córdoba</descripcion>
+    <precio>85000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>3</dormitorios>
+    <banos>2</banos>
+    <superficie>120</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba</localidad>
+    </ubicacion>
+    <imagenes>
+      <imagen>https://example.com/img.jpg</imagen>
+    </imagenes>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa XML Test</titulo>
+    <descripcion>Descripción test XML</descripcion>
+    <precio>100000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>2</dormitorios>
+    <banos>1</banos>
+    <superficie>80</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba</localidad>
+    </ubicacion>
+    <imagenes>
+      <imagen>https://example.com/img.jpg</imagen>
+    </imagenes>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Casa Update</titulo>
+    <descripcion/>
+    <precio>50000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Local Sur</titulo>
+    <descripcion/>
+    <precio>120000</precio>
+    <moneda>USD</moneda>
+    <tipo>Local</tipo>
+    <dormitorios>1</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>vendida</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Sur</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Local Sur</titulo>
+    <descripcion/>
+    <precio>120000</precio>
+    <moneda>USD</moneda>
+    <tipo>Local</tipo>
+    <dormitorios>1</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>vendida</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Sur</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Local Sur</titulo>
+    <descripcion/>
+    <precio>120000</precio>
+    <moneda>USD</moneda>
+    <tipo>Local</tipo>
+    <dormitorios>1</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>vendida</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Sur</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Local Sur</titulo>
+    <descripcion/>
+    <precio>120000</precio>
+    <moneda>USD</moneda>
+    <tipo>Local</tipo>
+    <dormitorios>1</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>vendida</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Sur</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Local Sur</titulo>
+    <descripcion/>
+    <precio>120000</precio>
+    <moneda>USD</moneda>
+    <tipo>Local</tipo>
+    <dormitorios>1</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>vendida</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Sur</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Local Sur</titulo>
+    <descripcion/>
+    <precio>120000</precio>
+    <moneda>USD</moneda>
+    <tipo>Local</tipo>
+    <dormitorios>1</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>vendida</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Córdoba Sur</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Venta</operacion>
+    <titulo>Vender</titulo>
+    <descripcion/>
+    <precio>50000</precio>
+    <moneda>USD</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>vendida</estado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Alquiler</operacion>
+    <titulo>Depto Sur</titulo>
+    <descripcion/>
+    <precio>100000</precio>
+    <moneda>ARS</moneda>
+    <tipo>Departamento</tipo>
+    <dormitorios>1</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>alquilada</estado>
+    <amoblado>Si</amoblado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Sur</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Alquiler</operacion>
+    <titulo>Depto Sur</titulo>
+    <descripcion/>
+    <precio>100000</precio>
+    <moneda>ARS</moneda>
+    <tipo>Departamento</tipo>
+    <dormitorios>1</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>alquilada</estado>
+    <amoblado>Si</amoblado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Sur</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Alquiler</operacion>
+    <titulo>Depto Sur</titulo>
+    <descripcion/>
+    <precio>100000</precio>
+    <moneda>ARS</moneda>
+    <tipo>Departamento</tipo>
+    <dormitorios>1</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>alquilada</estado>
+    <amoblado>Si</amoblado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Sur</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Alquiler</operacion>
+    <titulo>Alquiler Centro</titulo>
+    <descripcion/>
+    <precio>150000</precio>
+    <moneda>ARS</moneda>
+    <tipo>Depto</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>alquilada</estado>
+    <amoblado>Si</amoblado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Alquiler</operacion>
+    <titulo>Depto Centro</titulo>
+    <descripcion/>
+    <precio>150000</precio>
+    <moneda>ARS</moneda>
+    <tipo>Departamento</tipo>
+    <dormitorios>2</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <amoblado>Si</amoblado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Centro</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Alquiler</operacion>
+    <titulo>Casa Norte</titulo>
+    <descripcion/>
+    <precio>200000</precio>
+    <moneda>ARS</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>3</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <amoblado>No</amoblado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Norte</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Alquiler</operacion>
+    <titulo>Depto Centro</titulo>
+    <descripcion/>
+    <precio>150000</precio>
+    <moneda>ARS</moneda>
+    <tipo>Departamento</tipo>
+    <dormitorios>2</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <amoblado>Si</amoblado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Centro</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Alquiler</operacion>
+    <titulo>Casa Norte</titulo>
+    <descripcion/>
+    <precio>200000</precio>
+    <moneda>ARS</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>3</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <amoblado>No</amoblado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Norte</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Alquiler</operacion>
+    <titulo>Depto Centro</titulo>
+    <descripcion/>
+    <precio>150000</precio>
+    <moneda>ARS</moneda>
+    <tipo>Departamento</tipo>
+    <dormitorios>2</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <amoblado>Si</amoblado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Centro</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Alquiler</operacion>
+    <titulo>Casa Norte</titulo>
+    <descripcion/>
+    <precio>200000</precio>
+    <moneda>ARS</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>3</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <amoblado>No</amoblado>
+    <ubicacion>
+      <direccion/>
+      <localidad>Norte</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Alquiler</operacion>
+    <titulo>Editado</titulo>
+    <descripcion/>
+    <precio>120000</precio>
+    <moneda>ARS</moneda>
+    <tipo>Depto</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <expensas>5000</expensas>
+    <amoblado>No</amoblado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Alquiler</operacion>
+    <titulo>Test rv</titulo>
+    <descripcion/>
+    <precio>100000</precio>
+    <moneda>ARS</moneda>
+    <tipo>Depto</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <amoblado>No</amoblado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Alquiler</operacion>
+    <titulo>Test rv unique</titulo>
+    <descripcion/>
+    <precio>100000</precio>
+    <moneda>ARS</moneda>
+    <tipo>Depto</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <amoblado>No</amoblado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Alquiler</operacion>
+    <titulo>Test rv rel</titulo>
+    <descripcion/>
+    <precio>100000</precio>
+    <moneda>ARS</moneda>
+    <tipo>Depto</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <amoblado>No</amoblado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Alquiler</operacion>
+    <titulo>Alquiler test</titulo>
+    <descripcion/>
+    <precio>150000</precio>
+    <moneda>ARS</moneda>
+    <tipo>Depto</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <amoblado>No</amoblado>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Alquiler</operacion>
+    <titulo>Alq amoblado</titulo>
+    <descripcion/>
+    <precio>200000</precio>
+    <moneda>ARS</moneda>
+    <tipo>Casa</tipo>
+    <dormitorios>0</dormitorios>
+    <banos>0</banos>
+    <superficie>0</superficie>
+    <estado>disponible</estado>
+    <amoblado>Si</amoblado>
+    <minimo_meses>6</minimo_meses>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes/>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+  <inmueble>
+    <operacion>Alquiler</operacion>
+    <titulo>Alquiler Test</titulo>
+    <descripcion>Depto</descripcion>
+    <precio>45000</precio>
+    <moneda>ARS</moneda>
+    <tipo>Departamento</tipo>
+    <dormitorios>2</dormitorios>
+    <banos>1</banos>
+    <superficie>65</superficie>
+    <estado>disponible</estado>
+    <expensas>5000</expensas>
+    <amoblado>Si</amoblado>
+    <minimo_meses>6</minimo_meses>
+    <ubicacion>
+      <direccion/>
+      <localidad>CBA</localidad>
+    </ubicacion>
+    <imagenes>
+      <imagen>https://example.com/img2.jpg</imagen>
+    </imagenes>
+    <contacto>
+      <nombre>Bienenhaus Propiedades</nombre>
+      <telefono>+54 351 555-5555</telefono>
+      <email/>
+    </contacto>
+  </inmueble>
+</lista>

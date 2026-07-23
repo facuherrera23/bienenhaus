@@ -1,0 +1,2407 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Administración · Bienenhaus</title>
+  <!-- Sin indexación por buscadores -->
+  <meta name="robots" content="noindex, nofollow, noarchive"/>
+  <link rel="stylesheet" href="/css/fonts.css?v=__VERSION__"/>
+  <link rel="stylesheet" href="/css/styles.min.css?v=__VERSION__"/>
+  <link rel="stylesheet" href="/css/admin.min.css?v=__VERSION__"/>
+  <link rel="manifest" href="/manifest.json?v=__VERSION__"/>
+  <meta name="theme-color" content="#20b8ab"/>
+  <meta name="vapid-public-key" content="__VAPID_PUBLIC_KEY__"/>
+  <meta name="contact-phone" content="+54 351 411-0000">
+  <meta name="contact-email" content="info@bienenhaus.com.ar">
+  <meta name="site-url" content="">
+  <meta name="site-name" content="Bienenhaus Propiedades">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png"/>
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png"/>
+  <script>window.__API_BASE__='';</script>
+
+<body class="admin-body">
+
+<a class="admin-skip-link" href="#admin-main">Saltar al contenido principal</a>
+
+<!-- ═══════════════════════════════════════════
+     LOGIN SCREEN — split screen premium
+═══════════════════════════════════════════ -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-bg-orb login-bg-orb--1"></div>
+  <div class="login-bg-orb login-bg-orb--2"></div>
+  <div class="login-bg-orb login-bg-orb--3"></div>
+  <div class="login-bg-glow"></div>
+
+  <!-- Left brand panel -->
+  <div class="login-brand-panel">
+    <div class="login-brand-pattern"></div>
+    <div class="login-brand-pattern login-brand-pattern--overlay"></div>
+    <div class="login-brand-content">
+      <div class="login-brand-icon">
+        <svg width="26" height="26" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 50 L50 15 L80 50"/>
+          <path d="M30 45 L30 75 L60 75 L60 55"/>
+          <path d="M60 55 L70 55 L70 75"/>
+        </svg>
+      </div>
+      <h1 class="login-brand-name">Bienenhaus</h1>
+      <p class="login-brand-tagline">Propiedades · Asesoramiento · Inversiones</p>
+      <div class="login-brand-divider"></div>
+      <p class="login-brand-desc">Panel de administración reservado para agentes autorizados.</p>
+    </div>
+    <div class="login-brand-footer">
+      <span class="login-version">v1.0.0</span>
+      <span class="login-copyright">© 2026 Bienenhaus Propiedades</span>
+    </div>
+  </div>
+
+  <!-- Right form panel -->
+  <div class="login-form-panel">
+    <div class="login-card">
+      <div class="login-card-glow"></div>
+      <div class="login-card-header">
+        <div class="login-avatar-icon">
+          <svg width="18" height="22" viewBox="0 0 20 22" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="2" y="9" width="16" height="12" rx="2"/>
+            <path d="M5 9V7a5 5 0 0110 0v2" stroke-linecap="round"/>
+            <circle cx="10" cy="15" r="1.5" fill="currentColor"/>
+          </svg>
+        </div>
+        <h2 class="login-card-title">Bienvenido</h2>
+        <p class="login-card-sub">Ingresá tus credenciales para acceder al panel</p>
+      </div>
+
+      <form class="login-card-body" id="loginForm" novalidate>
+        <div class="field field--float">
+          <input type="text" id="loginUser" class="field-input" placeholder=" " autocomplete="username" aria-required="true"/>
+          <label for="loginUser" class="field-label-float">Usuario</label>
+          <span class="field-focus-ring"></span>
+        </div>
+        <div class="field field--float">
+          <input type="password" id="loginPass" class="field-input" placeholder=" " autocomplete="current-password" aria-required="true"/>
+          <label for="loginPass" class="field-label-float">Contraseña</label>
+          <span class="field-focus-ring"></span>
+        </div>
+
+        <p id="loginError" class="login-error hidden" role="alert" aria-live="assertive">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>Credenciales incorrectas.</span>
+        </p>
+
+        <button type="submit" class="btn btn-primary login-btn" id="doLogin">
+          <span class="login-btn-text">Ingresar al panel</span>
+          <span class="login-btn-spinner"></span>
+        </button>
+      </form>
+
+      <div class="login-card-footer">
+        <a href="/" class="login-back">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Volver al sitio público
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ADMIN PANEL (visible tras login)
+═══════════════════════════════════════════ -->
+<div id="adminScreen" class="admin-screen hidden">
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <button class="sidebar-collapse-btn" id="sidebarToggle" aria-label="Colapsar sidebar" aria-expanded="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="sidebar-brand">
+      <img src="/images/BienenhausBHBlanco512x512.png"
+           alt="Bienenhaus" class="sidebar-logo"/>
+      <div class="sidebar-brand-sub admin-mt-6">Administración</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="sidebar-link active" data-tab="dashboard">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+        </svg>
+        Dashboard
+      </button>
+      <button class="sidebar-link" data-tab="props">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        Propiedades
+        <span class="sidebar-badge" id="sidebarPropCount">0</span>
+      </button>
+      <button class="sidebar-link" data-tab="requests">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
+          <rect x="9" y="3" width="6" height="4" rx="1"/>
+          <path d="M9 14l2 2 4-4"/>
+        </svg>
+        Solicitudes
+        <span class="sidebar-badge" id="sidebarReqCount">0</span>
+      </button>
+      <button class="sidebar-link" data-tab="tasacion-requests">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+        </svg>
+        Tasaciones recibidas
+        <span class="sidebar-badge" id="sidebarTasacionCount">0</span>
+      </button>
+      <button class="sidebar-link" data-tab="appraisals">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+        Tasaciones
+        <span class="sidebar-badge" id="sidebarAppraisalCount">0</span>
+      </button>
+      <button class="sidebar-link" data-tab="acm">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+        </svg>
+        ACM Tool
+      </button>
+      <button class="sidebar-link" data-tab="tasaciones">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+        Tasaciones 2
+        <span class="sidebar-badge" id="sidebarTasacionesCount">0</span>
+      </button>
+      <button class="sidebar-link" data-tab="crm">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+        CRM
+        <span class="sidebar-badge" id="sidebarCrmCount">0</span>
+      </button>
+      <button class="sidebar-link" data-tab="messages">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+        </svg>
+        Mensajes
+        <span class="sidebar-badge" id="sidebarMsgCount">0</span>
+      </button>
+      <button class="sidebar-link" data-tab="calendar">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        Agenda
+        <span class="sidebar-badge" id="sidebarCalCount">0</span>
+      </button>
+      <button class="sidebar-link" data-tab="bajas">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        Bajas de datos
+        <span class="sidebar-badge" id="sidebarBajaCount">0</span>
+      </button>
+      <button class="sidebar-link" data-tab="marketing" data-role="admin">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+          <path d="M13.73 21a2 2 0 01-3.46 0"/>
+        </svg>
+        Marketing
+      </button>
+      <button class="sidebar-link" data-tab="portals" data-role="admin">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+        </svg>
+        Portales
+        <span class="sidebar-badge" id="sidebarPortalCount">0</span>
+      </button>
+      <button class="sidebar-link" data-tab="agents">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+        Agentes
+        <span class="sidebar-badge" id="sidebarAgentCount">0</span>
+      </button>
+      <button class="sidebar-link" data-tab="users" data-role="admin">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+        Usuarios
+      </button>
+      <button class="sidebar-link" data-tab="settings">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+        </svg>
+        Configuración
+      </button>
+      <button class="sidebar-link" data-tab="security" data-role="admin">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+        </svg>
+        Seguridad
+      </button>
+      <button class="sidebar-link" data-tab="activity">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+        Actividad
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="/" target="_blank" class="sidebar-link sidebar-link-ghost">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+        Ver sitio
+      </a>
+      <button class="sidebar-link sidebar-link-ghost" id="doLogout">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        Cerrar sesión
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="admin-main" id="admin-main">
+
+    <!-- User top bar -->
+    <div class="admin-userbar" id="adminUserbar">
+      <div class="admin-userbar-left"></div>
+      <div class="admin-userbar-right">
+        <div class="user-badge" id="userBadge">
+          <span class="user-badge-avatar" id="userBadgeAvatar">A</span>
+          <div class="user-badge-info">
+            <span class="user-badge-name" id="userBadgeName">admin</span>
+            <span class="user-badge-role" id="userBadgeRole">admin</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── DASHBOARD TAB ── -->
+    <section id="tabDashboard" class="admin-tab-content">
+      <div class="admin-topbar">
+        <div>
+          <h1 class="admin-page-title">Dashboard</h1>
+          <p class="admin-page-sub">Resumen general del sitio</p>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="refreshDashboard">↻ Actualizar</button>
+      </div>
+      <div id="dashboardContent">
+        <div class="loading-state">Cargando estadísticas...</div>
+      </div>
+    </section>
+
+    <!-- ── PROPERTIES TAB ── -->
+    <section id="tabProps" class="admin-tab-content">
+      <div class="admin-topbar">
+        <div>
+          <h1 class="admin-page-title">Propiedades</h1>
+          <p class="admin-page-sub" id="propSubtitle">Cargando...</p>
+        </div>
+        <div class="admin-flex-center admin-gap-12">
+          <label class="select-all-wrap">
+            <input type="checkbox" id="selectAllCheck" data-action="toggleSelectAll"/>
+            Seleccionar todo
+          </label>
+          <button class="btn btn-ghost btn-sm" data-action="exportCSV" title="Exportar CSV">⬇ CSV</button>
+          <button class="btn btn-primary" id="newPropBtn">+ Nueva</button>
+        </div>
+      </div>
+      <div class="admin-subtabs">
+        <button class="admin-subtab active" data-subtab="venta">Venta</button>
+        <button class="admin-subtab" data-subtab="alquiler">Alquiler</button>
+      </div>
+      <div class="prop-search-bar">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="propSearch" class="prop-search-input" placeholder="Buscar por título o ubicación..." data-action="filterProps" aria-label="Buscar propiedades"/>
+        <span id="propSearchClear" class="prop-search-clear hidden" data-action="clearPropSearch">✕</span>
+      </div>
+      <div class="admin-filter-bar" id="filterBar">
+        <select id="filterType" class="field-input field-input--select" data-action="applyAdminFilters" aria-label="Filtrar por tipo">
+          <option value="all">Todos los tipos</option>
+          <option value="casa">Casa</option>
+          <option value="departamento">Departamento</option>
+          <option value="local">Local</option>
+          <option value="terreno">Terreno</option>
+          <option value="ph">PH</option>
+          <option value="oficina">Oficina</option>
+          <option value="galpon">Galpón</option>
+          <option value="otro">Otro</option>
+        </select>
+        <select id="filterStatus" class="field-input field-input--select" data-action="applyAdminFilters" aria-label="Filtrar por estado">
+          <option value="all">Todos los estados</option>
+          <option value="disponible">Disponible</option>
+          <option value="vendida">Vendida</option>
+          <option value="alquilada">Alquilada</option>
+          <option value="oculta">Oculta</option>
+        </select>
+        <select id="filterBeds" class="field-input field-input--select" data-action="applyAdminFilters" aria-label="Filtrar por ambientes">
+          <option value="all">Todos los ambientes</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4+</option>
+        </select>
+        <input type="number" id="filterPriceMin" class="field-input filter-price-input" placeholder="Precio mín." data-action="applyAdminFilters" aria-label="Precio mínimo"/>
+        <input type="number" id="filterPriceMax" class="field-input filter-price-input" placeholder="Precio máx." data-action="applyAdminFilters" aria-label="Precio máximo"/>
+        <button class="btn btn-ghost btn-sm" data-action="clearAdminFilters" title="Limpiar filtros">✕ Limpiar</button>
+      </div>
+      <div id="batchBar" class="batch-bar hidden">
+        <span class="batch-count" id="batchCount">0 seleccionadas</span>
+        <button class="btn btn-primary btn-sm" data-action="batchSetStatus" data-status="disponible">Disponible</button>
+        <button class="btn btn-warn btn-sm" data-action="batchSetStatus" data-status="vendida">Vendida</button>
+        <button class="btn btn-ghost btn-sm" data-action="batchSetStatus" data-status="oculta">Ocultar</button>
+        <button class="btn btn-danger btn-sm" data-action="batchDelete">Eliminar</button>
+        <button class="btn btn-ghost btn-sm admin-ml-auto" data-action="clearSelection">✕ Limpiar</button>
+      </div>
+      <div id="propsAdminList" class="admin-list">
+        <div class="loading-state">Cargando...</div>
+      </div>
+    </section>
+
+    <!-- ── AGENTS TAB ── -->
+    <section id="tabAgents" class="admin-tab-content hidden">
+      <div class="admin-topbar">
+        <div>
+          <h1 class="admin-page-title">Agentes</h1>
+          <p class="admin-page-sub" id="agentSubtitle">Cargando...</p>
+        </div>
+        <button class="btn btn-primary" id="newAgentBtn">+ Nuevo agente</button>
+      </div>
+      <div id="agentsAdminList" class="admin-list">
+        <div class="loading-state">Cargando...</div>
+      </div>
+    </section>
+
+
+    <!-- ── MESSAGES TAB ── -->
+    <section id="tabMessages" class="admin-tab-content hidden">
+      <div class="admin-topbar">
+        <div>
+          <h1 class="admin-page-title">Mensajes</h1>
+          <p class="admin-page-sub" id="msgSubtitle">Cargando...</p>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="loadMessages()">↻ Actualizar</button>
+      </div>
+      <div class="msg-layout">
+        <div class="msg-conv-list" id="msgConvList">
+          <div class="msg-conv-header">
+            <span class="msg-conv-header-title">Conversaciones</span>
+          </div>
+          <input class="msg-conv-search" type="text" placeholder="Buscar conversación..." aria-label="Buscar conversación" oninput="filterConversations(this.value)">
+          <div class="loading-state">Cargando conversaciones...</div>
+        </div>
+        <div class="msg-chat-area" id="msgChatArea">
+          <div class="msg-chat-empty">
+            <div class="msg-chat-empty-icon">💬</div>
+            <div class="msg-chat-empty-text">Seleccioná una conversación para ver los mensajes</div>
+          </div>
+        </div>
+        <div class="msg-side-panel" id="msgSidePanel">
+          <div class="msg-panel-section">
+            <div class="msg-panel-section-title">Contacto</div>
+            <div class="msg-panel-placeholder">Seleccioná una conversación</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── REQUESTS TAB (Módulo 11) ── -->
+    <section id="tabRequests" class="admin-tab-content hidden">
+      <div class="admin-topbar">
+        <div>
+          <h1 class="admin-page-title">Solicitudes</h1>
+          <p class="admin-page-sub" id="reqSubtitle">Cargando...</p>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="loadRequests()">↻ Actualizar</button>
+      </div>
+      <div class="req-kpi-bar" id="reqKpiBar">
+        <div class="loading-state" style="grid-column:1/-1">Cargando estadísticas...</div>
+      </div>
+      <div class="req-toolbar">
+        <select id="reqFilterStatus" onchange="filterRequests()" aria-label="Filtrar solicitudes por estado">
+          <option value="">Todos los estados</option>
+          <option value="nueva">Nueva</option>
+          <option value="en_revision">En revisión</option>
+          <option value="respondida">Respondida</option>
+          <option value="cerrada">Cerrada</option>
+        </select>
+        <select id="reqFilterType" onchange="filterRequests()" aria-label="Filtrar solicitudes por tipo">
+          <option value="">Todos los tipos</option>
+          <option value="consulta">Consulta</option>
+          <option value="tasacion">Tasación</option>
+          <option value="visita">Visita</option>
+          <option value="informacion">Información</option>
+          <option value="propuesta">Propuesta</option>
+          <option value="reclamo">Reclamo</option>
+        </select>
+        <select id="reqFilterPriority" onchange="filterRequests()" aria-label="Filtrar solicitudes por prioridad">
+          <option value="">Todas las prioridades</option>
+          <option value="baja">Baja</option>
+          <option value="media">Media</option>
+          <option value="alta">Alta</option>
+          <option value="urgente">Urgente</option>
+        </select>
+      </div>
+      <div class="req-list" id="reqList">
+        <div class="loading-state">Cargando solicitudes...</div>
+      </div>
+    </section>
+
+    <!-- ── Side Panel + Overlay ── -->
+    <div class="req-overlay" id="reqOverlay" onclick="closeRequestPanel()"></div>
+    <div class="req-panel" id="reqPanel">
+      <div class="req-panel-header">
+        <span class="req-panel-title" id="reqPanelTitle">Solicitud</span>
+        <button class="req-panel-close" onclick="closeRequestPanel()">✕</button>
+      </div>
+      <div class="req-panel-body" id="reqPanelBody">
+        <div class="loading-state">Cargando detalle...</div>
+      </div>
+    </div>
+
+    <!-- ── TASACION REQUESTS TAB ── -->
+    <section id="tabTasacionRequests" class="admin-tab-content hidden">
+      <div class="admin-topbar">
+        <div>
+          <h1 class="admin-page-title">Solicitudes de Tasación</h1>
+          <p class="admin-page-sub" id="tasacionReqSubtitle">Cargando...</p>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="refreshTasacionReqs">↻ Actualizar</button>
+      </div>
+      <div id="tasacionReqList" class="admin-list">
+        <div class="loading-state">Cargando solicitudes...</div>
+      </div>
+    </section>
+
+    <!-- ── APPRAISALS TAB (Módulo 12: Centro de Gestión) ── -->
+    <section id="tabAppraisals" class="admin-tab-content hidden">
+      <div id="appraisalsListView">
+        <div class="admin-topbar">
+          <div>
+            <h1 class="admin-page-title">Tasaciones</h1>
+            <p class="admin-page-sub" id="appraisalSubtitle">Cargando...</p>
+          </div>
+          <button class="btn btn-primary" id="newAppraisalBtn">+ Nueva tasación</button>
+        </div>
+        <div class="appr-kpi-bar" id="apprKpiBar">
+          <div class="loading-state" style="grid-column:1/-1">Cargando estadísticas...</div>
+        </div>
+        <div class="appr-toolbar">
+          <input id="appraisalSearch" class="field-input" placeholder="Buscar por título, cliente o dirección..." aria-label="Buscar tasaciones"/>
+          <select id="appraisalFilter" class="field-input field-input--select" aria-label="Filtrar tasaciones por estado">
+            <option value="">Todos los estados</option>
+            <option value="borrador">Borrador</option>
+            <option value="en_proceso">En proceso</option>
+            <option value="completada">Completada</option>
+            <option value="archivada">Archivada</option>
+          </select>
+          <label class="admin-filter-check" style="flex-shrink:0">
+            <input type="checkbox" id="appraisalShowArchived" data-action="filterAppraisals">
+            Mostrar archivadas
+          </label>
+        </div>
+        <div id="appraisalsAdminList" class="admin-list">
+          <div class="loading-state">Cargando tasaciones...</div>
+        </div>
+      </div>
+      <div id="appraisalDetailView" class="hidden"></div>
+    </section>
+
+    <!-- ── ACM TAB (Análisis Comparativo de Mercado) ── -->
+    <section id="tabAcm" class="admin-tab-content hidden">
+      <div class="admin-topbar">
+        <div>
+          <h1 class="admin-page-title">ACM Tool</h1>
+          <p class="admin-page-sub">Homogeneización de antecedentes con coeficiente de condiciones y precio por metro cuadrado.</p>
+        </div>
+      </div>
+      <div id="acmContainer"></div>
+    </section>
+
+    <!-- ── TASACIONES TAB (Módulo clonado de ACM Tool) ── -->
+    <section id="tabTasaciones" class="admin-tab-content hidden">
+      <div id="tasacionesListView">
+        <div class="admin-topbar">
+          <div>
+            <h1 class="admin-page-title">Tasaciones 2</h1>
+            <p class="admin-page-sub" id="tasacionSubtitle">Cargando...</p>
+          </div>
+          <button class="btn btn-primary" id="newTasacionBtn">+ Nueva</button>
+        </div>
+        <div class="appr-kpi-bar" id="tasKpiBar">
+          <div class="loading-state" style="grid-column:1/-1">Cargando estadísticas...</div>
+        </div>
+        <div class="appr-toolbar">
+          <input id="tasacionSearch" class="field-input" placeholder="Buscar por título, cliente o dirección..." aria-label="Buscar tasaciones"/>
+          <select id="tasacionFilter" class="field-input field-input--select" aria-label="Filtrar tasaciones por estado">
+            <option value="">Todos los estados</option>
+            <option value="borrador">Borrador</option>
+            <option value="en_proceso">En proceso</option>
+            <option value="completada">Completada</option>
+            <option value="archivada">Archivada</option>
+          </select>
+          <label class="admin-filter-check" style="flex-shrink:0">
+            <input type="checkbox" id="tasacionShowArchived" data-action="filterTasaciones">
+            Mostrar archivadas
+          </label>
+        </div>
+        <div id="tasacionesAdminList" class="admin-list">
+          <div class="loading-state">Cargando tasaciones...</div>
+        </div>
+      </div>
+      <div id="tasacionDetailView" class="hidden"></div>
+    </section>
+
+    <!-- ── Appraisals Side Panel + Overlay ── -->
+    <div class="appr-overlay" id="apprOverlay" onclick="closeAppraisalPanel()"></div>
+    <div class="appr-panel" id="apprPanel">
+      <div class="appr-panel-header">
+        <span class="appr-panel-title" id="apprPanelTitle">Tasación</span>
+        <button class="appr-panel-close" onclick="closeAppraisalPanel()">×</button>
+      </div>
+      <div class="appr-panel-body" id="apprPanelBody">
+        <div class="loading-state">Cargando...</div>
+      </div>
+    </div>
+
+    <!-- ── Tasaciones Side Panel + Overlay ── -->
+    <div class="tas-overlay" id="tasOverlay" onclick="closeTasacionPanel()"></div>
+    <div class="tas-panel" id="tasPanel">
+      <div class="tas-panel-header">
+        <span class="tas-panel-title" id="tasPanelTitle">Tasación</span>
+        <button class="tas-panel-close" onclick="closeTasacionPanel()">×</button>
+      </div>
+      <div class="tas-panel-body" id="tasPanelBody">
+        <div class="loading-state">Cargando...</div>
+      </div>
+    </div>
+
+    <!-- ── CRM TAB ── -->
+    <section id="tabCrm" class="admin-tab-content hidden">
+      <div class="admin-topbar">
+        <div>
+          <h1 class="admin-page-title">CRM</h1>
+          <p class="admin-page-sub" id="crmSubtitle">Prospectos y pipeline</p>
+        </div>
+        <div class="admin-flex admin-gap-8">
+          <button class="btn btn-ghost btn-sm" id="refreshCrm">↻ Actualizar</button>
+          <button class="btn btn-primary" id="newLeadBtn">+ Nuevo prospecto</button>
+        </div>
+      </div>
+      <div class="crm-kpi-bar" id="crmKpiBar">
+        <div class="crm-kpi-card">
+          <span class="crm-kpi-label">Total</span>
+          <span class="crm-kpi-number" id="crmKpiTotal">0</span>
+        </div>
+        <div class="crm-kpi-card">
+          <span class="crm-kpi-label">Nuevos</span>
+          <span class="crm-kpi-number" id="crmKpiNuevo">0</span>
+        </div>
+        <div class="crm-kpi-card">
+          <span class="crm-kpi-label">Ganados</span>
+          <span class="crm-kpi-number" id="crmKpiGanados">0</span>
+        </div>
+        <div class="crm-kpi-card">
+          <span class="crm-kpi-label">Perdidos</span>
+          <span class="crm-kpi-number" id="crmKpiPerdidos">0</span>
+        </div>
+      </div>
+      <div class="admin-filter-group">
+        <input id="crmSearch" class="field-input" placeholder="Buscar por nombre, email o teléfono..." aria-label="Buscar en CRM"/>
+        <select id="crmStatusFilter" class="field-input field-input--select" aria-label="Filtrar CRM por estado"></select>
+        <select id="crmOriginFilter" class="field-input field-input--select" aria-label="Filtrar CRM por origen"></select>
+        <select id="crmTipoClienteFilter" class="field-input field-input--select" aria-label="Filtrar por tipo de cliente"></select>
+        <select id="crmAgentFilter" class="field-input field-input--select" aria-label="Filtrar CRM por agente"></select>
+      </div>
+      <div class="crm-layout">
+        <div class="crm-list-panel">
+          <div id="crmLeadList" class="admin-list">
+            <div class="loading-state">Cargando prospectos...</div>
+          </div>
+        </div>
+        <div class="crm-side-panel" id="crmSidePanel"></div>
+      </div>
+    </section>
+
+    <!-- ── SETTINGS TAB ── -->
+    <section id="tabSettings" class="admin-tab-content hidden">
+      <div class="admin-topbar">
+        <div>
+          <h1 class="admin-page-title">Configuración</h1>
+          <p class="admin-page-sub">Centro de configuración del sitio</p>
+        </div>
+        <label class="compact-toggle" title="Modo compacto">
+          <input type="checkbox" id="compactToggle" data-action="toggleCompact"/>
+          <span class="compact-toggle-track">
+            <span class="compact-toggle-icon">⊞</span>
+          </span>
+          <span class="compact-toggle-label">Modo compacto</span>
+        </label>
+      </div>
+      <div id="stgSubtabs" class="stg-subtabs"></div>
+      <div id="stgContent"></div>
+    </section>
+
+    <!-- ── USERS RBAC TAB ── -->
+    <section id="tabUsers" class="admin-tab-content hidden">
+      <div class="admin-topbar">
+        <div>
+          <h1 class="admin-page-title">Usuarios y Roles</h1>
+          <p class="admin-page-sub">Gestión de usuarios, roles, permisos y accesos</p>
+        </div>
+      </div>
+      <div id="rbacSubtabs" class="rbac-subtabs"></div>
+      <div id="rbacContent"></div>
+    </section>
+
+    <!-- ── PORTALS TAB ── -->
+    <section id="tabPortals" class="admin-tab-content hidden">
+      <div class="admin-topbar">
+        <div>
+          <h1 class="admin-page-title">Portales</h1>
+          <p class="admin-page-sub" id="portalSubtitle">Cargando...</p>
+        </div>
+        <button class="btn btn-primary" id="newPortalBtn">+ Nuevo portal</button>
+      </div>
+      <div class="admin-subtabs" id="portalSubtabs">
+        <button class="admin-subtab active" data-portal-subtab="dashboard">Dashboard</button>
+        <button class="admin-subtab" data-portal-subtab="portals">Portales</button>
+        <button class="admin-subtab" data-portal-subtab="publications">Publicaciones</button>
+        <button class="admin-subtab" data-portal-subtab="queue">Cola <span class="sidebar-badge" id="queueCountBadge" style="display:none">0</span></button>
+      </div>
+
+      <!-- Dashboard -->
+      <div id="portalSubtabDashboard">
+        <div class="prt-kpi-bar" id="prtKpiBar"></div>
+        <div class="admin-flex admin-gap-8 admin-mb-14">
+          <h3 style="color:var(--admin-text);font-size:13px;font-weight:500;margin:0">Plataformas</h3>
+        </div>
+        <div class="prt-platforms-grid" id="prtPlatformsGrid">
+          <div class="loading-state">Cargando...</div>
+        </div>
+        <div class="admin-flex admin-gap-8 admin-mb-10">
+          <h3 style="color:var(--admin-text);font-size:13px;font-weight:500;margin:0">Publicaciones recientes</h3>
+        </div>
+        <div id="portalDashboardPubs" class="prt-pubs-list">
+          <div class="loading-state">Cargando publicaciones...</div>
+        </div>
+      </div>
+
+      <!-- Portales list -->
+      <div id="portalSubtabPortals">
+        <div id="portalsAdminList" class="admin-list">
+          <div class="loading-state">Cargando portales...</div>
+        </div>
+        <div class="admin-mt-24">
+          <h3 class="admin-mb-8" style="color:var(--g3);font-size:13px;font-weight:400">Actividad reciente</h3>
+          <div id="portalLogsList" class="admin-list"></div>
+        </div>
+      </div>
+
+      <!-- Publications list -->
+      <div id="portalSubtabPublications" class="hidden">
+        <div class="prop-search-bar admin-mb-12">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="pubSearch" class="prop-search-input" placeholder="Buscar por propiedad..." data-action="filterPublications" aria-label="Buscar publicaciones"/>
+        </div>
+        <div id="publicationsEnhancedList" class="prt-pubs-list">
+          <div class="loading-state">Cargando publicaciones...</div>
+        </div>
+      </div>
+
+      <!-- Queue list -->
+      <div id="portalSubtabQueue" class="hidden">
+        <div class="admin-flex admin-gap-8 admin-mb-12">
+          <button class="btn btn-ghost btn-sm" id="btnQueuePending" data-action="loadQueue" data-status="pending">Pendientes</button>
+          <button class="btn btn-ghost btn-sm" id="btnQueueAll" data-action="loadQueue" data-status="all">Todas</button>
+          <button class="btn btn-ghost btn-sm admin-ml-auto" data-action="refreshQueue">↻ Actualizar</button>
+        </div>
+        <div id="queueList" class="admin-list">
+          <div class="loading-state">Cargando cola...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PORTALS SIDE PANEL + OVERLAY ── -->
+    <div id="prtOverlay" class="req-overlay" onclick="closePrtPanel()"></div>
+    <div id="prtPanel" class="req-panel">
+      <div class="req-panel-header">
+        <span id="prtPanelTitle">Publicación</span>
+        <button class="req-panel-close" onclick="closePrtPanel()">✕</button>
+      </div>
+      <div class="req-panel-body" id="prtPanelBody"></div>
+    </div>
+
+    <!-- ── MARKETING TAB ── -->
+    <section id="tabMarketing" class="admin-tab-content hidden">
+      <div class="admin-topbar">
+        <div>
+          <h1 class="admin-page-title">Marketing</h1>
+          <p class="admin-page-sub" id="marketingSubtitle">Redes sociales · Publicaciones automáticas</p>
+        </div>
+        <div class="admin-flex admin-gap-8">
+          <button class="btn btn-ghost btn-sm" id="refreshMarketingBtn" data-action="refreshMarketing">↻ Actualizar</button>
+          <button class="btn btn-primary" id="newPostBtn">+ Nueva publicación</button>
+        </div>
+      </div>
+      <div class="admin-subtabs" id="marketingSubtabs">
+        <button class="admin-subtab active" data-marketing-subtab="dashboard">Dashboard</button>
+        <button class="admin-subtab" data-marketing-subtab="campaigns">Campañas</button>
+        <button class="admin-subtab" data-marketing-subtab="accounts">Cuentas</button>
+        <button class="admin-subtab" data-marketing-subtab="posts">Publicaciones</button>
+        <button class="admin-subtab" data-marketing-subtab="calendar">Calendario</button>
+        <button class="admin-subtab" data-marketing-subtab="templates">Plantillas</button>
+        <button class="admin-subtab" data-marketing-subtab="analytics">Analíticas</button>
+        <button class="admin-subtab" data-marketing-subtab="generator">Generar texto</button>
+      </div>
+
+      <!-- Dashboard subtab -->
+      <div id="marketingSubtabDashboard">
+        <div class="req-kpi-bar" id="mktKpiBar"></div>
+        <div class="mkt-dash-grid">
+          <div class="mkt-dash-col">
+            <div class="mkt-section-header">
+              <span>Plataformas</span>
+            </div>
+            <div class="mkt-platforms-grid" id="mktPlatformsGrid">
+              <div class="loading-state">Cargando...</div>
+            </div>
+            <div class="mkt-section-header" style="margin-top:16px">
+              <span>Publicaciones recientes</span>
+            </div>
+            <div id="mktPostsList" class="mkt-posts-list">
+              <div class="loading-state">Cargando...</div>
+            </div>
+          </div>
+          <div class="mkt-dash-col">
+            <div class="mkt-section-header">
+              <span>Estadísticas</span>
+            </div>
+            <div class="mkt-stats-charts" id="mktStatsCharts">
+              <div class="loading-state">Cargando...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Campaigns subtab -->
+      <div id="marketingSubtabCampaigns" class="hidden">
+        <div class="admin-topbar-noflex" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <div id="mktCampStats" style="flex:1"></div>
+          <button class="btn btn-primary btn-sm" onclick="showNewCampaignForm()">+ Nueva campaña</button>
+        </div>
+        <div class="mk-summary" id="mkCampSummary"></div>
+        <div id="mktCampaignList" class="mkt-campaign-list">
+          <div class="loading-state">Cargando campañas...</div>
+        </div>
+      </div>
+
+      <!-- Accounts subtab -->
+      <div id="marketingSubtabAccounts">
+        <div class="mk-summary" id="mkAccountSummary"></div>
+        <div id="marketingAccountsList" class="admin-list">
+          <div class="loading-state">Cargando cuentas...</div>
+        </div>
+      </div>
+
+      <!-- Posts subtab -->
+      <div id="marketingSubtabPosts" class="hidden">
+        <div class="mk-summary" id="mkPostSummary"></div>
+        <div class="prop-search-bar admin-mb-12">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="postSearch" class="prop-search-input" placeholder="Buscar posts..." data-action="filterPosts" aria-label="Buscar posts"/>
+        </div>
+        <div class="admin-filters-row admin-flex admin-gap-8 admin-mb-12 admin-flex-wrap">
+          <select id="postFilterStatus" class="prop-filter-select" data-action="filterPosts" aria-label="Filtrar posts por estado">
+            <option value="">Todos los estados</option>
+            <option value="draft">Borrador</option>
+            <option value="scheduled">Programado</option>
+            <option value="published">Publicado</option>
+            <option value="failed">Fallido</option>
+          </select>
+          <select id="postFilterAccount" class="prop-filter-select" data-action="filterPosts" aria-label="Filtrar posts por cuenta">
+            <option value="">Todas las cuentas</option>
+          </select>
+          <button class="btn btn-ghost btn-sm admin-ml-auto" data-action="refreshPosts">↻ Actualizar</button>
+        </div>
+        <div id="marketingPostsList" class="admin-list">
+          <div class="loading-state">Cargando publicaciones...</div>
+        </div>
+      </div>
+
+      <!-- Calendar subtab -->
+      <div id="marketingSubtabCalendar" class="hidden">
+        <div class="admin-flex admin-gap-8 admin-mb-14 admin-flex-center">
+          <button class="btn btn-ghost btn-sm" id="calPrevMonth">← Mes anterior</button>
+          <h2 id="calMonthLabel" style="color:var(--g1);font-size:16px;font-weight:500;min-width:200px;text-align:center">Cargando...</h2>
+          <button class="btn btn-ghost btn-sm" id="calNextMonth">Mes siguiente →</button>
+          <button class="btn btn-ghost btn-sm admin-ml-auto" id="calTodayBtn">Hoy</button>
+        </div>
+        <div id="calendarGrid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px">
+          <div style="color:var(--g3);font-size:10px;font-weight:600;text-transform:uppercase;text-align:center;padding:6px 0">Dom</div>
+          <div style="color:var(--g3);font-size:10px;font-weight:600;text-transform:uppercase;text-align:center;padding:6px 0">Lun</div>
+          <div style="color:var(--g3);font-size:10px;font-weight:600;text-transform:uppercase;text-align:center;padding:6px 0">Mar</div>
+          <div style="color:var(--g3);font-size:10px;font-weight:600;text-transform:uppercase;text-align:center;padding:6px 0">Mié</div>
+          <div style="color:var(--g3);font-size:10px;font-weight:600;text-transform:uppercase;text-align:center;padding:6px 0">Jue</div>
+          <div style="color:var(--g3);font-size:10px;font-weight:600;text-transform:uppercase;text-align:center;padding:6px 0">Vie</div>
+          <div style="color:var(--g3);font-size:10px;font-weight:600;text-transform:uppercase;text-align:center;padding:6px 0">Sáb</div>
+        </div>
+      </div>
+
+      <!-- Templates subtab -->
+      <div id="marketingSubtabTemplates" class="hidden">
+        <div class="admin-flex admin-gap-8 admin-mb-14">
+          <button class="btn btn-primary btn-sm" id="newTemplateBtn">+ Nueva plantilla</button>
+        </div>
+        <div id="templatesList" class="admin-list">
+          <div class="loading-state">Cargando plantillas...</div>
+        </div>
+      </div>
+
+      <!-- Analytics subtab -->
+      <div id="marketingSubtabAnalytics" class="hidden">
+        <div class="admin-flex admin-gap-8 admin-mb-14 admin-flex-center">
+          <select id="analyticsAccountFilter" class="prop-filter-select" aria-label="Filtrar por cuenta">
+            <option value="">Todas las cuentas</option>
+          </select>
+          <select id="analyticsPeriodFilter" class="prop-filter-select" aria-label="Período de análisis">
+            <option value="7">7 días</option>
+            <option value="30" selected>30 días</option>
+            <option value="90">90 días</option>
+            <option value="365">1 año</option>
+          </select>
+          <button class="btn btn-ghost btn-sm" id="refreshAnalyticsBtn">↻ Actualizar</button>
+        </div>
+        <div id="analyticsContent">
+          <div class="loading-state">Cargando analíticas...</div>
+        </div>
+      </div>
+
+      <!-- Generator subtab -->
+      <div id="marketingSubtabGenerator" class="hidden">
+        <div class="mk-card">
+          <div class="mk-card-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>Generar descripción con IA</span>
+          </div>
+          <div class="mk-card-body">
+            <div class="field admin-mb-14">
+              <label class="mk-label">Propiedad</label>
+              <select id="generatorPropSelect" class="mk-select" aria-label="Propiedad">
+                <option value="">Seleccionar propiedad...</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" id="generateDescBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              Generar descripción
+            </button>
+            <div id="generatorResult" class="hidden admin-mt-14">
+              <label class="mk-label">Texto generado</label>
+              <textarea id="generatedText" class="mk-textarea" style="min-height:140px" aria-label="Texto generado"></textarea>
+              <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+                <button class="btn btn-primary btn-sm" id="copyGeneratedBtn">Copiar</button>
+                <button class="btn btn-ghost btn-sm" id="useGeneratedBtn">Usar en nueva publicación</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MARKETING SIDE PANEL + OVERLAY ── -->
+    <div id="mktOverlay" class="req-overlay" onclick="closeMktPanel()"></div>
+    <div id="mktPanel" class="req-panel">
+      <div class="req-panel-header">
+        <span id="mktPanelTitle">Publicación</span>
+        <button class="req-panel-close" onclick="closeMktPanel()">✕</button>
+      </div>
+      <div class="req-panel-body" id="mktPanelBody"></div>
+    </div>
+
+    <div id="mktCampPanel" class="req-panel" style="right:-480px">
+      <div class="req-panel-header">
+        <span id="mktCampPanelTitle">Campaña</span>
+        <button class="req-panel-close" onclick="closeMktPanel()">✕</button>
+      </div>
+      <div class="req-panel-body" id="mktCampPanelBody"></div>
+    </div>
+
+    <!-- ── CALENDAR TAB (Módulo 15) ── -->
+    <section id="tabCalendar" class="admin-tab-content hidden">
+      <div class="admin-topbar">
+        <div>
+          <h1 class="admin-page-title">Agenda</h1>
+          <p class="admin-page-sub" id="calSubtitle">Calendario · Visitas · Tareas · Recordatorios</p>
+        </div>
+        <div class="admin-flex admin-gap-8">
+          <button class="btn btn-ghost btn-sm" id="refreshCalendar" onclick="loadCalendar()">↻ Actualizar</button>
+          <button class="btn btn-primary" id="newCalEventBtn">+ Nuevo evento</button>
+        </div>
+      </div>
+      <div class="cal-kpi-bar" id="calKpiBar"></div>
+      <div class="cal-subtabs">
+        <button class="cal-subtab active" data-cal-tab="upcoming">Próximos</button>
+        <button class="cal-subtab" data-cal-tab="overdue">Vencidos</button>
+        <button class="cal-subtab" data-cal-tab="completed">Completados</button>
+      </div>
+      <div class="cal-view-controls">
+        <button class="cal-view-btn active" data-cal-view="month" onclick="switchCalView('month')">Mes</button>
+        <button class="cal-view-btn" data-cal-view="week" onclick="switchCalView('week')">Semana</button>
+        <button class="cal-view-btn" data-cal-view="day" onclick="switchCalView('day')">Día</button>
+        <div class="cal-nav">
+          <button class="btn btn-ghost btn-sm" onclick="calNavigate(-1)">←</button>
+          <span class="cal-nav-label" id="calNavLabel">Cargando...</span>
+          <button class="btn btn-ghost btn-sm" onclick="calNavigate(1)">→</button>
+          <button class="btn btn-ghost btn-sm" onclick="calToday()">Hoy</button>
+        </div>
+      </div>
+      <div id="calGridWrap"></div>
+      <div style="margin-top:18px">
+        <h3 style="color:var(--admin-text);font-size:13px;font-weight:500;margin:0 0 10px 0">Lista de actividades</h3>
+        <div id="calActivityList">
+          <div class="loading-state">Cargando actividades...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CALENDAR SIDE PANEL + OVERLAY ── -->
+    <div id="calOverlay" class="cal-overlay hidden" onclick="closeCalPanel()"></div>
+    <div id="calPanel" class="req-panel">
+      <div class="req-panel-header">
+        <span id="calPanelTitle">Evento</span>
+        <button class="req-panel-close" id="closeCalPanel">✕</button>
+      </div>
+      <div class="req-panel-body cal-panel-body" id="calPanelBody"></div>
+    </div>
+
+    <!-- ── RBAC SIDE PANEL + OVERLAY ── -->
+    <div id="rbacOverlay" class="rbac-overlay hidden" onclick="closeRbacPanel()"></div>
+    <div id="rbacPanel" class="rbac-side-panel">
+      <div class="rbac-panel-header">
+        <span class="rbac-panel-title" id="rbacPanelTitle">Usuario</span>
+        <button class="rbac-panel-close" onclick="closeRbacPanel()">✕</button>
+      </div>
+      <div class="rbac-panel-body" id="rbacPanelBody"></div>
+    </div>
+
+    <!-- ── CALENDAR EVENT FORM MODAL ── -->
+    <div id="calEventFormModal" class="modal-backdrop hidden">
+      <div class="modal-box modal-form-box">
+        <div class="modal-header">
+          <div class="modal-title" id="calEventFormTitle">Nuevo evento</div>
+          <button class="modal-close" id="closeCalEventForm">×</button>
+        </div>
+        <div class="modal-form-content" id="calEventFormContent"></div>
+      </div>
+    </div>
+
+    <!-- ── SECURITY TAB ── -->
+    <section id="tabSecurity" class="admin-tab-content hidden">
+      <div class="admin-topbar">
+        <div>
+          <h1 class="admin-page-title">Seguridad y Auditoría</h1>
+          <p class="admin-page-sub">API Keys, Webhooks, Dispositivos, Eventos de seguridad y más</p>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="loadSecurity()">↻ Actualizar</button>
+      </div>
+      <div id="securitySubtabs" class="rbac-subtabs"></div>
+      <div id="securityContent"></div>
+    </section>
+
+    <!-- ── ACTIVITY TAB ── -->
+    <section id="tabActivity" class="admin-tab-content hidden">
+      <div class="admin-topbar">
+        <div>
+          <h1 class="admin-page-title">Actividad</h1>
+          <p class="admin-page-sub">Historial de cambios en propiedades, alquileres y agentes</p>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="refreshActivity">↻ Actualizar</button>
+      </div>
+      <div id="activityList">
+        <div class="loading-state">Cargando actividad...</div>
+      </div>
+      <div id="clientErrorsSection" style="margin-top:1.5rem">
+        <div class="loading-state">Cargando errores...</div>
+      </div>
+    </section>
+
+    <!-- ── BAJAS DE DATOS TAB ── -->
+    <section id="tabBajas" class="admin-tab-content hidden">
+      <div class="admin-topbar">
+        <div>
+          <h1 class="admin-page-title">Bajas de datos</h1>
+          <p class="admin-page-sub" id="bajaSubtitle">Solicitudes de baja, rectificación y oposición</p>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="loadBajas()">↻ Actualizar</button>
+      </div>
+      <div class="appr-kpi-bar" id="bajaKpiBar"></div>
+      <div id="bajaReqList">
+        <div class="loading-state">Cargando solicitudes...</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: Vista rápida de propiedad
+═══════════════════════════════════════════ -->
+<div id="propPreviewModal" class="modal-backdrop hidden">
+  <div class="modal-box admin-modal-max-w-700">
+    <div class="modal-header">
+      <div class="modal-title" id="propPreviewTitle">Propiedad</div>
+      <button class="modal-close" id="closePropPreview">×</button>
+    </div>
+    <div class="modal-form-content" id="propPreviewContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: Formulario de propiedad
+═══════════════════════════════════════════ -->
+<div id="propFormModal" class="modal-backdrop hidden">
+  <div class="modal-box modal-form-box">
+    <div class="modal-header">
+      <div class="modal-title" id="propFormTitle">Nueva Propiedad</div>
+      <button class="modal-close" id="closePropForm">×</button>
+    </div>
+    <div class="modal-form-content" id="propFormContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: Formulario de agente
+═══════════════════════════════════════════ -->
+<div id="agentFormModal" class="modal-backdrop hidden">
+  <div class="modal-box modal-form-box">
+    <div class="modal-header">
+      <div class="modal-title" id="agentFormTitle">Nuevo Agente</div>
+      <button class="modal-close" id="closeAgentForm">×</button>
+    </div>
+    <div class="modal-form-content" id="agentFormContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: Formulario de usuario
+═══════════════════════════════════════════ -->
+<div id="userFormModal" class="modal-backdrop hidden">
+  <div class="modal-box modal-form-box">
+    <div class="modal-header">
+      <div class="modal-title" id="userFormTitle">Nuevo Usuario</div>
+      <button class="modal-close" id="closeUserForm">×</button>
+    </div>
+    <div class="modal-form-content" id="userFormContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: Formulario de portal
+═══════════════════════════════════════════ -->
+<div id="portalFormModal" class="modal-backdrop hidden">
+  <div class="modal-box modal-form-box">
+    <div class="modal-header">
+      <div class="modal-title" id="portalFormTitle">Nuevo Portal</div>
+      <button class="modal-close" id="closePortalForm">×</button>
+    </div>
+    <div class="modal-form-content" id="portalFormContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: Nueva tasación rápida
+═══════════════════════════════════════════ -->
+<div id="appraisalFormModal" class="modal-backdrop hidden">
+  <div class="modal-box modal-form-box">
+    <div class="modal-header">
+      <div class="modal-title" id="appraisalFormTitle">Nueva tasación</div>
+      <button class="modal-close" id="closeAppraisalForm">×</button>
+    </div>
+    <div class="modal-form-content" id="appraisalFormContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: Formulario de comparable (desde detalle)
+═══════════════════════════════════════════ -->
+<div id="comparableFormModal" class="modal-backdrop hidden">
+  <div class="modal-box admin-modal-max-w-800">
+    <div class="modal-header">
+      <div class="modal-title" id="comparableFormTitle">Nuevo comparable</div>
+      <button class="modal-close" id="closeComparableBtn">×</button>
+    </div>
+    <div class="modal-form-content" id="comparableFormContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: Nueva tasación rápida (Tasaciones)
+═══════════════════════════════════════════ -->
+<div id="tasacionFormModal" class="modal-backdrop hidden">
+  <div class="modal-box modal-form-box">
+    <div class="modal-header">
+      <div class="modal-title" id="tasacionFormTitle">Nueva tasación</div>
+      <button class="modal-close" id="closeTasacionForm">×</button>
+    </div>
+    <div class="modal-form-content" id="tasacionFormContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: Logs de portal
+═══════════════════════════════════════════ -->
+<div id="portalLogsModal" class="modal-backdrop hidden">
+  <div class="modal-box admin-modal-max-w-700">
+    <div class="modal-header">
+      <div class="modal-title" id="portalLogsModalTitle">Logs</div>
+      <button class="modal-close" id="closePortalLogsBtn">×</button>
+    </div>
+    <div id="portalLogsModalBody" class="modal-form-content"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: Cuenta de red social
+═══════════════════════════════════════════ -->
+<div id="socialAccountFormModal" class="modal-backdrop hidden">
+  <div class="modal-box modal-form-box">
+    <div class="modal-header">
+      <div class="modal-title" id="socialAccountFormTitle">Nueva cuenta</div>
+      <button class="modal-close" id="closeSocialAccountForm">×</button>
+    </div>
+    <div class="modal-form-content" id="socialAccountFormContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: Publicación en redes sociales
+═══════════════════════════════════════════ -->
+<div id="socialPostFormModal" class="modal-backdrop hidden">
+  <div class="modal-box admin-modal-max-w-650">
+    <div class="modal-header">
+      <div class="modal-title" id="socialPostFormTitle">Nueva publicación</div>
+      <button class="modal-close" id="closeSocialPostForm">×</button>
+    </div>
+    <div class="modal-form-content" id="socialPostFormContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: Vista previa de publicación
+═══════════════════════════════════════════ -->
+<div id="socialPostPreviewModal" class="modal-backdrop hidden">
+  <div class="modal-box admin-modal-max-w-580">
+    <div class="modal-header">
+      <div class="modal-title">Vista previa</div>
+      <button class="modal-close" id="closeSocialPostPreview">×</button>
+    </div>
+    <div class="modal-form-content" id="socialPostPreviewContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: Plantilla de publicación
+═══════════════════════════════════════════ -->
+<div id="templateFormModal" class="modal-backdrop hidden">
+  <div class="modal-box modal-form-box" style="max-width:560px">
+    <div class="modal-header">
+      <div class="modal-title" id="templateFormTitle">Nueva plantilla</div>
+      <button class="modal-close" id="closeTemplateFormBtn">×</button>
+    </div>
+    <div class="modal-form-content" id="templateFormContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: Formulario de oficina (Settings Center)
+═══════════════════════════════════════════ -->
+<div id="stgOfficeFormModal" class="modal-backdrop hidden">
+  <div class="modal-box modal-form-box" style="max-width:580px">
+    <div class="modal-header">
+      <div class="modal-title" id="stgOfficeFormTitle">Nueva oficina</div>
+      <button class="modal-close" onclick="document.getElementById('stgOfficeFormModal').classList.add('hidden')">×</button>
+    </div>
+    <div class="modal-form-content" id="stgOfficeFormContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL: Configuración de integración (Settings Center)
+═══════════════════════════════════════════ -->
+<div id="stgIntegrationModal" class="modal-backdrop hidden">
+  <div class="modal-box modal-form-box" style="max-width:560px">
+    <div class="modal-header">
+      <div class="modal-title" id="stgIntegrationTitle">Configurar integración</div>
+      <button class="modal-close" onclick="document.getElementById('stgIntegrationModal').classList.add('hidden')">×</button>
+    </div>
+    <div class="modal-form-content" id="stgIntegrationContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     RBAC MODAL: Formulario de usuario
+═══════════════════════════════════════════ -->
+<div id="rbacUserFormModal" class="modal-backdrop hidden">
+  <div class="modal-box modal-form-box" style="max-width:580px">
+    <div class="modal-header">
+      <div class="modal-title" id="rbacUserFormTitle">Nuevo usuario</div>
+      <button class="modal-close" onclick="document.getElementById('rbacUserFormModal').classList.add('hidden')">×</button>
+    </div>
+    <div class="modal-form-content" id="rbacUserFormContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     RBAC MODAL: Formulario de rol
+═══════════════════════════════════════════ -->
+<div id="rbacRoleFormModal" class="modal-backdrop hidden">
+  <div class="modal-box modal-form-box" style="max-width:560px">
+    <div class="modal-header">
+      <div class="modal-title" id="rbacRoleFormTitle">Nuevo rol</div>
+      <button class="modal-close" onclick="document.getElementById('rbacRoleFormModal').classList.add('hidden')">×</button>
+    </div>
+    <div class="modal-form-content" id="rbacRoleFormContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     RBAC MODAL: Invitar usuario
+═══════════════════════════════════════════ -->
+<div id="rbacInviteModal" class="modal-backdrop hidden">
+  <div class="modal-box modal-form-box" style="max-width:500px">
+    <div class="modal-header">
+      <div class="modal-title">Invitar usuario</div>
+      <button class="modal-close" onclick="document.getElementById('rbacInviteModal').classList.add('hidden')">×</button>
+    </div>
+    <div class="modal-form-content" id="rbacInviteContent"></div>
+  </div>
+</div>
+
+<script>
+// ── CSRF-aware request helper ──
+async function _socialReq(method, path, body) {
+  var csrf = window._csrfToken;
+  if (!csrf && method !== 'GET') {
+    try {
+      var r = await fetch('/api/auth/csrf-token', { credentials: 'same-origin' });
+      var j = await r.json();
+      if (j.ok && j.data?.csrf_token) { csrf = j.data.csrf_token; window._csrfToken = csrf; }
+    } catch {}
+  }
+  var headers = { 'Content-Type': 'application/json' };
+  if (csrf && method !== 'GET') headers['X-CSRF-Token'] = csrf;
+  var res = await fetch(path, { method: method, headers: headers, credentials: 'same-origin', body: body ? JSON.stringify(body) : undefined });
+  var json = await res.json();
+  if (!json.ok && json.error && json.error.indexOf('CSRF') !== -1) {
+    window._csrfToken = null;
+    try {
+      var r2 = await fetch('/api/auth/csrf-token', { credentials: 'same-origin' });
+      var j2 = await r2.json();
+      if (j2.ok && j2.data?.csrf_token) { csrf = j2.data.csrf_token; window._csrfToken = csrf; }
+    } catch {}
+    headers['X-CSRF-Token'] = csrf || '';
+    var res2 = await fetch(path, { method: method, headers: headers, credentials: 'same-origin', body: body ? JSON.stringify(body) : undefined });
+    json = await res2.json();
+  }
+  if (json.data && json.data.csrf_token) window._csrfToken = json.data.csrf_token;
+  return json;
+}
+
+function toast(msg, type, duration) {
+  type = type || 'info';
+  duration = duration || (type === 'error' ? 5000 : 3000);
+  if (window._toastEls === undefined) window._toastEls = [];
+  var c = document.getElementById('toastContainer');
+  if (!c) {
+    c = document.createElement('div');
+    c.id = 'toastContainer';
+    c.className = 'toast-container';
+    document.body.appendChild(c);
+  }
+  var t = document.createElement('div');
+
+  var icons = { info: 'ℹ', warn: '⚠', error: '✕', success: '✓' };
+  t.className = 'toast toast--' + type;
+  t.innerHTML = '<span class="toast-icon">' + icons[type] + '</span><span class="toast-msg"></span>';
+  t.lastChild.textContent = msg;
+  c.appendChild(t);
+  requestAnimationFrame(function () { t.style.transform = 'translateX(0)'; t.style.opacity = '1'; });
+  setTimeout(function () {
+    t.style.transform = 'translateX(120%)'; t.style.opacity = '0';
+    setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 400);
+  }, duration);
+}
+
+// Confirm modal — returns Promise<boolean>
+function confirmModal(msg) {
+  return new Promise(function (resolve) {
+    var existing = document.getElementById('confirmModalWrap');
+    if (existing) existing.remove();
+
+    var wrap = document.createElement('div');
+    wrap.id = 'confirmModalWrap';
+    wrap.style.cssText = 'position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:confirmFadeIn .2s ease both';
+
+    var box = document.createElement('div');
+    box.style.cssText = 'background:var(--s1,#0f0f0f);border:1px solid var(--b,#222);border-radius:10px;padding:28px 30px 24px;max-width:380px;width:90%;box-shadow:0 16px 48px rgba(0,0,0,0.5)';
+
+    var icon = document.createElement('div');
+    icon.textContent = '⚠';
+    icon.style.cssText = 'font-size:28px;margin-bottom:12px;text-align:center';
+
+    var text = document.createElement('div');
+    text.textContent = msg;
+    text.style.cssText = 'color:var(--g2,#999);font-size:13px;line-height:1.6;text-align:center;margin-bottom:22px;font-family:var(--font-body,sans-serif)';
+
+    var btns = document.createElement('div');
+    btns.style.cssText = 'display:flex;gap:10px';
+
+    var cancelBtn = document.createElement('button');
+    cancelBtn.textContent = 'Cancelar';
+    cancelBtn.className = 'btn btn-ghost';
+    cancelBtn.style.cssText = 'flex:1;padding:12px;font-size:11px;cursor:pointer';
+
+    var okBtn = document.createElement('button');
+    okBtn.textContent = 'Confirmar';
+    okBtn.className = 'btn btn-primary';
+    okBtn.style.cssText = 'flex:1;padding:12px;font-size:11px;cursor:pointer';
+
+    function close(result) {
+      wrap.style.animation = 'confirmFadeIn .15s ease reverse both';
+      setTimeout(function () { wrap.remove(); resolve(result); }, 150);
+    }
+
+    cancelBtn.onclick = function () { close(false); };
+    okBtn.onclick = function () { close(true); };
+    wrap.onclick = function (e) { if (e.target === wrap) close(false); };
+
+    btns.appendChild(cancelBtn);
+    btns.appendChild(okBtn);
+    box.appendChild(icon);
+    box.appendChild(text);
+    box.appendChild(btns);
+    wrap.appendChild(box);
+    document.body.appendChild(wrap);
+    okBtn.focus();
+  });
+}
+document.addEventListener('DOMContentLoaded', function () {
+  var sb = document.getElementById('adminSidebar');
+  var tg = document.getElementById('sidebarToggle');
+  if (sb && tg) {
+    var saved = localStorage.getItem('sidebarCollapsed');
+    if (saved === 'true') sb.classList.add('collapsed');
+    tg.addEventListener('click', function () {
+      sb.classList.toggle('collapsed');
+      localStorage.setItem('sidebarCollapsed', sb.classList.contains('collapsed'));
+    });
+  }
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-backdrop:not(.hidden)').forEach(function (m) {
+        var closeBtn = m.querySelector('.modal-close');
+        if (closeBtn) closeBtn.click();
+      });
+      return;
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === 'n') {
+      e.preventDefault();
+      var btn = document.getElementById('newPropBtn') || document.getElementById('newAgentBtn');
+      if (btn) btn.click();
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+      var saveBtn = document.querySelector('.modal-backdrop:not(.hidden) #savePropBtn, .modal-backdrop:not(.hidden) #saveAgentBtn, .modal-backdrop:not(.hidden) #saveUserBtn, .modal-backdrop:not(.hidden) #savePortalBtn, .modal-backdrop:not(.hidden) #saveAppraisalBtn');
+      if (saveBtn) { e.preventDefault(); saveBtn.click(); }
+    }
+  });
+
+  // Compact mode from localStorage
+  if (localStorage.getItem('compactMode') === 'true') {
+    document.body.classList.add('compact');
+    var ct = document.getElementById('compactToggle');
+    if (ct) ct.checked = true;
+  }
+});
+function toggleCompact(checked) {
+  document.body.classList.toggle('compact', checked);
+  localStorage.setItem('compactMode', checked);
+}
+
+// ── Event delegation (replaces unsafe-inline event handlers) ──
+(function() {
+  function _action(el) {
+    return el.getAttribute('data-action');
+  }
+  function _int(el, attr) {
+    return parseInt(el.getAttribute(attr), 10);
+  }
+  var _dispatch = {
+    toggleSelectAll: function(e, el) { window['toggleSelectAll'](el.checked); },
+    exportCSV: function(e, el) { window['exportCSV'](); },
+    clearPropSearch: function(e, el) { window['clearPropSearch'](); },
+    applyAdminFilters: function(e, el) { window['applyAdminFilters'](); },
+    clearAdminFilters: function(e, el) { window['clearAdminFilters'](); },
+    batchSetStatus: function(e, el) { window['batchSetStatus'](el.getAttribute('data-status')); },
+    batchDelete: function(e, el) { window['batchDelete'](); },
+    clearSelection: function(e, el) { window['clearSelection'](); },
+    filterProps: function(e, el) { window['filterProps'](el.value); },
+    filterAppraisals: function(e, el) { window['filterAppraisals'](); },
+    filterTasaciones: function(e, el) { window['filterTasaciones'](); },
+    toggleCompact: function(e, el) { window['toggleCompact'](el.checked); },
+    filterPublications: function(e, el) { window['filterPublications'](el.value); },
+    loadQueue: function(e, el) { window['loadQueue'](el.getAttribute('data-status')); },
+    refreshQueue: function(e, el) { window['refreshQueue'](); },
+    filterPosts: function(e, el) { window['filterPosts'](); },
+    refreshMarketing: function(e, el) { var tab = document.querySelector('#marketingSubtabs .admin-subtab.active'); if (tab) { var t = tab.getAttribute('data-marketing-subtab'); if (t === 'dashboard') loadMarketing(); else if (t === 'campaigns') loadMarketingCampaigns(); else if (t === 'accounts') loadSocialAccounts(); else if (t === 'posts') loadSocialPosts(); else if (t === 'generator') loadGeneratorProps(); } },
+    refreshPosts: function(e, el) { window['refreshPosts'](); },
+    openSocialAccountForm: function(e, el) { window['openSocialAccountForm'](parseInt(el.getAttribute('data-aid')) || null); },
+    confirmDeleteSocialAccount: function(e, el) { window['confirmDeleteSocialAccount'](parseInt(el.getAttribute('data-aid'))); },
+    testSocialAccount: function(e, el) { window['testSocialAccount'](parseInt(el.getAttribute('data-aid'))); },
+    toggleSocialAccount: function(e, el) { window['toggleSocialAccount'](parseInt(el.getAttribute('data-aid')), el); },
+    deleteSocialPost: function(e, el) { window['deleteSocialPost'](parseInt(el.getAttribute('data-pid'))); },
+    previewSocialPost: function(e, el) { window['previewSocialPost'](parseInt(el.getAttribute('data-pid'))); },
+    publishSocialPost: function(e, el) { window['publishSocialPost'](parseInt(el.getAttribute('data-pid'))); },
+    // admin-crud.js actions
+    sortProps: function(e, el) { window['sortProps'](el.getAttribute('data-field')); },
+    toggleSelect: function(e, el) { window['toggleSelect'](_int(el, 'data-pid'), el); },
+    openPropPreview: function(e, el) { window['openPropPreview'](_int(el, 'data-pid')); },
+    openPropForm: function(e, el) { window['openPropForm'](_int(el, 'data-id') || _int(el, 'data-pid')); },
+    setPropStatus: function(e, el) { window['setPropStatus'](_int(el, 'data-pid'), el.getAttribute('data-status')); },
+    setRentalStatus: function(e, el) { window['setRentalStatus'](_int(el, 'data-rid'), el.getAttribute('data-status')); },
+    confirmDeleteProp: function(e, el) { window['confirmDeleteProp'](_int(el, 'data-pid')); },
+    confirmDeleteRental: function(e, el) { window['confirmDeleteRental'](_int(el, 'data-rid')); },
+    descargarFolleto: function(e, el) { window['descargarFolleto'](_int(el, 'data-id')); },
+    goToPage: function(e, el) { window['goToPage'](_int(el, 'data-page')); },
+    goToRentalPage: function(e, el) { window['goToRentalPage'](_int(el, 'data-page')); },
+    openAgentForm: function(e, el) { window['openAgentForm'](_int(el, 'data-aid')); },
+    confirmDeleteAgent: function(e, el) { window['confirmDeleteAgent'](_int(el, 'data-aid')); },
+    closePropForm: function(e, el) { window['closePropForm'](); },
+    closeAgentForm: function(e, el) { window['closeAgentForm'](); },
+    closeInquiry: function(e, el) { window['closeInquiry'](); },
+    clickAvatarInput: function(e, el) { var inp = document.getElementById('avatarInput'); if (inp) inp.click(); },
+  };
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('[data-action]');
+    if (!el) return;
+    var fn = _dispatch[_action(el)];
+    if (fn) fn(e, el);
+  });
+  document.addEventListener('change', function(e) {
+    var el = e.target.closest('[data-action]');
+    if (!el) return;
+    var fn = _dispatch[_action(el)];
+    if (fn) fn(e, el);
+  });
+  document.addEventListener('input', function(e) {
+    var el = e.target.closest('[data-action]');
+    if (!el) return;
+    var fn = _dispatch[_action(el)];
+    if (fn) fn(e, el);
+  });
+})();
+
+// ═══════════════════════════════════════════════════════════════
+// MARKETING (Redes Sociales)
+// ═══════════════════════════════════════════════════════════════
+
+// ── Load accounts ──
+function loadSocialAccounts() {
+  var list = document.getElementById('marketingAccountsList');
+  var summary = document.getElementById('mkAccountSummary');
+  if (!list) return;
+  list.innerHTML = '<div class="loading-state">Cargando cuentas...</div>';
+  if (summary) summary.innerHTML = '';
+  _socialReq('GET', '/api/social/accounts').then(function(res) {
+    if (!res.ok) { list.innerHTML = '<div class="error-state">Error: ' + (res.error||'') + '</div>'; return; }
+    var data = res.data || [];
+    // Summary
+    if (summary) {
+      var active = data.filter(function(a) { return a.active; }).length;
+      summary.innerHTML = '<div class="mk-summary-stats"><span class="mk-stat"><span class="mk-stat-num">' + data.length + '</span>cuentas</span><span class="mk-stat"><span class="mk-stat-num">' + active + '</span>activas</span></div>' +
+        '<button class="btn btn-primary btn-sm" data-action="openSocialAccountForm" style="flex-shrink:0">+ Agregar cuenta</button>';
+    }
+    if (!data.length) {
+      list.innerHTML = '';
+      return;
+    }
+    var h = '';
+    data.forEach(function(a) {
+      var p = a.platform === 'facebook' ? 'Facebook' : 'Instagram';
+      var isActive = a.active;
+      var statusBadge = isActive ? '<span class="mk-badge mk-badge-active">Activa</span>' : '<span class="mk-badge mk-badge-inactive">Inactiva</span>';
+      var pageInfo = '';
+      if (a.page_id) pageInfo += '<span class="mk-info-chip">Page: ' + a.page_id + '</span> ';
+      if (a.ig_user_id) pageInfo += '<span class="mk-info-chip">IG: ' + a.ig_user_id + '</span>';
+      var platformIcon = a.platform === 'facebook'
+        ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>'
+        : '<svg width="16" height="16" viewBox="0 0 24 24" fill="#E4405F"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>';
+      h += '<div class="mk-account-card">';
+      h += '<div class="mk-account-head">';
+      h += '<div class="mk-account-icon">' + platformIcon + '</div>';
+      h += '<div class="mk-account-info"><div class="mk-account-name">' + a.label + '</div><div class="mk-account-platform">' + p + '</div></div>';
+      h += statusBadge;
+      h += '</div>';
+      h += '<div class="mk-account-body">';
+      if (pageInfo) h += '<div class="mk-account-meta">' + pageInfo + '</div>';
+      h += '<div class="mk-account-actions">';
+      h += '<button class="btn btn-ghost btn-sm" data-action="openSocialAccountForm" data-aid="' + a.id + '">Editar</button>';
+      h += '<button class="btn btn-ghost btn-sm" data-action="testSocialAccount" data-aid="' + a.id + '">Probar conexión</button>';
+      h += '<button class="btn btn-ghost btn-sm" data-action="toggleSocialAccount" data-aid="' + a.id + '">' + (isActive ? 'Desactivar' : 'Activar') + '</button>';
+      h += '<button class="btn btn-ghost btn-sm" style="color:var(--danger)" data-action="confirmDeleteSocialAccount" data-aid="' + a.id + '">Eliminar</button>';
+      h += '</div></div></div>';
+    });
+    list.innerHTML = h || '<div class="empty-state">Sin cuentas</div>';
+  }).catch(function(err) {
+    list.innerHTML = '<div class="error-state">Error de conexión: ' + err.message + '</div>';
+  });
+}
+
+// ── Open account form ──
+function openSocialAccountForm(aid) {
+  var modal = document.getElementById('socialAccountFormModal');
+  var content = document.getElementById('socialAccountFormContent');
+  var title = document.getElementById('socialAccountFormTitle');
+  var isEdit = !!aid;
+  title.textContent = isEdit ? 'Editar cuenta' : 'Nueva cuenta';
+
+  function renderForm(account) {
+    var c = account && account.config ? account.config : {};
+    content.innerHTML =
+      '<div class="mk-form-grid">' +
+      '<div class="mk-field"><label class="mk-label">Plataforma</label>' +
+      '<select id="saPlatform" class="mk-select">' +
+      '<option value="facebook"' + ((account && account.platform === 'facebook') ? ' selected' : '') + '>Facebook</option>' +
+      '<option value="instagram"' + ((account && account.platform === 'instagram') ? ' selected' : '') + '>Instagram</option>' +
+      '</select></div>' +
+      '<div class="mk-field"><label class="mk-label">Etiqueta</label>' +
+      '<input type="text" id="saLabel" class="mk-input" value="' + escHtml(account ? account.label : '') + '"/></div>' +
+      '<div class="mk-field"><label class="mk-label">Page ID (Facebook)</label>' +
+      '<input type="text" id="saPageId" class="mk-input" value="' + escHtml(account ? (account.page_id||'') : '') + '"/></div>' +
+      '<div class="mk-field"><label class="mk-label">Instagram Business Account ID</label>' +
+      '<input type="text" id="saIgUserId" class="mk-input" value="' + escHtml(account ? (account.ig_user_id||'') : '') + '"/></div>' +
+      '<div class="mk-field"><label class="mk-label">Access Token</label>' +
+      '<input type="password" id="saAccessToken" class="mk-input" value="' + escHtml(c.access_token||'') + '"/></div>' +
+      '<div class="mk-field"><label class="mk-label">Refresh Token</label>' +
+      '<input type="password" id="saRefreshToken" class="mk-input" value="' + escHtml(c.refresh_token||'') + '"/></div>' +
+      '<div class="mk-field"><label class="mk-label">Activa</label>' +
+      '<input type="checkbox" id="saActive"' + ((account && account.active) ? ' checked' : '') + ' class="mk-checkbox"/></div>' +
+      '</div>' +
+      '<div class="mk-form-footer">' +
+      (isEdit ? '<button class="btn btn-ghost btn-sm" id="testSocialConnBtn" data-aid="' + aid + '">Probar conexión</button>' : '') +
+      '<div class="mk-footer-actions">' +
+      '<button class="btn btn-ghost" id="cancelSocialAccountBtn">Cancelar</button>' +
+      '<button class="btn btn-primary" id="saveSocialAccountBtn">' + (isEdit ? 'Guardar' : 'Crear') + '</button></div></div>';
+    document.getElementById('cancelSocialAccountBtn').onclick = function() { modal.classList.add('hidden'); };
+    var testBtn = document.getElementById('testSocialConnBtn');
+    if (testBtn) {
+      testBtn.onclick = function() {
+        var btn = this;
+        btn.disabled = true;
+        btn.textContent = 'Probando...';
+        _socialReq('POST', '/api/social/accounts/' + aid + '/test').then(function(res) {
+            btn.disabled = false;
+            btn.textContent = 'Probar conexión';
+            if (res.ok) { toast('✅ Conectado: ' + (res.data.name||'') + (res.data.followers ? ' · ' + res.data.followers + ' seguidores' : ''), 'success', 5000); }
+            else { toast(res.error||'Error', 'error'); }
+          }).catch(function(err) { btn.disabled = false; btn.textContent = 'Probar conexión'; toast(err.message, 'error'); });
+      };
+    }
+    document.getElementById('saveSocialAccountBtn').onclick = function() {
+      var body = {
+        platform: document.getElementById('saPlatform').value,
+        label: document.getElementById('saLabel').value,
+        page_id: document.getElementById('saPageId').value,
+        ig_user_id: document.getElementById('saIgUserId').value,
+        active: document.getElementById('saActive').checked,
+        config: {
+          access_token: document.getElementById('saAccessToken').value,
+          refresh_token: document.getElementById('saRefreshToken').value,
+        },
+      };
+      var url = isEdit ? '/api/social/accounts/' + aid : '/api/social/accounts';
+      var method = isEdit ? 'PUT' : 'POST';
+      _socialReq(method, url, body).then(function(res) {
+        if (res.ok) { modal.classList.add('hidden'); toast('Cuenta guardada', 'success'); loadSocialAccounts(); }
+        else { toast(res.error||'Error', 'error'); }
+      }).catch(function(err) { toast(err.message, 'error'); });
+    };
+  }
+
+  if (isEdit) {
+    _socialReq('GET', '/api/social/accounts').then(function(res) {
+      if (!res.ok) { toast('Error cargando cuenta', 'error'); modal.classList.add('hidden'); return; }
+      var account = (res.data||[]).find(function(a) { return a.id === aid; });
+      if (!account) { toast('Cuenta no encontrada', 'error'); modal.classList.add('hidden'); return; }
+      renderForm(account);
+    }).catch(function(err) { toast(err.message, 'error'); modal.classList.add('hidden'); });
+  } else {
+    renderForm(null);
+  }
+  modal.classList.remove('hidden');
+}
+
+// ── Toggle account active ──
+function toggleSocialAccount(aid, el) {
+  _socialReq('PUT', '/api/social/accounts/' + aid, {}).then(function(res) {
+    if (!res.ok) { toast('Error', 'error'); return; }
+    toast('Estado cambiado', 'success');
+    loadSocialAccounts();
+  }).catch(function(err) { toast(err.message, 'error'); });
+}
+
+// ── Test connection ──
+function testSocialAccount(aid) {
+  var toastTimeout = setTimeout(function() { toast('Probando conexión...', 'info'); }, 300);
+  _socialReq('POST', '/api/social/accounts/' + aid + '/test').then(function(res) {
+      clearTimeout(toastTimeout);
+      if (!res.ok) { toast(res.error||'Error de conexión', 'error'); return; }
+      var d = res.data;
+      var msg = '✅ Conectado: ' + (d.name||'') + (d.followers ? ' · ' + d.followers + ' seguidores' : '');
+      toast(msg, 'success', 5000);
+    }).catch(function(err) {
+      clearTimeout(toastTimeout);
+      toast(err.message, 'error');
+    });
+}
+
+// ── Delete account ──
+function confirmDeleteSocialAccount(aid) {
+  confirmModal('¿Eliminar esta cuenta? Los posts asociados dejarán de tener cuenta.').then(function(ok) {
+    if (!ok) return;
+    _socialReq('DELETE', '/api/social/accounts/' + aid).then(function(res) {
+      if (res.ok) { toast('Cuenta eliminada', 'success'); loadSocialAccounts(); }
+      else { toast(res.error||'Error', 'error'); }
+    }).catch(function(err) { toast(err.message, 'error'); });
+  });
+}
+
+// ── Posts ──
+function loadSocialPosts() {
+  var list = document.getElementById('marketingPostsList');
+  var summary = document.getElementById('mkPostSummary');
+  if (!list) return;
+  var statusFilter = document.getElementById('postFilterStatus');
+  var accountFilter = document.getElementById('postFilterAccount');
+  var searchEl = document.getElementById('postSearch');
+
+  var params = [];
+  if (statusFilter && statusFilter.value) params.push('status=' + encodeURIComponent(statusFilter.value));
+  if (accountFilter && accountFilter.value) params.push('account_id=' + encodeURIComponent(accountFilter.value));
+
+  list.innerHTML = '<div class="loading-state">Cargando publicaciones...</div>';
+  if (summary) summary.innerHTML = '';
+  _socialReq('GET', '/api/social/posts?' + params.join('&')).then(function(res) {
+    if (!res.ok) { list.innerHTML = '<div class="error-state">Error: ' + (res.error||'') + '</div>'; return; }
+    var data = res.data || [];
+    // Summary
+    if (summary && !statusFilter.value && !accountFilter.value) {
+      var counts = { draft: 0, scheduled: 0, published: 0, failed: 0 };
+      data.forEach(function(p) { if (counts[p.status] !== undefined) counts[p.status]++; });
+      summary.innerHTML = '<div class="mk-summary-stats">' +
+        '<span class="mk-stat"><span class="mk-stat-num">' + data.length + '</span>total</span>' +
+        '<span class="mk-stat"><span class="mk-stat-num">' + counts.draft + '</span>borradores</span>' +
+        '<span class="mk-stat"><span class="mk-stat-num">' + counts.scheduled + '</span>programadas</span>' +
+        '<span class="mk-stat"><span class="mk-stat-num">' + counts.published + '</span>publicadas</span>' +
+        (counts.failed ? '<span class="mk-stat mk-stat-warn"><span class="mk-stat-num">' + counts.failed + '</span>fallidas</span>' : '') +
+        '</div>';
+    } else if (summary) { summary.innerHTML = ''; }
+    if (!data.length) {
+      list.innerHTML = '<div class="empty-state">Sin publicaciones aún.</div>';
+      updatePostAccountFilter([]);
+      return;
+    }
+    var search = searchEl ? searchEl.value.toLowerCase() : '';
+    var statusLabels = { draft: 'Borrador', scheduled: 'Programado', publishing: 'Publicando', published: 'Publicado', failed: 'Fallido' };
+    var h = '';
+    data.forEach(function(p) {
+      if (search && p.content.toLowerCase().indexOf(search) === -1) return;
+      var sl = statusLabels[p.status] || p.status;
+      var short = p.content.length > 120 ? p.content.substring(0, 120) + '...' : p.content;
+      var scheduled = p.scheduled_at ? p.scheduled_at.replace('T', ' ').substring(0, 16) : '';
+      var accountLabel = p.account_label || ('Cuenta #' + p.account_id);
+      h += '<div class="mk-post-card">';
+      h += '<div class="mk-post-head">';
+      h += '<div class="mk-post-badges">';
+      h += '<span class="mk-status mk-status-' + (p.status||'draft') + '">' + sl + '</span>';
+      if (scheduled) h += '<span class="mk-post-scheduled">' + scheduled + '</span>';
+      h += '</div>';
+      h += '<div class="mk-post-actions">';
+      h += '<button class="btn btn-ghost btn-sm" data-action="previewSocialPost" data-pid="' + p.id + '">Vista previa</button>';
+      if (p.status === 'draft' || p.status === 'scheduled') {
+        h += '<button class="btn btn-ghost btn-sm" data-action="publishSocialPost" data-pid="' + p.id + '">Publicar ahora</button>';
+        h += '<button class="btn btn-ghost btn-sm" data-action="deleteSocialPost" data-pid="' + p.id + '" style="color:var(--danger)">Eliminar</button>';
+      }
+      h += '</div></div>';
+      h += '<div class="mk-post-preview">' + escHtml(short) + '</div>';
+      if (p.media_urls && p.media_urls.length) h += '<div style="font-size:10px;color:var(--g3);margin-top:4px">📷 ' + p.media_urls.length + ' imagen(es)</div>';
+      h += '<div class="mk-post-footer"><span class="mk-post-account">' + escHtml(accountLabel) + '</span></div>';
+      if (p.error) h += '<div class="mk-post-error">Error: ' + escHtml(p.error) + '</div>';
+      h += '</div>';
+    });
+    list.innerHTML = h || '<div class="empty-state">Sin resultados</div>';
+    updatePostAccountFilter(data);
+  }).catch(function(err) {
+    list.innerHTML = '<div class="error-state">Error de conexión: ' + err.message + '</div>';
+  });
+}
+
+function escHtml(s) {
+  var d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function updatePostAccountFilter(posts) {
+  var sel = document.getElementById('postFilterAccount');
+  if (!sel) return;
+  var ids = {};
+  posts.forEach(function(p) { ids[p.account_id] = true; });
+  var current = sel.value;
+  sel.innerHTML = '<option value="">Todas las cuentas</option>';
+  // Get accounts to show names
+  _socialReq('GET', '/api/social/accounts').then(function(res) {
+    if (!res.ok) return;
+    (res.data||[]).forEach(function(a) {
+      if (ids[a.id]) {
+        var opt = document.createElement('option');
+        opt.value = a.id;
+        opt.textContent = a.label + ' (' + a.platform + ')';
+        if (opt.value === current) opt.selected = true;
+        sel.appendChild(opt);
+      }
+    });
+  }).catch(function() {});
+}
+
+function filterPosts() {
+  loadSocialPosts();
+}
+
+function refreshPosts() {
+  loadSocialPosts();
+}
+
+function deleteSocialPost(pid) {
+  confirmModal('¿Eliminar esta publicación?').then(function(ok) {
+    if (!ok) return;
+    _socialReq('DELETE', '/api/social/posts/' + pid).then(function(res) {
+      if (res.ok) { toast('Publicación eliminada', 'success'); loadSocialPosts(); }
+      else { toast(res.error||'Error', 'error'); }
+    }).catch(function(err) { toast(err.message, 'error'); });
+  });
+}
+
+function previewSocialPost(pid) {
+  _socialReq('GET', '/api/social/posts?account_id=0').then(function(res) {
+    if (!res.ok) { toast('Error cargando publicación', 'error'); return; }
+    var p = (res.data||[]).find(function(x) { return x.id === pid; });
+    if (!p) { toast('Publicación no encontrada', 'error'); return; }
+    var modal = document.getElementById('socialPostPreviewModal');
+    var content = document.getElementById('socialPostPreviewContent');
+    var statusLabels = { draft: 'Borrador', scheduled: 'Programado', publishing: 'Publicando', published: 'Publicado', failed: 'Fallido' };
+    var scheduled = p.scheduled_at ? '<div style="font-size:11px;color:var(--g3);margin-bottom:8px">📅 ' + p.scheduled_at.replace('T', ' ').substring(0, 16) + '</div>' : '';
+    var media = '';
+    if (p.media_urls && p.media_urls.length) {
+      media = '<div style="margin:10px 0 6px;font-size:10px;color:var(--g3)">📷 ' + p.media_urls.length + ' imagen(es):</div>';
+      p.media_urls.forEach(function(url) {
+        media += '<img src="' + escHtml(url) + '" style="max-width:100%;border-radius:6px;margin-bottom:6px;max-height:300px;object-fit:cover;background:var(--s3)" onerror="this.style.display=\'none\'" />';
+      });
+    }
+    content.innerHTML =
+      '<div style="padding:4px 0">' +
+      '<div style="display:flex;gap:8px;align-items:center;margin-bottom:12px"><span class="mk-status mk-status-' + (p.status||'draft') + '">' + (statusLabels[p.status]||p.status) + '</span>' +
+      (p.account_label ? '<span style="font-size:11px;color:var(--g3)">' + escHtml(p.account_label) + '</span>' : '') +
+      '</div>' +
+      scheduled +
+      '<div style="font-size:13px;color:var(--g1);line-height:1.7;white-space:pre-wrap;background:var(--s3);border-radius:8px;padding:14px;border:1px solid var(--b)">' + escHtml(p.content) + '</div>' +
+      media +
+      (p.error ? '<div style="font-size:11px;color:var(--danger);margin-top:8px;padding:8px 12px;background:rgba(204,68,68,0.06);border-radius:4px">Error: ' + escHtml(p.error) + '</div>' : '') +
+      '</div>';
+    modal.classList.remove('hidden');
+  }).catch(function(err) { toast(err.message, 'error'); });
+}
+
+function publishSocialPost(pid) {
+  _socialReq('PUT', '/api/social/posts/' + pid, {status: 'publishing'}).then(function(res) {
+    if (res.ok) { toast('Publicación procesada', 'success'); loadSocialPosts(); }
+    else { toast(res.error||'Error', 'error'); }
+  }).catch(function(err) { toast(err.message, 'error'); });
+}
+
+// ── Generator ──
+function loadGeneratorProps() {
+  var sel = document.getElementById('generatorPropSelect');
+  if (!sel) return;
+  _socialReq('GET', '/api/properties').then(function(res) {
+    if (!res.ok) return;
+    var data = res.data || [];
+    sel.innerHTML = '<option value="">Seleccionar propiedad...</option>';
+    data.forEach(function(p) {
+      var opt = document.createElement('option');
+      opt.value = p.id;
+      opt.textContent = (p.title || 'Sin título') + ' - ' + (p.city || '');
+      sel.appendChild(opt);
+    });
+  }).catch(function() {});
+}
+
+document.addEventListener('click', function(e) {
+  var el = e.target.closest('#newPostBtn');
+  if (!el) return;
+  var modal = document.getElementById('socialPostFormModal');
+  var content = document.getElementById('socialPostFormContent');
+  document.getElementById('socialPostFormTitle').textContent = 'Nueva publicación';
+  content.innerHTML =
+    '<div class="mk-form-grid">' +
+    '<div class="mk-field"><label class="mk-label">Cuenta</label>' +
+    '<select id="spAccount" class="mk-select"><option value="">Cargando...</option></select></div>' +
+    '<div class="mk-field"><label class="mk-label">Propiedad (opcional)</label>' +
+    '<select id="spProperty" class="mk-select"><option value="">Sin propiedad</option></select></div>' +
+    '<div class="mk-field" style="grid-column:1/-1"><label class="mk-label">Contenido</label>' +
+    '<textarea id="spContent" class="mk-textarea" style="min-height:120px"></textarea></div>' +
+    '<div class="mk-field" style="grid-column:1/-1"><label class="mk-label">URLs de imágenes (una por línea)</label>' +
+    '<textarea id="spMedia" class="mk-textarea" style="min-height:60px" placeholder="https://..."></textarea></div>' +
+    '<div class="mk-field"><label class="mk-label">Programar para</label>' +
+    '<input type="datetime-local" id="spScheduled" class="mk-input"/></div>' +
+    '</div>' +
+    '<div class="mk-form-footer" style="margin-top:16px">' +
+    '<button class="btn btn-ghost" id="cancelSocialPostBtn">Cancelar</button>' +
+    '<button class="btn btn-primary" id="saveSocialPostBtn">Publicar</button></div>';
+
+  // Load accounts
+  _socialReq('GET', '/api/social/accounts').then(function(res) {
+    var sel = document.getElementById('spAccount');
+    sel.innerHTML = '<option value="">Seleccionar cuenta...</option>';
+    if (res.ok) {
+      (res.data||[]).forEach(function(a) {
+        var opt = document.createElement('option');
+        opt.value = a.id;
+        opt.textContent = a.label + ' (' + a.platform + ')';
+        sel.appendChild(opt);
+      });
+    }
+  });
+  // Load properties
+  _socialReq('GET', '/api/properties').then(function(res) {
+    var sel = document.getElementById('spProperty');
+    if (res.ok) {
+      (res.data||[]).forEach(function(p) {
+        var opt = document.createElement('option');
+        opt.value = p.id;
+        opt.textContent = (p.title||'') + ' - ' + (p.city||'');
+        sel.appendChild(opt);
+      });
+    }
+  });
+
+  document.getElementById('cancelSocialPostBtn').onclick = function() { modal.classList.add('hidden'); };
+  document.getElementById('saveSocialPostBtn').onclick = function() {
+    var media = document.getElementById('spMedia').value.split('\n').map(function(s) { return s.trim(); }).filter(function(s) { return s; });
+    var scheduled = document.getElementById('spScheduled').value;
+    var body = {
+      account_id: parseInt(document.getElementById('spAccount').value),
+      property_id: parseInt(document.getElementById('spProperty').value) || null,
+      content: document.getElementById('spContent').value,
+      media_urls: media,
+    };
+    if (scheduled) body.scheduled_at = new Date(scheduled).toISOString();
+    _socialReq('POST', '/api/social/posts', body).then(function(res) {
+      if (res.ok) { modal.classList.add('hidden'); toast('Publicación creada', 'success'); loadSocialPosts(); }
+      else { toast(res.error||'Error', 'error'); }
+    }).catch(function(err) { toast(err.message, 'error'); });
+  };
+  modal.classList.remove('hidden');
+});
+
+document.addEventListener('click', function(e) {
+  var el = e.target.closest('#generateDescBtn');
+  if (!el) return;
+  var propId = document.getElementById('generatorPropSelect').value;
+  if (!propId) { toast('Seleccioná una propiedad', 'warn'); return; }
+  el.disabled = true;
+  el.textContent = 'Generando...';
+  _socialReq('POST', '/api/social/generate-description', {property_id: parseInt(propId)}).then(function(res) {
+    el.disabled = false;
+    el.textContent = 'Generar descripción';
+    if (!res.ok) { toast(res.error||'Error', 'error'); return; }
+    document.getElementById('generatedText').value = res.data.description;
+    document.getElementById('generatorResult').classList.remove('hidden');
+  }).catch(function(err) {
+    el.disabled = false;
+    el.textContent = 'Generar descripción';
+    toast(err.message, 'error');
+  });
+});
+
+document.addEventListener('click', function(e) {
+  var el = e.target.closest('#copyGeneratedBtn');
+  if (!el) return;
+  var ta = document.getElementById('generatedText');
+  ta.select();
+  document.execCommand('copy');
+  toast('Copiado al portapapeles', 'success');
+});
+
+document.addEventListener('click', function(e) {
+  var el = e.target.closest('#useGeneratedBtn');
+  if (!el) return;
+  var ta = document.getElementById('generatedText');
+  var modal = document.getElementById('socialPostFormModal');
+  document.getElementById('socialPostFormTitle').textContent = 'Nueva publicación (desde generador)';
+  document.getElementById('socialPostFormContent').innerHTML =
+    '<div class="mk-form-grid">' +
+    '<div class="mk-field"><label class="mk-label">Cuenta</label>' +
+    '<select id="spAccount" class="mk-select"><option value="">Cargando...</option></select></div>' +
+    '<div class="mk-field"><label class="mk-label">Propiedad (opcional)</label>' +
+    '<select id="spProperty" class="mk-select"><option value="">Sin propiedad</option></select></div>' +
+    '<div class="mk-field" style="grid-column:1/-1"><label class="mk-label">Contenido</label>' +
+    '<textarea id="spContent" class="mk-textarea" style="min-height:120px">' + escHtml(ta.value) + '</textarea></div>' +
+    '<div class="mk-field" style="grid-column:1/-1"><label class="mk-label">URLs de imágenes (una por línea)</label>' +
+    '<textarea id="spMedia" class="mk-textarea" style="min-height:60px" placeholder="https://..."></textarea></div>' +
+    '<div class="mk-field"><label class="mk-label">Programar para</label>' +
+    '<input type="datetime-local" id="spScheduled" class="mk-input"/></div>' +
+    '</div>' +
+    '<div class="mk-form-footer" style="margin-top:16px">' +
+    '<button class="btn btn-ghost" id="cancelSocialPostBtn">Cancelar</button>' +
+    '<button class="btn btn-primary" id="saveSocialPostBtn">Publicar</button></div>';
+
+  _socialReq('GET', '/api/social/accounts').then(function(res) {
+    var sel = document.getElementById('spAccount');
+    sel.innerHTML = '<option value="">Seleccionar cuenta...</option>';
+    if (res.ok) {
+      (res.data||[]).forEach(function(a) {
+        var opt = document.createElement('option');
+        opt.value = a.id;
+        opt.textContent = a.label + ' (' + a.platform + ')';
+        sel.appendChild(opt);
+      });
+    }
+  });
+  _socialReq('GET', '/api/properties').then(function(res) {
+    var sel = document.getElementById('spProperty');
+    if (res.ok) {
+      (res.data||[]).forEach(function(p) {
+        var opt = document.createElement('option');
+        opt.value = p.id;
+        opt.textContent = (p.title||'') + ' - ' + (p.city||'');
+        sel.appendChild(opt);
+      });
+    }
+  });
+
+  document.getElementById('cancelSocialPostBtn').onclick = function() { modal.classList.add('hidden'); };
+  document.getElementById('saveSocialPostBtn').onclick = function() {
+    var media = document.getElementById('spMedia').value.split('\n').map(function(s) { return s.trim(); }).filter(function(s) { return s; });
+    var scheduled = document.getElementById('spScheduled').value;
+    var body = {
+      account_id: parseInt(document.getElementById('spAccount').value),
+      property_id: parseInt(document.getElementById('spProperty').value) || null,
+      content: document.getElementById('spContent').value,
+      media_urls: media,
+    };
+    if (scheduled) body.scheduled_at = new Date(scheduled).toISOString();
+    _socialReq('POST', '/api/social/posts', body).then(function(res) {
+      if (res.ok) { modal.classList.add('hidden'); toast('Publicación creada', 'success'); loadSocialPosts(); }
+      else { toast(res.error||'Error', 'error'); }
+    }).catch(function(err) { toast(err.message, 'error'); });
+  };
+  modal.classList.remove('hidden');
+});
+
+// Close social modals
+document.addEventListener('click', function(e) {
+  var el = e.target.closest('#closeSocialAccountForm, #closeSocialPostForm, #closeSocialPostPreview, #closeTemplateFormBtn');
+  if (!el) return;
+  el.closest('.modal-backdrop').classList.add('hidden');
+});
+
+// ═══════════════════════════════════════════════════════════════
+// CALENDAR VIEW
+// ═══════════════════════════════════════════════════════════════
+var _calDate = new Date();
+
+function renderCalendar() {
+  var grid = document.getElementById('calendarGrid');
+  var label = document.getElementById('calMonthLabel');
+  if (!grid) return;
+  var year = _calDate.getFullYear();
+  var month = _calDate.getMonth();
+  var months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  label.textContent = months[month] + ' ' + year;
+
+  _socialReq('GET', '/api/social/calendar?year=' + year + '&month=' + (month + 1)).then(function(res) {
+    var posts = res.data || [];
+    var daysWithPosts = {};
+    posts.forEach(function(p) {
+      var dateKey = p.scheduled_at ? p.scheduled_at.substring(0, 10) : (p.published_at ? p.published_at.substring(0, 10) : '');
+      if (!dateKey) return;
+      if (!daysWithPosts[dateKey]) daysWithPosts[dateKey] = [];
+      daysWithPosts[dateKey].push(p);
+    });
+
+    var firstDay = new Date(year, month, 1).getDay();
+    var daysInMonth = new Date(year, month + 1, 0).getDate();
+    var today = new Date();
+    var todayStr = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
+
+    // Keep header
+    var headerHTML = '<div style="color:var(--g3);font-size:10px;font-weight:600;text-transform:uppercase;text-align:center;padding:6px 0">Dom</div><div style="color:var(--g3);font-size:10px;font-weight:600;text-transform:uppercase;text-align:center;padding:6px 0">Lun</div><div style="color:var(--g3);font-size:10px;font-weight:600;text-transform:uppercase;text-align:center;padding:6px 0">Mar</div><div style="color:var(--g3);font-size:10px;font-weight:600;text-transform:uppercase;text-align:center;padding:6px 0">Mié</div><div style="color:var(--g3);font-size:10px;font-weight:600;text-transform:uppercase;text-align:center;padding:6px 0">Jue</div><div style="color:var(--g3);font-size:10px;font-weight:600;text-transform:uppercase;text-align:center;padding:6px 0">Vie</div><div style="color:var(--g3);font-size:10px;font-weight:600;text-transform:uppercase;text-align:center;padding:6px 0">Sáb</div>';
+    var h = headerHTML;
+
+    for (var i = 0; i < firstDay; i++) {
+      h += '<div></div>';
+    }
+    for (var d = 1; d <= daysInMonth; d++) {
+      var dateStr = year + '-' + String(month + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+      var dayPosts = daysWithPosts[dateStr] || [];
+      var isToday = dateStr === todayStr;
+      var hasPosts = dayPosts.length > 0;
+      var scheduledCount = dayPosts.filter(function(p) { return p.status === 'scheduled' || p.status === 'draft'; }).length;
+      var publishedCount = dayPosts.filter(function(p) { return p.status === 'published'; }).length;
+      var failedCount = dayPosts.filter(function(p) { return p.status === 'failed'; }).length;
+
+      h += '<div style="background:' + (isToday ? 'rgba(32,184,171,0.08)' : 'var(--s2)') + ';border:1px solid ' + (isToday ? 'var(--accent)' : 'var(--b)') + ';border-radius:6px;min-height:80px;padding:6px;cursor:pointer" onclick="showDayPosts(\'' + dateStr + '\')">';
+      h += '<div style="font-size:11px;color:' + (isToday ? 'var(--accent)' : 'var(--g2)') + ';font-weight:' + (isToday ? '700' : '400') + ';margin-bottom:4px">' + d + '</div>';
+      if (hasPosts) {
+        if (scheduledCount > 0) h += '<div style="font-size:8px;color:var(--accent);background:rgba(32,184,171,0.1);border-radius:2px;padding:1px 4px;margin-bottom:2px">📅 ' + scheduledCount + '</div>';
+        if (publishedCount > 0) h += '<div style="font-size:8px;color:var(--success);background:rgba(76,175,128,0.1);border-radius:2px;padding:1px 4px;margin-bottom:2px">✅ ' + publishedCount + '</div>';
+        if (failedCount > 0) h += '<div style="font-size:8px;color:#e65b5b;background:rgba(230,91,91,0.1);border-radius:2px;padding:1px 4px">❌ ' + failedCount + '</div>';
+      }
+      h += '</div>';
+    }
+    grid.innerHTML = h;
+  }).catch(function() {});
+}
+
+function showDayPosts(dateStr) {
+  _socialReq('GET', '/api/social/posts?period=upcoming').then(function(res) {
+    var allPosts = res.data || [];
+    var dayPosts = allPosts.filter(function(p) {
+      var dt = p.scheduled_at || p.published_at || '';
+      return dt.substring(0, 10) === dateStr;
+    });
+    if (!dayPosts.length) {
+      toast('Sin publicaciones en esta fecha', 'info');
+      return;
+    }
+    var h = '<div style="max-height:60vh;overflow-y:auto">';
+    dayPosts.forEach(function(p) {
+      var statusLabels = { draft: 'Borrador', scheduled: 'Programado', publishing: 'Publicando', published: 'Publicado', failed: 'Fallido' };
+      h += '<div class="mk-post-card" style="margin-bottom:8px">';
+      h += '<div class="mk-post-head">';
+      h += '<span class="mk-status mk-status-' + (p.status||'draft') + '">' + (statusLabels[p.status] || p.status) + '</span>';
+      if (p.account_label) h += '<span style="font-size:10px;color:var(--g3);margin-left:8px">' + escHtml(p.account_label) + '</span>';
+      h += '</div>';
+      h += '<div class="mk-post-preview" style="font-size:11px;padding:10px 14px">' + escHtml(p.content.length > 200 ? p.content.substring(0,200) + '...' : p.content) + '</div>';
+      if (p.error) h += '<div class="mk-post-error">' + escHtml(p.error) + '</div>';
+      h += '</div>';
+    });
+    h += '</div>';
+    var modal = document.getElementById('socialPostPreviewModal');
+    document.getElementById('socialPostPreviewContent').innerHTML = h;
+    modal.classList.remove('hidden');
+  });
+}
+
+document.addEventListener('click', function(e) {
+  var el = e.target.closest('#calPrevMonth');
+  if (el) { _calDate.setMonth(_calDate.getMonth() - 1); renderCalendar(); }
+});
+document.addEventListener('click', function(e) {
+  var el = e.target.closest('#calNextMonth');
+  if (el) { _calDate.setMonth(_calDate.getMonth() + 1); renderCalendar(); }
+});
+document.addEventListener('click', function(e) {
+  var el = e.target.closest('#calTodayBtn');
+  if (el) { _calDate = new Date(); renderCalendar(); }
+});
+
+// ═══════════════════════════════════════════════════════════════
+// TEMPLATES
+// ═══════════════════════════════════════════════════════════════
+var _templates = [];
+
+function loadTemplates() {
+  var list = document.getElementById('templatesList');
+  if (!list) return;
+  list.innerHTML = '<div class="loading-state">Cargando plantillas...</div>';
+  _socialReq('GET', '/api/social/templates').then(function(res) {
+    if (!res.ok) { list.innerHTML = '<div class="error-state">Error</div>'; return; }
+    _templates = res.data || [];
+    if (!_templates.length) {
+      list.innerHTML = '<div class="empty-state">Sin plantillas aún. Creá una para reutilizar contenido.</div>';
+      return;
+    }
+    var h = '';
+    _templates.forEach(function(t) {
+      h += '<div class="mk-card" style="margin-bottom:8px">';
+      h += '<div class="mk-card-header" style="padding:10px 16px">';
+      h += '<strong style="color:var(--white);flex:1;font-size:13px">' + escHtml(t.name) + '</strong>';
+      if (t.platform) h += '<span style="font-size:10px;color:var(--g3);margin-right:8px">' + escHtml(t.platform) + '</span>';
+      h += '<button class="btn btn-ghost btn-sm" onclick="useTemplate(' + t.id + ')" style="font-size:10px">Usar</button>';
+      h += '<button class="btn btn-ghost btn-sm" onclick="editTemplate(' + t.id + ')" style="font-size:10px">Editar</button>';
+      h += '<button class="btn btn-ghost btn-sm" onclick="deleteTemplate(' + t.id + ')" style="font-size:10px;color:var(--danger)">Eliminar</button>';
+      h += '</div>';
+      h += '<div class="mk-card-body" style="padding:8px 16px 12px">';
+      h += '<div style="font-size:12px;color:var(--g2);line-height:1.5;max-height:60px;overflow:hidden">' + escHtml(t.content.length > 150 ? t.content.substring(0,150) + '...' : t.content) + '</div>';
+      h += '</div></div>';
+    });
+    list.innerHTML = h;
+  });
+}
+
+function openTemplateForm(template) {
+  var modal = document.getElementById('templateFormModal');
+  var content = document.getElementById('templateFormContent');
+  var title = document.getElementById('templateFormTitle');
+  title.textContent = template ? 'Editar plantilla' : 'Nueva plantilla';
+  var t = template || {};
+  content.innerHTML =
+    '<div class="pf-body">' +
+    '<div class="field"><label class="field-label">Nombre *</label><input id="tplName" class="field-input" value="' + escHtml(t.name || '') + '" placeholder="Ej: Publicación de venta"/></div>' +
+    '<div class="field"><label class="field-label">Plataforma (opcional)</label><select id="tplPlatform" class="field-input field-input--select">' +
+    '<option value="">Cualquier plataforma</option>' +
+    '<option value="facebook"' + (t.platform === 'facebook' ? ' selected' : '') + '>Facebook</option>' +
+    '<option value="instagram"' + (t.platform === 'instagram' ? ' selected' : '') + '>Instagram</option>' +
+    '</select></div>' +
+    '<div class="field"><label class="field-label">Contenido *</label><textarea id="tplContent" class="field-input" style="min-height:120px;height:auto">' + escHtml(t.content || '') + '</textarea></div>' +
+    '<div class="field"><label class="field-label">URLs de imágenes (una por línea)</label><textarea id="tplMedia" class="field-input" style="min-height:60px;height:auto">' + ((t.media_urls || []).join('\n')) + '</textarea></div>' +
+    '<div style="display:flex;gap:10px;margin-top:16px">' +
+    '<button class="btn btn-primary btn-full" id="saveTemplateBtn">' + (template ? 'Guardar' : 'Crear plantilla') + '</button>' +
+    '<button class="btn btn-ghost" onclick="document.getElementById(\'templateFormModal\').classList.add(\'hidden\')">Cancelar</button></div></div>';
+  modal.classList.remove('hidden');
+  document.getElementById('saveTemplateBtn').onclick = function() {
+    var name = document.getElementById('tplName').value.trim();
+    var content = document.getElementById('tplContent').value.trim();
+    if (!name || !content) { toast('Nombre y contenido son obligatorios', 'warn'); return; }
+    var media = document.getElementById('tplMedia').value.split('\n').map(function(s) { return s.trim(); }).filter(function(s) { return s; });
+    var platform = document.getElementById('tplPlatform').value;
+    var body = { name: name, content: content, media_urls: media, platform: platform };
+    var url = template ? '/api/social/templates/' + t.id : '/api/social/templates';
+    var method = template ? 'PUT' : 'POST';
+    _socialReq(method, url, body).then(function(res) {
+      if (res.ok) { modal.classList.add('hidden'); toast('Plantilla guardada', 'success'); loadTemplates(); }
+      else { toast(res.error || 'Error', 'error'); }
+    }).catch(function(err) { toast(err.message, 'error'); });
+  };
+}
+
+document.addEventListener('click', function(e) {
+  var el = e.target.closest('#newTemplateBtn');
+  if (el) openTemplateForm(null);
+});
+
+function useTemplate(tid) {
+  var t = _templates.find(function(x) { return x.id === tid; });
+  if (!t) return;
+  var modal = document.getElementById('socialPostFormModal');
+  var content = document.getElementById('socialPostFormContent');
+  document.getElementById('socialPostFormTitle').textContent = 'Nueva publicación (desde plantilla)';
+  content.innerHTML =
+    '<div class="mk-form-grid">' +
+    '<div class="mk-field"><label class="mk-label">Cuenta</label><select id="spAccount" class="mk-select"><option value="">Cargando...</option></select></div>' +
+    '<div class="mk-field"><label class="mk-label">Propiedad (opcional)</label><select id="spProperty" class="mk-select"><option value="">Sin propiedad</option></select></div>' +
+    '<div class="mk-field" style="grid-column:1/-1"><label class="mk-label">Contenido</label><textarea id="spContent" class="mk-textarea" style="min-height:120px">' + escHtml(t.content) + '</textarea></div>' +
+    '<div class="mk-field" style="grid-column:1/-1"><label class="mk-label">URLs de imágenes (una por línea)</label><textarea id="spMedia" class="mk-textarea" style="min-height:60px" placeholder="https://...">' + (t.media_urls || []).join('\n') + '</textarea></div>' +
+    '<div class="mk-field"><label class="mk-label">Programar para</label><input type="datetime-local" id="spScheduled" class="mk-input"/></div>' +
+    '<div class="mk-field"><label class="mk-label">Recurrente (cada N días, 0 = no)</label><input type="number" id="spRecurring" class="mk-input" min="0" value="0" placeholder="0"/></div>' +
+    '</div>' +
+    '<div class="mk-form-footer" style="margin-top:16px"><button class="btn btn-ghost" id="cancelSocialPostBtn">Cancelar</button><button class="btn btn-primary" id="saveSocialPostBtn">Publicar</button></div>';
+
+  _socialReq('GET', '/api/social/accounts').then(function(res) {
+    var sel = document.getElementById('spAccount');
+    sel.innerHTML = '<option value="">Seleccionar cuenta...</option>';
+    if (res.ok) { (res.data||[]).forEach(function(a) { var opt = document.createElement('option'); opt.value = a.id; opt.textContent = a.label + ' (' + a.platform + ')'; if (t.platform && a.platform === t.platform) opt.selected = true; sel.appendChild(opt); }); }
+  });
+  _socialReq('GET', '/api/properties').then(function(res) {
+    var sel = document.getElementById('spProperty');
+    if (res.ok) { (res.data||[]).forEach(function(p) { var opt = document.createElement('option'); opt.value = p.id; opt.textContent = (p.title||'') + ' - ' + (p.city||''); sel.appendChild(opt); }); }
+  });
+  document.getElementById('cancelSocialPostBtn').onclick = function() { modal.classList.add('hidden'); };
+  document.getElementById('saveSocialPostBtn').onclick = function() {
+    var media = document.getElementById('spMedia').value.split('\n').map(function(s) { return s.trim(); }).filter(function(s) { return s; });
+    var scheduled = document.getElementById('spScheduled').value;
+    var body = {
+      account_id: parseInt(document.getElementById('spAccount').value),
+      property_id: parseInt(document.getElementById('spProperty').value) || null,
+      content: document.getElementById('spContent').value,
+      media_urls: media,
+      template_id: tid,
+      recurring_interval: parseInt(document.getElementById('spRecurring').value) || null,
+    };
+    if (scheduled) body.scheduled_at = new Date(scheduled).toISOString();
+    _socialReq('POST', '/api/social/posts', body).then(function(res) {
+      if (res.ok) { modal.classList.add('hidden'); toast('Publicación creada', 'success'); if (typeof loadSocialPosts === 'function') loadSocialPosts(); }
+      else { toast(res.error||'Error', 'error'); }
+    }).catch(function(err) { toast(err.message, 'error'); });
+  };
+  modal.classList.remove('hidden');
+}
+
+function editTemplate(tid) {
+  var t = _templates.find(function(x) { return x.id === tid; });
+  if (t) openTemplateForm(t);
+}
+
+function deleteTemplate(tid) {
+  confirmModal('¿Eliminar esta plantilla?').then(function(ok) {
+    if (!ok) return;
+    _socialReq('DELETE', '/api/social/templates/' + tid).then(function(res) {
+      if (res.ok) { toast('Plantilla eliminada', 'success'); loadTemplates(); }
+      else { toast(res.error||'Error', 'error'); }
+    }).catch(function(err) { toast(err.message, 'error'); });
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// ANALYTICS
+// ═══════════════════════════════════════════════════════════════
+function loadAnalytics() {
+  var content = document.getElementById('analyticsContent');
+  if (!content) return;
+  content.innerHTML = '<div class="loading-state">Cargando analíticas...</div>';
+
+  var accountFilter = document.getElementById('analyticsAccountFilter');
+  var days = document.getElementById('analyticsPeriodFilter');
+  var params = '?days=' + (days ? days.value : 30);
+  if (accountFilter && accountFilter.value) params += '&account_id=' + accountFilter.value;
+
+  _socialReq('GET', '/api/social/analytics' + params).then(function(res) {
+    if (!res.ok) { content.innerHTML = '<div class="error-state">Error</div>'; return; }
+    var d = res.data || {};
+
+    // Summary cards
+    var h = '<div class="dash-grid" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:20px">';
+    h += '<div class="dash-card" style="padding:16px"><div class="dash-card-label">Publicados</div><div class="dash-card-value" style="color:var(--success)">' + (d.published||0) + '</div></div>';
+    h += '<div class="dash-card" style="padding:16px"><div class="dash-card-label">Programados</div><div class="dash-card-value" style="color:var(--accent)">' + (d.scheduled||0) + '</div></div>';
+    h += '<div class="dash-card" style="padding:16px"><div class="dash-card-label">Borradores</div><div class="dash-card-value">' + (d.drafts||0) + '</div></div>';
+    h += '<div class="dash-card" style="padding:16px"><div class="dash-card-label">Fallidos</div><div class="dash-card-value" style="color:' + ((d.failed||0) > 0 ? '#e65b5b' : 'var(--g3)') + '">' + (d.failed||0) + '</div></div>';
+    h += '<div class="dash-card" style="padding:16px"><div class="dash-card-label">Total posts</div><div class="dash-card-value">' + (d.total_posts||0) + '</div></div>';
+    h += '<div class="dash-card" style="padding:16px"><div class="dash-card-label">Engagement total</div><div class="dash-card-value" style="color:var(--accent)">' + (d.total_engagement||0) + '</div></div>';
+    h += '</div>';
+
+    // Engagement breakdown
+    h += '<h3 style="color:var(--g1);font-size:14px;margin:16px 0 10px">Engagement</h3>';
+    h += '<div class="dash-grid" style="grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-bottom:20px">';
+    h += '<div class="dash-card" style="padding:12px;text-align:center"><div style="font-size:22px;font-weight:700;color:#3b82f6">' + (d.engagement_likes||0) + '</div><div style="font-size:10px;color:var(--g3)">👍 Me gusta</div></div>';
+    h += '<div class="dash-card" style="padding:12px;text-align:center"><div style="font-size:22px;font-weight:700;color:#c9a84c">' + (d.engagement_comments||0) + '</div><div style="font-size:10px;color:var(--g3)">💬 Comentarios</div></div>';
+    h += '<div class="dash-card" style="padding:12px;text-align:center"><div style="font-size:22px;font-weight:700;color:#8b5cf6">' + (d.engagement_shares||0) + '</div><div style="font-size:10px;color:var(--g3)">🔁 Compartidos</div></div>';
+    h += '<div class="dash-card" style="padding:12px;text-align:center"><div style="font-size:22px;font-weight:700;color:#4caf80">' + (d.engagement_saved||0) + '</div><div style="font-size:10px;color:var(--g3)">💾 Guardados</div></div>';
+    h += '</div>';
+
+    // Per account breakdown
+    if (d.by_account && d.by_account.length) {
+      h += '<h3 style="color:var(--g1);font-size:14px;margin:16px 0 10px">Por cuenta</h3>';
+      d.by_account.forEach(function(a) {
+        h += '<div class="mk-account-card" style="margin-bottom:8px;padding:12px 16px">';
+        h += '<div class="mk-account-head" style="padding:0;margin-bottom:8px"><div class="mk-account-info"><div class="mk-account-name">' + escHtml(a.account_label) + '</div><div class="mk-account-platform">' + (a.platform||'') + ' · ' + a.posts + ' publicaciones</div></div></div>';
+        h += '<div style="display:flex;gap:16px;font-size:12px">';
+        h += '<span style="color:var(--g2)">👍 ' + a.engagement_likes + ' likes</span>';
+        h += '<span style="color:var(--g2)">💬 ' + a.engagement_comments + ' comentarios</span>';
+        h += '</div></div>';
+      });
+    }
+
+    // Daily posts chart (simple bar chart)
+    if (d.daily_posts && d.daily_posts.length) {
+      h += '<h3 style="color:var(--g1);font-size:14px;margin:16px 0 10px">Publicaciones por día (últimos ' + d.period_days + ' días)</h3>';
+      h += '<div style="display:flex;gap:2px;align-items:end;height:100px;overflow-x:auto;padding:10px 0">';
+      var maxCount = 1;
+      d.daily_posts.forEach(function(dp) { if (dp.count > maxCount) maxCount = dp.count; });
+      d.daily_posts.slice(-30).forEach(function(dp) {
+        var pct = Math.round((dp.count / maxCount) * 100);
+        h += '<div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:28px" title="' + dp.date + ': ' + dp.count + ' posts">';
+        h += '<div style="width:20px;height:' + pct + 'px;background:var(--accent);border-radius:3px 3px 0 0;min-height:2px"></div>';
+        h += '<div style="font-size:7px;color:var(--g4);margin-top:2px">' + dp.date.substring(8,10) + '/' + dp.date.substring(5,7) + '</div>';
+        h += '</div>';
+      });
+      h += '</div>';
+    }
+
+    content.innerHTML = h;
+  }).catch(function(err) {
+    content.innerHTML = '<div class="error-state">Error: ' + err.message + '</div>';
+  });
+}
+
+// Wire up analytics events
+document.addEventListener('click', function(e) {
+  var el = e.target.closest('#refreshAnalyticsBtn');
+  if (el) loadAnalytics();
+});
+document.addEventListener('change', function(e) {
+  var el = e.target.closest('#analyticsAccountFilter, #analyticsPeriodFilter');
+  if (el) loadAnalytics();
+});
+
+// Load analytics account filter
+function loadAnalyticsAccounts() {
+  var sel = document.getElementById('analyticsAccountFilter');
+  if (!sel) return;
+  _socialReq('GET', '/api/social/accounts').then(function(res) {
+    if (!res.ok) return;
+    sel.innerHTML = '<option value="">Todas las cuentas</option>';
+    (res.data||[]).forEach(function(a) {
+      var opt = document.createElement('option');
+      opt.value = a.id;
+      opt.textContent = a.label + ' (' + a.platform + ')';
+      sel.appendChild(opt);
+    });
+  });
+}
+
+// Override marketing subtab handler to include new tabs
+document.addEventListener('click', function(e) {
+  var btn = e.target.closest('[data-marketing-subtab]');
+  if (!btn) return;
+  document.querySelectorAll('#marketingSubtabs .admin-subtab').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  var target = btn.getAttribute('data-marketing-subtab');
+  ['dashboard','campaigns','accounts','posts','calendar','templates','analytics','generator'].forEach(function(t) {
+    var el = document.getElementById('marketingSubtab' + t.charAt(0).toUpperCase() + t.slice(1));
+    if (el) el.classList.toggle('hidden', t !== target);
+  });
+  if (target === 'dashboard') { if (typeof loadMarketing === 'function') loadMarketing(); }
+  if (target === 'campaigns') { if (typeof loadMarketingCampaigns === 'function') loadMarketingCampaigns(); }
+  if (target === 'accounts') loadSocialAccounts();
+  if (target === 'posts') loadSocialPosts();
+  if (target === 'calendar') renderCalendar();
+  if (target === 'templates') loadTemplates();
+  if (target === 'analytics') { loadAnalyticsAccounts(); loadAnalytics(); }
+  if (target === 'generator') loadGeneratorProps();
+});
+
+// Close template modal
+document.addEventListener('click', function(e) {
+  var el = e.target.closest('#closeTemplateFormBtn');
+  if (el) document.getElementById('templateFormModal').classList.add('hidden');
+});
+</script>
+<script defer src="/js/utils.min.js?v=__VERSION__"></script>
+<script defer src="/js/admin-bundle.min.js?v=__VERSION__"></script>
+<script defer src="/js/admin-acm.js?v=__VERSION__"></script>
+<script defer src="/js/pdf-brochure.js?v=__VERSION__"></script>
+<script defer src="/js/pdf-appraisal.js?v=__VERSION__"></script>
+<script defer src="/js/sw-register.min.js?v=__VERSION__"></script>
+</body>
+</html>

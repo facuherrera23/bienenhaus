@@ -1,0 +1,21 @@
+{
+  "name": "bienenhaus-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:js": "terser js/utils.js -o js/utils.min.js -c -m && node scripts/concat-public.js && terser js/api.js -o js/api.min.js -c -m && terser js/properties.js -o js/properties.min.js -c -m && terser js/agents.js -o js/agents.min.js -c -m && terser js/rentals.js -o js/rentals.min.js -c -m && terser js/rentals-ui.js -o js/rentals-ui.min.js -c -m && terser js/venta-ui.js -o js/venta-ui.min.js -c -m && terser js/detalle.js -o js/detalle.min.js -c -m && terser js/comparador.js -o js/comparador.min.js -c -m && terser js/mapa.js -o js/mapa.min.js -c -m && npm run build:admin",
+    "build:admin": "node scripts/concat-admin.js",
+    "build:css": "postcss css/styles.css -o css/styles.min.css && postcss css/detalle.css -o css/detalle.min.css && postcss css/alquiler.css -o css/alquiler.min.css && postcss css/comparador.css -o css/comparador.min.css && postcss css/tasacion2.css -o css/tasacion2.min.css && postcss css/admin.css -o css/admin.min.css && postcss css/styles-public.css -o css/styles-public.min.css",
+    "build:html": "node scripts/inject-partials.js",
+    "build": "npm run build:html && npm run build:js && npm run build:css",
+    "watch": "onchange 'js/*.js' 'css/*.css' -- npm run build",
+    "test:e2e": "python tests/test_pages.py"
+  },
+  "devDependencies": {
+    "cssnano": "^7.0.0",
+    "onchange": "^7.1.0",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.1.1",
+    "terser": "^5.37.0"
+  }
+}

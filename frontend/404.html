@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="canonical" href="__SITE_URL__/"/>
+  <title>404 · Página no encontrada · Bienenhaus</title>
+  <meta name="robots" content="noindex, follow"/>
+  <meta name="prerender-status-code" content="404"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZ%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%91%C3%9Cabcdefghijklmnopqrstuvwxyz%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%B1%C3%BC0123456789.%2C%3A%3B%21%3F%C2%A1%C2%BF%28%29-%E2%80%94%5B%5D%7B%7D%22%27%40%23%24%E2%82%AC%25%26%2A%2F%2B%C2%B0%C2%B2%C2%B3%3C%3E%3D%C3%97%E2%80%93%E2%80%A6%C2%B7%C2%A9" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/styles.min.css?v=__VERSION__"/>
+  <link rel="manifest" href="/manifest.json?v=__VERSION__"/>
+  <meta name="theme-color" content="#20b8ab"/>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png"/>
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png"/>
+  <script>
+    var path = window.location.pathname;
+    var match = path.match(/\/(venta|alquiler)\/\d+/);
+    if (match) {
+      sessionStorage.setItem('gh_redirect', path);
+      window.location.replace('/propiedad.html');
+    } else if (path.match(/\/(venta|alquiler)$/)) {
+      window.location.replace(path + '.html');
+    }
+  </script>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <div class="page-wrapper" id="main-content">
+    <div class="content" style="min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;">
+      <h1 style="font-size:6rem;margin:0;color:var(--primary);font-family:'Anton',sans-serif;line-height:1;">404</h1>
+      <p style="font-size:1.25rem;margin:1rem 0 2rem;color:var(--text-muted);">Esta página no existe o fue movida.</p>
+      <a href="/" class="btn-primary">Volver al inicio</a>
+    </div>
+  </div>
+<script src="/js/utils.min.js?v=__VERSION__"></script>
+<script src="/js/api.min.js?v=__VERSION__"></script>
+<script src="/js/main.min.js?v=__VERSION__"></script>
+</body>
+</html>

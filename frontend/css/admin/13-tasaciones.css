@@ -1,0 +1,547 @@
+/* ═══════════════════════════════════════════════════════════════
+   13-tasaciones.css — Módulo 13: Centro de Gestión de Tasaciones
+   Reutiliza tokens, KPI cards, botones, badges y modals del DS.
+   Prefijo: tas-
+╔═══════════════════════════════════════════════════════════════════*/
+
+/* ── KPI BAR ─────────────────────────────────────────────────── */
+.tas-kpi-bar {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  margin-bottom: 20px;
+}
+.tas-kpi-card {
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-md);
+  padding: 14px 16px;
+  transition: var(--admin-transition);
+}
+.tas-kpi-card:hover {
+  border-color: var(--admin-primary-border);
+  box-shadow: var(--admin-shadow-sm), 0 0 0 1px var(--admin-primary-border);
+  transform: translateY(-2px);
+}
+.tas-kpi-label {
+  color: var(--admin-text-muted);
+  display: block;
+  font-family: var(--admin-font-body);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: var(--admin-ls-eyebrow);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.tas-kpi-number {
+  color: var(--admin-text);
+  display: block;
+  font-family: var(--admin-font-display);
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: var(--admin-ls-tight);
+  line-height: 1;
+}
+.tas-kpi-sub {
+  color: var(--admin-text-muted);
+  font-family: var(--admin-font-body);
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+/* ── TOOLBAR ─────────────────────────────────────────────────── */
+.tas-toolbar {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--admin-space-3);
+  margin-bottom: var(--admin-space-4);
+}
+.tas-toolbar .field-input {
+  flex: 1;
+  min-width: 160px;
+}
+.tas-toolbar .field-input--select {
+  flex: none;
+  min-width: 130px;
+  width: auto;
+}
+
+/* ── LIST ────────────────────────────────────────────────────── */
+.tas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tas-item {
+  align-items: center;
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-md);
+  cursor: pointer;
+  display: flex;
+  gap: var(--admin-space-3);
+  padding: var(--admin-space-3) var(--admin-space-4);
+  transition: var(--admin-transition);
+}
+.tas-item:hover {
+  background: var(--admin-surface-hover);
+  border-color: var(--admin-border-medium);
+}
+.tas-item.active {
+  background: var(--admin-primary-glow);
+  border-color: var(--admin-primary-border);
+}
+.tas-item-icon {
+  align-items: center;
+  background: var(--admin-bg);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-md);
+  color: var(--admin-primary);
+  display: flex;
+  flex-shrink: 0;
+  font-size: 16px;
+  height: 36px;
+  justify-content: center;
+  width: 36px;
+}
+.tas-item-info {
+  flex: 1;
+  min-width: 0;
+}
+.tas-item-title {
+  color: var(--admin-text);
+  font-size: var(--admin-text-sm);
+  font-weight: 600;
+  line-height: 1.3;
+}
+.tas-item-sub {
+  color: var(--admin-text-secondary);
+  font-size: var(--admin-text-xs);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tas-item-detail {
+  color: var(--admin-text-muted);
+  font-size: 10px;
+  margin-top: 2px;
+}
+.tas-item-meta {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--admin-space-3);
+}
+.tas-item-agent {
+  color: var(--admin-text-muted);
+  font-size: 9px;
+  white-space: nowrap;
+}
+.tas-item-time {
+  color: var(--admin-text-muted);
+  font-family: var(--admin-font-num);
+  font-size: 10px;
+  white-space: nowrap;
+}
+.tas-item-value {
+  color: var(--admin-primary);
+  font-family: var(--admin-font-num);
+  font-size: var(--admin-text-sm);
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ── PRIORITY BADGES ─────────────────────────────────────────── */
+.priority-baja {
+  background: var(--admin-surface-elevated);
+  border: 1px solid var(--admin-border);
+  color: var(--admin-text-muted);
+}
+.priority-media {
+  background: var(--admin-info-bg);
+  border-color: var(--admin-info-border);
+  color: var(--admin-info);
+}
+.priority-alta {
+  background: var(--admin-warning-bg);
+  border-color: var(--admin-warning-border);
+  color: var(--admin-warning);
+}
+.priority-urgente {
+  background: var(--admin-danger-bg);
+  border-color: var(--admin-danger-border);
+  color: var(--admin-danger);
+}
+
+/* ── SIDE PANEL + OVERLAY ────────────────────────────────────── */
+.tas-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity 0.3s ease;
+  z-index: calc(var(--admin-z-modal) - 1);
+}
+.tas-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.tas-panel {
+  background: var(--admin-surface);
+  border-left: 1px solid var(--admin-border);
+  box-shadow: var(--admin-shadow-xl);
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  position: fixed;
+  right: 0;
+  top: 60px;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+  width: 480px;
+  z-index: var(--admin-z-modal);
+}
+.tas-panel.open {
+  transform: translateX(0);
+}
+.tas-panel-header {
+  align-items: center;
+  background: var(--admin-surface);
+  border-bottom: 1px solid var(--admin-border);
+  display: flex;
+  justify-content: space-between;
+  padding: var(--admin-space-4);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.tas-panel-title {
+  color: var(--admin-text);
+  font-family: var(--admin-font-display);
+  font-size: var(--admin-text-lg);
+  font-weight: 400;
+  letter-spacing: var(--admin-ls-tight);
+}
+.tas-panel-close {
+  align-items: center;
+  background: transparent;
+  border: none;
+  border-radius: var(--admin-radius-md);
+  color: var(--admin-text-muted);
+  cursor: pointer;
+  display: flex;
+  font-size: 18px;
+  height: 32px;
+  justify-content: center;
+  transition: var(--admin-transition);
+  width: 32px;
+}
+.tas-panel-close:hover {
+  background: var(--admin-surface-hover);
+  color: var(--admin-text);
+}
+.tas-panel-body {
+  padding: var(--admin-space-4);
+}
+.tas-panel-section {
+  margin-bottom: var(--admin-space-5);
+}
+.tas-panel-section-title {
+  color: var(--admin-text-muted);
+  font-family: var(--admin-font-body);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: var(--admin-ls-eyebrow);
+  margin-bottom: var(--admin-space-3);
+  text-transform: uppercase;
+}
+.tas-panel-row {
+  align-items: center;
+  border-bottom: 1px solid var(--admin-border);
+  display: flex;
+  font-size: var(--admin-text-xs);
+  justify-content: space-between;
+  padding: 5px 0;
+}
+.tas-panel-row:last-child {
+  border-bottom: none;
+}
+.tas-panel-label {
+  color: var(--admin-text-muted);
+  font-weight: 500;
+}
+.tas-panel-value,
+.tas-panel-label {
+  font-family: var(--admin-font-body);
+}
+.tas-panel-value {
+  color: var(--admin-text-secondary);
+  text-align: right;
+}
+.tas-panel-desc {
+  color: var(--admin-text-secondary);
+  font-size: var(--admin-text-xs);
+  line-height: 1.6;
+  margin-top: var(--admin-space-2);
+}
+
+/* ── QUICK ACTIONS ───────────────────────────────────────────── */
+.tas-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tas-action-btn {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-md);
+  color: var(--admin-text-secondary);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--admin-font-body);
+  font-size: var(--admin-text-xs);
+  gap: var(--admin-space-2);
+  padding: var(--admin-space-2) var(--admin-space-3);
+  text-align: left;
+  transition: var(--admin-transition);
+  width: 100%;
+}
+.tas-action-btn:hover {
+  background: var(--admin-surface-hover);
+  border-color: var(--admin-border-medium);
+  color: var(--admin-text);
+}
+.tas-action-btn svg {
+  flex-shrink: 0;
+}
+
+/* ── TIMELINE ────────────────────────────────────────────────── */
+.tas-timeline {
+  padding-left: 20px;
+  position: relative;
+}
+.tas-timeline::before {
+  background: var(--admin-border-medium);
+  bottom: 4px;
+  content: '';
+  left: 6px;
+  position: absolute;
+  top: 4px;
+  width: 1px;
+}
+.tas-timeline-item {
+  padding-bottom: var(--admin-space-4);
+  position: relative;
+}
+.tas-timeline-item:last-child {
+  padding-bottom: 0;
+}
+.tas-timeline-dot {
+  background: var(--admin-primary);
+  border: 2px solid var(--admin-surface);
+  border-radius: var(--admin-radius-full);
+  height: 8px;
+  left: -17px;
+  position: absolute;
+  top: 4px;
+  width: 8px;
+}
+.tas-timeline-dot--estado {
+  background: var(--admin-warning);
+}
+.tas-timeline-dot--asignacion {
+  background: var(--admin-info);
+}
+.tas-timeline-dot--comentario {
+  background: var(--admin-success);
+}
+.tas-timeline-dot--conversion {
+  background: var(--admin-purple);
+}
+.tas-timeline-dot--nota {
+  background: var(--admin-text-muted);
+}
+.tas-timeline-content {
+  color: var(--admin-text-secondary);
+  font-size: var(--admin-text-xs);
+  line-height: 1.5;
+}
+.tas-timeline-time {
+  color: var(--admin-text-muted);
+  font-family: var(--admin-font-num);
+  font-size: 9px;
+  margin-top: 2px;
+}
+
+/* ── COMMENTS ────────────────────────────────────────────────── */
+.tas-comments {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-3);
+}
+.tas-comment {
+  background: var(--admin-bg);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-md);
+  padding: var(--admin-space-3);
+}
+.tas-comment-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.tas-comment-author {
+  color: var(--admin-text);
+  font-size: var(--admin-text-xs);
+  font-weight: 600;
+}
+.tas-comment-time {
+  color: var(--admin-text-muted);
+  font-family: var(--admin-font-num);
+  font-size: 9px;
+}
+.tas-comment-content {
+  color: var(--admin-text-secondary);
+  font-size: var(--admin-text-xs);
+  line-height: 1.5;
+}
+.tas-comment-input {
+  display: flex;
+  gap: var(--admin-space-2);
+  margin-top: var(--admin-space-3);
+}
+.tas-comment-input textarea {
+  background: var(--admin-bg);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-md);
+  color: var(--admin-text);
+  flex: 1;
+  font-family: var(--admin-font-body);
+  font-size: var(--admin-text-xs);
+  min-height: 36px;
+  outline: none;
+  padding: 8px var(--admin-space-3);
+  resize: none;
+  transition: var(--admin-transition);
+}
+.tas-comment-input textarea:focus {
+  border-color: var(--admin-primary-border);
+  box-shadow: var(--admin-shadow-glow);
+}
+
+/* ── FILES ───────────────────────────────────────────────────── */
+.tas-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--admin-space-2);
+}
+.tas-file-chip {
+  align-items: center;
+  background: var(--admin-bg);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-md);
+  color: var(--admin-text-secondary);
+  display: flex;
+  font-size: var(--admin-text-xs);
+  gap: 4px;
+  padding: 4px 10px;
+  text-decoration: none;
+  transition: var(--admin-transition);
+}
+.tas-file-chip:hover {
+  border-color: var(--admin-primary-border);
+  color: var(--admin-primary);
+}
+.tas-file-delete {
+  background: none;
+  border: none;
+  color: var(--admin-text-muted);
+  cursor: pointer;
+  font-size: 12px;
+  margin-left: 2px;
+  padding: 0 2px;
+  transition: var(--admin-transition);
+}
+.tas-file-delete:hover {
+  color: var(--admin-danger);
+}
+.tas-upload-zone {
+  align-items: center;
+  border: 1px dashed var(--admin-border);
+  border-radius: var(--admin-radius-md);
+  color: var(--admin-text-muted);
+  cursor: pointer;
+  display: flex;
+  font-size: var(--admin-text-xs);
+  gap: 6px;
+  justify-content: center;
+  padding: 12px;
+  transition: var(--admin-transition);
+}
+.tas-upload-zone:hover {
+  border-color: var(--admin-primary);
+  color: var(--admin-primary);
+}
+
+/* ── ASSIGN MODAL ────────────────────────────────────────────── */
+.tas-assign-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.tas-assign-option {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--admin-radius-sm);
+  color: var(--admin-text-secondary);
+  cursor: pointer;
+  font-family: var(--admin-font-body);
+  font-size: var(--admin-text-sm);
+  padding: 8px 12px;
+  text-align: left;
+  transition: var(--admin-transition);
+  width: 100%;
+}
+.tas-assign-option:hover {
+  background: var(--admin-primary-glow);
+  border-color: var(--admin-primary-border);
+  color: var(--admin-text);
+}
+
+/* ── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .tas-kpi-bar {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (max-width: 900px) {
+  .tas-kpi-bar {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .tas-panel {
+    height: 100vh;
+    top: 0;
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .tas-kpi-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .tas-item-meta {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .tas-toolbar .field-input--select {
+    min-width: 100px;
+  }
+}

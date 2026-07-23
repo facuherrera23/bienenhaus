@@ -1,0 +1,35 @@
+/* ═══════════════════════════════════════════════════════════════
+   BUTTON — .btn variants
+   Depends on: tokens.css
+╔═══════════════════════════════════════════════════════════════════*/
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 26px; font-size: 10px; font-family: var(--ds-font-body, var(--font-sub));
+  font-weight: 700; letter-spacing: var(--ls-nav, 0.12em); text-transform: uppercase;
+  border-radius: 2px; border: 1px solid transparent;
+  transition: all .2s cubic-bezier(.22,.61,.36,1); cursor: pointer;
+  position: relative; overflow: hidden;
+}
+.btn::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent);
+  opacity: 0; transition: opacity .3s;
+}
+.btn:hover::after { opacity: 1; }
+.btn-primary  { background: var(--ds-color-accent, var(--accent)); color: #000; border-color: var(--ds-color-accent, var(--accent)); }
+.btn-primary:hover { background: var(--ds-color-accent-dark, var(--accent-dark)); border-color: var(--ds-color-accent-dark, var(--accent-dark)); transform: translateY(-1px); box-shadow: 0 4px 20px var(--accent-glow); }
+.btn-outline  { background: transparent; color: var(--ds-color-accent, var(--accent)); border-color: var(--accent-b, rgba(32,184,171,0.28)); }
+.btn-outline:hover { background: var(--accent-glow, rgba(32,184,171,0.18)); border-color: var(--ds-color-accent, var(--accent)); transform: translateY(-1px); }
+.btn-ghost    { background: transparent; color: var(--ds-color-text-secondary, var(--g2)); border-color: var(--ds-color-border, var(--b)); }
+.btn-ghost:hover { background: var(--ds-color-surface-3, var(--s3)); color: var(--ds-color-text, var(--white)); }
+.btn-danger   { background: transparent; color: #cc3535; border-color: #7a1515; }
+.btn-danger:hover { background: #5c0f0f; color: var(--ds-color-text, var(--white)); }
+.btn-success  { background: transparent; color: #3aaa55; border-color: #155515; }
+.btn-success:hover { background: #0f3a0f; color: var(--ds-color-text, var(--white)); }
+.btn-warn     { background: transparent; color: #cc9922; border-color: #5a3c00; }
+.btn-warn:hover { background: #3a2600; color: var(--ds-color-text, var(--white)); }
+.btn-wapp     { background: transparent; color: var(--ds-color-text, var(--g1)); border-color: var(--ds-color-border-medium, var(--bm)); }
+.btn-wapp:hover { background: rgba(37,211,102,0.14); color: #25d366; border-color: rgba(37,211,102,0.5); }
+.btn-sm   { padding: 7px 14px; font-size: 9px; letter-spacing: var(--ls-badge, 0.12em); }
+.btn-full { width: 100%; }

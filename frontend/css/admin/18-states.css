@@ -1,0 +1,350 @@
+/* ═══════════════════════════════════════════════════════════════
+   BIENENHAUS ADMIN — States: Loading, Empty, Error,
+   Skeleton, Pagination, Drop Zone, Avatar Upload
+   Depends on: 0-tokens.css
+╔═══════════════════════════════════════════════════════════════════*/
+
+/* ── Loading state ─────────────────────────────────────────── */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  color: var(--admin-text-muted);
+  font-family: var(--admin-font-body);
+  font-size: var(--admin-text-sm);
+  gap: 12px;
+}
+.loading-state::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--admin-border);
+  border-top-color: var(--admin-primary);
+  border-radius: 50%;
+  animation: adminSpin 600ms linear infinite;
+}
+
+@keyframes adminSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Skeleton loading ──────────────────────────────────────── */
+.admin-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--admin-surface) 25%,
+    var(--admin-surface-hover) 50%,
+    var(--admin-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: adminShimmer 1.5s ease-in-out infinite;
+  border-radius: var(--admin-radius-sm);
+}
+@keyframes adminShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.admin-loading-pulse {
+  animation: adminPulse 1.5s ease-in-out infinite;
+}
+@keyframes adminPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ── Empty state ───────────────────────────────────────────── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  text-align: center;
+  color: var(--admin-text-muted);
+}
+.empty-state-icon {
+  font-size: 40px;
+  margin-bottom: 14px;
+  opacity: 0.5;
+}
+.empty-state-title {
+  font-family: var(--admin-font-body);
+  font-size: var(--admin-text-md);
+  font-weight: 600;
+  color: var(--admin-text-secondary);
+  margin-bottom: 6px;
+}
+.empty-state-text {
+  font-family: var(--admin-font-body);
+  font-size: var(--admin-text-sm);
+  color: var(--admin-text-muted);
+  max-width: 300px;
+  line-height: 1.5;
+}
+.empty-state-action {
+  margin-top: 16px;
+}
+
+/* ── Error state ───────────────────────────────────────────── */
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  text-align: center;
+  color: var(--admin-danger);
+}
+.error-state::before {
+  content: '!';
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--admin-danger-bg);
+  border: 2px solid var(--admin-danger-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* ── Pagination ────────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+  padding: 20px 0;
+}
+.page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px;
+  border-radius: var(--admin-radius-md);
+  background: rgba(8, 8, 8, 0.6);
+  border: 1px solid var(--admin-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  box-shadow: var(--admin-shadow-sm);
+}
+.page-btn {
+  background: transparent;
+  border: none;
+  color: var(--admin-text-secondary);
+  font-size: var(--admin-text-sm);
+  font-family: var(--admin-font-num);
+  font-weight: 600;
+  padding: 6px 10px;
+  min-width: 32px;
+  height: 32px;
+  border-radius: var(--admin-radius-sm);
+  cursor: pointer;
+  transition: var(--admin-transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.page-btn:hover:not(:disabled) {
+  background: var(--admin-surface);
+  color: var(--admin-text);
+  transform: translateY(-1px);
+}
+.page-btn--active {
+  background: var(--admin-primary) !important;
+  color: #000 !important;
+  font-weight: 700;
+  box-shadow: 0 0 16px var(--admin-primary-glow);
+}
+.page-btn--nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+}
+.page-btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+.page-dots {
+  color: var(--admin-text-disabled);
+  padding: 0 4px;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+/* ── Avatar upload ─────────────────────────────────────────── */
+.avatar-upload-wrap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px;
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-md);
+}
+.avatar-upload-preview {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  border: 2px solid var(--admin-border);
+  background: var(--admin-bg-secondary);
+  transition: var(--admin-transition);
+}
+.avatar-upload-preview:hover {
+  border-color: var(--admin-primary-border);
+}
+.avatar-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.avatar-preview-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--admin-text-muted);
+  font-size: 28px;
+  font-weight: 700;
+  font-family: var(--admin-font-display);
+}
+.avatar-upload-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--admin-transition);
+  cursor: pointer;
+  color: var(--admin-text);
+  font-size: 14px;
+}
+.avatar-upload-preview:hover .avatar-upload-overlay {
+  opacity: 1;
+}
+.avatar-status {
+  font-size: 11px;
+  margin-top: 4px;
+  min-height: 16px;
+  font-family: var(--admin-font-body);
+}
+.avatar-status-loading {
+  color: var(--admin-text-muted);
+}
+.avatar-status-ok {
+  color: var(--admin-success);
+}
+.avatar-status-error {
+  color: var(--admin-danger);
+}
+
+/* ── Drop zone (image upload) ──────────────────────────────── */
+.drop-zone {
+  border: 2px dashed var(--admin-border);
+  border-radius: var(--admin-radius-md);
+  padding: 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--admin-transition);
+  color: var(--admin-text-muted);
+  font-family: var(--admin-font-body);
+  font-size: var(--admin-text-sm);
+}
+.drop-zone:hover,
+.drop-zone.drag-over {
+  border-color: var(--admin-primary);
+  background: var(--admin-primary-glow);
+  color: var(--admin-primary);
+}
+
+.img-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+.img-preview-item {
+  position: relative;
+  border-radius: var(--admin-radius-sm);
+  overflow: hidden;
+  aspect-ratio: 1;
+  cursor: grab;
+  user-select: none;
+  border: 2px solid transparent;
+  transition: var(--admin-transition);
+}
+.img-preview-item:active {
+  cursor: grabbing;
+}
+.img-preview-item.dragging {
+  opacity: 0.4;
+}
+.img-preview-item.drag-over {
+  border-color: var(--admin-primary);
+  box-shadow: 0 0 0 2px var(--admin-primary-glow);
+}
+.img-preview-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.img-preview-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--admin-transition);
+  gap: 8px;
+}
+.img-preview-item:hover .img-preview-overlay {
+  opacity: 1;
+}
+.img-preview-delete {
+  background: none;
+  border: none;
+  color: var(--admin-danger);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px;
+  transition: var(--admin-transition);
+}
+.img-preview-delete:hover {
+  transform: scale(1.2);
+}
+.img-preview-order {
+  font-size: 10px;
+  color: var(--admin-text);
+  font-weight: 600;
+  font-family: var(--admin-font-num);
+}
+.img-preview-main {
+  position: absolute;
+  top: 4px; right: 4px;
+  background: var(--admin-primary);
+  color: #000;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: var(--admin-ls-badge);
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: var(--admin-radius-sm);
+}

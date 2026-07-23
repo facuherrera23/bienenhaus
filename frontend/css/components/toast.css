@@ -1,0 +1,32 @@
+/* ═══════════════════════════════════════════════════════════════
+   TOAST — .admin-toast, .toast variants
+   Depends on: tokens.css
+╔═══════════════════════════════════════════════════════════════════*/
+
+.admin-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: var(--ds-font-body, var(--font-sub));
+  font-weight: 500;
+  z-index: 9999;
+  color: #fff;
+  transform: translateY(16px);
+  opacity: 0;
+  transition: transform .25s ease, opacity .25s ease;
+  pointer-events: none;
+  max-width: 360px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.admin-toast--visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.admin-toast--info    { background: #1a1a2e; border: 1px solid rgba(32,184,171,0.3); }
+.admin-toast--success { background: #0d2818; border: 1px solid rgba(76,175,128,0.3); }
+.admin-toast--error   { background: #2e0d0d; border: 1px solid rgba(204,68,68,0.3); }
+.admin-toast--warn    { background: #2e2a0d; border: 1px solid rgba(255,193,7,0.3); }

@@ -1,0 +1,154 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Base de datos local
+*.db
+*.sqlite
+*.sqlite3
+instance/
+backend/instance/
+
+# Infraestructura local / staging (contiene config de conexiones)
+docker-compose.staging.yml
+
+# Diagnósticos de sesión (generados por debugging interactivo)
+_diag_*
+_fail*
+_final*
+_noitems.png
+_one_shot.py
+# Scripts semilla/diag sueltos
+_seed_and_start.py
+_test_comparable_click.py
+_check_baja_table.py
+
+# Archivos de diagnóstico y depuración
+backend/tests/_check_db.py
+backend/tests/_check_pw.py
+frontend/tests/_audit_loaders.py
+frontend/tests/_debug_tabs.py
+frontend/tests/_fix_encoding.py
+frontend/tests/_rename_analysis.py
+frontend/tests/_show_sample.py
+frontend/tests/check_redesign.py
+frontend/tests/debug_acm.py
+frontend/tests/run_appraisal_5x.py
+frontend/js/_check_bundle.js
+
+# Capturas de pantalla diag
+frontend/filter-*.png
+frontend/footer_*.png
+frontend/screenshot-*.png
+frontend/sections.png
+frontend/tests/screenshot_*.py
+
+# Reportes métricos (lighthouse, etc)
+frontend/lighthouse_*.json
+
+anchored_summary.md
+test_debug.py
+test_fe.py
+test_login.py
+test_api_full.py
+test_appraisal_module.py
+
+# Variables de entorno
+.env
+*.env
+.env.local
+.env.*.local
+cloudinary
+
+# Imágenes subidas (solo locales)
+backend/static/uploads/*
+!backend/static/uploads/.gitkeep
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Temp / backups
+backend/backups/
+
+# Migración DB (contiene credenciales)
+backend/scripts/migrate_db.py
+*.txt
+!backend/static/feeds/.gitkeep
+
+# Reportes de auditoría / hardening / fase (no código fuente)
+*_REPORT.md
+*_AUDIT.md
+*_PLAN.md
+*_CHECKLIST.md
+README.md
+DEMO_*.md
+informe_*.md
+DEPLOY*.md
+PROMPT_*.md
+FASE*.md
+PHASE*.md
+TYPOGRAPHY*.md
+RESPONSIVE*.md
+SECURITY*.md
+BACKUP*.md
+DB_*.md
+TEST_COVERAGE*.md
+QUICK_*.md
+DEPLOYMENT_CHECKLIST.md
+USER_FLOW_REPORT.md
+OPERATIONS_REPORT.md
+LAUNCH_READINESS_REPORT.md
+
+# Scripts de diagnóstico / debug
+tests/*diagnose*.py
+tests/_start_server.py
+tests/admin_flow_verification.py
+tests/admin_recon.py
+tests/admin_retest_agent.py
+tests/admin_diagnose*.py
+tests/screenshots/
+
+# Archivos temporales de tests
+test_hardening*
+*.results.json
+
+# Archivos huérfanos / debug / temp
+git
+investigate_encoding.py
+frontend/favi.html
+backend/scripts/fix_minified.py
+.opencode/
+*_results.json
+admin_flow_results.json
+
+
+# npm
+node_modules/
+test-results/
+verify_final.py
+agents_debug.png
+agents_final.png
+debug_screenshot.py
+.aider*
+
+.env

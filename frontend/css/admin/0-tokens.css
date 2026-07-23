@@ -1,0 +1,145 @@
+/* ═══════════════════════════════════════════════════════════════
+   BIENENHAUS ADMIN — Design Tokens
+   Overrides y variables específicas del panel administrativo.
+   Depende de: tokens.css (base) — carga vía styles.min.css
+╔═══════════════════════════════════════════════════════════════════*/
+
+:root {
+  /* ── Backgrounds ──────────────────────────────────────── */
+  --admin-bg:              #050505;
+  --admin-bg-secondary:    #090909;
+  --admin-surface:         #101010;
+  --admin-surface-hover:   #151515;
+  --admin-surface-elevated:#1a1a1a;
+
+  /* ── Primary accent ───────────────────────────────────── */
+  --admin-primary:         #20B8AB;
+  --admin-primary-hover:   #31D3C5;
+  --admin-primary-dark:    #13968C;
+  --admin-primary-glow:    rgba(32,184,171,0.15);
+  --admin-primary-border:  rgba(32,184,171,0.25);
+
+  /* ── Text ─────────────────────────────────────────────── */
+  --admin-text:            #FFFFFF;
+  --admin-text-secondary:  #BDBDBD;
+  --admin-text-muted:      #7A7A7A;
+  --admin-text-disabled:   #3a3a3a;
+
+  /* ── Borders ──────────────────────────────────────────── */
+  --admin-border:          rgba(255,255,255,0.06);
+  --admin-border-medium:   rgba(255,255,255,0.10);
+  --admin-border-strong:   rgba(255,255,255,0.16);
+
+  /* ── Semantic ─────────────────────────────────────────── */
+  --admin-success:         #39D98A;
+  --admin-success-bg:      rgba(57,217,138,0.10);
+  --admin-success-border:  rgba(57,217,138,0.25);
+  --admin-warning:         #FFB432;
+  --admin-warning-bg:      rgba(255,180,50,0.10);
+  --admin-warning-border:  rgba(255,180,50,0.25);
+  --admin-danger:          #CC3535;
+  --admin-danger-bg:       rgba(204,53,53,0.10);
+  --admin-danger-border:   rgba(204,53,53,0.25);
+  --admin-info:            #20B8AB;
+  --admin-info-bg:         rgba(32,184,171,0.10);
+  --admin-info-border:     rgba(32,184,171,0.25);
+  --admin-purple:          #8C64DC;
+  --admin-purple-bg:       rgba(140,100,220,0.10);
+  --admin-purple-border:   rgba(140,100,220,0.25);
+
+  /* ── Typography ───────────────────────────────────────── */
+  --admin-font-display:    'Anton', Impact, sans-serif;
+  --admin-font-body:       'Poppins', sans-serif;
+  --admin-font-num:        'Montserrat', sans-serif;
+
+  /* ── Font sizes ───────────────────────────────────────── */
+  --admin-text-2xs:        10px;
+  --admin-text-xs:         11px;
+  --admin-text-sm:         12px;
+  --admin-text-base:       13px;
+  --admin-text-md:         14px;
+  --admin-text-lg:         18px;
+  --admin-text-xl:         22px;
+  --admin-text-2xl:        28px;
+  --admin-text-3xl:        36px;
+
+  /* ── Letter spacing ───────────────────────────────────── */
+  --admin-ls-none:         0;
+  --admin-ls-tight:        -0.02em;
+  --admin-ls-wide:         0.06em;
+  --admin-ls-label:        0.10em;
+  --admin-ls-badge:        0.12em;
+  --admin-ls-eyebrow:      0.18em;
+
+  /* ── Spacing (4px base) ───────────────────────────────── */
+  --admin-space-1:  4px;
+  --admin-space-2:  8px;
+  --admin-space-3:  12px;
+  --admin-space-4:  16px;
+  --admin-space-5:  24px;
+  --admin-space-6:  32px;
+  --admin-space-7:  48px;
+  --admin-space-8:  64px;
+
+  /* ── Radii ────────────────────────────────────────────── */
+  --admin-radius-sm:   4px;
+  --admin-radius-md:   8px;
+  --admin-radius-lg:   12px;
+  --admin-radius-xl:   16px;
+  --admin-radius-full: 9999px;
+
+  /* ── Shadows ──────────────────────────────────────────── */
+  --admin-shadow-sm:  0 1px 2px rgba(0,0,0,0.5);
+  --admin-shadow-md:  0 4px 12px rgba(0,0,0,0.4);
+  --admin-shadow-lg:  0 8px 32px rgba(0,0,0,0.5);
+  --admin-shadow-xl:  0 16px 48px rgba(0,0,0,0.6);
+  --admin-shadow-glow: 0 0 20px rgba(32,184,171,0.12);
+
+  /* ── Transitions ──────────────────────────────────────── */
+  --admin-transition:       all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --admin-transition-slow:  all 350ms cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* ── Z-index scale ────────────────────────────────────── */
+  --admin-z-sidebar:  100;
+  --admin-z-topbar:   200;
+  --admin-z-modal:    1000;
+  --admin-z-toast:    9999;
+
+  /* ── Surface aliases (compat) ──────────────────────────── */
+  --admin-surface-1: var(--admin-surface-elevated); /* #1a1a1a — panels, day cells */
+  --admin-surface-2: var(--admin-surface-hover);    /* #151515 — card backgrounds */
+  --admin-surface-3: var(--admin-surface);           /* #101010 — avatars, tags */
+
+  /* ── Radius base ──────────────────────────────────────── */
+  --admin-radius:        var(--admin-radius-md);     /* 8px */
+
+  /* ── Card / Input backgrounds ──────────────────────────── */
+  --admin-bg-card:       var(--admin-surface-elevated);
+  --admin-bg-input:      var(--admin-surface);
+
+  /* ── Border light ──────────────────────────────────────── */
+  --admin-border-light:  var(--admin-border-medium);
+
+  /* ── Accent (aliased to primary, see security module) ─── */
+  --admin-accent:        var(--admin-primary);
+
+  /* ── Calendar event type colors ────────────────────────── */
+  --admin-blue:          #3b82f6;
+  --admin-cal-reunion:   #818cf8;
+  --admin-cal-llamada:   #eab308;
+  --admin-cal-tasacion:  #a855f7;
+  --admin-cal-recordatorio: var(--admin-blue);
+  --admin-cal-tarea:     #ec4899;
+  --admin-cal-evento:    #22c55e;
+
+  /* ── Font aliases ──────────────────────────────────────── */
+  --admin-font-title:    var(--admin-font-display);
+  --admin-font-mono:     'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+  --admin-font-xs:       var(--admin-text-xs);       /* 11px */
+  --admin-font-sm:       var(--admin-text-base);     /* 13px */
+
+  /* ── Space aliases ─────────────────────────────────────── */
+  --admin-space-xs:      6px;
+  --admin-space-sm:      var(--admin-space-2);       /* 8px */
+  --admin-space-lg:      var(--admin-space-4);       /* 16px */
+}

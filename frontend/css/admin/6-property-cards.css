@@ -1,0 +1,167 @@
+/* ═══════════════════════════════════════════════════════════════
+   BIENENHAUS ADMIN — Property Cards & Grid
+   .prop-grid, .prop-card, .prop-card-thumb, .prop-card-body,
+   .prop-card-title, .prop-card-loc, .prop-card-price,
+   .prop-card-specs, .prop-card-badges, .prop-card-actions
+   Depends on: 0-tokens.css, 15-tables.css (checkbox), 18-states.css (pagination)
+╔═══════════════════════════════════════════════════════════════════*/
+
+/* ── Property grid ─────────────────────────────────────────── */
+.prop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+/* ── Property card ─────────────────────────────────────────── */
+.prop-card {
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: var(--admin-transition);
+  position: relative;
+}
+.prop-card:hover {
+  border-color: var(--admin-primary-border);
+  transform: translateY(-2px);
+  box-shadow: var(--admin-shadow-md), 0 0 0 1px var(--admin-primary-border);
+}
+
+/* Thumbnail */
+.prop-card-thumb {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  background: var(--admin-surface);
+  aspect-ratio: 4 / 3;
+  transition: transform 500ms ease-out, filter 500ms ease-out;
+  filter: grayscale(30%) brightness(0.85);
+}
+.prop-card:hover .prop-card-thumb {
+  transform: scale(1.05);
+  filter: grayscale(0%) brightness(1);
+}
+
+.prop-card-thumb--empty {
+  width: 100%;
+  height: 180px;
+  aspect-ratio: 4 / 3;
+  background: var(--admin-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--admin-text-disabled);
+}
+.prop-card-thumb--empty svg {
+  opacity: 0.35;
+}
+
+/* Card body */
+.prop-card-body {
+  padding: 16px 18px 14px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.prop-card-title {
+  font-family: var(--admin-font-display);
+  font-size: var(--admin-text-md);
+  color: var(--admin-text);
+  text-transform: uppercase;
+  letter-spacing: var(--admin-ls-wide);
+  line-height: 1.15;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.prop-card-loc {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--admin-font-body);
+  font-size: var(--admin-text-xs);
+  color: var(--admin-text-muted);
+  font-weight: 500;
+}
+
+.prop-card-price {
+  font-family: var(--admin-font-num);
+  font-size: var(--admin-text-lg);
+  font-weight: 800;
+  color: var(--admin-primary);
+  letter-spacing: var(--admin-ls-tight);
+  line-height: 1.1;
+}
+
+/* Specs */
+.prop-card-specs {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+.prop-card-spec {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--admin-font-body);
+  font-size: var(--admin-text-2xs);
+  color: var(--admin-text-secondary);
+  background: var(--admin-bg-secondary);
+  padding: 3px 8px;
+  border-radius: var(--admin-radius-sm);
+  font-weight: 500;
+}
+.prop-card-spec svg {
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+/* Badges container */
+.prop-card-badges {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+.prop-card-badges .admin-status-badge {
+  font-size: 7px;
+  padding: 2px 6px;
+}
+
+/* Rental inline expenses */
+.prop-card .rental-expenses {
+  font-size: var(--admin-text-2xs);
+  color: var(--admin-text-muted);
+}
+
+/* Actions */
+.prop-card-actions {
+  display: flex;
+  gap: 4px;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--admin-border);
+}
+.prop-card-actions .btn {
+  font-size: 9px;
+  padding: 6px 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  letter-spacing: var(--admin-ls-badge);
+}
+.prop-card-actions .btn-icon {
+  flex: 0 0 auto;
+  padding: 6px 8px;
+}

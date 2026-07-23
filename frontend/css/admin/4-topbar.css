@@ -1,0 +1,136 @@
+/* ═══════════════════════════════════════════════════════════════
+   BIENENHAUS ADMIN — Topbar, User Badge, Tabs & Subtabs
+   Depends on: 0-tokens.css, 1-base.css
+╔═══════════════════════════════════════════════════════════════════*/
+
+/* ── User top bar ─────────────────────────────────────────── */
+.admin-userbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 48px;
+  border-bottom: 1px solid var(--admin-border);
+  flex-shrink: 0;
+  min-height: 48px;
+  background: var(--admin-bg);
+}
+.admin-userbar.hidden {
+  display: none;
+}
+.admin-userbar-left {
+  flex: 1;
+}
+.admin-userbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 12px 4px 4px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: var(--admin-transition);
+  cursor: default;
+}
+.user-badge:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.user-badge-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--admin-surface-elevated), var(--admin-primary-dark));
+  color: var(--admin-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px var(--admin-primary-glow),
+              0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.user-badge-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.user-badge-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--admin-text);
+}
+.user-badge-role {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--admin-ls-label);
+  margin-top: 3px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  width: fit-content;
+}
+.user-badge-role.role-admin {
+  color: var(--admin-primary);
+  background: var(--admin-primary-glow);
+}
+.user-badge-role.role-editor {
+  color: var(--admin-warning);
+  background: var(--admin-warning-bg);
+}
+.user-badge-role.role-viewer {
+  color: var(--admin-text-muted);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ── Top bar with page title + actions ────────────────────── */
+.admin-topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+/* ── Subtabs / Tab navigation ─────────────────────────────── */
+.admin-subtabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--admin-border);
+}
+.admin-subtab {
+  padding: 10px 24px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--admin-ls-label);
+  text-transform: uppercase;
+  color: var(--admin-text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: var(--admin-transition);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  font-family: var(--admin-font-body);
+}
+.admin-subtab:hover {
+  color: var(--admin-text-secondary);
+}
+.admin-subtab.active {
+  color: var(--admin-primary);
+  border-bottom-color: var(--admin-primary);
+}
+
+@keyframes adminTabIn {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
