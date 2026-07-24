@@ -1,15 +1,18 @@
 import pytest
 from auth_helper import seed_admin_user
-from models import User
+from models import User, ActivityLog
 from extensions import db
 
 
 def test_seed_admin_creates_when_missing(app):
     """seed_admin_user() crea el admin si no existe."""
     with app.app_context():
-        # Clear any existing admin first
-        User.query.filter_by(username='admin').delete()
-        db.session.commit()
+        # Clear any existing admin first - delete activity_logs first due to FK
+        admin = User.query.filter_by(username='admin').first()
+        if admin:
+            ActivityLog.query.filter_by(user_id=admin.id).delete()
+            User.query.filter_by(username='admin').delete()
+            db.session.commit()
         assert User.query.filter_by(username='admin').first() is None
         seed_admin_user()
         assert User.query.filter_by(username='admin').first() is not None
