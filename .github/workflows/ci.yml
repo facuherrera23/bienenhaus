@@ -55,6 +55,19 @@ jobs:
         working-directory: frontend
         run: npm run build
 
+      - name: Install postgresql-client
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+
+      - name: Wait for PostgreSQL
+        run: |
+          for i in {1..30}; do
+            if pg_isready -h localhost -p 5432 -U postgres -d bienenhaus_test >/dev/null 2>&1; then
+              echo "PostgreSQL is ready"
+              break
+            fi
+            sleep 1
+          done
+
       - name: Run tests
         working-directory: backend
         run: python -m pytest tests/ -q
