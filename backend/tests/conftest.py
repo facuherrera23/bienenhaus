@@ -47,12 +47,15 @@ def admin_session(app, client):
     with app.app_context():
         # Ensure admin exists in DB
         from models import User
-        if not User.query.filter_by(username='admin').first():
+        admin = User.query.filter_by(username='admin').first()
+        if not admin:
             seed_admin_user()
+            admin = User.query.filter_by(username='admin').first()
+        admin_id = admin.id
     
     with client.session_transaction() as sess:
         sess['admin'] = True
-        sess['user_id'] = 1
+        sess['user_id'] = admin_id
         sess['username'] = 'admin'
         sess['role'] = 'admin'
     yield client
