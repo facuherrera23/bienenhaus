@@ -64,6 +64,8 @@ jobs:
           FLASK_DEBUG: 'false'
           ADMIN_PASSWORD: ci-admin-password-for-testing
           PYTHONDONTWRITEBYTECODE: '1'
+          CSRF_BYPASS: '1'
+          RATELIMIT_ENABLED: 'false'
 
   lint:
     runs-on: ubuntu-latest
