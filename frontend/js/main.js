@@ -661,7 +661,7 @@ async function init() {
   const sp = document.getElementById('statProps');
   const sa = document.getElementById('statAgents');
   const sy = document.getElementById('statYears');
-  if(sp) { sp.dataset.count = data.available_total ?? props.filter(p => p.status === 'disponible').length; sp.textContent = '—'; }
+  if(sp) { sp.dataset.count = (data.available_total > 0 ? data.available_total : props.filter(p => p.status === 'disponible').length); sp.textContent = '—'; }
   if(sa) { sa.dataset.count = agents.length; sa.textContent = '—'; }
   if(sy) { sy.dataset.count = yearsVal; sy.textContent = '—'; }
   setTimeout(initStatsCounter, 200);
