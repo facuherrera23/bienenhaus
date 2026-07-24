@@ -273,6 +273,26 @@ def create_app():
             attach_stacktrace=True,
         )
 
+    @app.after_request
+    def add_cors_headers(resp):
+        if request.path.startswith('/api/'):
+            origin = request.headers.get('Origin', '')
+            allowed = [
+                'http://localhost:5000', 'http://127.0.0.1:5000',
+                'http://localhost:5500', 'http://127.0.0.1:5500',
+                os.getenv('SITE_URL', 'https://bienenhaus.onrender.com'),
+                'https://facuherrera23.github.io',
+                'https://bienenhaus.com.ar',
+            ]
+            if origin in allowed:
+                resp.headers['Access-Control-Allow-Origin'] = origin
+                resp.headers['Access-Control-Allow-Credentials'] = 'true'
+                resp.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, PATCH, DELETE, OPTIONS'
+                resp.headers['Access-Control-Allow-Headers'] = 'Content-Type, X-CSRF-Token, Authorization'
+            if request.method == 'OPTIONS':
+                resp.status_code = 200
+        return resp
+
     # ── CSP ─────────────────────────────────────────────────────────
     @app.after_request
     def add_security_headers(resp):
