@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sin conexión · Bienenhaus Propiedades</title>
+  <meta name="theme-color" content="#20b8ab"/>
+  <link rel="stylesheet" href="/css/styles.min.css?v={{VERSION}}"/>
+</head>
+<body>
+  <div style="min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:var(--space-9) var(--space-6);">
+    <div style="font-size:6rem; font-family:var(--font-title); color:var(--color-accent); line-height:1; margin-bottom:var(--space-4);">📴</div>
+    <h1 style="font-size:var(--text-3xl); margin-bottom:var(--space-4);">Sin conexión</h1>
+    <p style="color:var(--color-text-secondary); margin-bottom:var(--space-6); max-width:400px;">Parece que estás offline. Algunas funciones pueden no estar disponibles.</p>
+    <button onclick="window.location.reload()" class="btn btn-primary">Reintentar conexión</button>
+    <p style="margin-top:var(--space-6); font-size:var(--text-sm); color:var(--color-text-muted);">La página se recargará automáticamente cuando se restablezca la conexión.</  </div>
+  <script>
+    window.addEventListener('online', () => window.location.reload());
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.addEventListener('controllerchange', () => window.location.reload());
+    }
+  </script>
+</body>
+</html>

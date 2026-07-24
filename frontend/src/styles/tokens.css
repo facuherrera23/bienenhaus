@@ -1,0 +1,196 @@
+/**
+ * Bienenhaus Design Tokens
+ * Single source of truth for colors, typography, spacing, breakpoints
+ * Extracted from existing styles.css
+ */
+
+/* ========================================
+   COLOR PALETTE
+   ======================================== */
+:root {
+  /* Base */
+  --color-bg: #000;
+  --color-surface-1: #080808;
+  --color-surface-2: #0d0d0d;
+  --color-surface-3: #141414;
+  --color-surface-4: #1c1c1c;
+
+  /* Primary / Accent */
+  --color-accent: #20b8ab;
+  --color-accent-dark: #178c81;
+  --color-accent-warm: #20b8ab;
+  --color-accent-glow: rgba(32, 184, 171, 0.18);
+  --color-accent-b: rgba(32, 184, 171, 0.28);
+  --color-accent-warm-b: rgba(32, 184, 171, 0.2);
+
+  /* Semantic */
+  --color-error: #cc3535;
+  --color-success: #3aaa55;
+  --color-warning: #c92;
+
+  /* Text */
+  --color-text: #fff;
+  --color-text-secondary: #9a9a9a;
+  --color-text-muted: #8ab8b8;
+  --color-text-disabled: #2a2a2a;
+
+  /* Borders */
+  --color-border: hsla(0, 0%, 100%, 0.06);
+  --color-border-medium: hsla(0, 0%, 100%, 0.12);
+  --color-border-strong: hsla(0, 0%, 100%, 0.22);
+
+  /* Legacy aliases (for gradual migration) */
+  --bg: var(--color-bg);
+  --s1: var(--color-surface-1);
+  --s2: var(--color-surface-2);
+  --s3: var(--color-surface-3);
+  --s4: var(--color-surface-4);
+  --white: var(--color-text);
+  --g1: #e0e0e0;
+  --g2: var(--color-text-secondary);
+  --g3: var(--color-text-muted);
+  --g4: var(--color-text-disabled);
+  --b: var(--color-border);
+  --bm: var(--color-border-medium);
+  --bh: var(--color-border-strong);
+  --accent: var(--color-accent);
+  --accent-dark: var(--color-accent-dark);
+  --accent-glow: var(--color-accent-glow);
+  --accent-b: var(--color-accent-b);
+  --accent-warm: var(--color-accent-warm);
+  --accent-warm-b: var(--color-accent-warm-b);
+  --danger: var(--color-error);
+  --danger-bg: rgba(204, 53, 53, 0.15);
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+:root {
+  /* Font families */
+  --font-body: "Poppins", sans-serif;
+  --font-title: "Anton", Impact, sans-serif;
+  --font-num: "Montserrat", sans-serif;
+  --font-elegant: "Quicksand", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-body-alt: "Open Sans", sans-serif;
+
+  /* Font sizes */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 20px;
+  --text-xl: 24px;
+  --text-2xl: 34px;
+  --text-3xl: 48px;
+  --text-4xl: 66px;
+
+  /* Letter spacing (tracking) */
+  --tracking-none: 0;
+  --tracking-tight: -0.02em;
+  --tracking-narrow: 0.02em;
+  --tracking-wide: 0.06em;
+  --tracking-label: 0.1em;
+  --tracking-badge: 0.12em;
+  --tracking-nav: 0.12em;
+  --tracking-field: 0.12em;
+  --tracking-section: 0.14em;
+  --tracking-modal: 0.16em;
+  --tracking-eyebrow: 0.18em;
+  --tracking-brand: 0.2em;
+  --tracking-dots: 2px;
+
+  /* Line heights */
+  --leading-tight: 1.1;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+}
+
+/* ========================================
+   SPACING
+   ======================================== */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 80px;
+}
+
+/* ========================================
+   BORDER RADIUS
+   ======================================== */
+:root {
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --radius-pill: 9999px;
+}
+
+/* ========================================
+   SHADOWS
+   ======================================== */
+:root {
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* ========================================
+   TRANSITIONS
+   ======================================== */
+:root {
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 500ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* ========================================
+   BREAKPOINTS (mobile-first)
+   ======================================== */
+:root {
+  --bp-xs: 320px;
+  --bp-sm: 360px;
+  --bp-md: 414px;
+  --bp-lg: 480px;
+  --bp-xl: 600px;
+  --bp-2xl: 768px;
+  --bp-3xl: 900px;
+  --bp-4xl: 1024px;
+  --bp-5xl: 1280px;
+}
+
+/* ========================================
+   Z-INDEX SCALE
+   ======================================== */
+:root {
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-popover: 600;
+  --z-tooltip: 700;
+  --z-toast: 800;
+}
+
+/* ========================================
+   WHATSAPP CONFIG
+   ======================================== */
+:root {
+  --whatsapp-number: 5493514110000;
+  --whatsapp-text: "Hola Bienenhaus, quisiera recibir información.";
+}
+
+/* ========================================
+   HERO BG IMAGE (from settings)
+   ======================================== */
+:root {
+  --hero-bg-img: url('/images/hero-bg.webp');
+}

@@ -1,0 +1,22 @@
+<script defer src="/assets/main.js"></script>
+<script>
+  var cfTsEl = document.getElementById('cf_ts');
+  if (cfTsEl) { cfTsEl.value = Math.floor(Date.now() / 1000); }
+
+  var motivoSel = document.getElementById('cf_motivo');
+  var tasacionFields = document.getElementById('cfTasacionFields');
+  var msgField = document.getElementById('cf_message');
+  if (motivoSel && tasacionFields) {
+    function toggleTasacionFields() {
+      var show = motivoSel.value === 'tasacion';
+      tasacionFields.style.display = show ? 'block' : 'none';
+      if (msgField) msgField.required = !show;
+    }
+    motivoSel.addEventListener('change', toggleTasacionFields);
+    if (window.location.hash === '#tasacion') {
+      motivoSel.value = 'tasacion';
+      toggleTasacionFields();
+    }
+  }
+</script>
+{{> scripts}}

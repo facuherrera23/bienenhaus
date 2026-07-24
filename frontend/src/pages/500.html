@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="canonical" href="{{SITE_URL}}/500"/>
+  <title>Error del servidor · Bienenhaus Propiedades</title>
+  <meta name="robots" content="noindex, follow"/>
+  <meta name="theme-color" content="#20b8ab"/>
+  <link rel="stylesheet" href="/css/styles.min.css?v={{VERSION}}"/>
+</head>
+<body>
+  {{> navbar}}
+  <main style="min-height:60vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:var(--space-9) var(--space-6);">
+    <div style="max-width:400px;">
+      <div style="font-size:6rem; font-family:var(--font-title); color:var(--color-error); line-height:1; margin-bottom:var(--space-4);">500</div>
+      <h1 style="font-size:var(--text-3xl); margin-bottom:var(--space-4);">Error interno del servidor</h1>
+      <p style="color:var(--color-text-secondary); margin-bottom:var(--space-6);">Algo salió mal. Nuestro equipo ya fue notificado.</p>
+      <a href="/" class="btn btn-primary">Volver al inicio</a>
+    </div>
+  </main>
+  {{> footer}}
+  {{> scripts}}
+</body>
+</html>

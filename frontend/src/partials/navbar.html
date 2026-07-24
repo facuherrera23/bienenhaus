@@ -1,0 +1,47 @@
+<header>
+  <nav id="navbar" class="navbar">
+    <div class="nav-inner">
+      <div class="brand">
+        <a href="/" class="logo-3d-wrap" aria-label="Bienenhaus Propiedades - Inicio">
+          <img src="/images/BienenhausBHBlanco512x512.png"
+               alt="Bienenhaus Propiedades"
+               class="nav-logo logo-3d"
+               fetchpriority="high"
+               width="48"
+               height="48"/>
+        </a>
+      </div>
+
+      <div class="nav-links" id="navLinks">
+        <a href="/" class="nav-link" data-scroll="hero">Inicio</a>
+        <a href="/#quienes" class="nav-link" data-scroll="quienes">Nosotros</a>
+        <a href="/venta" class="nav-link" id="navVenta" data-scroll="propiedades" data-tab="venta">Comprar</a>
+        <a href="/alquiler" class="nav-link" id="navAlquiler" data-scroll="propiedades" data-tab="alquiler">Alquilar</a>
+        <a href="/#agents" class="nav-link" data-scroll="agents">Equipo</a>
+        <a href="/#contact" class="nav-link" data-scroll="contact">Contacto</a>
+        <a href="/#contact" class="nav-link" data-scroll="contact" data-motivo="tasacion">Tasá tu propiedad</a>
+      </div>
+
+      <a href="{{WHATSAPP_URL}}" target="_blank" class="btn btn-outline nav-cta hide-mobile">WhatsApp</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true"></div>
+
+    <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Menú móvil">
+      <a href="/" class="nav-link" data-scroll="hero">Inicio</a>
+      <a href="/#quienes" class="nav-link" data-scroll="quienes">Nosotros</a>
+      <a href="/venta" class="nav-link" id="mNavVenta" data-scroll="propiedades" data-tab="venta">Comprar</a>
+      <a href="/alquiler" class="nav-link" id="mNavAlquiler" data-scroll="propiedades" data-tab="alquiler">Alquilar</a>
+      <a href="/#agents" class="nav-link" data-scroll="agents">Equipo</a>
+      <a href="/#contact" class="nav-link" data-scroll="contact">Contacto</a>
+      <a href="/#contact" class="nav-link" data-scroll="contact" data-motivo="tasacion">Tasá tu propiedad</a>
+      <a href="{{WHATSAPP_URL}}" target="_blank" class="btn btn-outline" style="margin-top:8px">WhatsApp</a>
+    </div>
+  </nav>
+</header>

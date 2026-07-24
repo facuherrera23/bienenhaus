@@ -1,0 +1,326 @@
+/**
+ * AgentGrid Component Styles
+ */
+
+.agent-booths {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 24px !important;
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+
+.agent-booths .card-wrapper {
+  width: 100% !important;
+  min-width: 0 !important;
+  justify-self: stretch !important;
+}
+
+.agent-booths .card {
+  width: 100% !important;
+  padding: 1.2rem 1.6rem !important;
+}
+
+@media (max-width: 768px) {
+  .agent-booths {
+    gap: 16px !important;
+    grid-template-columns: 1fr !important;
+  }
+  :root { --hex-size: 130px; }
+  .agent-booths .card {
+    gap: 1.4rem !important;
+    padding: 1.2rem 1.6rem 1.2rem 1.2rem !important;
+  }
+  .agent-booths .name { font-size: 1.6rem !important; }
+  .agent-booths .hex-text { font-size: 40px !important; }
+  .agent-booths .btn { font-size: .7rem !important; min-width: 110px !important; padding: .5rem 1rem !important; }
+  .agent-booths .cpi { font-size: .65rem !important; }
+  .agent-booths .role { font-size: .6rem !important; }
+}
+
+@media (max-width: 600px) {
+  :root { --hex-size: 100px; }
+  .agent-booths .card { gap: 1rem !important; padding: 1rem 1.2rem 1rem 1rem !important; }
+  .agent-booths .name { font-size: 1.3rem !important; }
+  .agent-booths .hex-text { font-size: 32px !important; }
+  .agent-booths .check { bottom: 2px; font-size: .85rem !important; height: 30px; right: 2px; width: 30px; }
+  .agent-booths .btn { font-size: .65rem !important; min-width: 90px !important; padding: .4rem .8rem !important; }
+  .agent-booths .cpi { font-size: .65rem !important; }
+  .agent-booths .role { font-size: .6rem !important; }
+}
+
+@media (max-width: 560px) {
+  .agent-booths .card { flex-direction: column !important; gap: 1.2rem !important; padding: 1.6rem 1.2rem !important; text-align: center !important; }
+  .agent-booths .actions { flex-direction: row !important; gap: .6rem !important; justify-content: center !important; }
+  .agent-booths .hex-text { font-size: 36px !important; }
+  .agent-booths .name { font-size: 1.5rem !important; }
+}
+
+@media (max-width: 480px) {
+  :root { --hex-size: 90px; }
+  .agent-booths .card { gap: 1rem !important; padding: 1.4rem 1rem !important; }
+  .agent-booths .hex-text { font-size: 30px !important; }
+  .agent-booths .name { font-size: 1.3rem !important; }
+  .agent-booths .check { font-size: .75rem !important; height: 26px; width: 26px; }
+  .agent-booths .btn { font-size: .6rem !important; min-width: 80px !important; padding: .35rem .6rem !important; }
+  .agent-booths .cpi { font-size: .6rem !important; }
+}
+
+@media (max-width: 414px) {
+  :root { --hex-size: 80px; }
+  .agent-booths .card { gap: .8rem !important; padding: 1.2rem .8rem !important; }
+  .agent-booths .hex-text { font-size: 26px !important; }
+  .agent-booths .name { font-size: 1.1rem !important; }
+  .agent-booths .role { font-size: .55rem !important; }
+  .agent-booths .cpi { font-size: .6rem !important; }
+  .agent-booths .actions { gap: .4rem !important; }
+  .agent-booths .btn { font-size: .55rem !important; min-width: 70px !important; padding: .3rem .5rem !important; }
+  .agent-booths .check { font-size: .65rem !important; height: 24px; width: 24px; }
+}
+
+@media (max-width: 360px) {
+  :root { --hex-size: 72px; }
+  .agent-booths .card-wrapper { padding-top: 2px !important; }
+  .agent-booths .card { border-radius: 12px !important; gap: .6rem !important; padding: 1rem .6rem !important; }
+  .agent-booths .hex-text { font-size: 22px !important; }
+  .agent-booths .name { font-size: 1rem !important; }
+  .agent-booths .btn { border-radius: 40px !important; font-size: .5rem !important; min-width: 60px !important; padding: .25rem .4rem !important; }
+  .agent-booths .check { border-width: 2px !important; font-size: .55rem !important; height: 20px; width: 20px; }
+  .agent-booths .accent-line { height: 2px !important; }
+}
+
+@media (max-width: 320px) {
+  :root { --hex-size: 64px; }
+  .agent-booths .card { gap: .4rem !important; padding: .8rem .4rem !important; }
+  .agent-booths .hex-text { font-size: 18px !important; }
+  .agent-booths .name { font-size: .85rem !important; }
+  .agent-booths .cpi { font-size: .55rem !important; }
+  .agent-booths .btn { font-size: .45rem !important; gap: .2rem !important; min-width: 52px !important; padding: .2rem .3rem !important; }
+  .agent-booths .check { border-width: 2px !important; font-size: .55rem !important; height: 20px; width: 20px; }
+}
+
+.agent-booths .card {
+  align-items: center !important;
+  background: var(--ds-color-surface-1, var(--s2)) !important;
+  border: 2px solid var(--ds-color-border-medium, var(--bm)) !important;
+  border-radius: 16px !important;
+  display: flex !important;
+  gap: 1.8rem !important;
+  overflow: visible !important;
+  padding: 1.4rem 2rem 1.4rem 1.6rem !important;
+  position: relative !important;
+  transition: border-color .4s ease, transform .4s ease, box-shadow .4s ease !important;
+  width: 100% !important;
+}
+
+.agent-booths .card:before {
+  border: 1px solid transparent !important;
+  border-radius: 11px !important;
+  content: "" !important;
+  inset: 5px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  transition: border-color .4s, opacity .4s !important;
+}
+
+.agent-booths .card:hover {
+  border-color: var(--ds-color-accent, var(--accent)) !important;
+  box-shadow: 0 28px 56px -14px rgba(0,0,0,.85), 0 0 0 1px rgba(32,184,171,.3) !important;
+  transform: translateY(-6px) !important;
+}
+
+.agent-booths .card:hover:before {
+  border-color: var(--ds-color-accent, var(--accent)) !important;
+  opacity: .35 !important;
+}
+
+.agent-booths .accent-line {
+  background: var(--ds-color-accent, var(--accent)) !important;
+  border-radius: 0 0 4px 4px !important;
+  height: 3px !important;
+  left: 16px !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  right: 16px !important;
+  top: -2px !important;
+  transform: scaleX(0) !important;
+  transform-origin: center !important;
+  transition: transform .45s cubic-bezier(.4,0,.2,1) !important;
+  z-index: 10 !important;
+}
+
+.agent-booths .card:hover .accent-line {
+  transform: scaleX(1) !important;
+}
+
+.agent-booths .hex-wrap {
+  flex-shrink: 0 !important;
+  height: var(--hex-size) !important;
+  min-width: var(--hex-size) !important;
+  position: relative !important;
+  width: var(--hex-size) !important;
+}
+
+.agent-booths .hex-wrap svg {
+  height: 100% !important;
+  overflow: visible !important;
+  width: 100% !important;
+}
+
+.agent-booths .hex-glow {
+  fill: none !important;
+  stroke: var(--ds-color-accent, var(--accent)) !important;
+  stroke-opacity: .09 !important;
+  stroke-width: 10 !important;
+  transition: stroke-opacity .4s !important;
+}
+
+.agent-booths .card:hover .hex-glow {
+  stroke-opacity: .25 !important;
+}
+
+.agent-booths .hex-main {
+  fill: var(--ds-color-surface-3, var(--s3)) !important;
+  stroke: var(--ds-color-accent, var(--accent)) !important;
+  stroke-width: 2.5 !important;
+  transition: fill .4s, stroke-width .4s !important;
+}
+
+.agent-booths .card:hover .hex-main {
+  fill: var(--ds-color-surface-4, var(--s4)) !important;
+  stroke-width: 3.5 !important;
+}
+
+.agent-booths .hex-text {
+  dominant-baseline: central !important;
+  fill: var(--ds-color-text-secondary, var(--g2)) !important;
+  font-family: Anton, sans-serif !important;
+  font-size: 48px !important;
+  letter-spacing: 2px !important;
+  text-anchor: middle !important;
+  transition: fill .4s !important;
+  user-select: none !important;
+}
+
+.agent-booths .card:hover .hex-text {
+  fill: var(--ds-color-accent, var(--accent)) !important;
+}
+
+.agent-booths .check {
+  align-items: center !important;
+  background: var(--ds-color-accent, var(--accent)) !important;
+  border: 3px solid var(--ds-color-surface-2, var(--s2)) !important;
+  border-radius: 50% !important;
+  bottom: 4px !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,.6), 0 0 0 2px var(--ds-color-accent, var(--accent)) !important;
+  color: #000 !important;
+  display: flex !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  height: 38px !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  position: absolute !important;
+  right: 4px !important;
+  transition: transform .3s ease, box-shadow .3s !important;
+  width: 38px !important;
+  z-index: 2 !important;
+}
+
+.agent-booths .card:hover .check {
+  box-shadow: 0 6px 20px rgba(32,184,171,.55), 0 0 0 3px #fff !important;
+  transform: scale(1.18) !important;
+}
+
+.agent-booths .info {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+.agent-booths .name {
+  color: #fff !important;
+  font-family: var(--ds-font-title, var(--font-title)) !important;
+  font-size: 1.9rem !important;
+  letter-spacing: .025em !important;
+  line-height: 1.15 !important;
+  margin-bottom: .2rem !important;
+  text-transform: uppercase !important;
+}
+
+.agent-booths .role {
+  color: var(--ds-color-accent, var(--accent)) !important;
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: .7rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .15em !important;
+  margin-bottom: .4rem !important;
+  text-transform: uppercase !important;
+}
+
+.agent-booths .meta {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: .12rem !important;
+}
+
+.agent-booths .cpi {
+  color: var(--ds-color-text-muted, var(--g3)) !important;
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: .75rem !important;
+}
+
+.agent-booths .cpi strong {
+  color: var(--ds-color-text-secondary, var(--g2)) !important;
+}
+
+.agent-booths .actions {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-shrink: 0 !important;
+  gap: .55rem !important;
+}
+
+.agent-booths .btn {
+  align-items: center !important;
+  border: none !important;
+  border-radius: 60px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: .75rem !important;
+  font-weight: 700 !important;
+  gap: .4rem !important;
+  justify-content: center !important;
+  letter-spacing: .04em !important;
+  min-width: 130px !important;
+  padding: .58rem 1.4rem !important;
+  text-decoration: none !important;
+  transition: all .22s ease !important;
+  white-space: nowrap !important;
+}
+
+.agent-booths .btn-wa {
+  background: #25d366 !important;
+  color: #000 !important;
+}
+
+.agent-booths .btn-wa:hover {
+  background: #1da85c !important;
+  box-shadow: 0 4px 18px rgba(37,211,102,.4) !important;
+  transform: scale(1.05) !important;
+}
+
+.agent-booths .btn-call {
+  background: var(--ds-color-surface-3, var(--s3)) !important;
+  border: 1.5px solid var(--ds-color-border-strong, var(--bh)) !important;
+  color: #fff !important;
+}
+
+.agent-booths .btn-call:hover {
+  background: var(--ds-color-accent-glow, var(--accent-glow)) !important;
+  border-color: var(--ds-color-accent, var(--accent)) !important;
+  color: var(--ds-color-accent, var(--accent)) !important;
+  transform: scale(1.05) !important;
+}
