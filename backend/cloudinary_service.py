@@ -49,10 +49,12 @@ def upload(file_obj, public_id=None, max_width=1200):
 
     try:
         import cloudinary.uploader
+        import tempfile
+        import os
         if public_id is None:
             public_id = uuid.uuid4().hex
 
-        # Si es bytes, pasar directamente; si es file-like, leer bytes
+        # Si es bytes, usar directamente; si es file-like, leer bytes
         if isinstance(file_obj, bytes):
             content = file_obj
         elif hasattr(file_obj, 'read'):
@@ -64,26 +66,37 @@ def upload(file_obj, public_id=None, max_width=1200):
         else:
             content = file_obj
 
-        result = cloudinary.uploader.upload(
-            content,
-            public_id=public_id,
-            folder='bienenhaus',
-            overwrite=True,
-            resource_type='image',
-            # Transformaciones por defecto
-            quality='auto:best',
-            fetch_format='auto',
-            width=max_width,
-            crop='limit',
-        )
-        return {
-            'url': result['secure_url'],
-            'public_id': result['public_id'],
-        }
+        # Usar archivo temporal para evitar problemas con bytes/BytesIO
+        with tempfile.NamedTemporaryFile(suffix='.webp', delete=False) as tmp:
+            tmp.write(content)
+            tmp_path = tmp.name
+
+        try:
+            result = cloudinary.uploader.upload(
+                tmp_path,
+                public_id=public_id,
+                folder='bienenhaus',
+                overwrite=True,
+                resource_type='image',
+                # Transformaciones por defecto
+                quality='auto:best',
+                fetch_format='auto',
+                width=max_width,
+                crop='limit',
+            )
+            return {
+                'url': result['secure_url'],
+                'public_id': result['public_id'],
+            }
+        finally:
+            # Limpiar archivo temporal
+            try:
+                os.unlink(tmp_path)
+            except Exception:
+                pass
     except Exception as e:
         # Loguear el error completo para debugging
         logger.exception('Error al subir imagen a Cloudinary: %s', e)
-        # Re-lanzar la excepción para que el caller pueda ver el error real
         raise
 
 
