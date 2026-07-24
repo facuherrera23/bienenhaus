@@ -44,6 +44,7 @@ def upload(file_obj, public_id=None, max_width=1200):
     Retorna dict con 'url' y 'public_id', o None si falla.
     """
     if not _CLOUDINARY_CONFIGURED:
+        logger.warning('Cloudinary no configurado (CLOUDINARY_URL no seteada)')
         return None
 
     try:
@@ -68,8 +69,10 @@ def upload(file_obj, public_id=None, max_width=1200):
             'public_id': result['public_id'],
         }
     except Exception as e:
+        # Loguear el error completo para debugging
         logger.exception('Error al subir imagen a Cloudinary: %s', e)
-        return None
+        # Re-lanzar la excepción para que el caller pueda ver el error real
+        raise
 
 
 def delete(public_id):

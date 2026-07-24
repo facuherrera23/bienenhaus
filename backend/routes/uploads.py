@@ -182,11 +182,15 @@ def upload():
 
         if use_cloudinary():
             # ── Subir a Cloudinary ──────────────────────────────────
-            result = cloud_upload(io.BytesIO(safe_bytes), max_width=max_width)
-            if result:
-                urls.append(result['url'])
-            else:
-                errors.append(f'{f.filename}: error al subir a Cloudinary.')
+            try:
+                result = cloud_upload(io.BytesIO(safe_bytes), max_width=max_width)
+                if result:
+                    urls.append(result['url'])
+                else:
+                    errors.append(f'{f.filename}: Cloudinary no retornó URL.')
+            except Exception as e:
+                # Incluir el mensaje real del error de Cloudinary
+                errors.append(f'{f.filename}: Cloudinary error: {str(e)}')
         else:
             # ── Subir a disco local ─────────────────────────────────
             savepath = os.path.join(uploads_dir(), safe_name)
