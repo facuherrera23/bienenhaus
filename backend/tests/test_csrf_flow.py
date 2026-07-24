@@ -27,6 +27,14 @@ def seed_admin(app, monkeypatch):
     """Seed the default admin user into the test DB with a known password."""
     monkeypatch.setenv('ADMIN_PASSWORD', 'Admin123!')
     with app.app_context():
+        from models import User, ActivityLog
+        from extensions import db
+        # Delete existing admin first (and its activity_logs due to FK)
+        admin = User.query.filter_by(username='admin').first()
+        if admin:
+            ActivityLog.query.filter_by(user_id=admin.id).delete()
+            User.query.filter_by(username='admin').delete()
+            db.session.commit()
         seed_admin_user()
 
 
