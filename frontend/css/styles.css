@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════════════════════
+/* ==============================================================
    BIENENHAUS — Editorial Luxury Dark
    Fonts: Anton (display) · Montserrat (numbers) · Poppins (base)
           Quicksand (tags) · Open Sans (descriptions)
@@ -7,7 +7,6 @@
 
    This file is the entry point. It imports Design System tokens
    and components, then provides page-specific styles.
-╔═══════════════════════════════════════════════════════════════════*/
 
 /* ── Design System ──────────────────────────────────────────── */
 @import url('tokens.css');
@@ -47,9 +46,11 @@
   outline-offset: 2px;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   LEGACY VARIABLES — keep for backward compatibility
-╔═══════════════════════════════════════════════════════════════════*/
+/* ── Global focus-visible for keyboard navigation ─────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
 
 :root {
   /* ── Aliases legacy → DS (backward compatibility) ── */
@@ -173,9 +174,8 @@ input:focus, textarea:focus, select:focus { outline: none; }
 .a3{animation:fadeUp .8s .45s ease both;}
 .a4{animation:fadeUp .8s .65s ease both;}
 
-/* ═══════════════════════════════════════════════════════════════
+/* ==============================================================
    NAVBAR
-╔═══════════════════════════════════════════════════════════════════*/
 #navbar {
   position: fixed; top:0; left:0; right:0; z-index:100;
   border-bottom: 1px solid transparent;
@@ -230,9 +230,8 @@ input:focus, textarea:focus, select:focus { outline: none; }
 @media (max-width:480px) { .nav-inner{padding:0 18px;height:64px;gap:16px;} }
 @media (max-width:360px) { .nav-inner{padding:0 14px;height:60px;gap:12px;} .brand-name{font-size:18px;} }
 
-/* ═══════════════════════════════════════════════════════════════
+/* ==============================================================
    HERO — Luxury Premium
-╔═══════════════════════════════════════════════════════════════════*/
 #hero {
   position:relative; min-height:100vh; display:flex; flex-direction:column;
   align-items:center; overflow:hidden;
@@ -416,9 +415,8 @@ input:focus, textarea:focus, select:focus { outline: none; }
   .stat-n{font-size:15px;}
 }
 
-/* ═══════════════════════════════════════════════════════════════
+/* ==============================================================
    FILTER BAR — Premium Dark Card
-╔═══════════════════════════════════════════════════════════════════*/
 #filterBar {
   position: relative;
   background: linear-gradient(180deg, var(--s1) 0%, var(--bg) 100%);
@@ -745,9 +743,8 @@ input:focus, textarea:focus, select:focus { outline: none; }
   .filter-title { font-size: 13px; }
 }
 
-/* ═══════════════════════════════════════════════════════════════
+/* ==============================================================
    SECTIONS — Premium Layout
-╔═══════════════════════════════════════════════════════════════════*/
 .section { padding:96px 0; position: relative; scroll-margin-top: 80px; }
 @media (max-width: 768px) { .section{padding:56px 0;} }
 @media (max-width: 480px) { .section{padding:44px 0;} }
@@ -1283,9 +1280,8 @@ input:focus, textarea:focus, select:focus { outline: none; }
 .empty-title { font-family:var(--font-title); font-size:28px; text-transform:uppercase; margin-bottom:8px; color:var(--g3); }
 .empty-sub   { font-family:var(--font-text); font-size:14px; font-weight:300; }
 
-/* ═══════════════════════════════════════════════════════════════
+/* ==============================================================
    CONTACT — Two columns
-╔═══════════════════════════════════════════════════════════════════*/
 .contact-left {
   display:flex; flex-direction:column; gap:20px;
 }
@@ -1397,9 +1393,8 @@ input:focus, textarea:focus, select:focus { outline: none; }
 .cf-msg--ok { color:#3aaa55; }
 .cf-msg--err { color:#cc3535; }
 
-/* ═══════════════════════════════════════════════════════════════
+/* ==============================================================
    FOOTER — Premium
-╔═══════════════════════════════════════════════════════════════════*/
 #footer { background: var(--s1); position:relative; border-top:1px solid var(--b); }
 #footer::before {
   content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 1px;
@@ -1504,9 +1499,8 @@ input:focus, textarea:focus, select:focus { outline: none; }
 .admin-row-actions  { display:flex; gap:4px; flex-shrink:0; flex-wrap:wrap; justify-content:flex-end; }
 .admin-agent-avatar { width:44px; height:44px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-family:var(--font-title); font-size:14px; color:var(--accent); border:2px solid var(--accent-b); background:var(--accent-glow); }
 
-/* ═══════════════════════════════════════════════════════════════
+/* ==============================================================
    IMAGE UPLOADER
-╔═══════════════════════════════════════════════════════════════════*/
 .drop-zone { border:2px dashed var(--g4); border-radius:6px; padding:32px 20px; text-align:center; cursor:pointer; transition:border-color .2s,background .2s; background:var(--s2); position:relative; }
 .drop-zone:hover,.drop-zone.drag-over { border-color:var(--accent-b); background:var(--s3); }
 .drop-zone.drag-over { border-color:var(--accent); background:var(--accent-glow); }
@@ -1529,9 +1523,8 @@ input:focus, textarea:focus, select:focus { outline: none; }
 .img-preview-main  { position:absolute; bottom:4px; left:4px; background:var(--accent); color:#000; font-family:var(--font-sub); font-size:8px; font-weight:700; letter-spacing:var(--ls-label); text-transform:uppercase; padding:2px 6px; border-radius:2px; }
 .upload-error { grid-column:1/-1; background:rgba(204,53,53,0.12); border:1px solid rgba(204,53,53,0.3); color:#cc5555; font-family:var(--font-body); font-size:11px; padding:8px 12px; border-radius:3px; line-height:1.5; }
 
-/* ═══════════════════════════════════════════════════════════════
+/* ==============================================================
    LOGOS
-╔═══════════════════════════════════════════════════════════════════*/
 .logo-3d-wrap { perspective: 800px; }
 .logo-3d { transition:transform .15s ease-out; transform-style:preserve-3d; will-change:transform; }
 .nav-logo { height:56px; width:auto; display:block; opacity:0; transform:translateY(-4px) scale(.96); transition:opacity .35s ease,transform .35s ease,visibility .35s; visibility:hidden; }
@@ -1545,9 +1538,8 @@ input:focus, textarea:focus, select:focus { outline: none; }
 .footer-logo { width:190px; height:auto; margin-bottom:16px; display:block; opacity:.7; filter:drop-shadow(0 0 6px var(--accent-glow)); transition:opacity .2s,filter .2s; }
 .footer-logo:hover { opacity:1; filter:drop-shadow(0 0 14px var(--accent-b)); }
 
-/* ═══════════════════════════════════════════════════════════════
+/* ==============================================================
    ANIMATIONS / REVEAL / CURRENCY / PRICE SLIDER / BACK-TO-TOP
-╔═══════════════════════════════════════════════════════════════════*/
 .reveal { opacity:0; transform:translateY(30px); transition:opacity .65s cubic-bezier(.22,.61,.36,1),transform .65s cubic-bezier(.22,.61,.36,1); }
 .reveal.visible { opacity:1; transform:translateY(0); }
 .section-heading.reveal { opacity:1; transform:none; transition:none; }
@@ -1730,9 +1722,8 @@ input:focus, textarea:focus, select:focus { outline: none; }
   .wa-float{width:48px;height:48px;right:16px;bottom:16px;}
 }
 
-/* ═══════════════════════════════════════════════════════════════
+/* ==============================================================
    CREDENCIALES (CPI + ASESORES)
-╔═══════════════════════════════════════════════════════════════════*/
 .qs-credenciales { margin: 48px 0; }
 .qs-credencial-card { background: var(--s1); border: 1px solid var(--b); border-radius: 8px; padding: 40px 44px; text-align: center; max-width: 640px; margin: 0 auto; transition: border-color .3s, box-shadow .3s, transform .3s; }
 .qs-credencial-card:hover { border-color: var(--accent-b); box-shadow: 0 0 0 1px var(--accent-b), 0 24px 64px rgba(0,0,0,0.6); transform: translateY(-4px); }
@@ -1749,9 +1740,8 @@ input:focus, textarea:focus, select:focus { outline: none; }
 .grayscale-hover { filter: grayscale(60%); transition: filter .5s ease; }
 .grayscale-hover:hover { filter: grayscale(0%); }
 
-/* ═══════════════════════════════════════════════════════════════
+/* ==============================================================
    HERO VIDEO
-╔═══════════════════════════════════════════════════════════════════*/
 .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
 .hero-bg.has-video { background: #000 !important; }
 .hero-mute-btn { position: absolute; bottom: 80px; right: 24px; z-index: 2; width: 40px; height: 40px; border-radius: 50%; background: rgba(0,0,0,0.55); border: 1px solid var(--accent-b); color: var(--accent); font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(4px); transition: background .15s, border-color .15s; }
@@ -1759,9 +1749,8 @@ input:focus, textarea:focus, select:focus { outline: none; }
 .hero-mute-btn.hidden { display: none; }
 @media (max-width: 768px) { .hero-video { object-position: center center; } }
 
-/* ═══════════════════════════════════════════════════════════════
+/* ==============================================================
    PAGINACIÓN
-╔═══════════════════════════════════════════════════════════════════*/
 .pagination {
   display: flex; justify-content: center; padding: 40px 0 24px;
 }

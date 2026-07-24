@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@curl.md/opencode": "^0.1.3"
+  }
+}
