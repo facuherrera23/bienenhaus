@@ -3,7 +3,7 @@ from datetime import date, datetime
 from sqlalchemy.orm import load_only
 from flask import Blueprint, request, jsonify, render_template_string, g, session
 from extensions import db, limiter
-from models import Tasacion, TasacionVersion, TasacionComparable, TasacionLog, TasacionComment, TasacionFile, TasacionTimeline
+from models import Tasacion, TasacionVersion, TasacionComparable, TasacionLog, TasacionComment, TasacionFile, TasacionTimeline, Appraisal, AppraisalVersion
 from csrf import csrf_protect
 from auth_helper import require_role, ROLE_EDITOR
 from services import AppraisalService

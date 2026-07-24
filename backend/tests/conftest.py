@@ -8,6 +8,15 @@ import pytest
 os.environ['SECRET_KEY'] = 'test-secret-key-not-for-prod'
 os.environ['DATABASE_URL'] = 'sqlite:///:memory:'
 os.environ['CSRF_BYPASS'] = '1'
+os.environ['RATELIMIT_ENABLED'] = 'false'
+
+
+@pytest.fixture
+def rate_limit_enabled(app):
+    """Enable rate limiting for tests that need it."""
+    app.config['RATELIMIT_ENABLED'] = True
+    yield
+    app.config['RATELIMIT_ENABLED'] = False
 
 from extensions import db as _db
 

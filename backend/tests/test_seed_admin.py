@@ -1,11 +1,15 @@
 import pytest
 from auth_helper import seed_admin_user
 from models import User
+from extensions import db
 
 
 def test_seed_admin_creates_when_missing(app):
     """seed_admin_user() crea el admin si no existe."""
     with app.app_context():
+        # Clear any existing admin first
+        User.query.filter_by(username='admin').delete()
+        db.session.commit()
         assert User.query.filter_by(username='admin').first() is None
         seed_admin_user()
         assert User.query.filter_by(username='admin').first() is not None
@@ -14,7 +18,6 @@ def test_seed_admin_creates_when_missing(app):
 def test_seed_admin_idempotent(app):
     """seed_admin_user() NO toca el password si el admin ya existe."""
     from flask_bcrypt import Bcrypt
-    from extensions import db
     
     bcrypt = Bcrypt(app)
     with app.app_context():

@@ -10,10 +10,13 @@ class TestPropertiesApi:
 
     def _seed(self, app):
         with app.app_context():
+            # Clear existing data first
+            Property.query.delete()
+            db.session.commit()
             p = Property(
                 title='Casa Test',
                 type='casa',
-                location='C\u00f3rdoba',
+                location='Córdoba',
                 price=150000,
                 beds=3,
                 baths=2,
@@ -25,6 +28,11 @@ class TestPropertiesApi:
             db.session.commit()
             return p.id
 
+    def _clear(self, app):
+        with app.app_context():
+            Property.query.delete()
+            db.session.commit()
+
     def test_list_properties_returns_seeded(self, app, client):
         self._seed(app)
         resp = client.get('/api/properties')
@@ -35,13 +43,15 @@ class TestPropertiesApi:
         assert any(p['title'] == 'Casa Test' for p in props)
 
     def test_list_properties_empty_without_data(self, app, client):
-        """Cuando no hay properties disponibles, debe devolver lista vac\u00eda."""
+        """Cuando no hay properties disponibles, debe devolver lista vacía."""
+        self._clear(app)
         resp = client.get('/api/properties')
         assert resp.status_code == 200
         data = resp.get_json()
         assert data['data']['total'] == 0
 
     def test_list_properties_paginates(self, app, client):
+        self._clear(app)
         with app.app_context():
             for i in range(15):
                 db.session.add(Property(
