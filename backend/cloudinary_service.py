@@ -39,7 +39,7 @@ def is_configured():
 def upload(file_obj, public_id=None, max_width=1200):
     """
     Sube un archivo a Cloudinary.
-    Recibe un file object (Werkzeug FileStorage o similar).
+    Recibe un file object (Werkzeug FileStorage o similar) o bytes.
     max_width: dimensión máxima (px) — usar 400 para avatares.
     Retorna dict con 'url' y 'public_id', o None si falla.
     """
@@ -52,8 +52,20 @@ def upload(file_obj, public_id=None, max_width=1200):
         if public_id is None:
             public_id = uuid.uuid4().hex
 
+        # Si es bytes, pasar directamente; si es file-like, leer bytes
+        if isinstance(file_obj, bytes):
+            content = file_obj
+        elif hasattr(file_obj, 'read'):
+            # Guardar posición actual
+            pos = file_obj.tell()
+            file_obj.seek(0)
+            content = file_obj.read()
+            file_obj.seek(pos)
+        else:
+            content = file_obj
+
         result = cloudinary.uploader.upload(
-            file_obj,
+            content,
             public_id=public_id,
             folder='bienenhaus',
             overwrite=True,

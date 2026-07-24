@@ -183,9 +183,8 @@ def upload():
         if use_cloudinary():
             # ── Subir a Cloudinary ──────────────────────────────────
             try:
-                bio = io.BytesIO(safe_bytes)
-                bio.seek(0)
-                result = cloud_upload(bio, max_width=max_width)
+                # Pasar bytes directamente a Cloudinary (evita bugs con BytesIO)
+                result = cloud_upload(safe_bytes, max_width=max_width)
                 if result:
                     urls.append(result['url'])
                 else:
