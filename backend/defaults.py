@@ -2,7 +2,7 @@
 defaults.py — Valores por defecto para settings y otras configuraciones
 """
 SETTINGS_DEFAULTS = {
-    'phone': '+54 351 411-0000', 'whatsapp': '5493510000000', 'whatsapp2': '',
+    'phone': '+54 351 411-0000', 'whatsapp': '5493514110000', 'whatsapp2': '',
     'email': 'info@bienenhaus.com.ar', 'address': 'Córdoba Capital, Argentina',
     'hours': 'Lun–Vie 9–18hs · Sáb 9–13hs', 'instagram': '', 'facebook': '',
     'hero_video_url': '', 'hero_image_url': '', 'hero_years': '12',

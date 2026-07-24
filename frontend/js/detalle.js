@@ -25,7 +25,7 @@ const _itemId = parseInt(_path.split('/').pop());
 
 window._whatsapp2 = '';
 function _wa() {
-  const nums = [window._whatsapp || '5493510000000'];
+  const nums = [window._whatsapp || '5493514110000'];
   if (window._whatsapp2) nums.push(window._whatsapp2);
   return nums[Math.floor(Math.random() * nums.length)];
 }
@@ -732,7 +732,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     const s = await API.getPublicSettings();
     window._siteSettings = s;
-    window._whatsapp  = s.whatsapp  || '5493510000000';
+    window._whatsapp  = s.whatsapp  || '5493514110000';
     window._whatsapp2 = s.whatsapp2 || '';
     if ($('sitePhoneFooter'))   $('sitePhoneFooter').textContent   = s.phone   || '';
     if ($('siteEmailFooter'))   $('siteEmailFooter').textContent   = s.email   || '';

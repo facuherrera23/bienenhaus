@@ -86,7 +86,7 @@ function buildTasacionCard(r) {
   const waLink = waNum ? `https://wa.me/${waNum}?text=${waMsg}` : '';
 
   const clientWaLink = r.email
-    ? `https://wa.me/${window.WHATSAPP_NUMBER || '5493510000000'}?text=${encodeURIComponent('Hola, envié una solicitud de tasación desde Bienenhaus.')}`
+    ? `https://wa.me/${window.WHATSAPP_NUMBER || '5493514110000'}?text=${encodeURIComponent('Hola, envié una solicitud de tasación desde Bienenhaus.')}`
     : '';
 
   const statusColors = { pendiente: '#e67e22', contactado: '#3498db', completado: '#27ae60', archivado: '#95a5a6' };

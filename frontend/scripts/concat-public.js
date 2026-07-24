@@ -3,13 +3,19 @@ const path = require('path');
 const { execSync } = require('child_process');
 
 const files = [
+  'demo-data.js',
   'filters.js', 'tabs.js', 'skeleton.js', 'contact.js', 'main.js',
 ];
 
 const jsDir = path.join(__dirname, '..', 'js');
 const tmpFile = path.join(__dirname, '..', 'js', '_public-concat-tmp.js');
 
-const output = files.map(f => fs.readFileSync(path.join(jsDir, f), 'utf-8')).join('\n');
+const output = files.map(f => {
+  const content = fs.readFileSync(path.join(jsDir, f), 'utf-8');
+  // Ensure each file ends with a newline
+  return content.endsWith('\n') ? content : content + '\n';
+}).join('\n');
+
 fs.writeFileSync(tmpFile, output);
 
 try {
