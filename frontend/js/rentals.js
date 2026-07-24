@@ -153,6 +153,8 @@ function renderPagination(pag) {
   if (!wrap) return;
   if (!pag || pag.pages <= 1) { wrap.innerHTML = ''; return; }
 
+  wrap.setAttribute('aria-label', 'Paginación');
+
   const prev = pag.has_prev
     ? `<button class="pag-btn" onclick="goToPage(${pag.page - 1})">‹ Anterior</button>`
     : `<span class="pag-btn pag-disabled">‹ Anterior</span>`;
@@ -160,7 +162,7 @@ function renderPagination(pag) {
   let nums = '';
   for (let i = 1; i <= pag.pages; i++) {
     if (i === pag.page) {
-      nums += `<span class="pag-num pag-active">${i}</span>`;
+      nums += `<span class="pag-num pag-active" aria-current="page">${i}</span>`;
     } else if (i === 1 || i === pag.pages || Math.abs(i - pag.page) <= 2) {
       nums += `<button class="pag-num" onclick="goToPage(${i})">${i}</button>`;
     } else if (nums.endsWith('…') === false) {

@@ -596,6 +596,18 @@
   (_a4 = document.getElementById("hamburger")) == null ? void 0 : _a4.addEventListener("click", () => {
     document.getElementById("mobileMenu").classList.toggle("open");
   });
+  document.querySelectorAll(".nav-link[data-scroll]").forEach((el) => {
+    el.addEventListener("click", () => {
+      var _a7;
+      (_a7 = document.getElementById("mobileMenu")) == null ? void 0 : _a7.classList.remove("open");
+    });
+  });
+  document.querySelectorAll(".nav-link[data-scroll]").forEach((el) => {
+    el.addEventListener("click", () => {
+      var _a7;
+      (_a7 = document.getElementById("mobileMenu")) == null ? void 0 : _a7.classList.remove("open");
+    });
+  });
   function scrollToSection(id, motivo) {
     var _a7, _b;
     (_a7 = document.getElementById(id)) == null ? void 0 : _a7.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -768,6 +780,7 @@
       wrap.innerHTML = "";
       return;
     }
+    wrap.setAttribute("aria-label", "Paginaci\xF3n");
     const p = pag.page, pages = pag.pages;
     let html = '<div class="pag-inner">';
     html += `<button class="pag-btn" onclick="goToRentalPage(${p - 1})" ${pag.has_prev ? "" : "disabled"}>\u2039 Anterior</button>`;
@@ -779,7 +792,7 @@
       html += `<button class="pag-num" onclick="goToRentalPage(1)">1</button>`;
       if (start > 2) html += '<span class="pag-dots">\u2026</span>';
     }
-    for (let i = start; i <= end; i++) html += `<button class="pag-num${i === p ? " pag-active" : ""}" onclick="goToRentalPage(${i})">${i}</button>`;
+    for (let i = start; i <= end; i++) html += `<button class="pag-num${i === p ? " pag-active" : ""}" onclick="goToRentalPage(${i})"${i === p ? ' aria-current="page"' : ""}>${i}</button>`;
     if (end < pages) {
       if (end < pages - 1) html += '<span class="pag-dots">\u2026</span>';
       html += `<button class="pag-num" onclick="goToRentalPage(${pages})">${pages}</button>`;

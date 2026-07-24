@@ -173,6 +173,20 @@ document.getElementById('hamburger')?.addEventListener('click', () => {
   document.getElementById('mobileMenu').classList.toggle('open');
 });
 
+// Close mobile menu when clicking on nav links
+document.querySelectorAll('.nav-link[data-scroll]').forEach(el => {
+  el.addEventListener('click', () => {
+    document.getElementById('mobileMenu')?.classList.remove('open');
+  });
+});
+
+// Close mobile menu when clicking any nav link
+document.querySelectorAll('.nav-link[data-scroll]').forEach(el => {
+  el.addEventListener('click', () => {
+    document.getElementById('mobileMenu')?.classList.remove('open');
+  });
+});
+
 // ── Smooth scroll ─────────────────────────────────────────────────────
 function scrollToSection(id, motivo) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -350,6 +364,8 @@ function renderRentalPagination(pag) {
   if (!wrap) return;
   if (!pag || pag.pages <= 1) { wrap.innerHTML = ''; return; }
 
+  wrap.setAttribute('aria-label', 'Paginación');
+
   const p = pag.page, pages = pag.pages;
   let html = '<div class="pag-inner">';
 
@@ -362,7 +378,7 @@ function renderRentalPagination(pag) {
   if (end - start < maxVisible - 1) start = Math.max(1, end - maxVisible + 1);
 
   if (start > 1) { html += `<button class="pag-num" onclick="goToRentalPage(1)">1</button>`; if (start > 2) html += '<span class="pag-dots">…</span>'; }
-  for (let i = start; i <= end; i++) html += `<button class="pag-num${i === p ? ' pag-active' : ''}" onclick="goToRentalPage(${i})">${i}</button>`;
+  for (let i = start; i <= end; i++) html += `<button class="pag-num${i === p ? ' pag-active' : ''}" onclick="goToRentalPage(${i})"${i === p ? ' aria-current="page"' : ''}>${i}</button>`;
   if (end < pages) { if (end < pages - 1) html += '<span class="pag-dots">…</span>'; html += `<button class="pag-num" onclick="goToRentalPage(${pages})">${pages}</button>`; }
 
   html += `<button class="pag-btn" onclick="goToRentalPage(${p + 1})" ${pag.has_next ? '' : 'disabled'}>Siguiente ›</button>`;
