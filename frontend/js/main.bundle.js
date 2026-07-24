@@ -989,36 +989,43 @@
     initTabs();
     applySettings();
     initContactForm();
-    try {
-      const data = await API.getProperties(__spreadProps(__spreadValues({}, _filters), { page: _page, sort: _sort, per_page: PER_PAGE }));
-      const props = data.properties;
+    const [propsResult, agentsResult] = await Promise.allSettled([
+      loadProperties(__spreadProps(__spreadValues({}, _filters), { page: _page, sort: _sort, per_page: PER_PAGE })),
+      loadAgents()
+    ]);
+    let props = [];
+    let data = { properties: [], available_total: 0 };
+    if (propsResult.status === "fulfilled") {
+      data = propsResult.value;
+      props = data.properties;
       _allLoadedProps = props;
-      renderProperties(props, { page: data.page, pages: data.pages, total: data.total, has_prev: data.has_prev, has_next: data.has_next });
-      if (props.length) setTimeout(revealCards, 100);
-      const agents = await loadAgents();
-      const heroYearsSetting = (_a7 = window._siteSettings) == null ? void 0 : _a7.hero_years;
-      const yearsVal = heroYearsSetting ? parseInt(heroYearsSetting) : agents.length ? Math.max(...agents.map((a) => a.years || 0)) : 0;
-      const sp = document.getElementById("statProps");
-      const sa = document.getElementById("statAgents");
-      const sy = document.getElementById("statYears");
-      if (sp) {
-        sp.dataset.count = (_b = data.available_total) != null ? _b : props.filter((p) => p.status === "disponible").length;
-        sp.textContent = "\u2014";
-      }
-      if (sa) {
-        sa.dataset.count = agents.length;
-        sa.textContent = "\u2014";
-      }
-      if (sy) {
-        sy.dataset.count = yearsVal;
-        sy.textContent = "\u2014";
-      }
-      setTimeout(initStatsCounter, 200);
-    } catch (err) {
-      console.warn("Error al cargar datos:", err);
-      const grid = document.getElementById("propsGrid");
-      if (grid) grid.innerHTML = '<div class="loading-state">Error al conectar. \xBFEst\xE1 corriendo el servidor?</div>';
+    } else {
+      console.error("[init] Fall\xF3 carga de properties:", propsResult.reason);
     }
+    let agents = [];
+    if (agentsResult.status === "fulfilled") {
+      agents = agentsResult.value;
+    } else {
+      console.error("[init] Fall\xF3 carga de agents:", agentsResult.reason);
+    }
+    const heroYearsSetting = (_a7 = window._siteSettings) == null ? void 0 : _a7.hero_years;
+    const yearsVal = heroYearsSetting ? parseInt(heroYearsSetting) : agents.length ? Math.max(...agents.map((a) => a.years || 0)) : 0;
+    const sp = document.getElementById("statProps");
+    const sa = document.getElementById("statAgents");
+    const sy = document.getElementById("statYears");
+    if (sp) {
+      sp.dataset.count = (_b = data.available_total) != null ? _b : props.filter((p) => p.status === "disponible").length;
+      sp.textContent = "\u2014";
+    }
+    if (sa) {
+      sa.dataset.count = agents.length;
+      sa.textContent = "\u2014";
+    }
+    if (sy) {
+      sy.dataset.count = yearsVal;
+      sy.textContent = "\u2014";
+    }
+    setTimeout(initStatsCounter, 200);
     loadGeoRecommendations();
     showRentalSkeletons();
     try {
