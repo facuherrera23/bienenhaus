@@ -37,8 +37,9 @@ def init_cloudinary():
 
 
 def is_configured():
-    # Forzar almacenamiento local - desactivar Cloudinary
-    return False
+    # Verificar si CLOUDINARY_URL está configurada en el entorno
+    url = os.getenv('CLOUDINARY_URL', '').strip()
+    return bool(url)
 
 
 def upload(file_obj, public_id=None, max_width=1200):
