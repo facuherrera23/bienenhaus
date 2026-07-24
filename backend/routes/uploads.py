@@ -26,7 +26,7 @@ ALLOWED = {'jpg', 'jpeg', 'png', 'webp', 'gif', 'avif'}
 MAX_SIZE_MB = 8
 MAX_IMAGE_DIMENSION = 5000
 MAX_IMAGE_PIXELS = 25000000
-MIN_AVATAR_DIMENSION = 300
+MIN_AVATAR_DIMENSION = 400
 
 # Cacheamos esto por request para evitar consultas repetidas
 _USE_CLOUDINARY = None
