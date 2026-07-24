@@ -42,7 +42,14 @@ def client(app):
 
 @pytest.fixture
 def admin_session(app, client):
-    """Simula sesión de admin autenticado."""
+    """Simula sesión de admin autenticado - crea admin real en BD."""
+    from auth_helper import seed_admin_user
+    with app.app_context():
+        # Ensure admin exists in DB
+        from models import User
+        if not User.query.filter_by(username='admin').first():
+            seed_admin_user()
+    
     with client.session_transaction() as sess:
         sess['admin'] = True
         sess['user_id'] = 1
