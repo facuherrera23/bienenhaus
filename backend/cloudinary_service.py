@@ -6,6 +6,10 @@ import os
 import io
 import uuid
 import logging
+import time
+import hashlib
+import re
+import tempfile
 
 logger = logging.getLogger(__name__)
 
@@ -38,7 +42,7 @@ def is_configured():
 
 def upload(file_obj, public_id=None, max_width=1200):
     """
-    Sube un archivo a Cloudinary.
+    Sube un archivo a Cloudinary usando API REST directa (evita bugs del SDK).
     Recibe un file object (Werkzeug FileStorage o similar) o bytes.
     max_width: dimensión máxima (px) — usar 400 para avatares.
     Retorna dict con 'url' y 'public_id', o None si falla.
@@ -47,55 +51,93 @@ def upload(file_obj, public_id=None, max_width=1200):
         logger.warning('Cloudinary no configurado (CLOUDINARY_URL no seteada)')
         return None
 
+    import tempfile
+    import os
+    import base64
+    import requests
+
     try:
-        import cloudinary.uploader
-        import tempfile
-        import os
         if public_id is None:
             public_id = uuid.uuid4().hex
 
-        # Si es bytes, usar directamente; si es file-like, leer bytes
-        if isinstance(file_obj, bytes):
-            content = file_obj
-        elif hasattr(file_obj, 'read'):
-            # Guardar posición actual
+        # Leer contenido a bytes
+        if hasattr(file_obj, 'read'):
             pos = file_obj.tell()
             file_obj.seek(0)
             content = file_obj.read()
             file_obj.seek(pos)
+        elif isinstance(file_obj, bytes):
+            content = file_obj
         else:
             content = file_obj
 
-        # Usar archivo temporal para evitar problemas con bytes/BytesIO
+        # Guardar en archivo temporal
         with tempfile.NamedTemporaryFile(suffix='.webp', delete=False) as tmp:
             tmp.write(content)
             tmp_path = tmp.name
 
         try:
-            result = cloudinary.uploader.upload(
-                tmp_path,
-                public_id=public_id,
-                folder='bienenhaus',
-                overwrite=True,
-                resource_type='image',
-                # Transformaciones por defecto
-                quality='auto:best',
-                fetch_format='auto',
-                width=max_width,
-                crop='limit',
-            )
+            # Usar API REST directa de Cloudinary (evita bugs del SDK)
+            url = os.getenv('CLOUDINARY_URL', '').strip()
+            if not url:
+                raise ValueError('CLOUDINARY_URL no configurada')
+
+            # Parsear CLOUDINARY_URL: cloudinary://api_key:api_secret@cloud_name
+            # Formato: cloudinary://API_KEY:API_SECRET@CLOUD_NAME
+            import re
+            match = re.match(r'cloudinary://([^:]+):([^@]+)@(.+)', url)
+            if not match:
+                raise ValueError('Formato CLOUDINARY_URL inválido')
+            api_key, api_secret, cloud_name = match.groups()
+
+            # Subir usando API REST
+            with open(tmp_path, 'rb') as f:
+                files = {'file': (os.path.basename(tmp_path), f, 'image/webp')}
+                data = {
+                    'public_id': public_id,
+                    'folder': 'bienenhaus',
+                    'overwrite': 'true',
+                    'resource_type': 'image',
+                    'quality': 'auto:best',
+                    'fetch_format': 'auto',
+                    'width': str(max_width),
+                    'crop': 'limit',
+                    'timestamp': str(int(time.time())),
+                }
+
+                # Firma para autenticación
+                import hashlib
+                # Crear string para firmar: parámetros ordenados + api_secret
+                sorted_params = sorted([(k, str(v)) for k, v in data.items()])
+                to_sign = '&'.join(f'{k}={v}' for k, v in sorted_params) + api_secret
+                signature = hashlib.sha1(to_sign.encode()).hexdigest()
+                data['signature'] = signature
+                data['api_key'] = api_key
+
+                response = requests.post(
+                    f'https://api.cloudinary.com/v1_1/{cloud_name}/image/upload',
+                    files=files,
+                    data=data,
+                    timeout=30
+                )
+
+            if response.status_code != 200:
+                logger.error('Cloudinary API error: %s - %s', response.status_code, response.text)
+                raise Exception(f'Cloudinary API error: {response.text}')
+
+            result = response.json()
             return {
                 'url': result['secure_url'],
                 'public_id': result['public_id'],
             }
+
         finally:
-            # Limpiar archivo temporal
             try:
                 os.unlink(tmp_path)
-            except Exception:
+            except OSError:
                 pass
+
     except Exception as e:
-        # Loguear el error completo para debugging
         logger.exception('Error al subir imagen a Cloudinary: %s', e)
         raise
 
