@@ -708,8 +708,15 @@ async function loadGeoRecommendations() {
     });
     lat = pos.coords.latitude;
     lng = pos.coords.longitude;
-  } catch {
-    section.classList.add('hidden');
+  } catch (err) {
+    // Handle geolocation errors: PERMISSION_DENIED, POSITION_UNAVAILABLE, TIMEOUT
+    console.warn('Geolocation error:', err.message || err);
+    // Show user-friendly message instead of just hiding
+    if (loading) {
+      loading.textContent = 'No pudimos detectar tu ubicación. Usá los filtros para buscar.';
+      loading.style.color = 'var(--accent)';
+    }
+    setTimeout(() => section.classList.add('hidden'), 3000);
     return;
   }
 

@@ -8,15 +8,14 @@ function hexAvatar(agent) {
 
   let imgTag = '';
   if (hasPhoto) {
-    // Usar proxyImgUrl para evitar CORS en Cloudinary; fallback si no está disponible
     let photoUrl = agent.avatar;
     if (typeof window.proxyImgUrl === 'function') {
       photoUrl = window.proxyImgUrl(agent.avatar);
     } else {
       console.warn('[agents.js] proxyImgUrl no está disponible al renderizar avatar; posible problema de orden de carga de scripts');
     }
-    // La imagen va DESPUÉS del texto en el SVG para quedar por encima de las iniciales
-    imgTag = `<image href="${esc(photoUrl)}" x="0" y="0" width="160" height="160" preserveAspectRatio="xMidYMid slice" clip-path="url(#hc${agent.id})" />`;
+    // Add onerror fallback - if image fails to load, the initials text will show
+    imgTag = `<image href="${esc(photoUrl)}" x="0" y="0" width="160" height="160" preserveAspectRatio="xMidYMid slice" clip-path="url(#hc${agent.id})" onerror="this.remove()" />`;
   }
 
   return `<div class="hex-wrap">
