@@ -603,32 +603,44 @@ async function init() {
   applySettings();
   initContactForm();
 
-  // Load venta (default active tab)
-  try {
-    const data  = await API.getProperties({ ..._filters, page: _page, sort: _sort, per_page: PER_PAGE });
-    const props = data.properties;
+  // Load venta + agents en PARALELO (Promise.allSettled)
+  const [propsResult, agentsResult] = await Promise.allSettled([
+    loadProperties({ ..._filters, page: _page, sort: _sort, per_page: PER_PAGE }),
+    loadAgents()
+  ]);
+
+  // Procesar properties
+  let props = [];
+  let data = { properties: [], available_total: 0 };
+  if (propsResult.status === 'fulfilled') {
+    data = propsResult.value;
+    props = data.properties;
     _allLoadedProps = props;
-    renderProperties(props, { page: data.page, pages: data.pages, total: data.total, has_prev: data.has_prev, has_next: data.has_next });
-    if (props.length) setTimeout(revealCards, 100);
-
-    const agents = await loadAgents();
-
-    const heroYearsSetting = window._siteSettings?.hero_years;
-    const yearsVal = heroYearsSetting
-      ? parseInt(heroYearsSetting)
-      : (agents.length ? Math.max(...agents.map(a => a.years || 0)) : 0);
-    const sp = document.getElementById('statProps');
-    const sa = document.getElementById('statAgents');
-    const sy = document.getElementById('statYears');
-    if(sp) { sp.dataset.count = data.available_total ?? props.filter(p => p.status === 'disponible').length; sp.textContent = '—'; }
-    if(sa) { sa.dataset.count = agents.length; sa.textContent = '—'; }
-    if(sy) { sy.dataset.count = yearsVal; sy.textContent = '—'; }
-    setTimeout(initStatsCounter, 200);
-  } catch(err) {
-    console.warn('Error al cargar datos:', err);
-    const grid = document.getElementById('propsGrid');
-    if(grid) grid.innerHTML = '<div class="loading-state">Error al conectar. ¿Está corriendo el servidor?</div>';
+  } else {
+    console.error('[init] Falló carga de properties:', propsResult.reason);
+    // loadProperties ya muestra error con botón reintentar en el grid
   }
+
+  // Procesar agents
+  let agents = [];
+  if (agentsResult.status === 'fulfilled') {
+    agents = agentsResult.value;
+  } else {
+    console.error('[init] Falló carga de agents:', agentsResult.reason);
+    // loadAgents ya muestra error con botón reintentar en el grid
+  }
+
+  const heroYearsSetting = window._siteSettings?.hero_years;
+  const yearsVal = heroYearsSetting
+    ? parseInt(heroYearsSetting)
+    : (agents.length ? Math.max(...agents.map(a => a.years || 0)) : 0);
+  const sp = document.getElementById('statProps');
+  const sa = document.getElementById('statAgents');
+  const sy = document.getElementById('statYears');
+  if(sp) { sp.dataset.count = data.available_total ?? props.filter(p => p.status === 'disponible').length; sp.textContent = '—'; }
+  if(sa) { sa.dataset.count = agents.length; sa.textContent = '—'; }
+  if(sy) { sy.dataset.count = yearsVal; sy.textContent = '—'; }
+  setTimeout(initStatsCounter, 200);
 
   // Geo recommendations
   loadGeoRecommendations();

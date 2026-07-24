@@ -1,0 +1,8 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#1a1f2e"/>
+  <g transform="translate(200,150)">
+    <path d="M0,-50 L-35,-10 L-35,25 L0,50 L35,25 L35,-10 Z" fill="none" stroke="#20b8ab" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M-15,-15 L15,15 M-15,15 L15,-15" stroke="#20b8ab" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <text x="200" y="220" text-anchor="middle" fill="#5a6a8a" font-family="system-ui, sans-serif" font-size="14" font-weight="500">Sin imagen disponible</text>
+</svg>

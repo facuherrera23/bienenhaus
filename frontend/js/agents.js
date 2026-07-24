@@ -8,7 +8,15 @@ function hexAvatar(agent) {
 
   let imgTag = '';
   if (hasPhoto) {
-    imgTag = `<image href="${esc(agent.avatar)}" x="0" y="0" width="160" height="160" preserveAspectRatio="xMidYMid slice" clip-path="url(#hc${agent.id})" />`;
+    // Usar proxyImgUrl para evitar CORS en Cloudinary; fallback si no está disponible
+    let photoUrl = agent.avatar;
+    if (typeof window.proxyImgUrl === 'function') {
+      photoUrl = window.proxyImgUrl(agent.avatar);
+    } else {
+      console.warn('[agents.js] proxyImgUrl no está disponible al renderizar avatar; posible problema de orden de carga de scripts');
+    }
+    // La imagen va DESPUÉS del texto en el SVG para quedar por encima de las iniciales
+    imgTag = `<image href="${esc(photoUrl)}" x="0" y="0" width="160" height="160" preserveAspectRatio="xMidYMid slice" clip-path="url(#hc${agent.id})" />`;
   }
 
   return `<div class="hex-wrap">
@@ -85,7 +93,10 @@ async function loadAgents() {
     return agents;
   } catch (err) {
     document.getElementById('agentsGrid').innerHTML =
-      '<div class="loading-state">Error al cargar agentes.</div>';
+      `<div class="error-state">
+        <p>Error al cargar agentes.</p>
+        <button class="btn btn-primary" onclick="loadAgents()">Reintentar</button>
+      </div>`;
     console.warn(err);
     return [];
   }

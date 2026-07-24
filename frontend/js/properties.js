@@ -85,9 +85,9 @@ function buildPropCard(prop) {
     <div class="prop-card${isSold ? ' sold' : ''}"
          data-images='${JSON.stringify(images)}'>
       <div class="card-img-wrap">
-        ${hasImgs
+${hasImgs
           ? `<img class="card-img" ${imgAttrs(images[0], [400, 800])} alt="${etitle}" loading="lazy" decoding="async"
-               onerror="this.src='https://picsum.photos/seed/fallback/900/600'"/>`
+                onerror="if(this.src !== '/images/placeholder-property.svg'){ this.src='/images/placeholder-property.svg'; this.onerror=null; }"/>`
           : `<div class="card-no-img">Sin imagen</div>`}
         <div class="card-gradient"></div>
         <div class="badge badge-status ${sd.cls}">${sd.label}</div>
@@ -176,12 +176,15 @@ async function loadProperties(filters = {}) {
     const data = await API.getProperties(filters);
     const props = data.properties;
     renderProperties(props, { page: data.page, pages: data.pages, total: data.total, has_prev: data.has_prev, has_next: data.has_next });
-    return props;
+    return data;
   } catch (err) {
     document.getElementById('propsGrid').innerHTML =
-      `<div class="loading-state">Error al cargar propiedades. ¿Está corriendo el backend?</div>`;
+      `<div class="error-state">
+        <p>Error al cargar propiedades.</p>
+        <button class="btn btn-primary" onclick="loadProperties(${JSON.stringify(filters).replace(/"/g, '"')})">Reintentar</button>
+      </div>`;
     console.warn(err);
-    return [];
+    return { properties: [], page: 1, pages: 0, total: 0, has_prev: false, has_next: false };
   }
 }
 
