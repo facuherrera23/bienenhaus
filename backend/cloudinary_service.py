@@ -53,8 +53,10 @@ def upload(file_obj, public_id=None, max_width=1200):
 
     import tempfile
     import os
-    import base64
     import requests
+    import hashlib
+    import re
+    import time
 
     try:
         if public_id is None:
@@ -83,37 +85,35 @@ def upload(file_obj, public_id=None, max_width=1200):
                 raise ValueError('CLOUDINARY_URL no configurada')
 
             # Parsear CLOUDINARY_URL: cloudinary://api_key:api_secret@cloud_name
-            # Formato: cloudinary://API_KEY:API_SECRET@CLOUD_NAME
-            import re
             match = re.match(r'cloudinary://([^:]+):([^@]+)@(.+)', url)
             if not match:
                 raise ValueError('Formato CLOUDINARY_URL inválido')
             api_key, api_secret, cloud_name = match.groups()
 
+            # Parámetros para la subida (incluye api_key para la firma)
+            timestamp = str(int(time.time()))
+            data = {
+                'public_id': public_id,
+                'folder': 'bienenhaus',
+                'overwrite': 'true',
+                'resource_type': 'image',
+                'quality': 'auto:best',
+                'fetch_format': 'auto',
+                'width': str(max_width),
+                'crop': 'limit',
+                'timestamp': timestamp,
+                'api_key': api_key,
+            }
+
+            # Firma: parámetros ordenados alfabéticamente + api_secret
+            sorted_params = sorted([(k, str(v)) for k, v in data.items()])
+            to_sign = '&'.join(f'{k}={v}' for k, v in sorted_params) + api_secret
+            signature = hashlib.sha1(to_sign.encode()).hexdigest()
+            data['signature'] = signature
+
             # Subir usando API REST
             with open(tmp_path, 'rb') as f:
                 files = {'file': (os.path.basename(tmp_path), f, 'image/webp')}
-                data = {
-                    'public_id': public_id,
-                    'folder': 'bienenhaus',
-                    'overwrite': 'true',
-                    'resource_type': 'image',
-                    'quality': 'auto:best',
-                    'fetch_format': 'auto',
-                    'width': str(max_width),
-                    'crop': 'limit',
-                    'timestamp': str(int(time.time())),
-                }
-
-                # Firma para autenticación
-                import hashlib
-                # Crear string para firmar: parámetros ordenados + api_secret
-                sorted_params = sorted([(k, str(v)) for k, v in data.items()])
-                to_sign = '&'.join(f'{k}={v}' for k, v in sorted_params) + api_secret
-                signature = hashlib.sha1(to_sign.encode()).hexdigest()
-                data['signature'] = signature
-                data['api_key'] = api_key
-
                 response = requests.post(
                     f'https://api.cloudinary.com/v1_1/{cloud_name}/image/upload',
                     files=files,
