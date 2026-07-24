@@ -68,9 +68,24 @@ jobs:
             sleep 1
           done
 
+      - name: Verify database connection
+        working-directory: backend
+        run: |
+          python -c "
+          import os
+          import psycopg2
+          conn = psycopg2.connect(os.getenv('DATABASE_URL'))
+          cur = conn.cursor()
+          cur.execute('SELECT 1')
+          print('Database connection OK:', cur.fetchone())
+          conn.close()
+          "
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/bienenhaus_test
+
       - name: Run tests
         working-directory: backend
-        run: python -m pytest tests/ -q
+        run: python -m pytest tests/ -v --tb=short
         env:
           DATABASE_URL: postgresql://postgres:postgres@localhost:5432/bienenhaus_test
           SECRET_KEY: ci-secret-key-for-testing
