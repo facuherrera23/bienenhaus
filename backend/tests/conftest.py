@@ -4,11 +4,11 @@ import pytest
 # Set env vars at module level so any import of app.py (even during collection)
 # sees the test-friendly values. Monkeypatch in no_env_deps also overrides
 # per-test-function for extra safety.
-# Force test-friendly values (override CI env-vars set at step level)
-os.environ['SECRET_KEY'] = 'test-secret-key-not-for-prod'
-os.environ['DATABASE_URL'] = 'sqlite:///:memory:'
-os.environ['CSRF_BYPASS'] = '1'
-os.environ['RATELIMIT_ENABLED'] = 'false'
+# Use setdefault to allow CI env vars to take precedence
+os.environ.setdefault('SECRET_KEY', 'test-secret-key-not-for-prod')
+os.environ.setdefault('DATABASE_URL', 'sqlite:///:memory:')
+os.environ.setdefault('CSRF_BYPASS', '1')
+os.environ.setdefault('RATELIMIT_ENABLED', 'false')
 
 
 @pytest.fixture
