@@ -37,7 +37,8 @@ def init_cloudinary():
 
 
 def is_configured():
-    return _CLOUDINARY_CONFIGURED
+    # Forzar almacenamiento local - desactivar Cloudinary
+    return False
 
 
 def upload(file_obj, public_id=None, max_width=1200):
