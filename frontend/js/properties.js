@@ -180,11 +180,14 @@ async function loadProperties(filters = {}) {
     renderProperties(props, { page: data.page, pages: data.pages, total: data.total, has_prev: data.has_prev, has_next: data.has_next });
     return { ...data, properties: mergeProperties(data.properties) };
   } catch (err) {
-    document.getElementById('propsGrid').innerHTML =
-      `<div class="error-state">
-        <p>Error al cargar propiedades.</p>
-        <button class="btn btn-primary" onclick="loadProperties(${JSON.stringify(filters).replace(/"/g, '"')})">Reintentar</button>
-      </div>`;
+    const grid = document.getElementById('propsGrid');
+    if (grid) {
+      grid.innerHTML =
+        `<div class="error-state">
+          <p>Error al cargar propiedades.</p>
+          <button class="btn btn-primary" onclick="loadProperties(${JSON.stringify(filters).replace(/"/g, '"')} )">Reintentar</button>
+        </div>`;
+    }
     console.warn(err);
     // Return demo data as fallback
     const demoProps = getDemoProperties();
