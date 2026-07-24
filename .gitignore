@@ -93,7 +93,9 @@ backend/backups/
 # Migración DB (contiene credenciales)
 backend/scripts/migrate_db.py
 *.txt
-!backend/static/feeds/.gitkeep
+!backend/requirements.txt
+!frontend/package-lock.json
+!frontend/package.json
 
 # Reportes de auditoría / hardening / fase (no código fuente)
 *_REPORT.md
