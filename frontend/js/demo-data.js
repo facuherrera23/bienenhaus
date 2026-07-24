@@ -21,9 +21,9 @@ const DEMO_PROPERTIES = [
     featured: true,
     description: 'Hermosa casa ubicada en el corazón de Nueva Córdoba, a metros de la Ciudad Universitaria. Cuenta con amplio living comedor, cocina integrada con anafe, horno y campana. Tres dormitorios con placares incorporados, el principal con baño en suite. Patio con parrilla y jardín. Cochera cubierta para dos autos. Excelente iluminación natural y ventilación cruzada.',
     images: [
-      '/images/propiedades/casa-nueva-cordoba-1.webp',
-      '/images/propiedades/casa-nueva-cordoba-2.webp',
-      '/images/propiedades/casa-nueva-cordoba-3.webp'
+      '/images/placeholder-property.svg',
+      '/images/placeholder-property.svg',
+      '/images/placeholder-property.svg'
     ],
     latitude: -31.4216,
     longitude: -64.1888,
@@ -44,9 +44,9 @@ const DEMO_PROPERTIES = [
     featured: true,
     description: 'Moderno departamento en el centro de la ciudad, totalmente amoblado. Living comedor con cocina tipo americana, balcón con vista a la calle. Dormitorio con cama queen y placard. Baño completo con artefactos nuevos. A pasos de peatonal, supermercados y transporte público. Expensas incluyen agua y mantenimiento de espacios comunes.',
     images: [
-      '/images/propiedades/depto-centro-1.webp',
-      '/images/propiedades/depto-centro-2.webp',
-      '/images/propiedades/depto-centro-3.webp'
+      '/images/placeholder-property.svg',
+      '/images/placeholder-property.svg',
+      '/images/placeholder-property.svg'
     ],
     latitude: -31.4135,
     longitude: -64.1810,
@@ -67,9 +67,9 @@ const DEMO_PROPERTIES = [
     featured: true,
     description: 'Imponente casa en Barrio Jardín, una de las zonas más exclusivas de Córdoba. Living comedor doble altura, cocina integrada con isla, toilette de recepción. Master suite con vestidor y baño con hidromasaje. Tres dormitorios adicionales con placares. Quincho cerrado con parrilla, piscina, jardín parquizado. Cochera para 3 autos.',
     images: [
-      '/images/propiedades/casa-barrio-jardin-1.webp',
-      '/images/propiedades/casa-barrio-jardin-2.webp',
-      '/images/propiedades/casa-barrio-jardin-3.webp'
+      '/images/placeholder-property.svg',
+      '/images/placeholder-property.svg',
+      '/images/placeholder-property.svg'
     ],
     latitude: -31.4321,
     longitude: -64.2012,
@@ -90,8 +90,8 @@ const DEMO_PROPERTIES = [
     featured: false,
     description: 'Moderno monoambiente divisio en Güemes, zona gastronómica y cultural. Cocina integrada, balcón con vista al cerro. Baño completo moderno. Ideal para estudiante o profesional soltero. A metros de la Cañada y transporte público.',
     images: [
-      '/images/propiedades/depto-guemes-1.webp',
-      '/images/propiedades/depto-guemes-2.webp'
+      '/images/placeholder-property.svg',
+      '/images/placeholder-property.svg'
     ],
     latitude: -31.4189,
     longitude: -64.1855,
@@ -112,8 +112,8 @@ const DEMO_PROPERTIES = [
     featured: true,
     description: 'Lote de 800 m² en barrio cerrado con seguridad 24hs, club house, pileta, canchas de tenis y fútbol. Servicios de luz, agua, gas y cloacas por tendido. Acceso directo desde ruta. Ideal para construir la casa de tus sueños.',
     images: [
-      '/images/propiedades/terreno-malagueño-1.webp',
-      '/images/propiedades/terreno-malagueño-2.webp'
+      '/images/placeholder-property.svg',
+      '/images/placeholder-property.svg'
     ],
     latitude: -31.3892,
     longitude: -64.2567,
@@ -134,8 +134,8 @@ const DEMO_PROPERTIES = [
     featured: false,
     description: 'Local comercial en excelente ubicación sobre avenida principal. 120 m² en planta baja, baño, oficina privada, depósito. Aire acondicionado, persianas automatizadas. Ideal para oficina, showroom o local gastronómico. Alto tránsito vehicular y peatonal.',
     images: [
-      '/images/propiedades/local-zona-norte-1.webp',
-      '/images/propiedades/local-zona-norte-2.webp'
+      '/images/placeholder-property.svg',
+      '/images/placeholder-property.svg'
     ],
     latitude: -31.3892,
     longitude: -64.2567,
@@ -160,8 +160,8 @@ const DEMO_RENTALS = [
     furnished: true,
     description: 'Modern apartment in Nueva Córdoba, fully furnished. 2 bedrooms, 1 bathroom, balcony. Fully equipped kitchen, AC, WiFi included. Building with amenities: pool, gym, SUM, laundry. 12 month minimum lease.',
     images: [
-      '/images/alquileres/depto-nueva-cordoba-1.webp',
-      '/images/alquileres/depto-nueva-cordoba-2.webp'
+      '/images/placeholder-property.svg',
+      '/images/placeholder-property.svg'
     ],
     latitude: -31.4216,
     longitude: -64.1888,
@@ -182,8 +182,8 @@ const DEMO_RENTALS = [
     furnished: true,
     description: 'Beautiful house in Cerro de las Rosas, fully furnished. 3 bedrooms, 2 bathrooms, garden, garage. Quiet neighborhood, close to schools and shopping. 12 month minimum lease.',
     images: [
-      '/images/alquileres/casa-cerro-rosas-1.webp',
-      '/images/alquileres/casa-cerro-rosas-2.webp'
+      '/images/placeholder-property.svg',
+      '/images/placeholder-property.svg'
     ],
     latitude: -31.4156,
     longitude: -64.2012,
@@ -204,8 +204,8 @@ const DEMO_RENTALS = [
     furnished: false,
     description: 'Commercial space in trendy Güemes neighborhood. 80m² open plan, bathroom, high ceilings, large windows. Ideal for retail, showroom, or cafe. High foot traffic area.',
     images: [
-      '/images/alquileres/local-guemes-1.webp',
-      '/images/alquileres/local-guemes-2.webp'
+      '/images/placeholder-property.svg',
+      '/images/placeholder-property.svg'
     ],
     latitude: -31.4189,
     longitude: -64.1855,
@@ -224,7 +224,7 @@ const DEMO_AGENTS = [
     phone: '+54 351 411-0001',
     whatsapp: '+5493515000001',
     email: 'maria.gonzalez@bienenhaus.com.ar',
-    avatar: '/images/agentes/maria-gonzalez.webp',
+    avatar: '/images/placeholder-property.svg',
   },
   {
     id: 2,
@@ -236,7 +236,7 @@ const DEMO_AGENTS = [
     phone: '+54 351 411-0002',
     whatsapp: '+5493515000002',
     email: 'carlos.rodriguez@bienenhaus.com.ar',
-    avatar: '/images/agentes/carlos-rodriguez.webp',
+    avatar: '/images/placeholder-property.svg',
   },
   {
     id: 3,
@@ -248,7 +248,7 @@ const DEMO_AGENTS = [
     phone: '+54 351 411-0003',
     whatsapp: '+5493515000003',
     email: 'laura.martinez@bienenhaus.com.ar',
-    avatar: '/images/agentes/laura-martinez.webp',
+    avatar: '/images/placeholder-property.svg',
   },
   {
     id: 4,
@@ -260,7 +260,7 @@ const DEMO_AGENTS = [
     phone: '+54 351 411-0004',
     whatsapp: '+5493515000004',
     email: 'roberto.silva@bienenhaus.com.ar',
-    avatar: '/images/agentes/roberto-silva.webp',
+    avatar: '/images/placeholder-property.svg',
   }
 ];
 
