@@ -176,9 +176,9 @@ function renderPagination(pag) {
 async function loadProperties(filters = {}) {
   try {
     const data = await API.getProperties(filters);
-    const props = data.properties;
+    const props = mergeProperties(data.properties);
     renderProperties(props, { page: data.page, pages: data.pages, total: data.total, has_prev: data.has_prev, has_next: data.has_next });
-    return data;
+    return { ...data, properties: mergeProperties(data.properties) };
   } catch (err) {
     document.getElementById('propsGrid').innerHTML =
       `<div class="error-state">
@@ -186,7 +186,10 @@ async function loadProperties(filters = {}) {
         <button class="btn btn-primary" onclick="loadProperties(${JSON.stringify(filters).replace(/"/g, '"')})">Reintentar</button>
       </div>`;
     console.warn(err);
-    return { properties: [], page: 1, pages: 0, total: 0, has_prev: false, has_next: false };
+    // Return demo data as fallback
+    const demoProps = getDemoProperties();
+    renderProperties(demoProps, { page: 1, pages: 1, total: demoProps.length, has_prev: false, has_next: false });
+    return { properties: DEMO_PROPERTIES, page: 1, pages: 1, total: DEMO_PROPERTIES.length, has_prev: false, has_next: false };
   }
 }
 

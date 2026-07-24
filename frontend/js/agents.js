@@ -89,8 +89,9 @@ function renderAgents(agents) {
 async function loadAgents() {
   try {
     const agents = await API.getAgents();
-    renderAgents(agents);
-    return agents;
+    const mergedAgents = mergeAgents(agents);
+    renderAgents(mergedAgents);
+    return mergedAgents;
   } catch (err) {
     document.getElementById('agentsGrid').innerHTML =
       `<div class="error-state">
@@ -98,7 +99,10 @@ async function loadAgents() {
         <button class="btn btn-primary" onclick="loadAgents()">Reintentar</button>
       </div>`;
     console.warn(err);
-    return [];
+    // Return demo agents as fallback
+    const demoAgents = getDemoAgents();
+    renderAgents(demoAgents);
+    return DEMO_AGENTS;
   }
 }
 

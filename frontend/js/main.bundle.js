@@ -487,6 +487,291 @@
     return __spreadValues({}, _filters);
   }
   window.currentFilters = currentFilters;
+  var DEMO_PROPERTIES = [
+    {
+      id: 101,
+      title: "Casa en Nueva C\xF3rdoba - 3 Dormitorios",
+      type: "casa",
+      location: "Nueva C\xF3rdoba, C\xF3rdoba Capital",
+      price: 185e3,
+      beds: 3,
+      baths: 2,
+      sqm: 120,
+      sqm_total: 180,
+      parkings: 2,
+      antiquity: "10 a\xF1os",
+      status: "disponible",
+      featured: true,
+      description: "Hermosa casa ubicada en el coraz\xF3n de Nueva C\xF3rdoba, a metros de la Ciudad Universitaria. Cuenta con amplio living comedor, cocina integrada con anafe, horno y campana. Tres dormitorios con placares incorporados, el principal con ba\xF1o en suite. Patio con parrilla y jard\xEDn. Cochera cubierta para dos autos. Excelente iluminaci\xF3n natural y ventilaci\xF3n cruzada.",
+      images: [
+        "/images/propiedades/casa-nueva-cordoba-1.webp",
+        "/images/propiedades/casa-nueva-cordoba-2.webp",
+        "/images/propiedades/casa-nueva-cordoba-3.webp"
+      ],
+      latitude: -31.4216,
+      longitude: -64.1888
+    },
+    {
+      id: 102,
+      title: "Departamento en Centro - 2 Ambientes",
+      type: "departamento",
+      location: "Centro, C\xF3rdoba Capital",
+      price: 125e3,
+      beds: 2,
+      baths: 1,
+      sqm: 55,
+      sqm_total: 65,
+      parkings: 1,
+      antiquity: "5 a\xF1os",
+      status: "disponible",
+      featured: true,
+      description: "Moderno departamento en el centro de la ciudad, totalmente amoblado. Living comedor con cocina tipo americana, balc\xF3n con vista a la calle. Dormitorio con cama queen y placard. Ba\xF1o completo con artefactos nuevos. A pasos de peatonal, supermercados y transporte p\xFAblico. Expensas incluyen agua y mantenimiento de espacios comunes.",
+      images: [
+        "/images/propiedades/depto-centro-1.webp",
+        "/images/propiedades/depto-centro-2.webp",
+        "/images/propiedades/depto-centro-3.webp"
+      ],
+      latitude: -31.4135,
+      longitude: -64.181
+    },
+    {
+      id: 103,
+      title: "Casa en Barrio Jard\xEDn - 4 Dormitorios",
+      type: "casa",
+      location: "Barrio Jard\xEDn, C\xF3rdoba Capital",
+      price: 32e4,
+      beds: 4,
+      baths: 3,
+      sqm: 280,
+      sqm_total: 450,
+      parkings: 3,
+      antiquity: "15 a\xF1os",
+      status: "disponible",
+      featured: true,
+      description: "Imponente casa en Barrio Jard\xEDn, una de las zonas m\xE1s exclusivas de C\xF3rdoba. Living comedor doble altura, cocina integrada con isla, toilette de recepci\xF3n. Master suite con vestidor y ba\xF1o con hidromasaje. Tres dormitorios adicionales con placares. Quincho cerrado con parrilla, piscina, jard\xEDn parquizado. Cochera para 3 autos.",
+      images: [
+        "/images/propiedades/casa-barrio-jardin-1.webp",
+        "/images/propiedades/casa-barrio-jardin-2.webp",
+        "/images/propiedades/casa-barrio-jardin-3.webp"
+      ],
+      latitude: -31.4321,
+      longitude: -64.2012
+    },
+    {
+      id: 104,
+      title: "Departamento en G\xFCemes - 1 Dormitorio",
+      type: "departamento",
+      location: "G\xFCemes, C\xF3rdoba Capital",
+      price: 95e3,
+      beds: 1,
+      baths: 1,
+      sqm: 45,
+      sqm_total: 50,
+      parkings: 0,
+      antiquity: "3 a\xF1os",
+      status: "disponible",
+      featured: false,
+      description: "Moderno monoambiente divisio en G\xFCemes, zona gastron\xF3mica y cultural. Cocina integrada, balc\xF3n con vista al cerro. Ba\xF1o completo moderno. Ideal para estudiante o profesional soltero. A metros de la Ca\xF1ada y transporte p\xFAblico.",
+      images: [
+        "/images/propiedades/depto-guemes-1.webp",
+        "/images/propiedades/depto-guemes-2.webp"
+      ],
+      latitude: -31.4189,
+      longitude: -64.1855
+    },
+    {
+      id: 105,
+      title: "Terreno en Barrio Cerrado - 800 m\xB2",
+      type: "terreno",
+      location: "Malague\xF1o, C\xF3rdoba",
+      price: 85e3,
+      beds: 0,
+      baths: 0,
+      sqm: 800,
+      sqm_total: 800,
+      parkings: 0,
+      antiquity: "0 a\xF1os",
+      status: "disponible",
+      featured: true,
+      description: "Lote de 800 m\xB2 en barrio cerrado con seguridad 24hs, club house, pileta, canchas de tenis y f\xFAtbol. Servicios de luz, agua, gas y cloacas por tendido. Acceso directo desde ruta. Ideal para construir la casa de tus sue\xF1os.",
+      images: [
+        "/images/propiedades/terreno-malague\xF1o-1.webp",
+        "/images/propiedades/terreno-malague\xF1o-2.webp"
+      ],
+      latitude: -31.3892,
+      longitude: -64.2567
+    },
+    {
+      id: 106,
+      title: "Local Comercial en Zona Norte - 120 m\xB2",
+      type: "local",
+      location: "Zona Norte, C\xF3rdoba Capital",
+      price: 15e4,
+      beds: 0,
+      baths: 1,
+      sqm: 120,
+      sqm_total: 120,
+      parkings: 2,
+      antiquity: "8 a\xF1os",
+      status: "disponible",
+      featured: false,
+      description: "Local comercial en excelente ubicaci\xF3n sobre avenida principal. 120 m\xB2 en planta baja, ba\xF1o, oficina privada, dep\xF3sito. Aire acondicionado, persianas automatizadas. Ideal para oficina, showroom o local gastron\xF3mico. Alto tr\xE1nsito vehicular y peatonal.",
+      images: [
+        "/images/propiedades/local-zona-norte-1.webp",
+        "/images/propiedades/local-zona-norte-2.webp"
+      ],
+      latitude: -31.3892,
+      longitude: -64.2567
+    }
+  ];
+  var DEMO_RENTALS = [
+    {
+      id: 201,
+      title: "Departamento en Nueva C\xF3rdoba - 2 Ambientes",
+      type: "departamento",
+      location: "Nueva C\xF3rdoba, C\xF3rdoba Capital",
+      price_ars: 28e4,
+      beds: 2,
+      baths: 1,
+      sqm: 55,
+      sqm_total: 65,
+      status: "disponible",
+      featured: true,
+      min_months: 12,
+      furnished: true,
+      description: "Modern apartment in Nueva C\xF3rdoba, fully furnished. 2 bedrooms, 1 bathroom, balcony. Fully equipped kitchen, AC, WiFi included. Building with amenities: pool, gym, SUM, laundry. 12 month minimum lease.",
+      images: [
+        "/images/alquileres/depto-nueva-cordoba-1.webp",
+        "/images/alquileres/depto-nueva-cordoba-2.webp"
+      ],
+      latitude: -31.4216,
+      longitude: -64.1888
+    },
+    {
+      id: 202,
+      title: "Casa en Cerro de las Rosas - 3 Dormitorios",
+      type: "casa",
+      location: "Cerro de las Rosas, C\xF3rdoba Capital",
+      price_ars: 45e4,
+      beds: 3,
+      baths: 2,
+      sqm: 140,
+      sqm_total: 200,
+      status: "disponible",
+      featured: true,
+      min_months: 12,
+      furnished: true,
+      description: "Beautiful house in Cerro de las Rosas, fully furnished. 3 bedrooms, 2 bathrooms, garden, garage. Quiet neighborhood, close to schools and shopping. 12 month minimum lease.",
+      images: [
+        "/images/alquileres/casa-cerro-rosas-1.webp",
+        "/images/alquileres/casa-cerro-rosas-2.webp"
+      ],
+      latitude: -31.4156,
+      longitude: -64.2012
+    },
+    {
+      id: 203,
+      title: "Local Comercial en G\xFCemes - 80 m\xB2",
+      type: "local",
+      location: "G\xFCemes, C\xF3rdoba Capital",
+      price_ars: 35e4,
+      beds: 0,
+      baths: 1,
+      sqm: 80,
+      sqm_total: 80,
+      status: "disponible",
+      featured: true,
+      min_months: 24,
+      furnished: false,
+      description: "Commercial space in trendy G\xFCemes neighborhood. 80m\xB2 open plan, bathroom, high ceilings, large windows. Ideal for retail, showroom, or cafe. High foot traffic area.",
+      images: [
+        "/images/alquileres/local-guemes-1.webp",
+        "/images/alquileres/local-guemes-2.webp"
+      ],
+      latitude: -31.4189,
+      longitude: -64.1855
+    }
+  ];
+  var DEMO_AGENTS = [
+    {
+      id: 1,
+      name: "Mar\xEDa",
+      last: "Gonz\xE1lez",
+      years: 12,
+      license_number: "CPI 4.234",
+      specialty: "Venta de propiedades premium",
+      phone: "+54 351 411-0001",
+      whatsapp: "+5493515000001",
+      email: "maria.gonzalez@bienenhaus.com.ar",
+      avatar: "/images/agentes/maria-gonzalez.webp"
+    },
+    {
+      id: 2,
+      name: "Carlos",
+      last: "Rodr\xEDguez",
+      years: 8,
+      license_number: "CPI 5.123",
+      specialty: "Alquileres y administraci\xF3n",
+      phone: "+54 351 411-0002",
+      whatsapp: "+5493515000002",
+      email: "carlos.rodriguez@bienenhaus.com.ar",
+      avatar: "/images/agentes/carlos-rodriguez.webp"
+    },
+    {
+      id: 3,
+      name: "Laura",
+      last: "Mart\xEDnez",
+      years: 15,
+      license_number: "CPI 3.789",
+      specialty: "Propiedades de lujo y fincas",
+      phone: "+54 351 411-0003",
+      whatsapp: "+5493515000003",
+      email: "laura.martinez@bienenhaus.com.ar",
+      avatar: "/images/agentes/laura-martinez.webp"
+    },
+    {
+      id: 4,
+      name: "Roberto",
+      last: "Silva",
+      years: 6,
+      license_number: "CPI 6.045",
+      specialty: "Inversiones y desarrollos",
+      phone: "+54 351 411-0004",
+      whatsapp: "+5493515000004",
+      email: "roberto.silva@bienenhaus.com.ar",
+      avatar: "/images/agentes/roberto-silva.webp"
+    }
+  ];
+  function mergeWithDemo(apiData, demoData, key = "id") {
+    if (!apiData || !apiData.length) return demoData;
+    const apiIds = new Set(apiData.map((item) => item.id));
+    const uniqueDemo = demoData.filter((item) => !apiIds.has(item.id));
+    return [...apiData, ...uniqueDemo];
+  }
+  function mergeProperties(apiProps) {
+    return mergeWithDemo(apiProps, DEMO_PROPERTIES);
+  }
+  function mergeRentals(apiRentals) {
+    return mergeWithDemo(apiRentals, DEMO_RENTALS);
+  }
+  function mergeAgents(apiAgents) {
+    return mergeWithDemo(apiAgents, DEMO_AGENTS);
+  }
+  window.DEMO_PROPERTIES = DEMO_PROPERTIES;
+  window.DEMO_RENTALS = DEMO_RENTALS;
+  window.DEMO_AGENTS = DEMO_AGENTS;
+  window.mergeProperties = mergeProperties;
+  window.mergeRentals = mergeRentals;
+  window.mergeAgents = mergeAgents;
+  window.getDemoProperties = () => DEMO_PROPERTIES;
+  window.getDemoRentals = () => DEMO_RENTALS;
+  window.getDemoAgents = () => DEMO_AGENTS;
+  window.mergeProperties = mergeProperties;
+  window.mergeRentals = mergeRentals;
+  window.mergeAgents = mergeAgents;
+  window.getDemoProperties = () => DEMO_PROPERTIES;
+  window.getDemoRentals = () => DEMO_RENTALS;
+  window.getDemoAgents = () => DEMO_AGENTS;
   function switchTab(tab) {
     _activeTab = tab;
     document.querySelectorAll(".prop-tab").forEach((t) => t.classList.toggle("active", t.dataset.tab === tab));
