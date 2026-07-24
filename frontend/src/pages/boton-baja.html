@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="canonical" href="{{SITE_URL}}/baja"/>
+  <title>Darse de baja · Bienenhaus Propiedades</title>
+  <meta name="description" content="Formulario para darse de baja de las comunicaciones de Bienenhaus Propiedades."/>
+  <meta name="robots" content="noindex, follow"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="{{SITE_URL}}/baja"/>
+  <meta property="og:title" content="Darse de baja · Bienenhaus Propiedades"/>
+  <meta property="og:description" content="Formulario para darse de baja de las comunicaciones de Bienenhaus Propiedades."/>
+  <meta property="og:image" content="{{SITE_URL}}/images/logo-bienenhaus.png"/>
+  <meta property="og:locale" content="es_AR"/>
+  <meta property="og:site_name" content="Bienenhaus Propiedades"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Darse de baja · Bienenhaus Propiedades"/>
+  <meta name="twitter:description" content="Formulario para darse de baja de las comunicaciones de Bienenhaus Propiedades."/>
+  <meta name="twitter:image" content="{{SITE_URL}}/images/logo-bienenhaus.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZ%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%91%C3%9Cabcdefghijklmnopqrstuvwxyz%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%B1%C3%BC0123456789.%2C%3A%3B%21%3F%C2%A1%C2%BF%28%29-%E2%80%94%5B%5D%7B%7D%22%27%40%23%24%E2%82%AC%25%26%2A%2F%2B%C2%B0%C2%B2%C2%B3%3C%3E%3D%C3%97%E2%80%93%E2%80%A6%C2%B7%C2%A9" rel="stylesheet" media="print" onload="this.media='all'"/>
+  <link rel="stylesheet" href="/css/styles.min.css?v={{VERSION}}" media="print" onload="this.media='all'"/>
+  <meta name="theme-color" content="#20b8ab"/>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png"/>
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png"/>
+</head>
+<body data-page="baja">
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+  {{> navbar}}
+  <main id="main-content">
+    <section class="section" style="padding:var(--space-12) 0;">
+      <div class="container" style="max-width:500px; text-align:center;">
+        <h1 style="font-size:var(--text-3xl); margin-bottom:var(--space-6);">Darse de baja</h1>
+        <p style="color:var(--color-text-secondary); margin-bottom:var(--space-8);">Si no querés recibir más comunicaciones de Bienenhaus Propiedades, completá el formulario.</        </p>
+
+        <form id="bajaForm" class="contact-form-card" style="text-align:left;">
+          <div class="form-group">
+            <label class="form-label" for="baja_email">Email *</label>
+            <input type="email" id="baja_email" class="form-input" required placeholder="tu@email.com" autocomplete="email"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="baja_motivo">Motivo (opcional)</label>
+            <select id="baja_motivo" class="form-select">
+              <option value="">Seleccioná...</option>
+              <option value="no_interesa">Ya no me interesa</option>
+              <option value="demasiados">Recibo muchos emails</option>
+              <option value="contenido">El contenido no es relevante</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="baja_comentario">Comentario (opcional)</label>
+            <textarea id="baja_comentario" class="form-textarea" rows="3" placeholder="Contanos por qué te vas..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="bajaSubmit">Darme de baja</button>
+          <p class="cf-msg" id="bajaMsg" style="margin-top:var(--space-4);"></p>
+        </form>
+
+        <p style="margin-top:var(--space-8); font-size:var(--text-sm); color:var(--color-text-muted);">Si te diste de baja por error, podés <a href="{{WHATSAPP_URL}}?text={{WHATSAPP_DEFAULT_MSG}}" target="_blank">contactarnos por WhatsApp</a> para reactivar tu suscripción.</      </div>
+    </section>
+  </main>
+  {{> footer}}
+  {{> scripts}}
+</body>
+</html>

@@ -1,0 +1,35 @@
+/**
+ * Stats Counter Component Styles
+ */
+
+.stat-n {
+  font-family: var(--font-num);
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  transition: opacity var(--transition-base);
+}
+
+@media (max-width: 768px) {
+  .stat-n { font-size: var(--text-2xl); }
+}
+
+@media (max-width: 480px) {
+  .stat-n { font-size: var(--text-xl); }
+}
+
+@media (max-width: 360px) {
+  .stat-n { font-size: var(--text-lg); }
+}
+
+/* Counter animation */
+.stat-n.animated {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat-n {
+    transition: none !important;
+  }
+}

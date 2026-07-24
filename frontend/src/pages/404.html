@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="canonical" href="{{SITE_URL}}/404"/>
+  <title>Página no encontrada · Bienenhaus Propiedades</title>
+  <meta name="robots" content="noindex, follow"/>
+  <meta name="theme-color" content="#20b8ab"/>
+  <link rel="stylesheet" href="/css/styles.min.css?v={{VERSION}}"/>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+  {{> navbar}}
+  <main id="main-content" style="min-height:60vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:var(--space-9) var(--space-6);">
+    <div style="max-width:400px;">
+      <div style="font-size:8rem; font-family:var(--font-title); color:var(--color-accent); line-height:1; margin-bottom:var(--space-4);">404</div>
+      <h1 style="font-size:var(--text-3xl); margin-bottom:var(--space-4);">Página no encontrada</h1>
+      <p style="color:var(--color-text-secondary); margin-bottom:var(--space-6);">La página que buscás no existe o fue movida.</p>
+      <a href="/" class="btn btn-primary">Volver al inicio</a>
+    </div>
+  </main>
+  {{> footer}}
+  {{> scripts}}
+</body>
+</html>
